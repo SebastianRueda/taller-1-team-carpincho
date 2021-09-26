@@ -1,6 +1,7 @@
 package ar.edu.unlam.tallerweb1.persistencia;
 
 import ar.edu.unlam.tallerweb1.SpringTest;
+import ar.edu.unlam.tallerweb1.modelo.Rol;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import org.junit.Test;
 import org.springframework.test.annotation.Rollback;
@@ -23,7 +24,7 @@ public class ConexionBaseDeDatosTest extends SpringTest{
         Usuario usuario = new Usuario();
         usuario.setEmail("seba@gmail.com");
         usuario.setPassword("1234");
-        usuario.setRol("ADMIN");
+        usuario.setRol(Rol.newInstance("ADMIN"));
         session().save(usuario);
         assertThat(usuario.getId()).isNotNull();
     }

@@ -6,7 +6,7 @@ import javax.persistence.*;
 // el paquete ar.edu.unlam.tallerweb1.modelo esta indicado en el archivo hibernateCOntext.xml para que hibernate
 // busque entities en el
 @Entity
-@NamedQueries(@NamedQuery(name = "userByRol", query = "from Usuario where rol =:lalala"))
+//@NamedQueries(@NamedQuery(name = "userByRol", query = "from Usuario where rol =:lalala"))
 public class Usuario {
 
 	// La anotacion id indica que este atributo es el utilizado como clave primaria de la entity, se indica que el valor es autogenerado.
@@ -17,7 +17,8 @@ public class Usuario {
 	// el atributo, la misma admite nulos, y el tipo de dato se deduce del tipo de dato de java.
 	private String email;
 	private String password;
-	private String rol;
+	@OneToOne(cascade = CascadeType.ALL)
+	private Rol rol;
 	private Boolean activo = false;
 	@OneToOne(cascade = CascadeType.ALL)
 	private Cuenta cuenta;
@@ -46,10 +47,10 @@ public class Usuario {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getRol() {
+	public Rol getRol() {
 		return rol;
 	}
-	public void setRol(String rol) {
+	public void setRol(Rol rol) {
 		this.rol = rol;
 	}
 	public Boolean getActivo() {

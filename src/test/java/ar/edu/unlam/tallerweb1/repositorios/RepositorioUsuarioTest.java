@@ -2,6 +2,7 @@ package ar.edu.unlam.tallerweb1.repositorios;
 
 import ar.edu.unlam.tallerweb1.SpringTest;
 import ar.edu.unlam.tallerweb1.modelo.Cuenta;
+import ar.edu.unlam.tallerweb1.modelo.Rol;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,7 +71,9 @@ public class RepositorioUsuarioTest extends SpringTest {
             Usuario usuario = new Usuario();
             usuario.setEmail("usuario-"+i+"-"+rol+"@usuario.com");
             usuario.setPassword("123"+i);
-            usuario.setRol(rol);
+            var _rol = new Rol();
+            _rol.setDescripcion(rol);
+            usuario.setRol(_rol);
 
             Cuenta cuenta = new Cuenta();
             cuenta.setCreada(new Date());

@@ -1,0 +1,54 @@
+package ar.edu.unlam.tallerweb1.repositorios;
+
+import ar.edu.unlam.tallerweb1.modelo.Especialidad;
+import ar.edu.unlam.tallerweb1.modelo.Prestacion;
+import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import javax.transaction.Transactional;
+import java.util.List;
+
+@Repository("repositorioPrestacion")
+public class RepositorioPrestacionImpl implements RepositorioPrestacion{
+
+    private SessionFactory sessionFactory;
+
+    @Autowired
+    public RepositorioPrestacionImpl(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
+    @Override
+    public void save(Prestacion nuevaPrestacion) {sessionFactory.getCurrentSession().save(nuevaPrestacion);
+    }
+
+    @Override
+    public void delete(Prestacion prestacionExistente) { sessionFactory.getCurrentSession().delete(prestacionExistente);
+    }
+
+    @Override
+    public void update(Prestacion prestacionExistente) {sessionFactory.getCurrentSession().update(prestacionExistente);
+    }
+
+    @Override
+    public List<Prestacion> getAll() {
+        return (List<Prestacion>) sessionFactory.getCurrentSession().createCriteria(Prestacion.class);
+    }
+
+    @Override
+    public Prestacion prestacionFindById(Long id) {
+        return (Prestacion) sessionFactory.getCurrentSession().createCriteria(Prestacion.class)
+                .add(Restrictions.eq("id", id))
+                .uniqueResult();
+    }
+
+    @Override
+    public List<Prestacion> prestacionFindByEspecialidad(String especialidad) {
+        return (List<Prestacion>) sessionFactory.getCurrentSession().createCriteria(Prestacion.class)
+                .add(Restrictions.eq("prestacion",prestacionFindByEspecialidad(especialidad)))
+                .uniqueResult();
+    }
+
+}

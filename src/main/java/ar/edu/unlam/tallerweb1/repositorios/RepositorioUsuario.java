@@ -14,4 +14,9 @@ public interface RepositorioUsuario {
 	void modificar(Usuario usuario);
     List<Usuario> buscarUsuarioPorRol(String rol);
     List<Usuario> buscarUsuarioConMailLike(String mail);
+    void delete(Usuario usuario);
+
+    Usuario usuarioFindById(Long id);
+
+    List<Usuario> getAll();
 }

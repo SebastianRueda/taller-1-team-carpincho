@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
+import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Prestacion;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioPrestacion;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,13 +41,11 @@ public class ServicioPrestacionImpl implements ServicioPrestacion{
 
     @Override
     public Prestacion prestacionFindById(Long id) {
-      var prestacion = prestacionDao.prestacionFindById(id);
-      return prestacion;
+      return prestacionDao.prestacionFindById(id);
     }
 
     @Override
-    public List<Prestacion> prestacionFindByEspecialidad(String especialidad) {
-        var prestacion = prestacionDao.prestacionFindByEspecialidad(especialidad);
-        return prestacion;
+    public List<Prestacion> prestacionFindByEspecialidad(Especialidad especialidad) {
+        return prestacionDao.prestacionFindByEspecialidad(especialidad);
     }
 }

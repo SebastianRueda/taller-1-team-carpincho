@@ -34,7 +34,7 @@ public class RepositorioPrestacionImpl implements RepositorioPrestacion{
 
     @Override
     public List<Prestacion> getAll() {
-        return (List<Prestacion>) sessionFactory.getCurrentSession().createCriteria(Prestacion.class);
+        return sessionFactory.getCurrentSession().createCriteria(Prestacion.class).list();
     }
 
     @Override
@@ -45,9 +45,9 @@ public class RepositorioPrestacionImpl implements RepositorioPrestacion{
     }
 
     @Override
-    public List<Prestacion> prestacionFindByEspecialidad(String especialidad) {
+    public List<Prestacion> prestacionFindByEspecialidad(Especialidad especialidad) {
         return (List<Prestacion>) sessionFactory.getCurrentSession().createCriteria(Prestacion.class)
-                .add(Restrictions.eq("prestacion",prestacionFindByEspecialidad(especialidad)))
+                .add(Restrictions.eq("prestacion", especialidad))
                 .uniqueResult();
     }
 

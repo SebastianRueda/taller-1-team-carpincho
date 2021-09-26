@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
+import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Prestacion;
 
 import java.util.List;
@@ -12,5 +13,5 @@ public interface ServicioPrestacion {
 
     List<Prestacion> getAll();
     Prestacion prestacionFindById(Long id);
-    List<Prestacion> prestacionFindByEspecialidad(String especialidad);
+    List<Prestacion> prestacionFindByEspecialidad(Especialidad especialidad);
 }

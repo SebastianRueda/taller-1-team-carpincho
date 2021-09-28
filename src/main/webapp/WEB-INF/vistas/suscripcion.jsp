@@ -14,9 +14,25 @@
 <div class=" h-100 w-100">
     <div class="fondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-center">
         <div class="row p-0  container-xl m-0 mt-5 h-75 align-content-around justify-content-around">
+
+            <c:if test="${empty usuario.suscripcion}">
+            <p>
+                elige una suscripcion
+            </p>
+            </c:if>
+
+            <div class="mb-5 mt-5 text-center">
+                <h2> Usuario </h2>
+                <p>${usuario.id}</p>
+                <p>${usuario.email}</p>
+                <p>${usuario.password}</p>
+                <p>${usuario.suscripcion}</p>
+            </div>
+
             <c:forEach items="${listaSuscripcion}" var="suscripcion" varStatus="status">
             <div class="col-12 col-md-5 p-5 pb-0 p-md-1 bg-white rounded-3 mx-3">
                 <form class="m-5 mb-3 mx-2">
+
                     <h2 class="text-center mb-lg-5 mb-5">
                             ${suscripcion.descripcion}
                     </h2>
@@ -73,78 +89,92 @@
 
                     <!-- Modal 1-->
                     <c:if test="${status.first}">
-                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
-                         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="staticBackdropLabel">${suscripcion.descripcion}</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <p>
-                                        ID : ${suscripcion.id}
-                                    </p>
-                                    <p>
-                                        FechaAlta : ${suscripcion.fechaAlta}
-                                    </p>
-                                    <p>
-                                        FechaBaja : ${suscripcion.fechaBaja}
-                                    </p>
-                                    <p>
-                                        Estado : ${suscripcion.activo}
-                                    </p>
-                                    <h4 class="mb-3">
-                                        Precio : $${suscripcion.precio}/mes
-                                    </h4>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar
-                                    </button>
-                                    <button type="button" class="btn btn-primary">Pagar Suscripcion</button>
+                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">${suscripcion.descripcion}</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="mb-5 mt-5 text-center">
+                                            <h2> Usuario </h2>
+                                            <p>${usuario.id}</p>
+                                            <p>${usuario.email}</p>
+                                            <p>${usuario.password}</p>
+                                            <p>${usuario.suscripcion}</p>
+                                        </div>
+                                        <p>
+                                            ID : ${suscripcion.id}
+                                        </p>
+                                        <p>
+                                            FechaAlta : ${suscripcion.fechaAlta}
+                                        </p>
+                                        <p>
+                                            FechaBaja : ${suscripcion.fechaBaja}
+                                        </p>
+                                        <p>
+                                            Estado : ${suscripcion.activo}
+                                        </p>
+                                        <h4 class="mb-3">
+                                            Precio : $${suscripcion.precio}/mes
+                                        </h4>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar
+                                        </button>
+                                        <button type="button" class="btn btn-primary">Pagar Suscripcion</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     </c:if>
 
                     <!-- Modal 2-->
                     <c:if test="${status.last}">
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                         aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">${suscripcion.descripcion}</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <p>
-                                        ID : ${suscripcion.id}
-                                    </p>
-                                    <p>
-                                        FechaAlta : ${suscripcion.fechaAlta}
-                                    </p>
-                                    <p>
-                                        FechaBaja : ${suscripcion.fechaBaja}
-                                    </p>
-                                    <p>
-                                        Estado : ${suscripcion.activo}
-                                    </p>
-                                    <h4 class="mb-3">
-                                        Precio : $${suscripcion.precio}/mes
-                                    </h4>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar
-                                    </button>
-                                    <button type="button" class="btn btn-primary">Pagar Suscripcion</button>
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                             aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">${suscripcion.descripcion}</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="mb-5 mt-5 text-center">
+                                            <h2> Usuario </h2>
+                                            <p>${usuario.id}</p>
+                                            <p>${usuario.email}</p>
+                                            <p>${usuario.password}</p>
+                                            <p>${usuario.suscripcion}</p>
+                                        </div>
+                                        <p>
+                                            ID : ${suscripcion.id}
+                                        </p>
+                                        <p>
+                                            FechaAlta : ${suscripcion.fechaAlta}
+                                        </p>
+                                        <p>
+                                            FechaBaja : ${suscripcion.fechaBaja}
+                                        </p>
+                                        <p>
+                                            Estado : ${suscripcion.activo}
+                                        </p>
+                                        <h4 class="mb-3">
+                                            Precio : $${suscripcion.precio}/mes
+                                        </h4>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar
+                                        </button>
+                                        <button type="button" class="btn btn-primary">Pagar Suscripcion</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     </c:if>
                 </form>
             </div>

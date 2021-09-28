@@ -22,7 +22,16 @@ public class Usuario {
 	private Boolean activo = false;
 	@OneToOne(cascade = CascadeType.ALL)
 	private Cuenta cuenta;
+	@OneToOne(cascade = CascadeType.ALL)
+	private Suscripcion suscripcion;
 
+	public Suscripcion getSuscripcion() {
+		return suscripcion;
+	}
+
+	public void setSuscripcion(Suscripcion suscripcion) {
+		this.suscripcion = suscripcion;
+	}
 	public Cuenta getCuenta() {
 		return cuenta;
 	}

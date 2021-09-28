@@ -89,6 +89,9 @@
 
                     <!-- Modal 1-->
                     <c:if test="${status.first}">
+                    <form:form action="contratar-suscripcion" method="POST" modelAttribute="datosLogin">
+
+
                         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
                              tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                             <div class="modal-dialog">
@@ -121,8 +124,10 @@
                                         <h4 class="mb-3">
                                             Precio : $${suscripcion.precio}/mes
                                         </h4>
+
                                     </div>
                                     <div class="modal-footer">
+                                        <form:input path="id" type="hidden" id="id" value="${usuario.id}" class="form-control"/>
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar
                                         </button>
                                         <button type="button" class="btn btn-primary">Pagar Suscripcion</button>
@@ -130,6 +135,7 @@
                                 </div>
                             </div>
                         </div>
+                    </form:form>
                     </c:if>
 
                     <!-- Modal 2-->

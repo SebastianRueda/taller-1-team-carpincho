@@ -32,9 +32,6 @@ public class ControladorSuscripcion {
         ModelMap modelo = new ModelMap();
 
         List suscripciones = new ArrayList();
-
-
-
         Usuario usuario = new Usuario();
 
         usuario.setId(1l);
@@ -50,13 +47,14 @@ public class ControladorSuscripcion {
         suscripciones.add(sub2);
         //List<Suscripcion>listaSuscripciones = servicioSuscripcion.mostrarTodasLasSuscripciones();
 
-        modelo.put("usuario",usuario );
+        modelo.put("usuario", usuario);
         modelo.put("listaSuscripcion", suscripciones);
         return new ModelAndView("suscripcion", modelo);
     }
 
-    @RequestMapping(path = "/contratar-suscripcion", method = RequestMethod.POST)
+    @RequestMapping(path = "/contratar-suscripcion", method = RequestMethod.GET)
     public ModelAndView contratarSuscripcion() {
-        return null;
+        ModelMap model = new ModelMap();
+        return new ModelAndView("redirect:/home");
     }
 }

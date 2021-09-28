@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" %>
 <html>
@@ -89,6 +90,7 @@
 
                     <!-- Modal 1-->
                     <c:if test="${status.first}">
+                        <form:form>
                         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
                              tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                             <div class="modal-dialog">
@@ -125,15 +127,17 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar
                                         </button>
-                                        <button type="button" class="btn btn-primary">Pagar Suscripcion</button>
+                                        <button type="submit" class="btn btn-primary">Pagar Suscripcion</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        </form:form>
                     </c:if>
 
                     <!-- Modal 2-->
                     <c:if test="${status.last}">
+                        <form:form action="contratar-suscripcion" method="GET" >
                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                              aria-hidden="true">
                             <div class="modal-dialog">
@@ -170,11 +174,12 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar
                                         </button>
-                                        <button type="button" class="btn btn-primary">Pagar Suscripcion</button>
+                                        <button type="submit" class="btn btn-primary">Pagar Suscripcion</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        </form:form>
                     </c:if>
                 </form>
             </div>

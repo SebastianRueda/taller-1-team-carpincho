@@ -1,14 +1,15 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
-import java.util.Set;
+import java.util.List;
 
-import ar.edu.unlam.tallerweb1.modelo.Prestacion;
+import ar.edu.unlam.tallerweb1.modelo.Usuario;
+import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Provincia;
 
 
 public interface ServicioFiltro {
 
-	Set<Prestacion> traerPrestaciones();
-	Set<Provincia> traerprovincia();
-	
+	List<Especialidad> traerEspecialidad();
+	List<Provincia> traerprovincia();
+	List <Usuario> usuariosDeLaEspecialidadYprovincia(Long idEspecialidad, Long idProvincia);
 }

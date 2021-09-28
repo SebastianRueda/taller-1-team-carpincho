@@ -11,6 +11,7 @@ public class Provincia {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nombre;
+	
 	public Long getId() {
 		return id;
 	}

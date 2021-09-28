@@ -23,4 +23,6 @@ public class Especialidad {
 		this.descripcion = descripcion;
 	}
 	//fin de la clase
+
+
 }

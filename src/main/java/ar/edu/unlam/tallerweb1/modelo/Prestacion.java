@@ -1,6 +1,9 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
 import javax.persistence.*;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 
 @Entity
 public class Prestacion {
@@ -69,4 +72,6 @@ public class Prestacion {
 	public void setNumerofactura(String numerofactura) {
 		this.numerofactura = numerofactura;
 	}
+
+
 }

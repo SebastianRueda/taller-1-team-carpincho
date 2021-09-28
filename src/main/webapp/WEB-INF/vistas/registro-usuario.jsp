@@ -1,5 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,8 +19,12 @@
             <form:input path="email" id="email" class="form-control" />
             <form:input path="clave" type="password" id="clave" class="form-control"/>
             <form:input path="repiteClave" type="password" id="clave" class="form-control"/>
+            <br>
             <button id="btn-registrarme" class="btn btn-lg btn-primary btn-block" Type="Submit"/>Registrarme</button>
         </form:form>
+            <br>
+            <br>
+            <a href="login">Volver al inicio de Sesión</a>
 
         <c:if test="${not empty msg}">
             <h4><span>${msg}</span></h4>

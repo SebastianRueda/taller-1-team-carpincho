@@ -32,7 +32,11 @@ public class ControladorSuscripcion {
         ModelMap modelo = new ModelMap();
 
         List suscripciones = new ArrayList();
+
+
+
         Usuario usuario = new Usuario();
+
         usuario.setId(1l);
         usuario.setEmail("lea@lea.com");
         usuario.setPassword("123465");

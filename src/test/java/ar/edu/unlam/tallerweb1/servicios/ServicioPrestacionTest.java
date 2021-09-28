@@ -1,4 +1,4 @@
-package ar.edu.unlam.tallerweb1.controladores;
+package ar.edu.unlam.tallerweb1.servicios;
 
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Prestacion;
@@ -10,7 +10,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-public class PrestacionServicioTest {
+public class ServicioPrestacionTest {
     private static final Long MECANICO = 638L;
     private static final Long CLIENTE = 201L;
 

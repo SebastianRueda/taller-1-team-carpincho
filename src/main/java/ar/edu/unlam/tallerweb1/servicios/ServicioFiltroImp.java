@@ -1,34 +1,51 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
-import java.util.Set;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import ar.edu.unlam.tallerweb1.modelo.Prestacion;
+import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Provincia;
+import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioEspecialidades;
-@Service("ServicioFiltro")
+import ar.edu.unlam.tallerweb1.repositorios.RepositorioProvincias;
+import ar.edu.unlam.tallerweb1.repositorios.RepositorioUsuario;
+
+@Service("servicioFiltro")
 @Transactional
 public class ServicioFiltroImp implements ServicioFiltro{
+	
 	private RepositorioEspecialidades repositorioEspecialidades;
+	private RepositorioProvincias repositorioProvincias;
+	private RepositorioUsuario repositorioUsuario;
 	
 	@Autowired
-	public ServicioFiltroImp(RepositorioEspecialidades repositorioEspecialidades) {
+	public ServicioFiltroImp(RepositorioEspecialidades repositorioEspecialidades, RepositorioProvincias repositorioProvincias,RepositorioUsuario repositorioUsuario) {
 		this.repositorioEspecialidades=repositorioEspecialidades;
+		this.repositorioProvincias=repositorioProvincias;
+		this.repositorioUsuario=repositorioUsuario;
 	}
 	
+
 	@Override
-	public Set<Prestacion> traerPrestaciones() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Especialidad> traerEspecialidad() {
+		List <Especialidad> especialidadLista= repositorioEspecialidades.traerEspecialidad();
+		return especialidadLista ;
+	}
+	
+
+	@Override
+	public List<Provincia> traerprovincia() {
+		List <Provincia> provinciaLista= repositorioProvincias.traerProvincia();
+		return provinciaLista ;
 	}
 
 	@Override
-	public Set<Provincia> traerprovincia() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Usuario> usuariosDeLaEspecialidadYprovincia(Long idEspecialidad, Long idProvincia) {
+		List<Usuario> listaUsuariosDisponibles=repositorioUsuario.usuariosDeLaEspecialidadYprovincia(idEspecialidad,idProvincia);
+		return listaUsuariosDisponibles;
 	}
 
 }

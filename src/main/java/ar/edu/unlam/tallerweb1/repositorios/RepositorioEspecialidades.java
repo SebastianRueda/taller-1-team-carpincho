@@ -2,9 +2,9 @@ package ar.edu.unlam.tallerweb1.repositorios;
 
 import java.util.List;
 
-import ar.edu.unlam.tallerweb1.modelo.Prestacion;
+import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 
 
 public interface RepositorioEspecialidades {
-	List<Prestacion> traerPrestaciones();
+	List<Especialidad> traerEspecialidad();
 }

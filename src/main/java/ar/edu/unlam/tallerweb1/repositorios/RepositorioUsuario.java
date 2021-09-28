@@ -12,6 +12,12 @@ public interface RepositorioUsuario {
 	void guardar(Usuario usuario);
     Usuario buscar(String email);
 	void modificar(Usuario usuario);
+	List<Usuario> usuariosDeLaEspecialidadYprovincia(Long idEspecialidad, Long idProvincia);
     List<Usuario> buscarUsuarioPorRol(String rol);
     List<Usuario> buscarUsuarioConMailLike(String mail);
+    void delete(Usuario usuario);
+
+    Usuario usuarioFindById(Long id);
+
+    List<Usuario> getAll();
 }

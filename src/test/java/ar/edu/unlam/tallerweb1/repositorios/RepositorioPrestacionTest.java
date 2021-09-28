@@ -167,12 +167,9 @@ public class RepositorioPrestacionTest extends SpringTest {
             } else {
                 prestacion.setEspecialidad(new Especialidad());
             }
-
             prestaciones.add(prestacion);
-
             repositorioPrestacion.save(prestacion);
         }
-
         return prestaciones;
     }
 

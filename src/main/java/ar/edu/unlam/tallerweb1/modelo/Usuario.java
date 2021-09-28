@@ -2,6 +2,9 @@ package ar.edu.unlam.tallerweb1.modelo;
 
 import javax.persistence.*;
 
+import ar.edu.unlam.tallerweb1.modelo.Especialidad;
+import ar.edu.unlam.tallerweb1.modelo.Provincia;
+
 // Clase que modela el concepto de Usuario, la anotacion @Entity le avisa a hibernate que esta clase es persistible
 // el paquete ar.edu.unlam.tallerweb1.modelo esta indicado en el archivo hibernateCOntext.xml para que hibernate
 // busque entities en el
@@ -15,8 +18,14 @@ public class Usuario {
 	private Long id;
 	// para el resto de los atributo no se usan anotaciones entonces se usa el default de hibernate: la columna se llama igual que
 	// el atributo, la misma admite nulos, y el tipo de dato se deduce del tipo de dato de java.
+	private String nombre;
+	private String apellido;
 	private String email;
 	private String password;
+	@OneToOne
+	private Especialidad especialidad;
+	@OneToOne
+	private Provincia provincia;
 	@OneToOne(cascade = CascadeType.ALL)
 	private Rol rol;
 	private Boolean activo = false;
@@ -80,4 +89,38 @@ public class Usuario {
     public void activar() {
 		activo = true;
     }
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getApellido() {
+		return apellido;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+
+	public Especialidad getEspecialidad() {
+		return especialidad;
+	}
+
+	public void setEspecialidad(Especialidad especialidad) {
+		this.especialidad = especialidad;
+	}
+
+	public Provincia getProvincia() {
+		return provincia;
+	}
+
+	public void setProvincia(Provincia provincia) {
+		this.provincia = provincia;
+	}
+    
+    
 }

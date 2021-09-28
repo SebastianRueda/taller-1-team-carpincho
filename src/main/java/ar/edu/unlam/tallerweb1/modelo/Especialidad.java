@@ -24,4 +24,5 @@ public class Especialidad {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+	//fin de la clase
 }

@@ -2,6 +2,8 @@ package ar.edu.unlam.tallerweb1.repositorios;
 
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Provincia;
+import ar.edu.unlam.tallerweb1.modelo.Prestacion;
+import ar.edu.unlam.tallerweb1.modelo.Rol;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 
 import java.util.List;
@@ -57,9 +59,7 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario {
 		sessionFactory.getCurrentSession().update(usuario);
 	}
 
-	
 	@Override
-	
 	public List<Usuario> usuariosDeLaEspecialidadYprovincia(Long idEspecialidad, Long idProvincia){
 		return sessionFactory.getCurrentSession().createCriteria(Usuario.class)
 				.createAlias("especialidad", "especialidadBuscada")
@@ -67,7 +67,34 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario {
 				.add(Restrictions.eq("especialidadBuscada.id",idEspecialidad))
 				.add(Restrictions.eq("provinciaBuscada.id", idProvincia))
 				.list();
-		
+	}
+
+	@Override
+	public List<Usuario> buscarUsuarioPorRol(String rol) {
+		return null;
+	}
+
+	@Override
+	public List<Usuario> buscarUsuarioConMailLike(String mail) {
+		return null;
+	}
+
+
+	@Override
+	public void delete(Usuario usuario) {
+			sessionFactory.getCurrentSession().delete(usuario);
+	}
+
+	@Override
+	public Usuario usuarioFindById(Long id) {
+		return (Usuario) sessionFactory.getCurrentSession().createCriteria(Usuario.class)
+				.add(Restrictions.eq("id", id))
+				.uniqueResult();
+	}
+
+	@Override
+	public List<Usuario> getAll() {
+		return sessionFactory.getCurrentSession().createCriteria(Usuario.class).list();
 	}
 
 }

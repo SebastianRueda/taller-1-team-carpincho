@@ -38,8 +38,7 @@ public class ControladorFiltros {
 	@RequestMapping("/especialidadElegida")
 	public ModelAndView listaEspecialistas(
 			@RequestParam(value = "listaEspecialidadDesplegable", required = false) Long especialidadBuscada,
-			@RequestParam(value = "listaProvinciaDesplegable", required = false) Long provinciaBuscada)
-		{	 
+			@RequestParam(value = "listaProvinciaDesplegable", required = false) Long provinciaBuscada) {
 		ModelMap modelo = new ModelMap();
 		List<Usuario> listaUsuarios=servicioFiltro.usuariosDeLaEspecialidadYprovincia(especialidadBuscada,provinciaBuscada);
 		modelo.put("resultadoUsuarios", listaUsuarios);

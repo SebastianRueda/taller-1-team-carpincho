@@ -9,14 +9,14 @@
 </head>
 <body>
 	<%-- <c:if test="${empty resultadoUsuarios}"> --%>
-			<form action="usuarioElegido">
-				<label for="listaUsuariosDisponibles">Seleccione Especialista</label> 
-				<select name="listaUsuariosDisponibles">
+			<form action="contratar-prestacion" method="GET">
+				<label for="asistente-id">Seleccione Especialista</label>
+				<select name="asistente-id" id="asistente-id">
 					<c:forEach items="${resultadoUsuarios}" var="usuario">
 						<option value="${usuario.id}">${usuario.nombre} &nbsp ${usuario.especialidad.descripcion} &nbsp ${usuario.email} </option>
 					</c:forEach>
 				</select>
-				<button class="btn btn-lg btn-primary btn-block" Type="Submit">Ver Detalle</button>
+				<button class="btn btn-lg btn-primary btn-block" Type="Submit">Contratar</button>
 			</form>	
 		<%-- </c:if> --%>
 		

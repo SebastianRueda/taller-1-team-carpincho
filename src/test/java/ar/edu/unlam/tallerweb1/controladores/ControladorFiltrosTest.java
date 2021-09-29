@@ -21,7 +21,6 @@ public class ControladorFiltrosTest {
 	private Especialidad especialidad=new Especialidad();
 	private Provincia provincia=new Provincia();
 	private Usuario usuario=new Usuario();
-	ServicioUsuario servicioUsuario;
 	
 	@Test
 	public void testQueTraeUnUsuarioFiltrandoPorEspecialidadYProvincia() {
@@ -38,7 +37,6 @@ public class ControladorFiltrosTest {
 		usuario.setApellido("Cuevas");
 		usuario.setEspecialidad(this.especialidad);
 		usuario.setProvincia(this.provincia);
-		servicioUsuario.save(usuario);
 	}
 	
 	private ModelAndView whenSolicitoEspecialista(Especialidad especialidad, Provincia provincia) {
@@ -51,8 +49,7 @@ public class ControladorFiltrosTest {
 	
 	private void thenElUsuarioEsElSolicitado(ModelAndView mav) {
         assertThat(mav.getViewName()).isEqualTo("resultadoPrestadores");
-//        assertThat(mav.getModel().get("msg")).isEqualTo("Registro Exitoso");
-//        assertThat(mav.getModel().get("email")).isEqualTo(USUARIO.getEmail());
+        //por ahora se intenta testear solamente que lleve a la vista correcta
     }
 	
 	

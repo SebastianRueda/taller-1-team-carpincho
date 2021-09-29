@@ -36,6 +36,7 @@
 
                     <h2 class="text-center mb-lg-5 mb-5">
                             ${suscripcion.descripcion}
+
                     </h2>
 
                     <div class="mb-5 mt-5 text-center">
@@ -104,10 +105,11 @@
                                     <div class="modal-body">
                                         <div class="mb-5 mt-5 text-center">
                                             <h2> Usuario </h2>
-                                            <p>${usuario.id}</p>
+                                            <%--<p>${usuario.id}</p>
                                             <p>${usuario.email}</p>
                                             <p>${usuario.password}</p>
                                             <p>${usuario.suscripcion}</p>
+                                            --%>
                                         </div>
                                         <p>
                                             ID : ${suscripcion.id}
@@ -127,84 +129,82 @@
 
                                     </div>
                                     <div class="modal-footer">
-                                        <form:input path="id" type="hidden" id="id" value="${usuario.id}" class="form-control"/>
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar
-                                        </button>
-                                        <button type="submit" class="btn btn-primary">Pagar Suscripcion</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-                        </form:form>
+                        <%--   <form:input path="id" type="hidden" id="id" value="${usuario.id}" class="form-control"/>--%>
+                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar
+                           </button>
+                           <button type="button" class="btn btn-primary">Pagar Suscripcion</button>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </form:form>
+       </c:if>
 
-                    </c:if>
-
-                    <!-- Modal 2-->
-                    <c:if test="${status.last}">
-                        <form:form action="contratar-suscripcion" method="GET" >
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                             aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">${suscripcion.descripcion}</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="mb-5 mt-5 text-center">
-                                            <h2> Usuario </h2>
-                                            <p>${usuario.id}</p>
-                                            <p>${usuario.email}</p>
-                                            <p>${usuario.password}</p>
-                                            <p>${usuario.suscripcion}</p>
-                                        </div>
-                                        <p>
-                                            ID : ${suscripcion.id}
-                                        </p>
-                                        <p>
-                                            FechaAlta : ${suscripcion.fechaAlta}
-                                        </p>
-                                        <p>
-                                            FechaBaja : ${suscripcion.fechaBaja}
-                                        </p>
-                                        <p>
-                                            Estado : ${suscripcion.activo}
-                                        </p>
-                                        <h4 class="mb-3">
-                                            Precio : $${suscripcion.precio}/mes
-                                        </h4>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar
-                                        </button>
-                                        <button type="submit" class="btn btn-primary">Pagar Suscripcion</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        </form:form>
-                    </c:if>
-                </form>
-            </div>
-            </c:forEach>
+       <!-- Modal 2-->
+       <c:if test="${status.last}">
+           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+               <div class="modal-dialog">
+                   <div class="modal-content">
+                       <div class="modal-header">
+                           <h5 class="modal-title" id="exampleModalLabel">${suscripcion.descripcion}</h5>
+                           <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                   aria-label="Close"></button>
+                       </div>
+                       <div class="modal-body">
+                           <div class="mb-5 mt-5 text-center">
+                               <h2> Usuario </h2>
+                               <p>${usuario.id}</p>
+                               <p>${usuario.email}</p>
+                               <p>${usuario.password}</p>
+                               <p>${usuario.suscripcion}</p>
+                           </div>
+                           <p>
+                               ID : ${suscripcion.id}
+                           </p>
+                           <p>
+                               FechaAlta : ${suscripcion.fechaAlta}
+                           </p>
+                           <p>
+                               FechaBaja : ${suscripcion.fechaBaja}
+                           </p>
+                           <p>
+                               Estado : ${suscripcion.activo}
+                           </p>
+                           <h4 class="mb-3">
+                               Precio : $${suscripcion.precio}/mes
+                           </h4>
+                       </div>
+                       <div class="modal-footer">
+                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar
+                           </button>
+                           <button type="button" class="btn btn-primary">Pagar Suscripcion</button>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </c:if>
+   </form>
+</div>
+</c:forEach>
 
 
-            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
-                    integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU"
-                    crossorigin="anonymous">
-            </script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
-                    integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
-                    crossorigin="anonymous">
-            </script>
-            <script src="js/bootstrap.min.js"
-                    integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU"
-                    crossorigin="anonymous">
-            </script>
-            <script src="js/popper.min.js"
-                    integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
-                    crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
+       integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU"
+       crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
+       integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
+       crossorigin="anonymous">
+</script>
+<script src="js/bootstrap.min.js"
+       integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU"
+       crossorigin="anonymous">
+</script>
+<script src="js/popper.min.js"
+       integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
+       crossorigin="anonymous"></script>
 </body>
 </html>

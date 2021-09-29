@@ -31,25 +31,16 @@ public class ControladorSuscripcion {
     @RequestMapping("/suscripcion")
     public ModelAndView irASuscripciones() {
         ModelMap modelo = new ModelMap();
+//        Usuario usuario = new Usuario();
+//        usuario.setId(1l);
+//        usuario.setEmail("lea@lea.com");
+//        usuario.setPassword("123465");
 
-        List suscripciones = new ArrayList();
-        Usuario usuario = new Usuario();
+        List<Suscripcion>listaSuscripciones = servicioSuscripcion.mostrarTodasLasSuscripciones();
 
-        usuario.setId(1l);
-        usuario.setEmail("lea@lea.com");
-        usuario.setPassword("123465");
+//        modelo.put("usuario",usuario );
+        modelo.put("listaSuscripcion", listaSuscripciones);
 
-        Date fecha = new Date();
-
-        Suscripcion sub1 = new Suscripcion(1L, "Suscripcion standar", 10L, fecha, null, false);
-        Suscripcion sub2 = new Suscripcion(2L, "Suscripcion PREMIUM MAESTRO!!!", 100L, fecha, null, false);
-
-        suscripciones.add(sub1);
-        suscripciones.add(sub2);
-        //List<Suscripcion>listaSuscripciones = servicioSuscripcion.mostrarTodasLasSuscripciones();
-
-        modelo.put("usuario", usuario);
-        modelo.put("listaSuscripcion", suscripciones);
         return new ModelAndView("suscripcion", modelo);
     }
 

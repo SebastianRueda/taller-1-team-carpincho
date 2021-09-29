@@ -1,6 +1,7 @@
 package ar.edu.unlam.tallerweb1.repositorios;
 
 import ar.edu.unlam.tallerweb1.modelo.Suscripcion;
+import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -26,5 +27,14 @@ public class RepositorioSuscripcionImpl implements RepositorioSuscripcion{
         List<Suscripcion> listaSuscripciones = criteria.list();
 
         return listaSuscripciones;
+    }
+//    (Usuario) sessionFactory.getCurrentSession().createCriteria(Usuario.class)
+//				.add(Restrictions.eq("id", id))
+//            .uniqueResult();
+
+    @Override
+    public Suscripcion buscarSuscripcionPorID(Long idSuscripcion) {
+        return (Suscripcion) sessionFactory.getCurrentSession().createCriteria(Suscripcion.class)
+                .add(Restrictions.eq("id",idSuscripcion));
     }
 }

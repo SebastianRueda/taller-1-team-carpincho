@@ -131,6 +131,7 @@
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar
                                         </button>
                         <form:form action="contratar-suscripcion" method="get">
+
                                         <button type="submit" class="btn btn-primary">Pagar Suscripcion</button>
                         </form:form>
                                     </div>

@@ -25,4 +25,10 @@ public class ServicioSuscripcionImpl implements ServicioSuscripcion{
         List<Suscripcion> listaDeSuscripciones = repositorioSuscripcion.mostrarTodasLasSuscripciones();
         return listaDeSuscripciones;
     }
+
+    @Override
+    public Suscripcion buscarSuscripcion(Long idSuscripcion) {
+        Suscripcion suscripcion= repositorioSuscripcion.buscarSuscripcionPorID(idSuscripcion);
+        return suscripcion;
+    }
 }

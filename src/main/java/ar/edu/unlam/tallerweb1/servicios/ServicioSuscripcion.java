@@ -14,4 +14,5 @@ public interface ServicioSuscripcion {
 
      List<Suscripcion> mostrarTodasLasSuscripciones();
 
+    Suscripcion buscarSuscripcion(Long idSuscripcion);
 }

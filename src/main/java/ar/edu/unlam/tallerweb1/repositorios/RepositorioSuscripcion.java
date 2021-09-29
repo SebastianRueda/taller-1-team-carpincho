@@ -8,4 +8,6 @@ import java.util.List;
 public interface RepositorioSuscripcion {
 
      List<Suscripcion> mostrarTodasLasSuscripciones();
+
+    Suscripcion buscarSuscripcionPorID(Long idSuscripcion);
 }

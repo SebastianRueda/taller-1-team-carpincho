@@ -4,6 +4,7 @@ import ar.edu.unlam.tallerweb1.modelo.Suscripcion;
 
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioSuscripcion;
+import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -22,6 +23,7 @@ import java.util.List;
 public class ControladorSuscripcion {
 
     private ServicioSuscripcion servicioSuscripcion;
+    private ServicioUsuario servicioUsuario;
 
     @Autowired
     public ControladorSuscripcion(ServicioSuscripcion servicioSuscripcion) {
@@ -48,7 +50,14 @@ public class ControladorSuscripcion {
     @RequestMapping(path = "/contratar-suscripcion", method = RequestMethod.GET)
     public ModelAndView contratarSuscripcion()
     {
+        Long idSuscripcionX =1l;
+        Long idDeUsuarioObtenidoPorSession=2l;
+        Usuario usuario1= servicioUsuario.usuarioFindById(idDeUsuarioObtenidoPorSession);
+        Suscripcion suscripcion= servicioSuscripcion.buscarSuscripcion(idSuscripcionX);
+        usuario1.setSuscripcion(suscripcion);
+        servicioUsuario.update(usuario1);
+
         ModelMap model = new ModelMap();
-        return new ModelAndView("redirect:/login",model );
+        return new ModelAndView("redirect:/traerEspecialidades",model );
     }
 }

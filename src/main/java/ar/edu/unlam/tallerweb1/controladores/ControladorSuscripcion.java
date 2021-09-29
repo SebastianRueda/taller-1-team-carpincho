@@ -10,6 +10,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -41,13 +42,13 @@ public class ControladorSuscripcion {
 
 //        modelo.put("usuario",usuario );
         modelo.put("listaSuscripcion", listaSuscripciones);
-
         return new ModelAndView("suscripcion", modelo);
     }
 
     @RequestMapping(path = "/contratar-suscripcion", method = RequestMethod.GET)
-    public ModelAndView contratarSuscripcion() {
+    public ModelAndView contratarSuscripcion()
+    {
         ModelMap model = new ModelMap();
-        return new ModelAndView("redirect:/home");
+        return new ModelAndView("redirect:/login",model );
     }
 }

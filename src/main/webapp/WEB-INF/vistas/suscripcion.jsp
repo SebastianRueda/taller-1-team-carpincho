@@ -11,7 +11,7 @@
     <link href="css/Login.css" rel="stylesheet">
     <title>suscripcion</title>
 </head>
-<body class=" h-100">
+<body class="">
 <div class=" h-100 w-100">
     <div class="fondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-center">
         <div class="row p-0  container-xl m-0 mt-5 h-75 align-content-around justify-content-around">

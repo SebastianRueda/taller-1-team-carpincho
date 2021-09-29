@@ -32,7 +32,7 @@
 
             <c:forEach items="${listaSuscripcion}" var="suscripcion" varStatus="status">
             <div class="col-12 col-md-5 p-5 pb-0 p-md-1 bg-white rounded-3 mx-3">
-                <form class="m-5 mb-3 mx-2">
+
 
                     <h2 class="text-center mb-lg-5 mb-5">
                             ${suscripcion.descripcion}
@@ -90,7 +90,7 @@
 
                     <!-- Modal 1-->
                     <c:if test="${status.first}">
-                        <form:form>
+
 
                         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
                              tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -127,16 +127,18 @@
 
                                     </div>
                                     <div class="modal-footer">
-                                        <form:input path="id" type="hidden" id="id" value="${usuario.id}" class="form-control"/>
+                                       <%-- <form:input path="id" type="hidden" id="id" value="${usuario.id}" class="form-control"/>--%>
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar
                                         </button>
+                        <form:form action="contratar-suscripcion" method="get">
                                         <button type="submit" class="btn btn-primary">Pagar Suscripcion</button>
+                        </form:form>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        </form:form>
+
 
                     </c:if>
 
@@ -186,7 +188,7 @@
                         </div>
                         </form:form>
                     </c:if>
-                </form>
+
             </div>
             </c:forEach>
 

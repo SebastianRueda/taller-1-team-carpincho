@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>         
 <html>
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -31,7 +32,7 @@
 
             <c:forEach items="${listaSuscripcion}" var="suscripcion" varStatus="status">
             <div class="col-12 col-md-5 p-5 pb-0 p-md-1 bg-white rounded-3 mx-3">
-                <form class="m-5 mb-3 mx-2">
+               
 
                     <h2 class="text-center mb-lg-5 mb-5">
                             ${suscripcion.descripcion}
@@ -89,9 +90,7 @@
 
                     <!-- Modal 1-->
                     <c:if test="${status.first}">
-                    <form:form action="contratar-suscripcion" method="POST" modelAttribute="datosLogin">
-
-
+                    <form action="contratarSuscripcion">
                         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
                              tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                             <div class="modal-dialog">
@@ -130,12 +129,12 @@
                                         <form:input path="id" type="hidden" id="id" value="${usuario.id}" class="form-control"/>
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar
                                         </button>
-                                        <button type="button" class="btn btn-primary">Pagar Suscripcion</button>
+                                        <button type="Submit" class="btn btn-primary">Pagar Suscripcion</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </form:form>
+                    
                     </c:if>
 
                     <!-- Modal 2-->
@@ -174,15 +173,16 @@
                                         </h4>
                                     </div>
                                     <div class="modal-footer">
+                                    	<form:input path="id" type="hidden" id="id" value="${usuario.id}" class="form-control"/>
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar
                                         </button>
-                                        <button type="button" class="btn btn-primary">Pagar Suscripcion</button>
+                                        <button type="Submit" class="btn btn-primary">Pagar Suscripcion</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </form>    
                     </c:if>
-                </form>
             </div>
             </c:forEach>
 

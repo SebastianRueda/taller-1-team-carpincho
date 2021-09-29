@@ -56,8 +56,9 @@ public class ControladorSuscripcion {
         return new ModelAndView("suscripcion", modelo);
     }
 
-    @RequestMapping(path = "/contratar-suscripcion", method = RequestMethod.POST)
-    public ModelAndView contratarSuscripcion() {
-        return null;
+    @RequestMapping("/contratarSuscripcion")
+    public ModelAndView contratarSuscripcion()
+    {
+        return new ModelAndView("redirect:/login");
     }
 }

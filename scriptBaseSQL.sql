@@ -1,4 +1,4 @@
-use db;
+
 insert into especialidad (descripcion)
 values ('grua'),
        ('mecanico'),
@@ -49,4 +49,5 @@ values('emiliano','leandro;','emiliano@alumno.unlam.edu.ar','root',1,2, true);
 insert into suscripcion (descripcion,precio,activo)
 values ('suscripcion basica',100.0,true),
        ('suscripcion premium',300.0,true);
+
 

@@ -31,6 +31,7 @@ public class ControladorSuscripcion {
     @RequestMapping("/suscripcion")
     public ModelAndView irASuscripciones() {
         ModelMap modelo = new ModelMap();
+
 //        Usuario usuario = new Usuario();
 //        usuario.setId(1l);
 //        usuario.setEmail("lea@lea.com");

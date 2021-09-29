@@ -5,10 +5,12 @@ import ar.edu.unlam.tallerweb1.modelo.Prestacion;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioPrestacion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Service("ServicioPrestacion")
+@Service("servicioPrestacion")
+@Transactional
 public class ServicioPrestacionImpl implements ServicioPrestacion{
 
     private RepositorioPrestacion prestacionDao;

@@ -32,6 +32,7 @@ public class ControladorSuscripcion {
     public ModelAndView irASuscripciones() {
         ModelMap modelo = new ModelMap();
 
+
 //        Usuario usuario = new Usuario();
 //        usuario.setId(1l);
 //        usuario.setEmail("lea@lea.com");
@@ -41,6 +42,7 @@ public class ControladorSuscripcion {
 
 //        modelo.put("usuario",usuario );
         modelo.put("listaSuscripcion", listaSuscripciones);
+
         return new ModelAndView("suscripcion", modelo);
     }
 

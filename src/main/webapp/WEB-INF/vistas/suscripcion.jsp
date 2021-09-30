@@ -33,6 +33,7 @@
             <div class="col-12 col-md-5 p-5 pb-0 p-md-1 bg-white rounded-3 mx-3">
 
 
+
                 <h2 class="text-center mb-lg-5 mb-5">
                         ${suscripcion.descripcion}
                 </h2>
@@ -87,8 +88,10 @@
                 </div>
 
 
+
                 <!-- Modal 1-->
                 <c:if test="${status.first}">
+
 
 
                     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
@@ -139,6 +142,7 @@
                     </div>
 
 
+
                 </c:if>
 
                 <!-- Modal 2-->
@@ -185,8 +189,11 @@
                                 </div>
                             </div>
                         </div>
+
+
                     </form:form>
                 </c:if>
+
 
             </div>
             </c:forEach>

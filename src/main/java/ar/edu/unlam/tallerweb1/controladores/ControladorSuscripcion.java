@@ -36,20 +36,16 @@ public class ControladorSuscripcion {
     public ModelAndView irASuscripciones() {
         ModelMap modelo = new ModelMap();
 
-//        Long idSuscripcionX = 1l;
-//        Suscripcion suscripcion = servicioSuscripcion.buscarSuscripcionPorId(idSuscripcionX);
 
-        String nombre ="suscripcion basica";
-        Suscripcion suscripcion = servicioSuscripcion.buscarPorNombre(nombre);
+//        Usuario usuario = new Usuario();
+//        usuario.setId(1l);
+//        usuario.setEmail("lea@lea.com");
+//        usuario.setPassword("123465");
 
-        Long idDeUsuarioObtenidoPorSession = 2l;
-        Usuario usuario = servicioUsuario.usuarioFindById(idDeUsuarioObtenidoPorSession);
+        List<Suscripcion>listaSuscripciones = servicioSuscripcion.mostrarTodasLasSuscripciones();
 
-        List<Suscripcion> listaSuscripciones = servicioSuscripcion.mostrarTodasLasSuscripciones();
+//        modelo.put("usuario",usuario );
         modelo.put("listaSuscripcion", listaSuscripciones);
-
-        modelo.put("sus", suscripcion);
-        modelo.put("usuario", usuario);
         return new ModelAndView("suscripcion", modelo);
     }
 

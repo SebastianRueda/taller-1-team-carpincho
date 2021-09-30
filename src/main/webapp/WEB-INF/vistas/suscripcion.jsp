@@ -22,130 +22,128 @@
             </p>
             </c:if>
 
-            <div class="mb-5 mt-5 text-center">
-                <h2> Usuario </h2>
-                <p>${usuario.id}</p>
-                <p>${usuario.email}</p>
-                <p>${usuario.password}</p>
-                <p>${usuario.suscripcion}</p>
+            <div class="">
+                <h2> suscripcion </h2>
+                <p>${sus.id}</p>
+                <p>${sus.descripcion}</p>
+                <p>${sus.precio}</p>
             </div>
 
             <c:forEach items="${listaSuscripcion}" var="suscripcion" varStatus="status">
             <div class="col-12 col-md-5 p-5 pb-0 p-md-1 bg-white rounded-3 mx-3">
 
 
-                    <h2 class="text-center mb-lg-5 mb-5">
-                            ${suscripcion.descripcion}
-                    </h2>
+                <h2 class="text-center mb-lg-5 mb-5">
+                        ${suscripcion.descripcion}
+                </h2>
 
-                    <div class="mb-5 mt-5 text-center">
-                        <c:if test="${status.first}">
-                            <i class="fas fa-shield-alt fa-8x"></i>
-                        </c:if>
-                        <c:if test="${status.last}">
-                            <i class="fas fa-khanda fa-8x"></i>
-                        </c:if>
-                    </div>
-
-                    <div class="mb-3 mt-5">
-                        <h4>
-                            Servicios disponibles
-                        </h4>
-                        <div class="fs-3">
-                            <c:if test="${status.first}">
-                                <i class="fas fa-wrench mr-4"></i>
-                                <i class="fas fa-ambulance mr-4"></i>
-                                <i class="fas fa-truck-pickup mr-4"></i>
-                            </c:if>
-                            <c:if test="${status.last}">
-                                <i class="fas fa-wrench mr-4"></i>
-                                <i class="fas fa-ambulance mr-4"></i>
-                                <i class="fas fa-truck-pickup mr-4"></i>
-                                <i class="fas fa-wrench mr-4"></i>
-                                <i class="fas fa-ambulance mr-4"></i>
-                                <i class="fas fa-truck-pickup mr-4"></i>
-                            </c:if>
-                        </div>
-                    </div>
-                    <h4 class="mb-3 mt-5">
-                        Precio : $${suscripcion.precio}/mes
-                    </h4>
-                    <div class="mt-5">
-                        <c:if test="${status.first}">
-                            <button type="button"
-                                    class="fondo-login rounded-3 btn btn-primary border-0 w-100 shadow-sm mt-0"
-                                    data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                Suscribirme
-                            </button>
-                        </c:if>
-                        <c:if test="${status.last}">
-                            <button type="button"
-                                    class="fondo-login rounded-3 btn btn-primary border-0 w-100 shadow-sm mt-0"
-                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                Suscribirme
-                            </button>
-                        </c:if>
-                    </div>
-
-
-                    <!-- Modal 1-->
+                <div class="mb-5 mt-5 text-center">
                     <c:if test="${status.first}">
+                        <i class="fas fa-shield-alt fa-8x"></i>
+                    </c:if>
+                    <c:if test="${status.last}">
+                        <i class="fas fa-khanda fa-8x"></i>
+                    </c:if>
+                </div>
+
+                <div class="mb-3 mt-5">
+                    <h4>
+                        Servicios disponibles
+                    </h4>
+                    <div class="fs-3">
+                        <c:if test="${status.first}">
+                            <i class="fas fa-wrench mr-4"></i>
+                            <i class="fas fa-ambulance mr-4"></i>
+                            <i class="fas fa-truck-pickup mr-4"></i>
+                        </c:if>
+                        <c:if test="${status.last}">
+                            <i class="fas fa-wrench mr-4"></i>
+                            <i class="fas fa-ambulance mr-4"></i>
+                            <i class="fas fa-truck-pickup mr-4"></i>
+                            <i class="fas fa-wrench mr-4"></i>
+                            <i class="fas fa-ambulance mr-4"></i>
+                            <i class="fas fa-truck-pickup mr-4"></i>
+                        </c:if>
+                    </div>
+                </div>
+                <h4 class="mb-3 mt-5">
+                    Precio : $${suscripcion.precio}/mes
+                </h4>
+                <div class="mt-5">
+                    <c:if test="${status.first}">
+                        <button type="button"
+                                class="fondo-login rounded-3 btn btn-primary border-0 w-100 shadow-sm mt-0"
+                                data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            Suscribirme
+                        </button>
+                    </c:if>
+                    <c:if test="${status.last}">
+                        <button type="button"
+                                class="fondo-login rounded-3 btn btn-primary border-0 w-100 shadow-sm mt-0"
+                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Suscribirme
+                        </button>
+                    </c:if>
+                </div>
 
 
-                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
-                             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="staticBackdropLabel">${suscripcion.descripcion}</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
+                <!-- Modal 1-->
+                <c:if test="${status.first}">
+
+
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">${suscripcion.descripcion}</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="mb-5 mt-5 text-center">
+                                        <h2> Usuario </h2>
+                                        <p>${usuario.id}</p>
+                                        <p>${usuario.email}</p>
+                                        <p>${usuario.password}</p>
+                                        <p>${usuario.suscripcion}</p>
                                     </div>
-                                    <div class="modal-body">
-                                        <div class="mb-5 mt-5 text-center">
-                                            <h2> Usuario </h2>
-                                            <p>${usuario.id}</p>
-                                            <p>${usuario.email}</p>
-                                            <p>${usuario.password}</p>
-                                            <p>${usuario.suscripcion}</p>
-                                        </div>
-                                        <p>
-                                            ID : ${suscripcion.id}
-                                        </p>
-                                        <p>
-                                            FechaAlta : ${suscripcion.fechaAlta}
-                                        </p>
-                                        <p>
-                                            FechaBaja : ${suscripcion.fechaBaja}
-                                        </p>
-                                        <p>
-                                            Estado : ${suscripcion.activo}
-                                        </p>
-                                        <h4 class="mb-3">
-                                            Precio : $${suscripcion.precio}/mes
-                                        </h4>
+                                    <p>
+                                        ID : ${suscripcion.id}
+                                    </p>
+                                    <p>
+                                        FechaAlta : ${suscripcion.fechaAlta}
+                                    </p>
+                                    <p>
+                                        FechaBaja : ${suscripcion.fechaBaja}
+                                    </p>
+                                    <p>
+                                        Estado : ${suscripcion.activo}
+                                    </p>
+                                    <h4 class="mb-3">
+                                        Precio : $${suscripcion.precio}/mes
+                                    </h4>
 
-                                    </div>
-                                    <div class="modal-footer">
-                                       <%-- <form:input path="id" type="hidden" id="id" value="${usuario.id}" class="form-control"/>--%>
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar
-                                        </button>
-                        <form:form action="contratar-suscripcion" method="get">
+                                </div>
+                                <div class="modal-footer">
+                                        <%-- <form:input path="id" type="hidden" id="id" value="${usuario.id}" class="form-control"/>--%>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar
+                                    </button>
+                                    <form:form action="contratar-suscripcion" method="get">
 
                                         <button type="submit" class="btn btn-primary">Pagar Suscripcion</button>
-                        </form:form>
-                                    </div>
+                                    </form:form>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
 
+                </c:if>
 
-                    </c:if>
-
-                    <!-- Modal 2-->
-                    <c:if test="${status.last}">
-                        <form:form action="contratar-suscripcion" method="GET" >
+                <!-- Modal 2-->
+                <c:if test="${status.last}">
+                    <form:form action="contratar-suscripcion" method="GET">
                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                              aria-hidden="true">
                             <div class="modal-dialog">
@@ -187,8 +185,8 @@
                                 </div>
                             </div>
                         </div>
-                        </form:form>
-                    </c:if>
+                    </form:form>
+                </c:if>
 
             </div>
             </c:forEach>

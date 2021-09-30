@@ -26,8 +26,9 @@ public class ControladorSuscripcion {
     private ServicioUsuario servicioUsuario;
 
     @Autowired
-    public ControladorSuscripcion(ServicioSuscripcion servicioSuscripcion) {
+    public ControladorSuscripcion(ServicioSuscripcion servicioSuscripcion,ServicioUsuario servicioUsuario) {
         this.servicioSuscripcion = servicioSuscripcion;
+        this.servicioUsuario = servicioUsuario;
     }
 
 
@@ -35,29 +36,35 @@ public class ControladorSuscripcion {
     public ModelAndView irASuscripciones() {
         ModelMap modelo = new ModelMap();
 
-//        Usuario usuario = new Usuario();
-//        usuario.setId(1l);
-//        usuario.setEmail("lea@lea.com");
-//        usuario.setPassword("123465");
+//        Long idSuscripcionX = 1l;
+//        Suscripcion suscripcion = servicioSuscripcion.buscarSuscripcionPorId(idSuscripcionX);
 
-        List<Suscripcion>listaSuscripciones = servicioSuscripcion.mostrarTodasLasSuscripciones();
+        String nombre ="suscripcion basica";
+        Suscripcion suscripcion = servicioSuscripcion.buscarPorNombre(nombre);
 
-//        modelo.put("usuario",usuario );
+        Long idDeUsuarioObtenidoPorSession = 2l;
+        Usuario usuario = servicioUsuario.usuarioFindById(idDeUsuarioObtenidoPorSession);
+
+        List<Suscripcion> listaSuscripciones = servicioSuscripcion.mostrarTodasLasSuscripciones();
         modelo.put("listaSuscripcion", listaSuscripciones);
+
+        modelo.put("sus", suscripcion);
+        modelo.put("usuario", usuario);
         return new ModelAndView("suscripcion", modelo);
     }
 
     @RequestMapping(path = "/contratar-suscripcion", method = RequestMethod.GET)
-    public ModelAndView contratarSuscripcion()
-    {
-        Long idSuscripcionX =1l;
-        Long idDeUsuarioObtenidoPorSession=2l;
-        Usuario usuario1= servicioUsuario.usuarioFindById(idDeUsuarioObtenidoPorSession);
-        Suscripcion suscripcion= servicioSuscripcion.buscarSuscripcion(idSuscripcionX);
-        usuario1.setSuscripcion(suscripcion);
-        servicioUsuario.update(usuario1);
+    public ModelAndView contratarSuscripcion() {
+        String nombre ="suscripcion basica";
+        Suscripcion suscripcion = servicioSuscripcion.buscarPorNombre(nombre);
+
+        Long idDeUsuarioObtenidoPorSession = 2l;
+        Usuario usuario = servicioUsuario.usuarioFindById(idDeUsuarioObtenidoPorSession);
+
+        usuario.setSuscripcion(suscripcion);
+        servicioUsuario.update(usuario);
 
         ModelMap model = new ModelMap();
-        return new ModelAndView("redirect:/traerEspecialidades",model );
+        return new ModelAndView("redirect:/traerEspecialidades", model);
     }
 }

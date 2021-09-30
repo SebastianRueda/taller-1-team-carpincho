@@ -11,8 +11,8 @@ import java.util.List;
 
 
 public interface ServicioSuscripcion {
-
      List<Suscripcion> mostrarTodasLasSuscripciones();
+     Suscripcion buscarSuscripcionPorId(Long idSuscripcion);
 
-    Suscripcion buscarSuscripcion(Long idSuscripcion);
+     Suscripcion buscarPorNombre(String nombre);
 }

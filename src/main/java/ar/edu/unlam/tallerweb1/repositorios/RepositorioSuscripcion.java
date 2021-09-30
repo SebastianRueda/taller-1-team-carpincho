@@ -15,4 +15,6 @@ public interface RepositorioSuscripcion {
     void guardarSuscripcion(Suscripcion suscripcion);
 
     Suscripcion buscarSuscripcionPorId(Long id);
+
+    Suscripcion actualizarSuscripcionDeUsuario(Long id);
 }

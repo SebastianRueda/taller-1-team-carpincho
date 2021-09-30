@@ -13,15 +13,15 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RepositorioSuscripcionTest extends SpringTest {
-    private Suscripcion suscripcion;
 
-    @Before
-    public void intanciarSuscripcion() {
-        suscripcion = new Suscripcion();
-    }
+    private Suscripcion suscripcion= new Suscripcion();
+    private Usuario usuario= new Usuario();
 
     @Autowired
     public RepositorioSuscripcion repositorioSuscripcion;
+
+    @Autowired
+    public RepositorioUsuario repositorioUsuario;
 
     @Test
     @Rollback
@@ -40,6 +40,42 @@ public class RepositorioSuscripcionTest extends SpringTest {
         Assertions.assertThat(repositorioSuscripcion.buscarSuscripcionPorId(suscripcion.getId())).isNotNull();
     }
 
+    @Test
+    @Rollback
+    @Transactional
+    public void usuarioContratasuscripcionExitosamente(){
+        Suscripcion suscripcion = givenUnaSuscripcion();
+        Usuario usuario = givenUnUsuario();
+        whenUsuarioContrataSuscripcion(suscripcion,usuario );
+        thenContratacionExitosa();
+    }
 
+    private Suscripcion givenUnaSuscripcion() {
+        //Suscripcion suscripcion = new Suscripcion();
+        this.suscripcion.setId(3l);
+        this.suscripcion.setDescripcion("mega");
+
+        repositorioSuscripcion.guardarSuscripcion(suscripcion);
+
+        return suscripcion;
+    }
+
+    private Usuario givenUnUsuario() {
+        //Usuario usuario = new Usuario();
+        this.usuario.setId(5l);
+        this.usuario.setEmail("lea@lea.com");
+
+        repositorioUsuario.guardar(usuario);
+        return usuario;
+    }
+
+    private void whenUsuarioContrataSuscripcion(Suscripcion suscripcion, Usuario usuario) {
+        usuario.setSuscripcion(suscripcion);
+        repositorioUsuario.modificar(usuario);
+    }
+
+    private void thenContratacionExitosa() {
+        assertThat(this.usuario.getSuscripcion().getId()).isEqualTo(suscripcion.getId());
+    }
 
 }

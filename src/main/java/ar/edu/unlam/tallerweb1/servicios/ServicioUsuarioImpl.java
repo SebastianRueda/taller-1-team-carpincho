@@ -50,9 +50,5 @@ public class ServicioUsuarioImpl implements ServicioUsuario {
         return usuarioDao.usuarioFindById(id);
     }
 
-    @Override
-    public void agregarSuscripcionAUnUsuario(Usuario usuario1, Suscripcion suscripcion) {
-        usuario1.setSuscripcion(suscripcion);
-        usuarioDao.modificar(usuario1);
-    }
+
 }

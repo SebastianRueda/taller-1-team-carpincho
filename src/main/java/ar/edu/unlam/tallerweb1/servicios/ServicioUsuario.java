@@ -14,5 +14,6 @@ public interface ServicioUsuario {
     List<Usuario> getAll();
     Usuario usuarioFindById(Long id);
 
-    void agregarSuscripcionAUnUsuario(Usuario usuario1, Suscripcion suscripcion);
+
 }
+

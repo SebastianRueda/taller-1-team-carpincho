@@ -94,4 +94,9 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario {
 		return sessionFactory.getCurrentSession().createCriteria(Usuario.class).list();
 	}
 
+	@Override
+	public void guardarUsuario(Usuario usuario) {
+		sessionFactory.getCurrentSession().save(usuario);
+	}
+
 }

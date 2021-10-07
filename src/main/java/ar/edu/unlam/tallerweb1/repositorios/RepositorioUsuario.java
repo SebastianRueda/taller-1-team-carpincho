@@ -22,4 +22,5 @@ public interface RepositorioUsuario {
 
     List<Usuario> getAll();
 
+    void guardarUsuario(Usuario usuario);
 }

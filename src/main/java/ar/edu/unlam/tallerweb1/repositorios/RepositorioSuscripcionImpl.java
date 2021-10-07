@@ -1,10 +1,12 @@
 package ar.edu.unlam.tallerweb1.repositorios;
 
+import ar.edu.unlam.tallerweb1.modelo.Prestacion;
 import ar.edu.unlam.tallerweb1.modelo.Suscripcion;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -31,12 +33,6 @@ public class RepositorioSuscripcionImpl implements RepositorioSuscripcion{
     }
 
     @Override
-    public Suscripcion buscarSuscripcionPorId(Long idSuscripcion) {
-        return (Suscripcion) sessionFactory.getCurrentSession().createCriteria(Suscripcion.class)
-                .add(Restrictions.eq("id",idSuscripcion));
-    }
-
-    @Override
     public Suscripcion buscarPorNombre(String nombre) {
         final Session session = sessionFactory.getCurrentSession();
 
@@ -45,6 +41,22 @@ public class RepositorioSuscripcionImpl implements RepositorioSuscripcion{
                 .uniqueResult();
     }
 
+    @Override
+    public void guardarSuscripcion(Suscripcion suscripcion) {
+        sessionFactory.getCurrentSession().save(suscripcion);
+
+    }
+
+    @Override
+    public Suscripcion buscarSuscripcionPorId(Long id){
+        return (Suscripcion) sessionFactory.getCurrentSession().createCriteria(Suscripcion.class)
+                .add(Restrictions.eq("id", id)).uniqueResult();
+    }
+
+    @Override
+    public Suscripcion actualizarSuscripcionDeUsuario(Long id) {
+        return null;
+    }
 
 
 

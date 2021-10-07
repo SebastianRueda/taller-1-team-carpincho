@@ -9,10 +9,11 @@ public interface RepositorioSuscripcion {
 
      List<Suscripcion> mostrarTodasLasSuscripciones();
 
-    Suscripcion buscarSuscripcionPorId(Long idSuscripcion);
-
     Suscripcion buscarPorNombre(String nombre);
 
+    void guardarSuscripcion(Suscripcion suscripcion);
 
+    Suscripcion buscarSuscripcionPorId(Long id);
 
+    Suscripcion actualizarSuscripcionDeUsuario(Long id);
 }

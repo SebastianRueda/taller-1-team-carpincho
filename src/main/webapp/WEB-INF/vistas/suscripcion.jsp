@@ -16,24 +16,8 @@
     <div class="fondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-center">
         <div class="row p-0  container-xl m-0 mt-5 h-75 align-content-around justify-content-around">
 
-            <c:if test="${empty usuario.suscripcion}">
-            <p>
-                elige una suscripcion
-            </p>
-            </c:if>
-
-            <div class="">
-                <h2> suscripcion </h2>
-                <p>${sus.id}</p>
-                <p>${sus.descripcion}</p>
-                <p>${sus.precio}</p>
-            </div>
-
             <c:forEach items="${listaSuscripcion}" var="suscripcion" varStatus="status">
-            <div class="col-12 col-md-5 p-5 pb-0 p-md-1 bg-white rounded-3 mx-3">
-
-
-
+            <div class="col-12 col-md-3 p-5 pb-0 p-md-1 bg-white rounded-3 mx-1">
                 <h2 class="text-center mb-lg-5 mb-5">
                         ${suscripcion.descripcion}
                 </h2>

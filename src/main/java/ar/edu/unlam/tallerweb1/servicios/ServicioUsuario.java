@@ -18,3 +18,4 @@ public interface ServicioUsuario {
 
     Usuario cancelarSuscripcion(Usuario usuario);
 }
+

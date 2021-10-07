@@ -17,7 +17,6 @@ public class Suscripcion {
 
 
     public Suscripcion() {
-
     }
 
     public Suscripcion(Long id, String descripcion, Long precio, Date fechaAlta, Date fechaBaja, Boolean activo) {
@@ -27,7 +26,6 @@ public class Suscripcion {
         this.fechaAlta = fechaAlta;
         this.fechaBaja = fechaBaja;
         this.activo = activo;
-
     }
 
     public Date getFechaAlta() {

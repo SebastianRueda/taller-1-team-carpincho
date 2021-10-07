@@ -15,4 +15,6 @@ public interface ServicioUsuario {
     Usuario usuarioFindById(Long id);
 
     void agregarSuscripcionAUnUsuario(Usuario usuario1, Suscripcion suscripcion);
+
+    Usuario cancelarSuscripcion(Usuario usuario);
 }

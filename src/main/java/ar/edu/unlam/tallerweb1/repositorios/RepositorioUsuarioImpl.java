@@ -94,4 +94,6 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario {
 		return sessionFactory.getCurrentSession().createCriteria(Usuario.class).list();
 	}
 
+
+
 }

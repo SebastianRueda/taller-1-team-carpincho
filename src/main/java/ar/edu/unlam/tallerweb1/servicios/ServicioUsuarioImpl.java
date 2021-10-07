@@ -55,4 +55,13 @@ public class ServicioUsuarioImpl implements ServicioUsuario {
         usuario1.setSuscripcion(suscripcion);
         usuarioDao.modificar(usuario1);
     }
+
+    @Override
+    public Usuario cancelarSuscripcion(Usuario usuario) {
+        usuario.setSuscripcion(null);
+        usuarioDao.modificar(usuario);
+        return usuario;
+    }
+
+
 }

@@ -24,7 +24,7 @@ public class ServicioSuscripcionTest {
 
     }
 
-    @Test
+    
 
     private void thenBuscoAlUsuarioYVerificoQueNoTieneSuscripcion(Usuario usuario) {
         assertThat(usuario.getSuscripcion()).isNull();

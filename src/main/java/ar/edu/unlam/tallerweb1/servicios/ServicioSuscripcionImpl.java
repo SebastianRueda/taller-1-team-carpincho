@@ -18,18 +18,14 @@ public class ServicioSuscripcionImpl implements ServicioSuscripcion{
     private RepositorioSuscripcion repositorioSuscripcion;
     private RepositorioUsuario repositorioUsuario;
 
-    @Autowired
-    public ServicioSuscripcionImpl(RepositorioSuscripcion repositorioSuscripcion){
-        this.repositorioSuscripcion = repositorioSuscripcion;
-    }
 
+    @Autowired
     public ServicioSuscripcionImpl(RepositorioSuscripcion repositorioSuscripcion, RepositorioUsuario repositorioUsuario) {
         this.repositorioSuscripcion = repositorioSuscripcion;
         this.repositorioUsuario = repositorioUsuario;
     }
 
-    public ServicioSuscripcionImpl() {
-    }
+
 
     @Override
     public List<Suscripcion> mostrarTodasLasSuscripciones() {

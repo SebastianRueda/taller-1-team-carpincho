@@ -17,14 +17,26 @@ public class ServicioSuscripcionTest {
                                                         (repositorioSuscripcion,repositorioUsuario);
 
     @Test
-    public void cancelarSuscripcionDeUnUsuario(){
+    public void cancelarSuscripcionDeUnUsuario() throws Exception {
         givenUsuarioConSuscripcion("emiliano");
        Usuario usuarioSinSuscripcion = whenCanceloSuscripcionDelUsuario("emiliano");
         thenBuscoAlUsuarioYVerificoQueNoTieneSuscripcion(usuarioSinSuscripcion);
 
     }
 
-    
+    @Test(expected = Exception.class)
+    public void UsuarioSinSuscripcionNoPuedeCancelar() throws Exception {
+        givenUsuarioSinSuscripcion("emiliano");
+        whenUsuarioQuiereCancelarSuscripcion("emiliano");
+
+    }
+    public void whenUsuarioQuiereCancelarSuscripcion(String email) throws Exception{
+        servicioSuscripcion.cancelarSuscripcion(email);
+    }
+
+    private void givenUsuarioSinSuscripcion(String email) {
+        when(repositorioUsuario.buscar(email)).thenReturn(new Usuario());
+    }
 
     private void thenBuscoAlUsuarioYVerificoQueNoTieneSuscripcion(Usuario usuario) {
         assertThat(usuario.getSuscripcion()).isNull();
@@ -32,14 +44,17 @@ public class ServicioSuscripcionTest {
 
     }
 
-    private Usuario whenCanceloSuscripcionDelUsuario(String email) {
+    private Usuario whenCanceloSuscripcionDelUsuario(String email) throws Exception {
 
         return servicioSuscripcion.cancelarSuscripcion(email);
 
     }
 
     private void givenUsuarioConSuscripcion(String email) {
+        Usuario usuario = new Usuario();
+        Suscripcion suscripcion = new Suscripcion();
+        usuario.setSuscripcion(suscripcion);
+        when(repositorioUsuario.buscar(email)).thenReturn(usuario);
 
-        when(repositorioUsuario.buscar(email)).thenReturn(new Usuario());
     }
 }

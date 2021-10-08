@@ -46,11 +46,20 @@ public class ServicioSuscripcionImpl implements ServicioSuscripcion{
     }
 
     @Override
-    public Usuario cancelarSuscripcion(String email) {
+    public Usuario cancelarSuscripcion(String email) throws Exception {
+
         Usuario usuario=    repositorioUsuario.buscar(email);
-        usuario.setSuscripcion(null);
-        repositorioUsuario.modificar(usuario);
-        return usuario;
+        if(usuario.getSuscripcion()== null){
+            throw new Exception();
+        }
+            else{
+                usuario.setSuscripcion(null);
+                repositorioUsuario.modificar(usuario);
+                return usuario;
+        }
+
+
+
     }
 
 

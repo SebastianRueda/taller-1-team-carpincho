@@ -18,9 +18,9 @@
 </head>
 <body class=" h-100">
 	<div class=" h-100 w-100">
-		<div class="fondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-center">
-			<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-	<%-- <c:if test="${empty resultadoUsuarios}"> --%>
+		<div class="fondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-centerfondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-centerfondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-center">
+			<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-10 col-md-offset-3 col-sm-8 col-sm-offset-2">
+	<%-- <c:if test="${empty resultadoUsuarios}">
 			<form action="contratar-prestacion" method="GET">
 				<label for="asistente-id">Seleccione Especialista</label>
 				<select name="asistente-id" id="asistente-id">
@@ -31,8 +31,48 @@
 				</select>
 
 				<button class="btn btn-lg btn-primary btn-block" Type="Submit">Contratar</button>
-			</form>	
+			</form>	--%>
 		<%-- </c:if> --%>
+		<div class="col-12 ">
+			<div class="card card-table">
+				<div class="card-header">
+
+					<div class="title">Lista de Usuarios</div>
+				</div>
+				<div class="card-body table-responsive">
+					<table class="table  table-hover">
+						<thead>
+						<tr>
+							<th style="width:20%;">Usuario</th>
+							<th style="width:20%;">Commit</th>
+							<th style="width:20%;">Commit</th>
+							<th style="width:20%;">Commit</th>
+							<th style="width:20%;">Commit</th>
+							<th class="actions"></th>
+							<th class="actions"></th>
+						</tr>
+						</thead>
+						<tbody>
+						<c:forEach items="${resultadoUsuarios}" var="usuario">
+						<form action="contratar-prestacion" method="GET">
+						<tr>
+							<td class="user-avatar">${usuario.nombre} ${usuario.apellido}</td>
+							<td>${usuario.especialidad.descripcion}</td>
+							<td>${usuario.email}</td>
+							<td>Left sidebar adjusments</td>
+							<td>Jul 15, 2018</td>
+							<td class="actions"><button type="button" class="btn btn-primary fondo-gradiente-uno fondo-gradiente-1 border-0 bg-success">Contratar</button></td>
+							<td class="actions"><button type="button" class="btn btn-primary  border-0">Perfil</button></td>
+						</tr>
+						</form>
+						</c:forEach>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+
 			</div>
 		</div>
 	</div>

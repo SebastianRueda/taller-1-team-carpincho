@@ -16,8 +16,8 @@
 	</head>
 	<body class=" h-100">
 	<div class=" h-100 w-100">
-		<div class="fondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-center">
-			<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+		<div class="fondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-centerfondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-center">
+			<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-10 col-md-offset-3 col-sm-8 col-sm-offset-2">
 		<h1>Bienvenido A SegurAPP</h1>
 
 			<form action="especialidadElegida" >
@@ -35,6 +35,7 @@
 				</select>
 				<button class="btn btn-lg btn-primary btn-block" Type="Submit">Confirmar</button>
 			</form>
+
 
 			</div>
 		</div>

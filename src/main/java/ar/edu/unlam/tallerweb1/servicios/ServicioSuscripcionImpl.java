@@ -1,7 +1,9 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
 import ar.edu.unlam.tallerweb1.modelo.Suscripcion;
+import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioSuscripcion;
+import ar.edu.unlam.tallerweb1.repositorios.RepositorioUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,14 +12,16 @@ import java.util.List;
 
 @Service("servicioSuscripcion")
 @Transactional
-public class ServicioSuscripcionImpl implements ServicioSuscripcion{
+public class ServicioSuscripcionImpl implements ServicioSuscripcion {
 
 
     private RepositorioSuscripcion repositorioSuscripcion;
+    private RepositorioUsuario repositorioUsuario;
 
     @Autowired
-    public ServicioSuscripcionImpl(RepositorioSuscripcion repositorioSuscripcion){
+    public ServicioSuscripcionImpl(RepositorioSuscripcion repositorioSuscripcion, RepositorioUsuario repositorioUsuario) {
         this.repositorioSuscripcion = repositorioSuscripcion;
+        this.repositorioUsuario = repositorioUsuario;
     }
 
     @Override
@@ -38,4 +42,16 @@ public class ServicioSuscripcionImpl implements ServicioSuscripcion{
         return suscripcion;
     }
 
+    @Override
+    public Usuario cancelarSuscripcion(String email) throws Exception {
+        Usuario usuario = repositorioUsuario.buscar(email);
+        if (usuario.getSuscripcion() == null) {
+            throw new Exception();
+        } else {
+            usuario.setSuscripcion(null);
+            repositorioUsuario.modificar(usuario);
+            return usuario;
+        }
+
+    }
 }

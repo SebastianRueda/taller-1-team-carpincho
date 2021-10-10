@@ -61,6 +61,7 @@ public class ControladorSuscripcion {
         ModelMap modelo = new ModelMap();
 
 
+
         try {
           servicioSuscripcion.cancelarSuscripcion(email);
         } catch (Exception e) {

@@ -76,4 +76,10 @@ public class ControladorContratar {
         return new ModelAndView("prestaciones", modelo);
     }
 
+    @RequestMapping(path = "/perfilUsuario", method = RequestMethod.GET)
+    public ModelAndView IrAPerfilUsuario(){
+
+        ModelMap modelo = new ModelMap();
+        return new ModelAndView("perfilUsuario", modelo);
+    }
 }

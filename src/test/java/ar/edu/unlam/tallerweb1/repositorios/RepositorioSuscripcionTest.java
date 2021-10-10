@@ -50,6 +50,37 @@ public class RepositorioSuscripcionTest extends SpringTest {
         thenContratacionExitosa();
     }
 
+    @Test
+    @Rollback
+    @Transactional
+    public void usuarioDaDeBajasuscripcionExitosamente(){
+        Usuario usuario = givenUnUsuarioConSuscripcion();
+        whenUsuarioDaDeBajaSuscripcion(usuario);
+        thenCancelacionExitosa(usuario);
+    }
+
+    private void thenCancelacionExitosa(Usuario usuario) {
+        assertThat(usuario.getSuscripcion()).isNull();
+    }
+
+    private void whenUsuarioDaDeBajaSuscripcion(Usuario usuario) {
+        usuario.setSuscripcion(null);
+        repositorioUsuario.modificar(usuario);
+    }
+
+    private Usuario givenUnUsuarioConSuscripcion() {
+        this.suscripcion.setId(10l);
+        this.suscripcion.setDescripcion("mega");
+        repositorioSuscripcion.guardarSuscripcion(suscripcion);
+
+        this.usuario.setId(10l);
+        this.usuario.setEmail("lea@lea.com");
+        this.usuario.setSuscripcion(suscripcion);
+        repositorioUsuario.guardarUsuario(usuario);
+
+        return usuario;
+    }
+
     private Suscripcion givenUnaSuscripcion() {
         //Suscripcion suscripcion = new Suscripcion();
         this.suscripcion.setId(3l);

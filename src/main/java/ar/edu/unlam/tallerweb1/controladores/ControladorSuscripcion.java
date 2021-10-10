@@ -55,4 +55,20 @@ public class ControladorSuscripcion {
         ModelMap model = new ModelMap();
         return new ModelAndView("redirect:/traerEspecialidades", model);
     }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/cancelarSuscripcion")
+    public ModelAndView cancelarSuscripcion(String email) {
+        ModelMap modelo = new ModelMap();
+
+
+
+        try {
+          servicioSuscripcion.cancelarSuscripcion(email);
+        } catch (Exception e) {
+            modelo.put("msg", "El Usuario no tiene una Suscripcion");
+            return new  ModelAndView("redirect:/suscripcion", modelo);
+        }
+        modelo.put("msg", "Suscripcion Cancelada");
+        return new ModelAndView("redirect:/traerEspecialidades", modelo);
+    }
 }

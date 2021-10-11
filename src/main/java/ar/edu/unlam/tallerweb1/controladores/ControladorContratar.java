@@ -2,9 +2,11 @@ package ar.edu.unlam.tallerweb1.controladores;
 
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Prestacion;
+import ar.edu.unlam.tallerweb1.modelo.PrestacionEstado;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPrestacion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
+import ar.edu.unlam.tallerweb1.utils.UsuarioCache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -42,17 +44,28 @@ public class ControladorContratar {
     @RequestMapping(path = "/contratar-prestacion", method = RequestMethod.GET)
     public ModelAndView contratarPrestacion(@RequestParam(value = "asistente-id") Long id) {
         var asistente = servicioUsuario.usuarioFindById(id);
+
         if (asistente == null) {
             throw new IllegalArgumentException("Error no asistente");
         }
+
         Prestacion prestacion = new Prestacion();//servicioPrestacion.prestacionFindById(asistente.getEspecialidad().getId());
+        prestacion.setEstado(PrestacionEstado.ACTIVO.getEstado());
         prestacion.setEspecialidad(asistente.getEspecialidad());
         prestacion.setUsuarioAsistente(asistente);
-        var cliente = new Usuario();
-        servicioUsuario.save(cliente);
+
+        var cliente = UsuarioCache.getUsuario();
+
         prestacion.setUsuarioSolicitante(cliente);
+
         servicioPrestacion.save(prestacion);
-        return new ModelAndView("redirect:/ir-detalle-contratacion");
+
+        prestacion.getId();
+
+        var model = new ModelMap();
+        model.put("prestacion", prestacion);
+
+        return new ModelAndView("detalle-contratacion", model);
     }
 
     @RequestMapping(path = "/ir-detalle-contratacion", method = RequestMethod.GET)

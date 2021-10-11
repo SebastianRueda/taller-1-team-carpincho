@@ -16,6 +16,7 @@
 	<link href="css/Login.css" rel="stylesheet">
 <title>Resultado Prestadores</title>
 </head>
+
 <body class=" h-100">
 	<div class=" h-100 w-100">
 		<div class="fondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-centerfondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-centerfondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-center">
@@ -54,17 +55,22 @@
 						</thead>
 						<tbody>
 						<c:forEach items="${resultadoUsuarios}" var="usuario">
-						<form action="contratar-prestacion" method="GET">
-						<tr>
-							<td class="user-avatar">${usuario.nombre} ${usuario.apellido}</td>
-							<td>${usuario.especialidad.descripcion}</td>
-							<td>${usuario.email}</td>
-							<td>Left sidebar adjusments</td>
-							<td>Jul 15, 2018</td>
-							<td class="actions"><button type="button" class="btn btn-primary fondo-gradiente-uno fondo-gradiente-1 border-0 bg-success">Contratar</button></td>
-							<td class="actions"><button type="button" class="btn btn-primary  border-0">Perfil</button></td>
-						</tr>
-						</form>
+							<form action="contratar-prestacion" method="GET">
+								<tr>
+									<td class="user-avatar">${usuario.nombre} ${usuario.apellido}</td>
+									<td>${usuario.especialidad.descripcion}</td>
+									<td>${usuario.email}</td>
+									<td>Left sidebar adjusments</td>
+									<td>Jul 15, 2018</td>
+									<td class="actions">
+										<button type="button" value="contratar" id="button-contratar" <%--onclick="contratar(${usuario.id})"--%>
+												class="btn btn-primary fondo-gradiente-uno fondo-gradiente-1 border-0 bg-success">
+											<a class="text-white text-decoration-none" href="<c:url value='/contratar-prestacion?asistente-id=${usuario.id}' />">Contratar</a>
+										</button>
+									</td>
+									<td class="actions"><button type="button" value="perfil" class="btn btn-primary  border-0">Perfil</button></td>
+								</tr>
+							</form>
 						</c:forEach>
 						</tbody>
 					</table>

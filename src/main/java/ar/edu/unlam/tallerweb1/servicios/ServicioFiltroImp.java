@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Provincia;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
-import ar.edu.unlam.tallerweb1.repositorios.RepositorioEspecialidades;
+import ar.edu.unlam.tallerweb1.repositorios.RepositorioEspecialidad;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioProvincias;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioUsuario;
 
@@ -17,12 +17,12 @@ import ar.edu.unlam.tallerweb1.repositorios.RepositorioUsuario;
 @Transactional
 public class ServicioFiltroImp implements ServicioFiltro{
 	
-	private RepositorioEspecialidades repositorioEspecialidades;
+	private RepositorioEspecialidad repositorioEspecialidades;
 	private RepositorioProvincias repositorioProvincias;
 	private RepositorioUsuario repositorioUsuario;
 	
 	@Autowired
-	public ServicioFiltroImp(RepositorioEspecialidades repositorioEspecialidades, RepositorioProvincias repositorioProvincias,RepositorioUsuario repositorioUsuario) {
+	public ServicioFiltroImp(RepositorioEspecialidad repositorioEspecialidades, RepositorioProvincias repositorioProvincias, RepositorioUsuario repositorioUsuario) {
 		this.repositorioEspecialidades=repositorioEspecialidades;
 		this.repositorioProvincias=repositorioProvincias;
 		this.repositorioUsuario=repositorioUsuario;

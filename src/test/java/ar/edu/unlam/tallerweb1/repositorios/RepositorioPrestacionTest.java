@@ -4,7 +4,6 @@ import ar.edu.unlam.tallerweb1.SpringTest;
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Prestacion;
 import ar.edu.unlam.tallerweb1.modelo.PrestacionEstado;
-import org.assertj.core.api.Assertions;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -30,26 +29,27 @@ public class RepositorioPrestacionTest extends SpringTest {
     @Rollback
     @Transactional
     public void guardarPrestacionTest() {
-        whenGuardarPrestacionExitoso(prestacion);
-        thenGuardarPrestacionExitoso(prestacion);
+        givenGuardarPrestacionExitosamente(prestacion);
+        var encontrada = whenBuscoLaPresatacionQueGuarde(this.prestacion);
+        thenComparoQueSeanLasMismasLaPrestacionGuardadaConLaObtenida(this.prestacion, encontrada);
     }
 
     @Test
     @Rollback
     @Transactional
     public void deletePrestacionTest() {
-        givenDeletePrestacionExitoso();
-        whenDeletePrestacionExitoso(prestacion);
-        thenDeletePrestacionExitoso(prestacion);
+        givenGuardarPrestacionExitosamente(prestacion);
+        whenEliminoPrestacion(prestacion);
+        thenComprueboQueLaPrestacionSeHayaEliminado(prestacion);
     }
 
     @Test
     @Rollback
     @Transactional
-    public void updatePrestacionTest() {
-        givenUpdatePrestacionExitoso(prestacion);
-        whenUpdatePrestacionExitoso(prestacion);
-        thenUpdatePrestacionExitoso(prestacion);
+    public void actualizarEstadoDeLaPrestacionTest() {
+        givenGuardarPrestacionConEstadoActivo(prestacion);
+        whenActualizarEstadoDeLaPrestacionGuardadaAFinalizada(prestacion);
+        thenCompruboQueSeHayaActualizadoLaPrestacionCorrectamente(prestacion);
     }
 
     @Test
@@ -57,9 +57,9 @@ public class RepositorioPrestacionTest extends SpringTest {
     @Transactional
     public void traerListaDePrestacionesTest() {
         final var cantPrestaciones = 6;
-        var prestaciones = givenTraerListaDePrestaciones(cantPrestaciones);
-        whenTraerListaDePrestaciones(prestaciones);
-        thenTraerListaDePrestaciones(cantPrestaciones);
+        givenGuardarListaDePrestaciones(cantPrestaciones);
+        var prestaciones = whenTraerTodasLasPrestaciones();
+        thenComprueboQueLaCantidadDePrestacionesSeaLaMismaQueGuardada(prestaciones, cantPrestaciones);
     }
 
     @Test
@@ -83,12 +83,16 @@ public class RepositorioPrestacionTest extends SpringTest {
 
     // ------------------------------------------------
 
-    private void whenGuardarPrestacionExitoso(Prestacion prestacion) {
+    private void givenGuardarPrestacionExitosamente(Prestacion prestacion) {
         repositorioPrestacion.save(prestacion);
     }
 
-    private void thenGuardarPrestacionExitoso(Prestacion prestacion) {
-        Assertions.assertThat(repositorioPrestacion.prestacionFindById(prestacion.getId())).isNotNull();
+    private Prestacion whenBuscoLaPresatacionQueGuarde(Prestacion prestacion) {
+        return repositorioPrestacion.prestacionFindById(prestacion.getId());
+    }
+
+    private void thenComparoQueSeanLasMismasLaPrestacionGuardadaConLaObtenida(Prestacion guardada, Prestacion buscada) {
+        Assert.assertEquals(guardada.getId(), buscada.getId());
     }
 
     // ------------------------------------------------
@@ -97,46 +101,46 @@ public class RepositorioPrestacionTest extends SpringTest {
         repositorioPrestacion.save(prestacion);
     }
 
-    private void whenDeletePrestacionExitoso(Prestacion prestacion) {
+    private void whenEliminoPrestacion(Prestacion prestacion) {
         repositorioPrestacion.delete(prestacion);
     }
 
-    private void thenDeletePrestacionExitoso(Prestacion prestacion) {
+    private void thenComprueboQueLaPrestacionSeHayaEliminado(Prestacion prestacion) {
         Assert.assertNull(repositorioPrestacion.prestacionFindById(prestacion.getId()));
     }
 
     // ------------------------------------------------
 
-    private void givenUpdatePrestacionExitoso(Prestacion prestacion) {
+    private void givenGuardarPrestacionConEstadoActivo(Prestacion prestacion) {
         prestacion.setEstado(PrestacionEstado.ACTIVO.getEstado());
         repositorioPrestacion.save(prestacion);
     }
 
-    private void whenUpdatePrestacionExitoso(Prestacion prestacion) {
+    private void whenActualizarEstadoDeLaPrestacionGuardadaAFinalizada(Prestacion prestacion) {
         prestacion.setEstado(PrestacionEstado.FINALIZADO.getEstado());
         repositorioPrestacion.update(prestacion);
     }
 
-    private void thenUpdatePrestacionExitoso(Prestacion prestacion) {
+    private void thenCompruboQueSeHayaActualizadoLaPrestacionCorrectamente(Prestacion prestacion) {
         Assert.assertEquals(prestacion.getEstado(), PrestacionEstado.FINALIZADO.getEstado());
     }
 
     // ------------------------------------------------
 
-    private List<Prestacion> givenTraerListaDePrestaciones(int cantPrestaciones) {
+    private void givenGuardarListaDePrestaciones(int cantPrestaciones) {
         var prestaciones = new ArrayList<Prestacion>();
         for (int i = 0; i < cantPrestaciones; i++) {
-            prestaciones.add(new Prestacion());
+            var p = new Prestacion();
+            prestaciones.add(p);
+            repositorioPrestacion.save(p);
         }
-
-        return prestaciones;
     }
 
-    private void whenTraerListaDePrestaciones(List<Prestacion> prestaciones) {
-        prestaciones.forEach(p -> repositorioPrestacion.save(p));
+    private List<Prestacion> whenTraerTodasLasPrestaciones() {
+        return repositorioPrestacion.getAll();
     }
 
-    private void thenTraerListaDePrestaciones(int cantPrestaciones) {
+    private void thenComprueboQueLaCantidadDePrestacionesSeaLaMismaQueGuardada(List<Prestacion> prestacions, int cantPrestaciones) {
         Assert.assertEquals(repositorioPrestacion.getAll().size(), cantPrestaciones);
     }
 

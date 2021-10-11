@@ -8,15 +8,21 @@
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link href="css/Login.css" rel="stylesheet">
+    <link href="../../css/Login.css" rel="stylesheet">
     <title>Title</title>
 </head>
 <body>
+    <div style="min-height: 70vh; padding: 1em">
+        <h1>Detalle de contratación</h1>
 
-<h1>Detalle de contratación</h1>
-    <div>
-        <p> Aca va el detalle de la contratación</p>
-
+        <h5>Cliente</h5>
+        <P>${prestacion.usuarioSolicitante.email}</P>
+        <h5>Asistente</h5>
+        <P>${prestacion.usuarioAsistente.email}</P>
+        <h5>Especialidad</h5>
+        <P>${prestacion.especialidad.descripcion}</P>
+        <h5>Estado</h5>
+        <P>${prestacion.estado}</P>
     </div>
 
     <footer class="page-footer font-small color-light bg-dark text-light">
@@ -50,8 +56,6 @@
             </div>
 
         </div>
-        </div>
-
 
         <div class="container text-center text-md-left mt-5">
 

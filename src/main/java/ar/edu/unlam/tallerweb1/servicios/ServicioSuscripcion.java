@@ -13,4 +13,6 @@ public interface ServicioSuscripcion {
      Suscripcion buscarPorNombre(String nombre);
 
      Usuario cancelarSuscripcion(String email) throws Exception;
+
+
 }

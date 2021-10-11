@@ -1,6 +1,6 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
-import ar.edu.unlam.tallerweb1.repositorios.RepositorioEspecialidades;
+import ar.edu.unlam.tallerweb1.repositorios.RepositorioEspecialidad;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioProvincias;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioUsuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioFiltroImp;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ControladorFiltrosTest {
-	private RepositorioEspecialidades repositorioEspecialidades = Mockito.mock(RepositorioEspecialidades.class);
+	private RepositorioEspecialidad repositorioEspecialidades = Mockito.mock(RepositorioEspecialidad.class);
 	private RepositorioProvincias repositorioProvincias = Mockito.mock(RepositorioProvincias.class);
 	private RepositorioUsuario repositorioUsuario = Mockito.mock(RepositorioUsuario.class);
 	private ServicioFiltro servicioFiltro = new ServicioFiltroImp(repositorioEspecialidades, repositorioProvincias, repositorioUsuario);

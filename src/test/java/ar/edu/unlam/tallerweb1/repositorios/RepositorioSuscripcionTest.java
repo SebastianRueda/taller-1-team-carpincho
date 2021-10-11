@@ -62,7 +62,7 @@ public class RepositorioSuscripcionTest extends SpringTest {
 
     private Usuario givenUnUsuario() {
         //Usuario usuario = new Usuario();
-        this.usuario.setId(5l);
+        //this.usuario.setId(5l);
         this.usuario.setEmail("lea@lea.com");
 
         repositorioUsuario.guardar(usuario);

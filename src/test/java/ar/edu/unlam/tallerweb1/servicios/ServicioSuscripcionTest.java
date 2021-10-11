@@ -7,8 +7,7 @@ import ar.edu.unlam.tallerweb1.repositorios.RepositorioUsuario;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class ServicioSuscripcionTest {
     private RepositorioUsuario repositorioUsuario = mock(RepositorioUsuario.class);
@@ -16,13 +15,15 @@ public class ServicioSuscripcionTest {
     private ServicioSuscripcion servicioSuscripcion = new ServicioSuscripcionImpl
                                                         (repositorioSuscripcion,repositorioUsuario);
 
+
     @Test
-    public void cancelarSuscripcionDeUnUsuario() throws Exception {
+    public void cancelarSuscripcionDeUnUsuarioQueTieneUna() throws Exception{
         givenUsuarioConSuscripcion("emiliano");
-       Usuario usuarioSinSuscripcion = whenCanceloSuscripcionDelUsuario("emiliano");
-        thenBuscoAlUsuarioYVerificoQueNoTieneSuscripcion(usuarioSinSuscripcion);
+        whenUsuarioCancelaSuSuscripcion("emiliano");
+        thenVerfificoQueSeLlamoALmenosUnaVezAlMetodoCancelar();
 
     }
+
 
     @Test(expected = Exception.class)
     public void UsuarioSinSuscripcionNoPuedeCancelar() throws Exception {
@@ -30,31 +31,30 @@ public class ServicioSuscripcionTest {
         whenUsuarioQuiereCancelarSuscripcion("emiliano");
 
     }
+
+
+    private void thenVerfificoQueSeLlamoALmenosUnaVezAlMetodoCancelar() throws Exception {
+
+        verify(repositorioUsuario,times(1)).modificar(anyObject());
+    }
+
+
     public void whenUsuarioQuiereCancelarSuscripcion(String email) throws Exception{
         servicioSuscripcion.cancelarSuscripcion(email);
     }
-
-    private void givenUsuarioSinSuscripcion(String email) {
-        when(repositorioUsuario.buscar(email)).thenReturn(new Usuario());
-    }
-
-    private void thenBuscoAlUsuarioYVerificoQueNoTieneSuscripcion(Usuario usuario) {
-        assertThat(usuario.getSuscripcion()).isNull();
-        assertThat(usuario).isNotNull();
-
-    }
-
-    private Usuario whenCanceloSuscripcionDelUsuario(String email) throws Exception {
-
-        return servicioSuscripcion.cancelarSuscripcion(email);
-
+    private void whenUsuarioCancelaSuSuscripcion(String emiliano) throws Exception {
+        servicioSuscripcion.cancelarSuscripcion(emiliano);
     }
 
     private void givenUsuarioConSuscripcion(String email) {
         Usuario usuario = new Usuario();
         Suscripcion suscripcion = new Suscripcion();
         usuario.setSuscripcion(suscripcion);
-        when(repositorioUsuario.buscar(email)).thenReturn(usuario);
+        when(repositorioUsuario.buscarUsuarioPorMail(email)).thenReturn(usuario);
 
+    }
+    private void givenUsuarioSinSuscripcion(String email) {
+
+        when(repositorioUsuario.buscarUsuarioPorMail(email)).thenReturn(new Usuario());
     }
 }

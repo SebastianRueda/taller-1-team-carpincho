@@ -24,6 +24,7 @@ public class ControladorSuscripcion {
 
     private ServicioSuscripcion servicioSuscripcion;
     private ServicioUsuario servicioUsuario;
+    private String mail="hola";
 
     @Autowired
     public ControladorSuscripcion(ServicioSuscripcion servicioSuscripcion,ServicioUsuario servicioUsuario) {
@@ -57,18 +58,24 @@ public class ControladorSuscripcion {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/cancelarSuscripcion")
-    public ModelAndView cancelarSuscripcion(String email) {
+    public ModelAndView cancelarSuscripcion(String mail) {
+        String parametroDLaVista = "email";
         ModelMap modelo = new ModelMap();
 
+            Usuario usuario = servicioUsuario.buscarUsuarioPorMail(parametroDLaVista);
+
+            try {
+                servicioSuscripcion.cancelarSuscripcion(usuario.getEmail());
+            } catch (Exception e) {
+                modelo.put("msg", "El Usuario no tiene una Suscripcion");
+                return new ModelAndView("redirect:/suscripcion", modelo);
+            }
+            modelo.put("msg", "Suscripcion Cancelada");
+            return new ModelAndView("redirect:/traerEspecialidades", modelo);
 
 
-        try {
-          servicioSuscripcion.cancelarSuscripcion(email);
-        } catch (Exception e) {
-            modelo.put("msg", "El Usuario no tiene una Suscripcion");
-            return new  ModelAndView("redirect:/suscripcion", modelo);
-        }
-        modelo.put("msg", "Suscripcion Cancelada");
-        return new ModelAndView("redirect:/traerEspecialidades", modelo);
+
     }
+
+
 }

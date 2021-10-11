@@ -48,7 +48,7 @@ public class ControladorSuscripcionTest {
         Suscripcion suscripcion = new Suscripcion();
         usuario.setSuscripcion(suscripcion);
 
-        when(servicioSuscripcion.cancelarSuscripcion(email)).thenReturn(usuario);
+//        when(servicioSuscripcion.cancelarSuscripcion(email)).thenReturn(usuario);
     }
 
     private ModelAndView whenUsuarioCancelaSuscripcion(String email) {

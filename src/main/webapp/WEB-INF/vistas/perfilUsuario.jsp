@@ -13,7 +13,7 @@
     <title>Document</title>
 </head>
 
-<body class="bg-danger ">
+<body class="fondo-login ">
 <div class="container-fluid mt-5 rounded-3">
     <div class="row w-100 bg-white m-auto p-2 justify-content-md-center" style="min-height: 500px; max-width: 1024px;">
         <div class="col-12 col-md-6 d-flex bg-white p-1 align-content-center justify-content-center">

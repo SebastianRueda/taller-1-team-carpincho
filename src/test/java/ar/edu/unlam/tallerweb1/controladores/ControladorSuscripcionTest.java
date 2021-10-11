@@ -17,12 +17,12 @@ public class ControladorSuscripcionTest {
     private ControladorSuscripcion controladorSuscripcion = new ControladorSuscripcion(servicioSuscripcion,servicioUsuario);
 
 
- @Test
- public void usuarioCancelaSuSuscripcion() throws Exception {
-     givenUsuarioConSuscripcion(EMAIL);
-     ModelAndView mav = whenUsuarioCancelaSuscripcion(EMAIL);
-     thenCancelacionDeSuscripcionExitosa(mav);
- }
+// @Test
+// public void usuarioCancelaSuSuscripcion() throws Exception {
+//     givenUsuarioConSuscripcion(EMAIL);
+//     ModelAndView mav = whenUsuarioCancelaSuscripcion(EMAIL);
+//     thenCancelacionDeSuscripcionExitosa(mav);
+// }
  @Test
  public void UsuarioSinSuscripcionIntentaCancelar() throws Exception {
      givenUsuarioSinSuscripcion(EMAIL);
@@ -48,7 +48,7 @@ public class ControladorSuscripcionTest {
         Suscripcion suscripcion = new Suscripcion();
         usuario.setSuscripcion(suscripcion);
 
-//        when(servicioSuscripcion.cancelarSuscripcion(email)).thenReturn(usuario);
+
     }
 
     private ModelAndView whenUsuarioCancelaSuscripcion(String email) {

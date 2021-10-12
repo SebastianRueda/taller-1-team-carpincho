@@ -1,3 +1,6 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,15 +16,15 @@
     <title>Document</title>
 </head>
 
-<body class="bg-danger ">
+<body class="fondo-login ">
 <div class="container-fluid mt-5 rounded-3">
     <div class="row w-100 bg-white m-auto p-2 justify-content-md-center" style="min-height: 500px; max-width: 1024px;">
         <div class="col-12 col-md-6 d-flex bg-white p-1 align-content-center justify-content-center">
             <div class="d-flex flex-column w-75  align-content-center justify-content-center flex-wrap text-center">
-                <img src="" alt="Foto Perfil" class="rounded-circle border border-5 border-primary"
+                <img src="perfil.png" alt="Foto Perfil" class="rounded-circle border border-5 border-primary"
                      width=150 height=150>
-                <h3 class="mt-3">Lea Ramos</h3>
-                <p class="text-muted m-0">Lea@gmail.com</p>
+                <h3 class="mt-3">${usuarioEnSession.nombre} ${usuarioEnSession.apellido}</h3>
+                <p class="text-muted m-0">${usuarioEnSession.email}</p>
                 <p class="text-muted m-0">Argentino</p>
             </div>
         </div>
@@ -33,25 +36,25 @@
                         <th scope="row">
                             <spa class="text-muted fw-normal">Nombre</spa>
                         </th>
-                        <td class="user-avatar fw-bold">Penelope Thornton</td>
+                        <td class="user-avatar fw-bold">${usuarioEnSession.nombre} ${usuarioEnSession.apellido}</td>
                     </tr>
                     <tr>
                         <th scope="row">
                             <spa class="text-muted fw-normal">Rol</spa>
                         </th>
-                        <td class="user-avatar fw-bold">Usuario</td>
+                        <td class="user-avatar fw-bold">${usuarioEnSession.rol.descripcion}</td>
                     </tr>
                     <tr class="table-primary">
                         <th scope="row">
                             <spa class="text-muted fw-normal">Mail</spa>
                         </th>
-                        <td class="user-avatar fw-bold">lea@gmail.com</td>
+                        <td class="user-avatar fw-bold">${usuarioEnSession.email}</td>
                     </tr>
                     <tr class="">
                         <th scope="row">
                             <spa class="text-muted fw-normal">Ciudad</spa>
                         </th>
-                        <td class="user-avatar fw-bold">Buenos Aires</td>
+                        <td class="user-avatar fw-bold">${usuarioEnSession.provincia.nombre}</td>
                     </tr>
                     <tr class="table-primary">
                         <th scope="row">
@@ -64,12 +67,22 @@
             </div>
         </div>
 
-        <div class="bg-light col-12 col-md-10 d-flex flex-column flex-md-row  p-2 mb-2 mt-3 align-items-center">
+        <c:if test="${not empty msgCancelacionExitosa}">
+        <div class="bg-success col-12 col-md-10 text-center text-white align-items-center py-1 mt-2" >
+            <p class="m-0">${msgCancelacionExitosa}</p>
+        </div>
+        </c:if>
 
+        <c:if test="${not empty msgCancelacionErronia}">
+            <div class="bg-danger col-12 col-md-10 text-center text-white align-items-center py-1 mt-2" >
+                <p class="m-0">${msgCancelacionErronia}</p>
+            </div>
+        </c:if>
+
+        <div class="bg-light col-12 col-md-10 d-flex flex-column flex-md-row  p-2 mb-2 mt-3 align-items-center">
             <div class=" d-flex w-25 align-content-center justify-content-center flex-wrap">
                 <i class="fas fa-khanda fa-6x"></i>
             </div>
-
             <div class=" d-flex flex-column ">
                 <h6 class="mb-3 text-sm">Suscripcion Premium</h6>
                 <span class="mb-2 text-xs">Fecha alta: <span
@@ -86,8 +99,14 @@
             </div>
 
             <div class="text-end">
-                <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i
-                        class="far fa-trash-alt me-2" aria-hidden="true"></i>Dar Baja</a>
+                    <p> mail: ${usuarioEnSession.email}</p>
+                    <p> Suscripcion: ${usuarioEnSession.suscripcion.descripcion}</p>
+                <form:form action="cancelarSuscripcion" method="POST">
+                    <button type="submit" class="btn btn-link text-danger text-gradient px-3 mb-0">
+                        <i class="far fa-trash-alt me-2" aria-hidden="true"></i>Dar Baja
+                    </button>
+                </form:form>
+
                 <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
                         class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Cambiar</a>
             </div>

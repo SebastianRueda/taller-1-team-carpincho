@@ -98,4 +98,8 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario {
 		sessionFactory.getCurrentSession().save(usuario);
 	}
 
+//	@Override
+//	public Usuario buscarUsuarioPorMail(String rol) {
+//		return null;
+//	}
 }

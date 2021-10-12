@@ -37,6 +37,10 @@
 			</form>
 
 
+				<p> Usuario : ${user.nombre}</p>
+				<p> Apellido : ${user.apellido}</p>
+				<p> Apellido : ${user.email}</p>
+				<p> Apellido : ${user.rol.descripcion}</p>
 			</div>
 		</div>
 	</div>

@@ -91,8 +91,12 @@ public class ControladorContratar {
 
     @RequestMapping(path = "/perfilUsuario", method = RequestMethod.GET)
     public ModelAndView IrAPerfilUsuario(){
-
+        String mailPrueba="emiliano@alumno.unlam.edu.ar";
+        Usuario usuario = servicioUsuario.buscarUsuarioPorMail(mailPrueba);
         ModelMap modelo = new ModelMap();
+
+        modelo.put("usuarioEnSession",usuario);
+
         return new ModelAndView("perfilUsuario", modelo);
     }
 }

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -24,30 +25,31 @@ public class ControladorSuscripcion {
 
     private ServicioSuscripcion servicioSuscripcion;
     private ServicioUsuario servicioUsuario;
-    private String mail="hola";
+    private String mailPrueba = "emiliano@alumno.unlam.edu.ar";
 
     @Autowired
-    public ControladorSuscripcion(ServicioSuscripcion servicioSuscripcion,ServicioUsuario servicioUsuario) {
+    public ControladorSuscripcion(ServicioSuscripcion servicioSuscripcion, ServicioUsuario servicioUsuario) {
         this.servicioSuscripcion = servicioSuscripcion;
         this.servicioUsuario = servicioUsuario;
     }
 
 
     @RequestMapping("/suscripcion")
-    public ModelAndView irASuscripciones() {
+    public ModelAndView irASuscripciones(HttpServletRequest request) {
         ModelMap modelo = new ModelMap();
+        request.getAttribute("user");
 
-        List<Suscripcion>listaSuscripciones = servicioSuscripcion.mostrarTodasLasSuscripciones();
+        List<Suscripcion> listaSuscripciones = servicioSuscripcion.mostrarTodasLasSuscripciones();
         modelo.put("listaSuscripcion", listaSuscripciones);
         return new ModelAndView("suscripcion", modelo);
     }
 
     @RequestMapping(path = "/contratar-suscripcion", method = RequestMethod.GET)
     public ModelAndView contratarSuscripcion() {
-        String nombre ="suscripcion basica";
+        String nombre = "suscripcion basica";
         Suscripcion suscripcion = servicioSuscripcion.buscarPorNombre(nombre);
 
-        Long idDeUsuarioObtenidoPorSession = 2l;
+        Long idDeUsuarioObtenidoPorSession = 4l;
         Usuario usuario = servicioUsuario.usuarioFindById(idDeUsuarioObtenidoPorSession);
 
         usuario.setSuscripcion(suscripcion);
@@ -57,24 +59,24 @@ public class ControladorSuscripcion {
         return new ModelAndView("redirect:/traerEspecialidades", model);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/cancelarSuscripcion")
-    public ModelAndView cancelarSuscripcion(String mail) {
-        String parametroDLaVista = "email";
+    @RequestMapping(method = RequestMethod.POST, path = "/cancelarSuscripcion")
+    public ModelAndView cancelarSuscripcion(String mailPrueba) {
+
         ModelMap modelo = new ModelMap();
+        Usuario usuario = servicioUsuario.buscarUsuarioPorMail(this.mailPrueba);
 
-            Usuario usuario = servicioUsuario.buscarUsuarioPorMail(parametroDLaVista);
+        try {
+            servicioSuscripcion.cancelarSuscripcion(usuario.getEmail());
+        } catch (Exception e) {
+            modelo.put("usuarioEnSession", usuario);
+            modelo.put("msgCancelacionErronia", "¡No tienes una Suscripcion!");
+            return new ModelAndView("perfilUsuario", modelo);
+        }
 
-            try {
-                servicioSuscripcion.cancelarSuscripcion(usuario.getEmail());
-            } catch (Exception e) {
-                modelo.put("msg", "El Usuario no tiene una Suscripcion");
-                return new ModelAndView("redirect:/suscripcion", modelo);
-            }
-            modelo.put("msg", "Suscripcion Cancelada");
-            return new ModelAndView("redirect:/traerEspecialidades", modelo);
-
-
-
+        Usuario usuarioActualizadoSinSuscripcion = servicioUsuario.buscarUsuarioPorMail(this.mailPrueba);
+        modelo.put("usuarioEnSession",usuarioActualizadoSinSuscripcion);
+        modelo.put("msgCancelacionExitosa", "¡Cancelacion exitosa! rata de alcatarilla");
+        return new ModelAndView("perfilUsuario", modelo);
     }
 
 

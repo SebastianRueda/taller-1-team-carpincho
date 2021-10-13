@@ -1,14 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+		 pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
 		  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
@@ -18,6 +15,33 @@
 </head>
 
 <body class=" h-100">
+<header>
+	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="login">AsegurApp</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link active" aria-current="page" href="traerEspecialidades">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="../vistas/perfilUsuario.jsp">Perfil</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="../vistas/detalles-contrataciones">Contrataciones</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="suscripcion">Suscripción</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+</header>
+
 	<div class=" h-100 w-100">
 		<div class="fondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-centerfondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-centerfondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-center">
 			<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-10 col-md-offset-3 col-sm-8 col-sm-offset-2">
@@ -45,10 +69,10 @@
 						<thead>
 						<tr>
 							<th style="width:20%;">Usuario</th>
-							<th style="width:20%;">Commit</th>
-							<th style="width:20%;">Commit</th>
-							<th style="width:20%;">Commit</th>
-							<th style="width:20%;">Commit</th>
+							<th style="width:20%;">Servicio </th>
+							<th style="width:20%;">Email</th>
+							<th style="width:20%;">Descripción</th>
+							<th style="width:20%;">Fecha de Alta</th>
 							<th class="actions"></th>
 							<th class="actions"></th>
 						</tr>
@@ -73,6 +97,13 @@
 							</form>
 						</c:forEach>
 						</tbody>
+
+
+
+
+
+
+
 					</table>
 				</div>
 			</div>

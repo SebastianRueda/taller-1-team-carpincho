@@ -25,7 +25,7 @@ public class ControladorSuscripcion {
     private ServicioSuscripcion servicioSuscripcion;
     private ServicioUsuario servicioUsuario;
     private String mailPrueba = "emiliano@alumno.unlam.edu.ar";
-    private ServicioUsuario servicioUsuario;
+
     private String emailDeLUsuarioDeLaSesion = "emiliano@alumno.unlam.edu.ar";
     private Long idSuscripcionBasica=1l;
     private Long idSuscripcionPremium=2l;

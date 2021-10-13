@@ -54,4 +54,20 @@ public class ServicioSuscripcionImpl implements ServicioSuscripcion {
         }
 
     }
+
+    @Override
+    public void modificarSuscripcionBasicaAPremium(String email ,Long idSuscripcionPremium) throws Exception{
+        Usuario usuario = repositorioUsuario.buscarUsuarioPorMail(email);
+        if (usuario.getSuscripcion() == null ) {
+            throw new Exception();
+        } else {
+            Suscripcion suscripcion = repositorioSuscripcion.buscarSuscripcionPorId(idSuscripcionPremium);
+
+            usuario.setSuscripcion(suscripcion);
+            repositorioUsuario.modificar(usuario);
+
+        }
+    }
+
+
 }

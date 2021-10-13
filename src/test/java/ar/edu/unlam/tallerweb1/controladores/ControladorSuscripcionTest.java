@@ -53,12 +53,12 @@ public class ControladorSuscripcionTest {
     }
 
     private void thenCancelacionDeSuscripcionDaError(ModelAndView mav) {
-        assertThat(mav.getViewName()).isEqualTo("perfilUsuario");
+        assertThat(mav.getViewName()).isEqualTo("redirect:/perfilUsuario");
         assertThat(mav.getModel().get("msgCancelacionErronia")).isEqualTo("¡No tienes una Suscripcion!");
     }
 
     private void thenCancelacionDeSuscripcionBasicaExitosa(ModelAndView mav) {
-        assertThat(mav.getViewName()).isEqualTo("perfilUsuario");
+        assertThat(mav.getViewName()).isEqualTo("redirect:/perfilUsuario");
         assertThat(mav.getModel().get("msgCancelacionExitosa")).isEqualTo(null);//cambiar null por mensaje
     }
 

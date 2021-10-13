@@ -53,6 +53,7 @@ public class ControladorSuscripcion {
         Usuario usuario = servicioUsuario.usuarioFindById(idDeUsuarioObtenidoPorSession);
 
         usuario.setSuscripcion(suscripcion);
+
         servicioUsuario.update(usuario);
 
         ModelMap model = new ModelMap();
@@ -70,13 +71,13 @@ public class ControladorSuscripcion {
         } catch (Exception e) {
             modelo.put("usuarioEnSession", usuario);
             modelo.put("msgCancelacionErronia", "¡No tienes una Suscripcion!");
-            return new ModelAndView("perfilUsuario", modelo);
+            return new ModelAndView("redirect:/perfilUsuario", modelo);
         }
 
         Usuario usuarioActualizadoSinSuscripcion = servicioUsuario.buscarUsuarioPorMail(this.mailPrueba);
         modelo.put("usuarioEnSession",usuarioActualizadoSinSuscripcion);
         modelo.put("msgCancelacionExitosa", "¡Cancelacion exitosa! rata de alcatarilla");
-        return new ModelAndView("perfilUsuario", modelo);
+        return new ModelAndView("redirect:/perfilUsuario", modelo);
     }
 
 

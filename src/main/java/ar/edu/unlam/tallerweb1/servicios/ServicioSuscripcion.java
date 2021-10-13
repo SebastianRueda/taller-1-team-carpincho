@@ -15,4 +15,5 @@ public interface ServicioSuscripcion {
      void cancelarSuscripcion(String email) throws Exception;
 
 
+    void modificarSuscripcion(String email) throws Exception;
 }

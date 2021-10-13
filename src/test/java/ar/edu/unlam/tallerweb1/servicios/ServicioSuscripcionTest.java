@@ -10,16 +10,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
 public class ServicioSuscripcionTest {
+    public static final String EMAIL1 = "emiliano";
     private RepositorioUsuario repositorioUsuario = mock(RepositorioUsuario.class);
     private RepositorioSuscripcion repositorioSuscripcion = mock(RepositorioSuscripcion.class);
     private ServicioSuscripcion servicioSuscripcion = new ServicioSuscripcionImpl
                                                         (repositorioSuscripcion,repositorioUsuario);
-
+    private static final String EMAIL = "emiliano@hotmail.com";
 
     @Test
     public void cancelarSuscripcionDeUnUsuarioQueTieneUna() throws Exception{
-        givenUsuarioConSuscripcion("emiliano");
-        whenUsuarioCancelaSuSuscripcion("emiliano");
+        givenUsuarioConSuscripcion(EMAIL);
+        whenUsuarioCancelaSuSuscripcion(EMAIL);
         thenVerfificoQueSeLlamoALmenosUnaVezAlMetodoCancelar();
 
     }
@@ -27,9 +28,25 @@ public class ServicioSuscripcionTest {
 
     @Test(expected = Exception.class)
     public void UsuarioSinSuscripcionNoPuedeCancelar() throws Exception {
-        givenUsuarioSinSuscripcion("emiliano");
-        whenUsuarioQuiereCancelarSuscripcion("emiliano");
+        givenUsuarioSinSuscripcion(EMAIL);
+        whenUsuarioQuiereCancelarSuscripcion(EMAIL);
 
+    }
+    @Test
+    public void usuarioModificaSuSuscripcion() throws Exception {
+        givenUsuarioConSuscripcion(EMAIL);
+        whenUsuarioModificaSuSuscripcion(EMAIL);
+        thenVerfificoQueSeLlamoALmenosUnaVezAlMetodoModificarSuscripcion();
+    }
+    @Test(expected = Exception.class)
+    public void usuarioSinSuscripcionIntentaModificarUna() throws Exception {
+        givenUsuarioSinSuscripcion(EMAIL);
+        whenUsuarioModificaSuSuscripcion(EMAIL);
+
+    }
+
+    private void thenVerfificoQueSeLlamoALmenosUnaVezAlMetodoModificarSuscripcion() {
+        verify(repositorioUsuario,times(1)).modificar(anyObject());
     }
 
 
@@ -44,6 +61,9 @@ public class ServicioSuscripcionTest {
     }
     private void whenUsuarioCancelaSuSuscripcion(String emiliano) throws Exception {
         servicioSuscripcion.cancelarSuscripcion(emiliano);
+    }
+    private void whenUsuarioModificaSuSuscripcion(String email) throws Exception {
+        servicioSuscripcion.modificarSuscripcion(email);
     }
 
     private void givenUsuarioConSuscripcion(String email) {

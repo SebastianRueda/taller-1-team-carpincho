@@ -49,7 +49,7 @@ public class ControladorSuscripcion {
         String nombre = "suscripcion basica";
         Suscripcion suscripcion = servicioSuscripcion.buscarPorNombre(nombre);
 
-        Long idDeUsuarioObtenidoPorSession = 4l;
+        Long idDeUsuarioObtenidoPorSession = 2l;
         Usuario usuario = servicioUsuario.usuarioFindById(idDeUsuarioObtenidoPorSession);
 
         usuario.setSuscripcion(suscripcion);

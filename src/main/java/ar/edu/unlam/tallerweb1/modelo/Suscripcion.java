@@ -1,9 +1,6 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -20,7 +17,6 @@ public class Suscripcion {
 
 
     public Suscripcion() {
-
     }
 
     public Suscripcion(Long id, String descripcion, Long precio, Date fechaAlta, Date fechaBaja, Boolean activo) {

@@ -13,7 +13,7 @@ public class ControladorRegistrarmeTest {
     private ServicioLogin servicioLogin = mock(ServicioLogin.class);
     private ControladorRegistrarme controladorRegistrarme = new ControladorRegistrarme(servicioLogin);
     private static final DatosRegistro USUARIO_CON_MAIL_INCORRECTO
-            = new DatosRegistro("seba.com", "1234", "1234");;
+            = new DatosRegistro("seba.com", "1234", "1234");
     private static final DatosRegistro USUARIO
             = new DatosRegistro("seba@seba.com", "1234", "1234");
 

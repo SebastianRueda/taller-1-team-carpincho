@@ -1,6 +1,7 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
 import ar.edu.unlam.tallerweb1.modelo.Prestacion;
+import ar.edu.unlam.tallerweb1.modelo.Suscripcion;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,4 +49,11 @@ public class ServicioUsuarioImpl implements ServicioUsuario {
     public Usuario usuarioFindById(Long id) {
         return usuarioDao.usuarioFindById(id);
     }
+
+    @Override
+    public Usuario buscarUsuarioPorMail(String email) {
+        return usuarioDao.buscarUsuarioPorMail(email);
+    }
+
+
 }

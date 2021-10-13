@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+		 pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
 		  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
@@ -14,21 +13,103 @@
 	<link href="css/Login.css" rel="stylesheet">
 <title>Resultado Prestadores</title>
 </head>
+
 <body class=" h-100">
+<header>
+	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="login">AsegurApp</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link active" aria-current="page" href="traerEspecialidades">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="../vistas/perfilUsuario.jsp">Perfil</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="../vistas/detalles-contrataciones">Contrataciones</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="suscripcion">Suscripción</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+</header>
+
 	<div class=" h-100 w-100">
-		<div class="fondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-center">
-			<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-	<%-- <c:if test="${empty resultadoUsuarios}"> --%>
+		<div class="fondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-centerfondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-centerfondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-center">
+			<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-10 col-md-offset-3 col-sm-8 col-sm-offset-2">
+	<%-- <c:if test="${empty resultadoUsuarios}">
 			<form action="contratar-prestacion" method="GET">
 				<label for="asistente-id">Seleccione Especialista</label>
 				<select name="asistente-id" id="asistente-id">
+
 					<c:forEach items="${resultadoUsuarios}" var="usuario">
 						<option value="${usuario.id}">${usuario.nombre} &nbsp ${usuario.especialidad.descripcion} &nbsp ${usuario.email} </option>
 					</c:forEach>
 				</select>
+
 				<button class="btn btn-lg btn-primary btn-block" Type="Submit">Contratar</button>
-			</form>	
+			</form>	--%>
 		<%-- </c:if> --%>
+		<div class="col-12 ">
+			<div class="card card-table">
+				<div class="card-header">
+
+					<div class="title">Lista de Usuarios</div>
+				</div>
+				<div class="card-body table-responsive">
+					<table class="table  table-hover">
+						<thead>
+						<tr>
+							<th style="width:20%;">Usuario</th>
+							<th style="width:20%;">Servicio </th>
+							<th style="width:20%;">Email</th>
+							<th style="width:20%;">Descripción</th>
+							<th style="width:20%;">Fecha de Alta</th>
+							<th class="actions"></th>
+							<th class="actions"></th>
+						</tr>
+						</thead>
+						<tbody>
+						<c:forEach items="${resultadoUsuarios}" var="usuario">
+							<form action="contratar-prestacion" method="GET">
+								<tr>
+									<td class="user-avatar">${usuario.nombre} ${usuario.apellido}</td>
+									<td>${usuario.especialidad.descripcion}</td>
+									<td>${usuario.email}</td>
+									<td>Left sidebar adjusments</td>
+									<td>Jul 15, 2018</td>
+									<td class="actions">
+										<button type="button" value="contratar" id="button-contratar" <%--onclick="contratar(${usuario.id})"--%>
+												class="btn btn-primary fondo-gradiente-uno fondo-gradiente-1 border-0 bg-success">
+											<a class="text-white text-decoration-none" href="<c:url value='/contratar-prestacion?asistente-id=${usuario.id}' />">Contratar</a>
+										</button>
+									</td>
+									<td class="actions"><button type="button" value="perfil" class="btn btn-primary  border-0">Perfil</button></td>
+								</tr>
+							</form>
+						</c:forEach>
+						</tbody>
+
+
+
+
+
+
+
+					</table>
+				</div>
+			</div>
+		</div>
+
+
 			</div>
 		</div>
 	</div>
@@ -108,7 +189,7 @@
 				</div>
 
 			</div>
-			<div class="footer-copyright text-center py-3">� 2021 Copyright: AsegurAPP
+			<div class="footer-copyright text-center py-3">� 2021 Copyright: AsegurAPP
 			</div>
 		</div>
 
@@ -120,6 +201,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 			integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 			crossorigin="anonymous"></script>
+
 
 </body>
 </html>

@@ -28,11 +28,11 @@ public class ServicioLoginTest {
     }
 
     private void givenUsuarioNoExiste(String email) {
-        when(repositorioUsuario.buscar(email)).thenReturn(null);
+        when(repositorioUsuario.buscarUsuarioPorMail(email)).thenReturn(null);
     }
 
     private void givenUsuarioYaExiste(String email) {
-        when(repositorioUsuario.buscar(email)).thenReturn(new Usuario());
+        when(repositorioUsuario.buscarUsuarioPorMail(email)).thenReturn(new Usuario());
     }
 
     private Usuario whenResgistro(String email) throws Exception {

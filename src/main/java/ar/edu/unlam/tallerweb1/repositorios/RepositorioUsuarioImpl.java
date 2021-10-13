@@ -1,10 +1,6 @@
 package ar.edu.unlam.tallerweb1.repositorios;
 
-import ar.edu.unlam.tallerweb1.modelo.Especialidad;
-import ar.edu.unlam.tallerweb1.modelo.Provincia;
-import ar.edu.unlam.tallerweb1.modelo.Prestacion;
-import ar.edu.unlam.tallerweb1.modelo.Rol;
-import ar.edu.unlam.tallerweb1.modelo.Usuario;
+import ar.edu.unlam.tallerweb1.modelo.*;
 
 import java.util.List;
 
@@ -48,7 +44,7 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario {
 	}
 
 	@Override
-	public Usuario buscar(String email) {
+	public Usuario buscarUsuarioPorMail(String email) {
 		return (Usuario) sessionFactory.getCurrentSession().createCriteria(Usuario.class)
 				.add(Restrictions.eq("email", email))
 				.uniqueResult();
@@ -60,7 +56,7 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario {
 	}
 
 	@Override
-	public List<Usuario> usuariosDeLaEspecialidadYprovincia(Long idEspecialidad, Long idProvincia){
+	public List usuariosDeLaEspecialidadYprovincia(Long idEspecialidad, Long idProvincia){
 		return sessionFactory.getCurrentSession().createCriteria(Usuario.class)
 				.createAlias("especialidad", "especialidadBuscada")
 				.createAlias("provincia","provinciaBuscada")
@@ -97,4 +93,30 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario {
 		return sessionFactory.getCurrentSession().createCriteria(Usuario.class).list();
 	}
 
+	@Override
+	public void guardarUsuario(Usuario usuario) {
+		sessionFactory.getCurrentSession().save(usuario);
+	}
+
+	@Override
+	public List<Usuario> usuariosDeLaEspecialidad(Long idEspecialidad) {
+		return sessionFactory.getCurrentSession().createCriteria(Usuario.class)
+				.createAlias("especialidad", "especialidadBuscada")
+				.add(Restrictions.eq("especialidadBuscada.id",idEspecialidad))
+				.list();
+	}
+
+	@Override
+	public List <Usuario> usuariosDeLaProvincia(Long idProvincia) {
+		return sessionFactory.getCurrentSession().createCriteria(Usuario.class)
+				.createAlias("provincia","provinciaBuscada")
+				.add(Restrictions.eq("provinciaBuscada.id",idProvincia))
+				.list();
+	}
+
+
+//	@Override
+//	public Usuario buscarUsuarioPorMail(String rol) {
+//		return null;
+//	}
 }

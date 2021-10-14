@@ -63,6 +63,43 @@ public class ControladorFiltrosTest {
 		thenTraerLaListaDeProvinciasYEspecialidadesEsperadas(mav, cantEspecialidades, cantProvincias);
 	}
 	
+	@Test
+	public void testQueTeLLevaAOtraVistaCuandoLLegaUnaEspecialidadNula()  {
+		givenUnaEspecialidad(8L);
+		ModelAndView mav =whenSolicitoEspecialidad(this.especialidad);
+		ModelAndView errorMav = thenEsLaEspecialidadSolicitada(mav);
+		Assertions.assertThat(errorMav.getViewName()).isEqualTo("excepcionFiltro");
+	}
+	
+	private void givenUnaEspecialidad(Long especialidadInexistente) {
+		Especialidad especialidadEsperada = null;
+		Mockito.when(servicioFiltro.traerEspecialidadPorId(this.especialidad.getId()))
+									.thenReturn(especialidadEsperada);
+	}
+	
+	
+	private ModelAndView whenSolicitoEspecialidad(Especialidad especialidad) {
+		ModelMap modelo = new ModelMap();
+		Especialidad especialidadBuscada=servicioFiltro.traerEspecialidadPorId(especialidad.getId());
+		modelo.put("especialidadBuscada", especialidadBuscada);
+		return new ModelAndView("busquedaPrestadores",modelo);
+	}
+
+	private ModelAndView thenEsLaEspecialidadSolicitada(ModelAndView mav){
+        Assertions.assertThat(mav.getViewName()).isEqualTo("busquedaPrestadores");
+		var especialidad= mav.getModel().get("especialidadBuscada");
+		Assertions.assertThat(especialidad).isNull();
+		ModelMap model=new ModelMap();
+		
+		if(especialidad ==null) {
+			model.put("error","El Numero de Especialista no corresponde" );
+			model.put("volver","Volver A La Pagina Anterior" );
+			return new ModelAndView ("excepcionFiltro",model);
+		}
+		return null;
+		 
+    }
+
 	private void givenUnUsuarioConEspecialidadYProvincia(Usuario usuario, String especialidad, String provincia) {
 		this.especialidad.setDescripcion(especialidad);
 		this.especialidad.setId(1L);

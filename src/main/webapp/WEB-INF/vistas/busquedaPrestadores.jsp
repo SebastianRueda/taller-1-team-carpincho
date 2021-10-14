@@ -48,6 +48,42 @@
 			<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-10 col-md-offset-3 col-sm-8 col-sm-offset-2">
 
 		<h1>Bienvenido a AsegurAPP</h1>
+
+				<form action="usuarioEspecialidadElegida" >
+					<label for="listaEspecialistas">Seleccione Servicio</label>
+					<select name="usuarioEspecialidades">
+						<c:forEach items="${especialidades}" var="especialidad">
+							<option value="${especialidad.id}">${especialidad.descripcion}</option>
+						</c:forEach>
+					</select>
+					<br>
+					<br>
+					<button class="btn btn-primary btn-lg" Type="Submit">Confirmar</button>
+				</form>
+
+				<br>
+				<br>
+				<br>
+				<br>
+
+
+				<form action="usuarioProvinciaElegida" >
+					<label for="usuariosPorProvincia">Seleccione Provincia</label>
+					<select name="usuarioProvincia">
+						<c:forEach items="${provincias}" var="provincia">
+							<option value="${provincia.id}">${provincia.nombre}</option>
+						</c:forEach>
+					</select>
+					<br>
+					<br>
+					<button class="btn btn-primary btn-lg" Type="Submit">Confirmar</button>
+				</form>
+
+				<br>
+				<br>
+				<br>
+				<br>
+
 				<form action="especialidadElegida" >
 					<label for="listaEspecialidadDesplegable">Seleccione Servicio</label>
 

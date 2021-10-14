@@ -14,4 +14,5 @@ public interface ServicioFiltro {
 	List <Usuario> usuariosDeLaEspecialidadYprovincia(Long idEspecialidad, Long idProvincia);
 	List<Usuario> usuariosDeLaProvincia(Long idProvincia);
 	List<Usuario> usuariosDeLaEspecialidad(Long idEspecialidad);
+
 }

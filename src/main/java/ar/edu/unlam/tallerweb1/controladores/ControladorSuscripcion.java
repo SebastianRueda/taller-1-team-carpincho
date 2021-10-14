@@ -24,9 +24,9 @@ public class ControladorSuscripcion {
 
     private ServicioSuscripcion servicioSuscripcion;
     private ServicioUsuario servicioUsuario;
-    private String mailPrueba = "emiliano@alumno.unlam.edu.ar";
 
-    private String emailDeLUsuarioDeLaSesion = "emiliano@alumno.unlam.edu.ar";
+    private String emailDeLUsuarioDeLaSesion = "ecuevas@alumno.unlam.edu.ar";
+
     private Long idSuscripcionBasica=1l;
     private Long idSuscripcionPremium=2l;
 
@@ -52,7 +52,7 @@ public class ControladorSuscripcion {
         String nombre = "suscripcion basica";
         Suscripcion suscripcion = servicioSuscripcion.buscarPorNombre(nombre);
 
-        Long idDeUsuarioObtenidoPorSession = 2l;
+        Long idDeUsuarioObtenidoPorSession = 1l;
         Usuario usuario = servicioUsuario.usuarioFindById(idDeUsuarioObtenidoPorSession);
 
         usuario.setSuscripcion(suscripcion);
@@ -64,7 +64,7 @@ public class ControladorSuscripcion {
     }
 
     @RequestMapping(method = RequestMethod.POST, path = "/cancelarSuscripcion")
-    public ModelAndView cancelarSuscripcion(String mailPrueba) {
+    public ModelAndView cancelarSuscripcion(String email) {
 
         ModelMap modelo = new ModelMap();
         Usuario usuario = servicioUsuario.buscarUsuarioPorMail(this.emailDeLUsuarioDeLaSesion);
@@ -83,7 +83,7 @@ public class ControladorSuscripcion {
         return new ModelAndView("redirect:/perfilUsuario", modelo);
     }
 
-    @RequestMapping(method = RequestMethod.POST, path = "/modificarSuscripcionBasicaUsuario")
+   /* @RequestMapping(method = RequestMethod.POST, path = "/modificarSuscripcionBasicaUsuario")
     public ModelAndView modificarSuscripcionBasicaAPremium() {
         ModelMap modelo = new ModelMap();
 
@@ -94,6 +94,46 @@ public class ControladorSuscripcion {
             return new ModelAndView("redirect:/perfilUsuario", modelo);
         }
         modelo.put("msgModificacionSuscripcion","Upgrade exitosa");
+        return new ModelAndView("redirect:/perfilUsuario", modelo);
+    }*/
+
+    @RequestMapping(method = RequestMethod.POST, path = "/modificarSuscripcionBasicaUsuario")
+    public ModelAndView modificarSuscripcionBasicaAPremium() {
+        ModelMap modelo = new ModelMap();
+        String nombre = "suscripcion premium";
+        Suscripcion suscripcionPremium = servicioSuscripcion.buscarPorNombre(nombre);
+
+        Long idDeUsuarioObtenidoPorSession = 1l;
+        Usuario usuarioEnSession = servicioUsuario.usuarioFindById(idDeUsuarioObtenidoPorSession);
+
+        try {
+            servicioSuscripcion.upGradeSuscripcionBasicaAPremium(usuarioEnSession,suscripcionPremium);
+        } catch (Exception e) {
+            modelo.put("msgModificacionSuscripcion","Upgrade fallido");
+            return new ModelAndView("redirect:/perfilUsuario", modelo);
+        }
+
+        modelo.put("msgModificacionSuscripcion","Upgrade exitosa");
+        return new ModelAndView("redirect:/perfilUsuario", modelo);
+    }
+
+    @RequestMapping(method = RequestMethod.POST, path = "/modificarSuscripcionPremiumUsuario")
+    public ModelAndView modificarSuscripcionPremiumABasica() {
+        ModelMap modelo = new ModelMap();
+        String nombre = "suscripcion basica";
+        Suscripcion suscripcionBasica = servicioSuscripcion.buscarPorNombre(nombre);
+
+        Long idDeUsuarioObtenidoPorSession = 1l;
+        Usuario usuarioEnSession = servicioUsuario.usuarioFindById(idDeUsuarioObtenidoPorSession);
+
+        try {
+            servicioSuscripcion.downGradeSuscripcionBasicaAPremium(usuarioEnSession,suscripcionBasica);
+        } catch (Exception e) {
+            modelo.put("msgModificacionSuscripcion","downGrade fallido");
+            return new ModelAndView("redirect:/perfilUsuario", modelo);
+        }
+
+        modelo.put("msgModificacionSuscripcion","downGrade exitosa");
         return new ModelAndView("redirect:/perfilUsuario", modelo);
     }
 }

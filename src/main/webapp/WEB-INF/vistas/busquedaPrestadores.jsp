@@ -28,7 +28,7 @@
 							<a class="nav-link active" aria-current="page" href="traerEspecialidades">Home</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="../vistas/perfilUsuario.jsp">Perfil</a>
+							<a class="nav-link" href="/proyecto_limpio_spring_war_exploded/perfilUsuario">Perfil</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="detalle-contratacion">Contrataciones</a>

@@ -10,4 +10,5 @@ public interface RepositorioEspecialidad {
 	void delete(Especialidad especialidad);
 	Especialidad find(Especialidad especialidad);
 	List<Especialidad> traerEspecialidad();
+	Especialidad traerEspecialidadPorId(Long id);
 }

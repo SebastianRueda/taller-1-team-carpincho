@@ -14,68 +14,43 @@ public class ServicioSuscripcionTest {
     private RepositorioUsuario repositorioUsuario = mock(RepositorioUsuario.class);
     private RepositorioSuscripcion repositorioSuscripcion = mock(RepositorioSuscripcion.class);
     private ServicioSuscripcion servicioSuscripcion = new ServicioSuscripcionImpl
-                                                        (repositorioSuscripcion,repositorioUsuario);
+            (repositorioSuscripcion, repositorioUsuario);
     private static final String EMAIL = "emiliano@hotmail.com";
-    private Long idSuscripcionPremium=2l;
-    private Long idSuscripcionBasica=1l;
+    private Long idSuscripcionPremium = 2l;
+    private Long idSuscripcionBasica = 1l;
+    Suscripcion suscripcionPremium = new Suscripcion();
+
     @Test
-    public void cancelarSuscripcionDeUnUsuarioQueTieneUna() throws Exception{
+    public void cancelarSuscripcionDeUnUsuarioQueTieneUna() throws Exception {
         givenUsuarioConSuscripcion(EMAIL);
         whenUsuarioCancelaSuSuscripcion(EMAIL);
         thenVerfificoQueSeLlamoALmenosUnaVezAlMetodoCancelar();
 
     }
 
-
     @Test(expected = Exception.class)
     public void UsuarioSinSuscripcionNoPuedeCancelar() throws Exception {
         givenUsuarioSinSuscripcion(EMAIL);
         whenUsuarioQuiereCancelarSuscripcion(EMAIL);
-//////////////////////////////////////////////////////////////////////////
     }
+
+    //////////////////////////////////////////////////////////////////////////
     @Test
     public void usuarioModificaSuSuscripcionBasicaAPremium() throws Exception {
         givenUsuarioConSuscripcionBasica(EMAIL);
-        whenUsuarioModificaSuSuscripcionBasicaAPremium(EMAIL, idSuscripcionPremium);
+        whenUsuarioModificaSuSuscripcionBasicaAPremium(EMAIL);
         thenVerfificoQueSeLlamoALmenosUnaVezAlMetodoModificarSuscripcion();
     }
 
     @Test(expected = Exception.class)
     public void usuarioSinSuscripcionIntentaModificarUna() throws Exception {
         givenUsuarioSinSuscripcion(EMAIL);
-        whenUsuarioModificaSuSuscripcion(EMAIL, idSuscripcionBasica);
+        whenUsuarioModificaSuSuscripcion(EMAIL);
 
     }
 
 //////////////////////////////////////////////////////////////////////////
 
-    private void thenVerfificoQueSeLlamoALmenosUnaVezAlMetodoModificarSuscripcion() {
-        verify(repositorioUsuario,times(1)).modificar(anyObject());
-
-    }
-
-
-    private void thenVerfificoQueSeLlamoALmenosUnaVezAlMetodoCancelar() throws Exception {
-
-        verify(repositorioUsuario,times(1)).modificar(anyObject());
-    }
-
-
-
-
-    public void whenUsuarioQuiereCancelarSuscripcion(String email) throws Exception{
-        servicioSuscripcion.cancelarSuscripcion(email);
-    }
-
-    private void whenUsuarioCancelaSuSuscripcion(String emiliano) throws Exception {
-        servicioSuscripcion.cancelarSuscripcion(emiliano);
-    }
-    private void whenUsuarioModificaSuSuscripcionBasicaAPremium(String email, Long idSuscripcionPremium) throws Exception {
-        servicioSuscripcion.modificarSuscripcionBasicaAPremium(email, idSuscripcionPremium);
-    }
-    private void whenUsuarioModificaSuSuscripcion(String email , Long idSuscripcionPremium) throws Exception {
-        servicioSuscripcion.modificarSuscripcionBasicaAPremium(email , idSuscripcionPremium);
-    }
     private void givenUsuarioConSuscripcion(String email) {
         Usuario usuario = new Usuario();
         Suscripcion suscripcion = new Suscripcion();
@@ -85,9 +60,9 @@ public class ServicioSuscripcionTest {
     }
 
     private void givenUsuarioSinSuscripcion(String email) {
-
         when(repositorioUsuario.buscarUsuarioPorMail(email)).thenReturn(new Usuario());
     }
+
     private void givenUsuarioConSuscripcionBasica(String email) {
         Usuario usuario = new Usuario();
         Suscripcion suscripcion = new Suscripcion();
@@ -95,8 +70,30 @@ public class ServicioSuscripcionTest {
         suscripcion.setDescripcion("suscripcion basica");
         usuario.setSuscripcion(suscripcion);
         when(repositorioUsuario.buscarUsuarioPorMail(email)).thenReturn(usuario);
+    }
 
 
+    public void whenUsuarioQuiereCancelarSuscripcion(String email) throws Exception {
+        servicioSuscripcion.cancelarSuscripcion(email);
+    }
+
+    private void whenUsuarioCancelaSuSuscripcion(String emiliano) throws Exception {
+        servicioSuscripcion.cancelarSuscripcion(emiliano);
+    }
+
+        private void whenUsuarioModificaSuSuscripcionBasicaAPremium(String email) throws Exception {
+        servicioSuscripcion.modificarSuscripcionBasicaAPremium(email, suscripcionPremium);
+    }
+    private void whenUsuarioModificaSuSuscripcion(String email) throws Exception {
+        servicioSuscripcion.modificarSuscripcionBasicaAPremium(email , suscripcionPremium);
+    }
+
+
+    private void thenVerfificoQueSeLlamoALmenosUnaVezAlMetodoCancelar() throws Exception {
+        verify(repositorioUsuario, times(1)).modificar(anyObject());
+    }
+        private void thenVerfificoQueSeLlamoALmenosUnaVezAlMetodoModificarSuscripcion() {
+        verify(repositorioUsuario,times(1)).modificar(anyObject());
 
     }
 }

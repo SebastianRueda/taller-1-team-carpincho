@@ -40,6 +40,7 @@ values('prestador'),
 
 insert into usuario (nombre, apellido, email, password, especialidad_id, provincia_id, rol_id, activo)
 values('eric','cuevas','ecuevas@alumno.unlam.edu.ar','root',1,1,1, true),
+	('nicolas','marmirolli','nmarmirolli@alumno.unlam.edu.ar','root',2,1,1, true),
 	('emilio','rojas','erojas@alumno.unlam.edu.ar','root',1,1,1, true),
     ('elsa','romero','eromero@alumno.unlam.edu.ar','root',1,1,1, true),
     ('geronimo','rodriguez','grodriguez@alumno.unlam.edu.ar','root',2,1,1, true),
@@ -50,7 +51,10 @@ values('eric','cuevas','ecuevas@alumno.unlam.edu.ar','root',1,1,1, true),
     ('nicolas','gomez','ngomez@alumno.unlam.edu.ar','root',3,1,1, true),
     ('lalo','landa','llanda@alumno.unlam.edu.ar','root',4,1,1, true),
     ('lito','perez','lperez@alumno.unlam.edu.ar','root',4,1,1, true),
-    ('hernan','cuevas','hcuevas@alumno.unlam.edu.ar','root',4,1,1, true);
+    ('hernan','cuevas','hcuevas@alumno.unlam.edu.ar','root',4,1,1, true),
+    ('rocio','moran','rocio@alumno.unlam.edu.ar','root',5,1, true),
+		('andrea','galvan','andrea@alumno.unlam.edu.ar','root',6,1, true),
+        ('silvana','urquiza;','silvana@alumno.unlam.edu.ar','root',7,1, true);
 
 
 /* usuario que no tiene una especialidad, es decir usuario final*/

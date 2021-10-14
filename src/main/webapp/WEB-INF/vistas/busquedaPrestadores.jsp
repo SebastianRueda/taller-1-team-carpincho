@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
 <html>
 	<head>
-	<meta charset="ISO-8859-1">
-
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
 			  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
@@ -15,25 +14,61 @@
 	<title>Busqueda Prestadores</title>
 	</head>
 	<body class=" h-100">
+
+	<header>
+		<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="login">AsegurApp</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav">
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="traerEspecialidades">Home</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="../vistas/perfilUsuario.jsp">Perfil</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="detalle-contratacion">Contrataciones</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="suscripcion">Suscripción</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+
 	<div class=" h-100 w-100">
 		<div class="fondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-centerfondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-center">
 			<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-10 col-md-offset-3 col-sm-8 col-sm-offset-2">
-				<h1>Bienvenido A SegurAPP</h1>
 
+		<h1>Bienvenido a AsegurAPP</h1>
 				<form action="especialidadElegida" >
-					<label for="listaEspecialidadDesplegable">Seleccione Servicio</label> 
+					<label for="listaEspecialidadDesplegable">Seleccione Servicio</label>
+
 					<select name="listaEspecialidadDesplegable">
 						<c:forEach items="${especialidades}" var="especialidad">
 							<option value="${especialidad.id}">${especialidad.descripcion}</option>
 						</c:forEach>
 					</select>
-					<label for="listaProvinciaDesplegable">Seleccione Provincia</label> 
+
+					<label for="listaProvinciaDesplegable">Seleccione Provincia</label>
+
 					<select name="listaProvinciaDesplegable">
 						<c:forEach items="${provincias}" var="provincia">
 							<option value="${provincia.id}">${provincia.nombre}</option>
 						</c:forEach>
 					</select>
-					<button class="btn btn-lg btn-primary btn-block" Type="Submit">Confirmar</button>
+
+					<br>
+					<br>
+					<button class="btn btn-primary btn-lg" Type="Submit">Confirmar</button>
+
 				</form>
 			</div>
 		</div>
@@ -118,6 +153,5 @@
 		</div>
 
 	</footer>
-
 	</body>
 </html>

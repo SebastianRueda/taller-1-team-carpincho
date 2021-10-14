@@ -50,8 +50,38 @@ public class ServicioSuscripcionImpl implements ServicioSuscripcion {
         } else {
             usuario.setSuscripcion(null);
             repositorioUsuario.modificar(usuario);
-
         }
 
     }
+
+    @Override
+    public void modificarSuscripcionBasicaAPremium(String email, Suscripcion suscripcionPremium) throws Exception {
+        Usuario usuario = repositorioUsuario.buscarUsuarioPorMail(email);
+        if (usuario.getSuscripcion() == null ) {
+            throw new Exception();
+        } else {
+            usuario.setSuscripcion(suscripcionPremium);
+            repositorioUsuario.modificar(usuario);
+        }
+    }
+
+    @Override
+    public void upGradeSuscripcionBasicaAPremium(Usuario usuarioEnSession, Suscripcion suscripcionPremium) throws Exception{
+        if (suscripcionPremium.getId() == 1l) {
+            throw new Exception();
+        }
+        usuarioEnSession.setSuscripcion(suscripcionPremium);
+        repositorioUsuario.modificar(usuarioEnSession);
+    }
+
+    @Override
+    public void downGradeSuscripcionBasicaAPremium(Usuario usuarioEnSession, Suscripcion suscripcionBasica) throws Exception {
+        if (suscripcionBasica.getId() == 2l) {
+            throw new Exception();
+        }
+        usuarioEnSession.setSuscripcion(suscripcionBasica);
+        repositorioUsuario.modificar(usuarioEnSession);
+    }
+
+
 }

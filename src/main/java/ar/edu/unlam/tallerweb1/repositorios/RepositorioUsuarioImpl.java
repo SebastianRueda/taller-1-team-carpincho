@@ -56,7 +56,7 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario {
 	}
 
 	@Override
-	public List<Usuario> usuariosDeLaEspecialidadYprovincia(Long idEspecialidad, Long idProvincia){
+	public List usuariosDeLaEspecialidadYprovincia(Long idEspecialidad, Long idProvincia){
 		return sessionFactory.getCurrentSession().createCriteria(Usuario.class)
 				.createAlias("especialidad", "especialidadBuscada")
 				.createAlias("provincia","provinciaBuscada")
@@ -97,6 +97,23 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario {
 	public void guardarUsuario(Usuario usuario) {
 		sessionFactory.getCurrentSession().save(usuario);
 	}
+
+	@Override
+	public List<Usuario> usuariosDeLaEspecialidad(Long idEspecialidad) {
+		return sessionFactory.getCurrentSession().createCriteria(Usuario.class)
+				.createAlias("especialidad", "especialidadBuscada")
+				.add(Restrictions.eq("especialidadBuscada.id",idEspecialidad))
+				.list();
+	}
+
+	@Override
+	public List <Usuario> usuariosDeLaProvincia(Long idProvincia) {
+		return sessionFactory.getCurrentSession().createCriteria(Usuario.class)
+				.createAlias("provincia","provinciaBuscada")
+				.add(Restrictions.eq("provinciaBuscada.id",idProvincia))
+				.list();
+	}
+
 
 //	@Override
 //	public Usuario buscarUsuarioPorMail(String rol) {

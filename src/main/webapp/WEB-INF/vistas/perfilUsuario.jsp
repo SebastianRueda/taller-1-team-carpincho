@@ -18,18 +18,18 @@
 
 <body class="fondo-login ">
 <div class="container-fluid mt-5 rounded-3">
-    <div class="row w-100 bg-white m-auto p-2 justify-content-md-center" style="min-height: 500px; max-width: 1024px;">
+    <div class="row w-100 bg-light m-auto p-2 justify-content-md-center" style="min-height: 500px; max-width: 1024px;">
         <div class="col-12 col-md-6 d-flex bg-white p-1 align-content-center justify-content-center">
-            <div class="d-flex flex-column w-75  align-content-center justify-content-center flex-wrap text-center">
-                <img src="perfil.png" alt="Foto Perfil" class="rounded-circle border border-5 border-primary"
-                     width=150 height=150>
+            <div class="d-flex align-items-center flex-column w-75  align-content-center justify-content-center flex-wrap text-center">
+                <img src="imagenes/perfil.png" alt="Foto Perfil" class=""
+                     width=150 height=150/>
                 <h3 class="mt-3">${usuarioEnSession.nombre} ${usuarioEnSession.apellido}</h3>
                 <p class="text-muted m-0">${usuarioEnSession.email}</p>
                 <p class="text-muted m-0">Argentino</p>
             </div>
         </div>
-        <div class="col-12 col-md-6 bg-light mt-3">
-            <div class="py-3">
+        <div class="col-12 col-md-6 d-flex align-items-center bg-white ">
+            <div class="w-100">
                 <table class="table table-hover table-borderless mt-2">
                     <tbody>
                     <tr class="table-primary">
@@ -68,49 +68,94 @@
         </div>
 
         <c:if test="${not empty msgCancelacionExitosa}">
-        <div class="bg-success col-12 col-md-10 text-center text-white align-items-center py-1 mt-2" >
-            <p class="m-0">${msgCancelacionExitosa}</p>
-        </div>
+            <div class="bg-success col-12 col-md-10 text-center text-white align-items-center py-1 mt-2">
+                <p class="m-0">${msgCancelacionExitosa}</p>
+            </div>
         </c:if>
-
         <c:if test="${not empty msgCancelacionErronia}">
-            <div class="bg-danger col-12 col-md-10 text-center text-white align-items-center py-1 mt-2" >
+            <div class="bg-danger col-12 col-md-10 text-center text-white align-items-center py-1 mt-2">
                 <p class="m-0">${msgCancelacionErronia}</p>
             </div>
         </c:if>
 
-        <div class="bg-light col-12 col-md-10 d-flex flex-column flex-md-row  p-2 mb-2 mt-3 align-items-center">
-            <div class=" d-flex w-25 align-content-center justify-content-center flex-wrap">
-                <i class="fas fa-khanda fa-6x"></i>
-            </div>
-            <div class=" d-flex flex-column ">
-                <h6 class="mb-3 text-sm">Suscripcion Premium</h6>
-                <span class="mb-2 text-xs">Fecha alta: <span
-                        class="text-dark font-weight-bold ms-sm-2">20/07/2020</span></span>
-                <span class="mb-2 text-xs">Precio: <span
-                        class="text-dark ms-sm-2 font-weight-bold">$250</span></span>
-                <span class="text-xs">Servicios: <span class="text-dark ms-sm-2 font-weight-bold"> <i
-                        class="fas fa-wrench mr-2"></i>
-                            <i class="fas fa-ambulance mr-2"></i>
-                            <i class="fas fa-truck-pickup mr-2"></i>
-                            <i class="fas fa-balance-scale-left mr-2"></i>
-                            <i class="fas fa-people-arrows mr-2"></i>
-                            <i class="fas fa-helicopter mr-2"></i></span></span>
-            </div>
 
-            <div class="text-end">
-                    <p> mail: ${usuarioEnSession.email}</p>
-                    <p> Suscripcion: ${usuarioEnSession.suscripcion.descripcion}</p>
-                <form:form action="cancelarSuscripcion" method="POST">
-                    <button type="submit" class="btn btn-link text-danger text-gradient px-3 mb-0">
-                        <i class="far fa-trash-alt me-2" aria-hidden="true"></i>Dar Baja
-                    </button>
-                </form:form>
+        <div class="bg-white col-12 col-md-10 d-flex flex-column flex-md-row p-2 mb-2 mt-3 align-items-center justify-content-evenly">
+            <c:choose>
+                <c:when test="${not empty usuarioEnSession.suscripcion.id}">
+                    <c:choose>
+                        <c:when test="${usuarioEnSession.suscripcion.descripcion=='suscripcion basica'}">
+                            <div class=" d-flex w-25 align-content-center justify-content-center flex-wrap">
+                                <i class="fas fa-shield-alt  fa-6x "></i>
+                            </div>
+                        </c:when>
+                        <c:otherwise>
+                            <div class=" d-flex w-25 align-content-center justify-content-center flex-wrap">
+                                <i class="fas fa-khanda fa-6x "></i>
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
 
-                <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
-                        class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Cambiar</a>
-            </div>
+                    <div class=" d-flex flex-column ">
+                        <h6 class="mb-3 text-sm">${usuarioEnSession.suscripcion.descripcion}</h6>
+                        <span class="mb-2 text-xs">Fecha alta: <span
+                                class="text-dark font-weight-bold ms-sm-2">${usuarioEnSession.suscripcion.fechaAlta}</span></span>
+                        <span class="mb-2 text-xs">Precio: <span
+                                class="text-dark ms-sm-2 font-weight-bold">$${usuarioEnSession.suscripcion.precio}</span></span>
+                        <span class="text-xs">Servicios: <span class="text-dark ms-sm-2 font-weight-bold">
+                        <c:choose>
+                            <c:when test="${usuarioEnSession.suscripcion.descripcion=='suscripcion basica'}">
+                                <i class="fas fa-wrench mr-2"></i>
+                                <i class="fas fa-ambulance mr-2"></i>
+                                <i class="fas fa-truck-pickup mr-2"></i>
+                            </c:when>
+                            <c:otherwise>
+                                <i class="fas fa-wrench mr-2"></i>
+                                <i class="fas fa-ambulance mr-2"></i>
+                                <i class="fas fa-truck-pickup mr-2"></i>
+                                <i class="fas fa-balance-scale-left mr-2"></i>
+                                <i class="fas fa-people-arrows mr-2"></i>
+                                <i class="fas fa-helicopter mr-2"></i>
+                            </c:otherwise>
+                        </c:choose>
+                    </span></span>
+
+                    </div>
+
+                    <div class="text-end">
+                        <form:form action="cancelarSuscripcion" method="POST">
+                            <button type="submit" class="btn btn-link text-danger text-gradient px-3 mb-0">
+                                <i class="far fa-trash-alt me-2" aria-hidden="true"></i>Dar Baja
+                            </button>
+                        </form:form>
+                        <c:choose>
+                            <c:when test="${usuarioEnSession.suscripcion.descripcion=='suscripcion basica'}">
+                            <form:form action="modificarSuscripcionBasicaUsuario" method="POST">
+                                <button type="submit" class="btn btn-link text-success text-gradient px-3 mb-0">
+                                    <i class="far fa-arrow-alt-circle-up" aria-hidden="true"></i>UpGrade
+                                </button>
+                            </form:form>
+                            </c:when>
+                            <c:otherwise>
+                            <form:form action="modificarSuscripcionPremiumUsuario" method="POST">
+                                <button type="submit" class="btn btn-link text-warning text-gradient px-3 mb-0">
+                                    <i class="far fa-arrow-alt-circle-down" aria-hidden="true"></i>DownGrade
+                                </button>
+                            </form:form>
+                            </c:otherwise>
+                        </c:choose>
+                    </div>
+                </c:when>
+                <c:otherwise>
+                    <div class="fondo-login col-12 text-center text-white align-items-center py-1 mt-2">
+                        <p class="m-0">¡No tienes Suscripcion! Puede contratar uno <a class="text-white"
+                                                                                      href="suscripcion">aqui</a>
+                        </p>
+                    </div>
+                </c:otherwise>
+            </c:choose>
         </div>
+
+
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"

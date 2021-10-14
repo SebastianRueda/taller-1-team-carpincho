@@ -24,7 +24,42 @@ public class ControladorFiltros {
 	public ControladorFiltros(ServicioFiltro servicioFiltro) {
 		this.servicioFiltro=servicioFiltro;
 	}
-	
+
+	@RequestMapping("/usuarioEspecialidades")
+	public ModelAndView usuariosPorEspecialidad() {
+		ModelMap modelo = new ModelMap();
+		List<Especialidad> lista = servicioFiltro.traerEspecialidad();
+		modelo.put("especialidades", lista);
+		return new ModelAndView("busquedaPrestadores", modelo);
+	}
+
+	@RequestMapping("/usuarioEspecialidadElegida")
+	public ModelAndView listaEspecialistas(
+			@RequestParam(value = "usuarioEspecialidades", required = false) Long especialidadBuscada){
+		ModelMap modelo = new ModelMap();
+		List<Usuario> listaUsuarios=servicioFiltro.usuariosDeLaEspecialidad(especialidadBuscada);
+		modelo.put("resultadoUsuarios", listaUsuarios);
+		return new ModelAndView("resultadoPrestadores",modelo);
+	}
+
+	@RequestMapping("/usuarioProvincia")
+	public ModelAndView usuariosPorProvincia() {
+		ModelMap modelo = new ModelMap();
+		List<Provincia> listaProv=servicioFiltro.traerprovincia();
+		modelo.put("provincias", listaProv);
+		return new ModelAndView("busquedaPrestadores", modelo);
+	}
+
+	@RequestMapping("/usuarioProvinciaElegida")
+	public ModelAndView listaporProvincia(
+			@RequestParam(value ="usuarioProvincia", required = false) Long provinciaBuscada){
+		ModelMap modelo = new ModelMap();
+		List<Usuario> listaUsuarios=servicioFiltro.usuariosDeLaProvincia(provinciaBuscada);
+		modelo.put("resultadoUsuarios", listaUsuarios);
+		return new ModelAndView("resultadoPrestadores",modelo);
+	}
+
+
 	@RequestMapping("/traerEspecialidades")
 	public ModelAndView listaEspecialidadesDesplegable() {
 		ModelMap modelo = new ModelMap();

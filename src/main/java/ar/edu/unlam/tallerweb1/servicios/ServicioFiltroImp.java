@@ -48,4 +48,11 @@ public class ServicioFiltroImp implements ServicioFiltro{
 		return listaUsuariosDisponibles;
 	}
 
+
+	@Override
+	public Especialidad traerEspecialidadPorId(Long id) {
+		Especialidad especialistaBuscado=repositorioEspecialidades.traerEspecialidadPorId(id);
+		return especialistaBuscado;
+	}
+
 }

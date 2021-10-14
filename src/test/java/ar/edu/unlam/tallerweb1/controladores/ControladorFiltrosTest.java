@@ -63,6 +63,37 @@ public class ControladorFiltrosTest {
 		thenTraerLaListaDeProvinciasYEspecialidadesEsperadas(mav, cantEspecialidades, cantProvincias);
 	}
 	
+	@Test(expected = RuntimeException.class)
+	public void testQueVerificaQueLanceUnaExcepcionCuandoLLegaUnaEspecialidadNula()  {
+		givenUnaEspecialidad(8L);
+		ModelAndView mav =whenSolicitoEspecialidad(this.especialidad);
+		thenEsLaEspecialidadSolicitada(mav);
+	}
+	
+	
+	private void givenUnaEspecialidad(Long especialidadInexistente) {
+		Especialidad especialidadEsperada = null;
+		Mockito.when(servicioFiltro.traerEspecialidadPorId(this.especialidad.getId()))
+									.thenReturn(especialidadEsperada);
+	}
+	
+	
+	private ModelAndView whenSolicitoEspecialidad(Especialidad especialidad) {
+		ModelMap modelo = new ModelMap();
+		Especialidad especialidadBuscada=servicioFiltro.traerEspecialidadPorId(especialidad.getId());
+		modelo.put("especialidadBuscada", especialidadBuscada);
+		return new ModelAndView("busquedaPrestadores",modelo);
+	}
+
+	private void thenEsLaEspecialidadSolicitada(ModelAndView mav)throws RuntimeException {
+        Assertions.assertThat(mav.getViewName()).isEqualTo("busquedaPrestadores");
+		var especialidad= mav.getModel().get("especialidadBuscada");
+		Assertions.assertThat(especialidad).isNull();
+		if(especialidad ==null) {
+			throw new RuntimeException();
+		}
+    }
+
 	private void givenUnUsuarioConEspecialidadYProvincia(Usuario usuario, String especialidad, String provincia) {
 		this.especialidad.setDescripcion(especialidad);
 		this.especialidad.setId(1L);

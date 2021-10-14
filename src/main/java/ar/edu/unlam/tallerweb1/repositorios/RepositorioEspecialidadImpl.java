@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 
 @Repository("repositorioEspecialidad")
 public class RepositorioEspecialidadImpl implements RepositorioEspecialidad {
@@ -53,6 +54,12 @@ public class RepositorioEspecialidadImpl implements RepositorioEspecialidad {
 	@Override
 	public List<Especialidad> traerEspecialidad() {
 		return getSession().createCriteria(Especialidad.class).list();
+	}
+	
+	public Especialidad traerEspecialidadPorId(Long id){
+		return (Especialidad) getSession().createCriteria(Especialidad.class)
+				.add(Restrictions.eq("id", id))
+				.uniqueResult();
 	}
 
 }

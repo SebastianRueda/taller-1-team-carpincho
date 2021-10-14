@@ -29,7 +29,7 @@
                             <a class="nav-link active" aria-current="page" href="traerEspecialidades">Home</a>
                          </li>
                          <li class="nav-item">
-                             <a class="nav-link" href="../vistas/perfilUsuario.jsp">Perfil</a>
+                             <a class="nav-link" href="/proyecto_limpio_spring_war_exploded/perfilUsuario">Perfil</a>
                          </li>
                          <li class="nav-item">
                             <a class="nav-link" href="../vistas/detalles-contrataciones">Contrataciones</a>
@@ -47,23 +47,30 @@
 
 <div class=" h-100 w-100">
     <div class="fondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-centerfondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-center">
-        <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-10 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <c:choose>
+            <c:when test="${not empty error}">
+                <h4 class="text-white mt-5">${error}</h4>
+            </c:when>
+            <c:when test="${empty error}">
+                <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-10 col-md-offset-3 col-sm-8 col-sm-offset-2">
 
-            <h1>Detalle de contratación</h1>
-            <div class="col-12 col-md-3 p-5 pb-0 p-md-1 bg-white rounded-3 mx-1">
-                <div class="card text-center" style="width: 18rem;">
+                    <h1>Detalle de contratación</h1>
+                    <div class="col-12 col-md-3 p-5 pb-0 p-md-1 bg-white rounded-3 mx-1">
+                        <div class="card text-center" style="width: 18rem;">
 
-             <h5 class="card-title">Cliente</h5>
-            <P class="card-text">${prestacion.usuarioSolicitante.email}</P>
-            <h5 class="card-title">Asistente</h5>
-            <P class="card-text">${prestacion.usuarioAsistente.email}</P>
-            <h5 class="card-title" >Especialidad</h5>
-            <P class="card-text">${prestacion.especialidad.descripcion}</P>
-            <h5 class="card-title">Estado</h5>
-            <P class="card-text">${prestacion.estado}</P>
+                            <h5 class="card-title">Cliente</h5>
+                            <P class="card-text">${prestacion.usuarioSolicitante.email}</P>
+                            <h5 class="card-title">Asistente</h5>
+                            <P class="card-text">${prestacion.usuarioAsistente.email}</P>
+                            <h5 class="card-title" >Especialidad</h5>
+                            <P class="card-text">${prestacion.especialidad.descripcion}</P>
+                            <h5 class="card-title">Estado</h5>
+                            <P class="card-text">${prestacion.estado}</P>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+            </c:when>
+        </c:choose>
     </div>
 
 </div>

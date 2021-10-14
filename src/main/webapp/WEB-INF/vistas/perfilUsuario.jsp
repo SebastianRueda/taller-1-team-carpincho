@@ -22,7 +22,7 @@
         <div class="col-12 col-md-6 d-flex bg-white p-1 align-content-center justify-content-center">
             <div class="d-flex align-items-center flex-column w-75  align-content-center justify-content-center flex-wrap text-center">
                 <img src="imagenes/perfil.png" alt="Foto Perfil" class=""
-                     width=150 height=150 />
+                     width=150 height=150/>
                 <h3 class="mt-3">${usuarioEnSession.nombre} ${usuarioEnSession.apellido}</h3>
                 <p class="text-muted m-0">${usuarioEnSession.email}</p>
                 <p class="text-muted m-0">Argentino</p>
@@ -81,27 +81,27 @@
 
         <div class="bg-white col-12 col-md-10 d-flex flex-column flex-md-row p-2 mb-2 mt-3 align-items-center justify-content-evenly">
             <c:choose>
-            <c:when test="${not empty usuarioEnSession.suscripcion.id}">
-                <c:choose>
-                    <c:when test="${usuarioEnSession.suscripcion.descripcion=='suscripcion basica'}">
-                        <div class=" d-flex w-25 align-content-center justify-content-center flex-wrap">
-                            <i class="fas fa-shield-alt  fa-6x"></i>
-                        </div>
-                    </c:when>
-                    <c:otherwise>
-                        <div class=" d-flex w-25 align-content-center justify-content-center flex-wrap">
-                            <i class="fas fa-khanda fa-6x"></i>
-                        </div>
-                    </c:otherwise>
-                </c:choose>
+                <c:when test="${not empty usuarioEnSession.suscripcion.id}">
+                    <c:choose>
+                        <c:when test="${usuarioEnSession.suscripcion.descripcion=='suscripcion basica'}">
+                            <div class=" d-flex w-25 align-content-center justify-content-center flex-wrap">
+                                <i class="fas fa-shield-alt  fa-6x "></i>
+                            </div>
+                        </c:when>
+                        <c:otherwise>
+                            <div class=" d-flex w-25 align-content-center justify-content-center flex-wrap">
+                                <i class="fas fa-khanda fa-6x "></i>
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
 
-                <div class=" d-flex flex-column ">
-                    <h6 class="mb-3 text-sm">${usuarioEnSession.suscripcion.descripcion}</h6>
-                    <span class="mb-2 text-xs">Fecha alta: <span
-                            class="text-dark font-weight-bold ms-sm-2">${usuarioEnSession.suscripcion.fechaAlta}</span></span>
-                    <span class="mb-2 text-xs">Precio: <span
-                            class="text-dark ms-sm-2 font-weight-bold">$${usuarioEnSession.suscripcion.precio}</span></span>
-                    <span class="text-xs">Servicios: <span class="text-dark ms-sm-2 font-weight-bold">
+                    <div class=" d-flex flex-column ">
+                        <h6 class="mb-3 text-sm">${usuarioEnSession.suscripcion.descripcion}</h6>
+                        <span class="mb-2 text-xs">Fecha alta: <span
+                                class="text-dark font-weight-bold ms-sm-2">${usuarioEnSession.suscripcion.fechaAlta}</span></span>
+                        <span class="mb-2 text-xs">Precio: <span
+                                class="text-dark ms-sm-2 font-weight-bold">$${usuarioEnSession.suscripcion.precio}</span></span>
+                        <span class="text-xs">Servicios: <span class="text-dark ms-sm-2 font-weight-bold">
                         <c:choose>
                             <c:when test="${usuarioEnSession.suscripcion.descripcion=='suscripcion basica'}">
                                 <i class="fas fa-wrench mr-2"></i>
@@ -119,24 +119,39 @@
                         </c:choose>
                     </span></span>
 
-                </div>
+                    </div>
 
-                <div class="text-end">
-                    <form:form action="cancelarSuscripcion" method="POST">
-                        <button type="submit" class="btn btn-link text-danger text-gradient px-3 mb-0">
-                            <i class="far fa-trash-alt me-2" aria-hidden="true"></i>Dar Baja
-                        </button>
-                    </form:form>
-                    <a class="btn btn-link text-dark px-3 mb-0" href=""><i
-                            class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Cambiar</a>
-                </div>
-            </c:when>
-            <c:otherwise>
-                <div class="fondo-login col-12 text-center text-white align-items-center py-1 mt-2">
-                    <p class="m-0">¡No tienes Suscripcion! Puede contratar uno <a class="text-white" href="suscripcion">aqui</a>
-                    </p>
-                </div>
-            </c:otherwise>
+                    <div class="text-end">
+                        <form:form action="cancelarSuscripcion" method="POST">
+                            <button type="submit" class="btn btn-link text-danger text-gradient px-3 mb-0">
+                                <i class="far fa-trash-alt me-2" aria-hidden="true"></i>Dar Baja
+                            </button>
+                        </form:form>
+                        <c:choose>
+                            <c:when test="${usuarioEnSession.suscripcion.descripcion=='suscripcion basica'}">
+                            <form:form action="modificarSuscripcionBasicaUsuario" method="POST">
+                                <button type="submit" class="btn btn-link text-success text-gradient px-3 mb-0">
+                                    <i class="far fa-arrow-alt-circle-up" aria-hidden="true"></i>UpGrade
+                                </button>
+                            </form:form>
+                            </c:when>
+                            <c:otherwise>
+                            <form:form action="modificarSuscripcionPremiumUsuario" method="POST">
+                                <button type="submit" class="btn btn-link text-warning text-gradient px-3 mb-0">
+                                    <i class="far fa-arrow-alt-circle-down" aria-hidden="true"></i>DownGrade
+                                </button>
+                            </form:form>
+                            </c:otherwise>
+                        </c:choose>
+                    </div>
+                </c:when>
+                <c:otherwise>
+                    <div class="fondo-login col-12 text-center text-white align-items-center py-1 mt-2">
+                        <p class="m-0">¡No tienes Suscripcion! Puede contratar uno <a class="text-white"
+                                                                                      href="suscripcion">aqui</a>
+                        </p>
+                    </div>
+                </c:otherwise>
             </c:choose>
         </div>
 

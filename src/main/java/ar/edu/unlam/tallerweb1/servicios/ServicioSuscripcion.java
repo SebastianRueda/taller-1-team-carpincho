@@ -7,13 +7,17 @@ import java.util.List;
 
 
 public interface ServicioSuscripcion {
-     List<Suscripcion> mostrarTodasLasSuscripciones();
-     Suscripcion buscarSuscripcionPorId(Long idSuscripcion);
+    List<Suscripcion> mostrarTodasLasSuscripciones();
 
-     Suscripcion buscarPorNombre(String nombre);
+    Suscripcion buscarSuscripcionPorId(Long idSuscripcion);
 
-     void cancelarSuscripcion(String email) throws Exception;
+    Suscripcion buscarPorNombre(String nombre);
 
+    void cancelarSuscripcion(String email) throws Exception;
 
-    void modificarSuscripcionBasicaAPremium(String email ,Long idSuscripcionPremium) throws Exception;
+    void modificarSuscripcionBasicaAPremium(String email, Suscripcion suscripcionPremium) throws Exception;
+
+    void upGradeSuscripcionBasicaAPremium(Usuario usuarioEnSession, Suscripcion suscripcionPremium) throws Exception;
+
+    void downGradeSuscripcionBasicaAPremium(Usuario usuarioEnSession, Suscripcion suscripcionBasica) throws Exception;
 }

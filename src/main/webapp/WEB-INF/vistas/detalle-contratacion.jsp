@@ -16,6 +16,7 @@
         <h1>Detalle de contratación</h1>
 
         <h5>Cliente</h5>
+
         <P>${prestacion.usuarioSolicitante.email}</P>
         <h5>Asistente</h5>
         <P>${prestacion.usuarioAsistente.email}</P>

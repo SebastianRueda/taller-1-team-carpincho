@@ -44,26 +44,26 @@ public class ControladorContratar {
     @RequestMapping(path = "/contratar-prestacion", method = RequestMethod.GET)
     public ModelAndView contratarPrestacion(@RequestParam(value = "asistente-id") Long id) {
         var asistente = servicioUsuario.usuarioFindById(id);
+        var model = new ModelMap();
 
         if (asistente == null) {
-            throw new IllegalArgumentException("Error no asistente");
+            model.put("error", "No se pudo encontrar los datos del asistente para completar la operación");
+        } else {
+            Prestacion prestacion = new Prestacion();
+            prestacion.setEstado(PrestacionEstado.ACTIVO.getEstado());
+            prestacion.setEspecialidad(asistente.getEspecialidad());
+            prestacion.setUsuarioAsistente(asistente);
+
+            var cliente = UsuarioCache.getUsuario();
+
+            prestacion.setUsuarioSolicitante(cliente);
+
+            servicioPrestacion.save(prestacion);
+
+            prestacion.getId();
+
+            model.put("prestacion", prestacion);
         }
-
-        Prestacion prestacion = new Prestacion();//servicioPrestacion.prestacionFindById(asistente.getEspecialidad().getId());
-        prestacion.setEstado(PrestacionEstado.ACTIVO.getEstado());
-        prestacion.setEspecialidad(asistente.getEspecialidad());
-        prestacion.setUsuarioAsistente(asistente);
-
-        var cliente = UsuarioCache.getUsuario();
-
-        prestacion.setUsuarioSolicitante(cliente);
-
-        servicioPrestacion.save(prestacion);
-
-        prestacion.getId();
-
-        var model = new ModelMap();
-        model.put("prestacion", prestacion);
 
         return new ModelAndView("detalle-contratacion", model);
     }

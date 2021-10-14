@@ -10,8 +10,8 @@ import ar.edu.unlam.tallerweb1.repositorios.RepositorioUsuario;
 
 public class ServicioFiltroTest {
 	private ServicioFiltro servicioFiltro=new ServicioFiltroImp(mock(RepositorioEspecialidad.class),mock(RepositorioProvincias.class),mock(RepositorioUsuario.class));
-	@Test(expected=RuntimeException.class)
-	public void testQueVerificaQueLaListaDeEspecialidadesEstaVacia() {
-		
-	}
+//	@Test(expected=RuntimeException.class)
+//	public void testQueVerificaQueLaListaDeEspecialidadesEstaVacia() {
+//		
+//	}
 }

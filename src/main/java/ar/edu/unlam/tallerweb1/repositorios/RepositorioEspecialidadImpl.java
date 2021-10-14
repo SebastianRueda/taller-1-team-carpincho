@@ -50,12 +50,14 @@ public class RepositorioEspecialidadImpl implements RepositorioEspecialidad {
 			return null;
 		}
 	}
-
+	
+	//metodo que hace la precarga de los option Especialidad de la pagina de busquedaPrestadores.jsp
 	@Override
 	public List<Especialidad> traerEspecialidad() {
 		return getSession().createCriteria(Especialidad.class).list();
 	}
 	
+	//metodo necesario para poder evitar que el usuario pase por GET un id de un Usuario que no corresponda.
 	public Especialidad traerEspecialidadPorId(Long id){
 		return (Especialidad) getSession().createCriteria(Especialidad.class)
 				.add(Restrictions.eq("id", id))

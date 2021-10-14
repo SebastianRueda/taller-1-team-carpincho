@@ -48,7 +48,9 @@ public class ServicioFiltroImp implements ServicioFiltro{
 		return listaUsuariosDisponibles;
 	}
 
-
+	
+	
+	//metodo necesario para poder evitar que el usuario pase por GET un id de un Usuario que no corresponda.
 	@Override
 	public List<Usuario> usuariosDeLaEspecialidad(Long idEspecialidad) {
 		List<Usuario> listaUsuariosDisponibles=repositorioUsuario.usuariosDeLaEspecialidad(idEspecialidad);

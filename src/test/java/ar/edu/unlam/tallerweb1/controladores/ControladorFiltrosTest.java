@@ -64,7 +64,7 @@ public class ControladorFiltrosTest {
 	}
 	
 	@Test
-	public void testQueTeLLevaAOtraVistaCuandoLLegaUnaEspecialidadNula()  {
+	public void testQueTeLLevaAOtraVistaCuandoLLegaUnaEspecialidadNulaporGET()  {
 		givenUnaEspecialidad(8L);
 		ModelAndView mav =whenSolicitoEspecialidad(this.especialidad);
 		ModelAndView errorMav = thenEsLaEspecialidadSolicitada(mav);
@@ -73,14 +73,14 @@ public class ControladorFiltrosTest {
 	
 	private void givenUnaEspecialidad(Long especialidadInexistente) {
 		Especialidad especialidadEsperada = null;
-		Mockito.when(servicioFiltro.traerEspecialidadPorId(this.especialidad.getId()))
-									.thenReturn(especialidadEsperada);
+		Mockito.when(servicioFiltro.usuariosDeLaEspecialidad(this.especialidad.getId()))
+									.thenReturn((List<Usuario>) especialidadEsperada);
 	}
 	
 	
 	private ModelAndView whenSolicitoEspecialidad(Especialidad especialidad) {
 		ModelMap modelo = new ModelMap();
-		Especialidad especialidadBuscada=servicioFiltro.traerEspecialidadPorId(especialidad.getId());
+		Especialidad especialidadBuscada=(Especialidad) servicioFiltro.usuariosDeLaEspecialidad(especialidad.getId());
 		modelo.put("especialidadBuscada", especialidadBuscada);
 		return new ModelAndView("busquedaPrestadores",modelo);
 	}

@@ -12,4 +12,6 @@ public interface ServicioFiltro {
 	List<Especialidad> traerEspecialidad();
 	List<Provincia> traerprovincia();
 	List <Usuario> usuariosDeLaEspecialidadYprovincia(Long idEspecialidad, Long idProvincia);
+	List<Usuario> usuariosDeLaProvincia(Long idProvincia);
+	List<Usuario> usuariosDeLaEspecialidad(Long idEspecialidad);
 }

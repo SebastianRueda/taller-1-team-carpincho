@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.repositorios;
 
+import ar.edu.unlam.tallerweb1.modelo.Rol;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 
 import java.util.List;
@@ -21,4 +22,9 @@ public interface RepositorioUsuario {
     List<Usuario> getAll();
 
     void guardarUsuario(Usuario usuario);
+
+
+    List<Usuario> usuariosDeLaEspecialidad(Long idEspecialidad);
+
+    List<Usuario> usuariosDeLaProvincia(Long idProvincia);
 }

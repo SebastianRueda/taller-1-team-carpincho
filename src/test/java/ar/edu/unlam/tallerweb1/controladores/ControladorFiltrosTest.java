@@ -63,13 +63,13 @@ public class ControladorFiltrosTest {
 		thenTraerLaListaDeProvinciasYEspecialidadesEsperadas(mav, cantEspecialidades, cantProvincias);
 	}
 	
-	@Test(expected = RuntimeException.class)
-	public void testQueVerificaQueLanceUnaExcepcionCuandoLLegaUnaEspecialidadNula()  {
+	@Test
+	public void testQueTeLLevaAOtraVistaCuandoLLegaUnaEspecialidadNula()  {
 		givenUnaEspecialidad(8L);
 		ModelAndView mav =whenSolicitoEspecialidad(this.especialidad);
-		thenEsLaEspecialidadSolicitada(mav);
+		ModelAndView errorMav = thenEsLaEspecialidadSolicitada(mav);
+		Assertions.assertThat(errorMav.getViewName()).isEqualTo("excepcionFiltro");
 	}
-	
 	
 	private void givenUnaEspecialidad(Long especialidadInexistente) {
 		Especialidad especialidadEsperada = null;
@@ -85,13 +85,19 @@ public class ControladorFiltrosTest {
 		return new ModelAndView("busquedaPrestadores",modelo);
 	}
 
-	private void thenEsLaEspecialidadSolicitada(ModelAndView mav)throws RuntimeException {
+	private ModelAndView thenEsLaEspecialidadSolicitada(ModelAndView mav){
         Assertions.assertThat(mav.getViewName()).isEqualTo("busquedaPrestadores");
 		var especialidad= mav.getModel().get("especialidadBuscada");
 		Assertions.assertThat(especialidad).isNull();
+		ModelMap model=new ModelMap();
+		
 		if(especialidad ==null) {
-			throw new RuntimeException();
+			model.put("error","El Numero de Especialista no corresponde" );
+			model.put("volver","Volver A La Pagina Anterior" );
+			return new ModelAndView ("excepcionFiltro",model);
 		}
+		return null;
+		 
     }
 
 	private void givenUnUsuarioConEspecialidadYProvincia(Usuario usuario, String especialidad, String provincia) {

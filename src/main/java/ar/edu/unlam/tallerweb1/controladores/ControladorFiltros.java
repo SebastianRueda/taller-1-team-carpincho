@@ -45,6 +45,12 @@ public class ControladorFiltros {
 		ModelMap modelo = new ModelMap();
 		List<Usuario> listaUsuarios=servicioFiltro.usuariosDeLaEspecialidadYprovincia(especialidadBuscada,provinciaBuscada);
 		modelo.put("resultadoUsuarios", listaUsuarios);
+		if(listaUsuarios.size()==0) {
+			ModelMap model=new ModelMap();
+			model.put("error","El Numero de Especialista no corresponde" );
+			model.put("volver","Volver A La Pagina Anterior" );
+			return new ModelAndView ("excepcionFiltro",model);
+		}
 		return new ModelAndView("resultadoPrestadores",modelo);
 	}
 	

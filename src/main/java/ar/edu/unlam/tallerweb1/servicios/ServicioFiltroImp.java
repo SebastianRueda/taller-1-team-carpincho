@@ -50,7 +50,7 @@ public class ServicioFiltroImp implements ServicioFiltro{
 
 
 	@Override
-	public Especialidad traerEspecialidadPorId(Long id) {
+	public Especialidad traerEspecialidadPorId(Long id){
 		Especialidad especialistaBuscado=repositorioEspecialidades.traerEspecialidadPorId(id);
 		return especialistaBuscado;
 	}

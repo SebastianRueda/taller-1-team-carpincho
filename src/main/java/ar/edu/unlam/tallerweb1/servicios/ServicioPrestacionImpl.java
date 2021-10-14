@@ -3,6 +3,7 @@ package ar.edu.unlam.tallerweb1.servicios;
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Prestacion;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioPrestacion;
+import ar.edu.unlam.tallerweb1.repositorios.RepositorioUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,7 +17,7 @@ public class ServicioPrestacionImpl implements ServicioPrestacion{
     private RepositorioPrestacion prestacionDao;
 
     @Autowired
-    public ServicioPrestacionImpl(RepositorioPrestacion prestacionDao) {
+    public ServicioPrestacionImpl(RepositorioPrestacion prestacionDao, RepositorioUsuario repositorioUsuario) {
         this.prestacionDao = prestacionDao;
     }
 

@@ -4,7 +4,6 @@ import ar.edu.unlam.tallerweb1.modelo.*;
 
 import java.util.List;
 
-import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -45,7 +44,7 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario {
 	}
 
 	@Override
-	public Usuario buscar(String email) {
+	public Usuario buscarUsuarioPorMail(String email) {
 		return (Usuario) sessionFactory.getCurrentSession().createCriteria(Usuario.class)
 				.add(Restrictions.eq("email", email))
 				.uniqueResult();
@@ -57,7 +56,7 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario {
 	}
 
 	@Override
-	public List<Usuario> usuariosDeLaEspecialidadYprovincia(Long idEspecialidad, Long idProvincia){
+	public List usuariosDeLaEspecialidadYprovincia(Long idEspecialidad, Long idProvincia){
 		return sessionFactory.getCurrentSession().createCriteria(Usuario.class)
 				.createAlias("especialidad", "especialidadBuscada")
 				.createAlias("provincia","provinciaBuscada")
@@ -99,4 +98,25 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario {
 		sessionFactory.getCurrentSession().save(usuario);
 	}
 
+	@Override
+	public List<Usuario> usuariosDeLaEspecialidad(Long idEspecialidad) {
+		return sessionFactory.getCurrentSession().createCriteria(Usuario.class)
+				.createAlias("especialidad", "especialidadBuscada")
+				.add(Restrictions.eq("especialidadBuscada.id",idEspecialidad))
+				.list();
+	}
+
+	@Override
+	public List <Usuario> usuariosDeLaProvincia(Long idProvincia) {
+		return sessionFactory.getCurrentSession().createCriteria(Usuario.class)
+				.createAlias("provincia","provinciaBuscada")
+				.add(Restrictions.eq("provinciaBuscada.id",idProvincia))
+				.list();
+	}
+
+
+//	@Override
+//	public Usuario buscarUsuarioPorMail(String rol) {
+//		return null;
+//	}
 }

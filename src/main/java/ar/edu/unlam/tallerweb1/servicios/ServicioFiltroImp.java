@@ -48,4 +48,18 @@ public class ServicioFiltroImp implements ServicioFiltro{
 		return listaUsuariosDisponibles;
 	}
 
+	@Override
+	public List<Usuario> usuariosDeLaEspecialidad(Long idEspecialidad) {
+		List<Usuario> listaUsuariosDisponibles=repositorioUsuario.usuariosDeLaEspecialidad(idEspecialidad);
+		return listaUsuariosDisponibles;
+	}
+
+	@Override
+	public List<Usuario> usuariosDeLaProvincia(Long idProvincia) {
+		List<Usuario> listaUsuariosDisponibles=repositorioUsuario.usuariosDeLaProvincia(idProvincia);
+		return listaUsuariosDisponibles;
+	}
+
+
+
 }

@@ -10,10 +10,8 @@ public interface ServicioUsuario {
     void save(Usuario nuevoUsuario);
     void delete(Usuario usuario);
     void update(Usuario usuario);
-
     List<Usuario> getAll();
     Usuario usuarioFindById(Long id);
-
-
+    Usuario buscarUsuarioPorMail(String email);
 }
 

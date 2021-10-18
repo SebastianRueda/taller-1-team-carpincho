@@ -2,7 +2,10 @@ package ar.edu.unlam.tallerweb1.servicios;
 
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioUsuario;
+import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
@@ -10,8 +13,18 @@ import static org.mockito.Mockito.*;
 public class ServicioLoginTest {
 
     public static final String EMAIL = "seba@seba.com";
-    private RepositorioUsuario repositorioUsuario = mock(RepositorioUsuario.class);
-    private ServicioLogin servicioLogin = new ServicioLoginImpl(repositorioUsuario);
+
+
+    @Mock
+    RepositorioUsuario repositorioUsuario;
+    ServicioLogin servicioLogin= null;
+
+    @Before
+    public void init() throws Exception {
+        MockitoAnnotations.initMocks(this);
+        this.servicioLogin=new ServicioLoginImpl(repositorioUsuario);
+    }
+
 
     @Test(expected = Exception.class)
     public void siMeRegistroConUsuarioExistenteDaError() throws Exception {

@@ -89,10 +89,10 @@ public class ControladorContratar {
         return new ModelAndView("prestaciones", modelo);
     }
 
-    @RequestMapping(path = "/perfilUsuario", method = RequestMethod.GET)
-    public ModelAndView IrAPerfilUsuario(){
-        String mailPrueba="ecuevas@alumno.unlam.edu.ar";
-        Usuario usuario = servicioUsuario.buscarUsuarioPorMail(mailPrueba);
+    @RequestMapping(path = "/perfilUsuario/{id}", method = RequestMethod.GET)
+    public ModelAndView IrAPerfilUsuario(@PathVariable("id") Long id){
+        //String mailPrueba="ecuevas@alumno.unlam.edu.ar";
+        Usuario usuario = servicioUsuario.usuarioFindById(id);
         ModelMap modelo = new ModelMap();
 
         modelo.put("usuarioEnSession",usuario);

@@ -11,8 +11,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link href="css/Login.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link href="../css/Login.css" rel="stylesheet">
     <title>Document</title>
 </head>
 
@@ -21,7 +21,7 @@
     <div class="row w-100 bg-light m-auto p-2 justify-content-md-center" style="min-height: 500px; max-width: 1024px;">
         <div class="col-12 col-md-6 d-flex bg-white p-1 align-content-center justify-content-center">
             <div class="d-flex align-items-center flex-column w-75  align-content-center justify-content-center flex-wrap text-center">
-                <img src="imagenes/perfil.png" alt="Foto Perfil" class=""
+                <img src="../imagenes/perfil.png" alt="Foto Perfil" class=""
                      width=150 height=150/>
                 <h3 class="mt-3">${usuarioEnSession.nombre} ${usuarioEnSession.apellido}</h3>
                 <p class="text-muted m-0">${usuarioEnSession.email}</p>
@@ -122,21 +122,21 @@
                     </div>
 
                     <div class="text-end">
-                        <form:form action="cancelarSuscripcion" method="POST">
+                        <form:form action="../cancelarSuscripcion" method="POST">
                             <button type="submit" class="btn btn-link text-danger text-gradient px-3 mb-0">
                                 <i class="far fa-trash-alt me-2" aria-hidden="true"></i>Dar Baja
                             </button>
                         </form:form>
                         <c:choose>
                             <c:when test="${usuarioEnSession.suscripcion.descripcion=='suscripcion basica'}">
-                            <form:form action="modificarSuscripcionBasicaUsuario" method="POST">
+                            <form:form action="../modificarSuscripcionBasicaUsuario" method="POST">
                                 <button type="submit" class="btn btn-link text-success text-gradient px-3 mb-0">
                                     <i class="far fa-arrow-alt-circle-up" aria-hidden="true"></i>UpGrade
                                 </button>
                             </form:form>
                             </c:when>
                             <c:otherwise>
-                            <form:form action="modificarSuscripcionPremiumUsuario" method="POST">
+                            <form:form action="../modificarSuscripcionPremiumUsuario" method="POST">
                                 <button type="submit" class="btn btn-link text-warning text-gradient px-3 mb-0">
                                     <i class="far fa-arrow-alt-circle-down" aria-hidden="true"></i>DownGrade
                                 </button>
@@ -148,7 +148,7 @@
                 <c:otherwise>
                     <div class="fondo-login col-12 text-center text-white align-items-center py-1 mt-2">
                         <p class="m-0">¡No tienes Suscripcion! Puede contratar uno <a class="text-white"
-                                                                                      href="suscripcion">aqui</a>
+                                                                                      href="../suscripcion">aqui</a>
                         </p>
                     </div>
                 </c:otherwise>
@@ -164,10 +164,10 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
         integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous">
 </script>
-<script src="js/bootstrap.min.js"
+<script src="../js/bootstrap.min.js"
         integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous">
 </script>
-<script src="js/popper.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
+<script src="../js/popper.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
         crossorigin="anonymous"></script>
 </body>
 

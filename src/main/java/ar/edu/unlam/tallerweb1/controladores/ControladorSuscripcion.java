@@ -73,14 +73,14 @@ public class ControladorSuscripcion {
             servicioSuscripcion.cancelarSuscripcion(usuario.getEmail());
         } catch (Exception e) {
             modelo.put("usuarioEnSession", usuario);
-            modelo.put("msgCancelacionErronia", "¡No tienes una Suscripcion!");
-            return new ModelAndView("redirect:/perfilUsuario", modelo);
+            modelo.put("msgCancelacionErronia", "No tienes una Suscripcion");
+            return new ModelAndView("redirect:/perfilUsuario/" + usuario.getId(), modelo);
         }
 
         Usuario usuarioActualizadoSinSuscripcion = servicioUsuario.buscarUsuarioPorMail(this.emailDeLUsuarioDeLaSesion);
         modelo.put("usuarioEnSession",usuarioActualizadoSinSuscripcion);
         modelo.put("msgCancelacionExitosa", "¡Cancelacion exitosa! rata de alcatarilla");
-        return new ModelAndView("redirect:/perfilUsuario", modelo);
+        return new ModelAndView("redirect:/perfilUsuario/" + usuario.getId(), modelo);
     }
 
    /* @RequestMapping(method = RequestMethod.POST, path = "/modificarSuscripcionBasicaUsuario")
@@ -110,11 +110,11 @@ public class ControladorSuscripcion {
             servicioSuscripcion.upGradeSuscripcionBasicaAPremium(usuarioEnSession,suscripcionPremium);
         } catch (Exception e) {
             modelo.put("msgModificacionSuscripcion","Upgrade fallido");
-            return new ModelAndView("redirect:/perfilUsuario", modelo);
+            return new ModelAndView("redirect:/perfilUsuario/"+ usuarioEnSession.getId(), modelo);
         }
 
         modelo.put("msgModificacionSuscripcion","Upgrade exitosa");
-        return new ModelAndView("redirect:/perfilUsuario", modelo);
+        return new ModelAndView("redirect:/perfilUsuario/"+ usuarioEnSession.getId(), modelo);
     }
 
     @RequestMapping(method = RequestMethod.POST, path = "/modificarSuscripcionPremiumUsuario")
@@ -130,10 +130,10 @@ public class ControladorSuscripcion {
             servicioSuscripcion.downGradeSuscripcionBasicaAPremium(usuarioEnSession,suscripcionBasica);
         } catch (Exception e) {
             modelo.put("msgModificacionSuscripcion","downGrade fallido");
-            return new ModelAndView("redirect:/perfilUsuario", modelo);
+            return new ModelAndView("redirect:/perfilUsuario/"+ usuarioEnSession.getId(), modelo);
         }
 
         modelo.put("msgModificacionSuscripcion","downGrade exitosa");
-        return new ModelAndView("redirect:/perfilUsuario", modelo);
+        return new ModelAndView("redirect:/perfilUsuario/"+ usuarioEnSession.getId(), modelo);
     }
 }

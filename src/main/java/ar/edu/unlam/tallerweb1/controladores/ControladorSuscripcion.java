@@ -80,6 +80,7 @@ public class ControladorSuscripcion {
         Usuario usuarioActualizadoSinSuscripcion = servicioUsuario.buscarUsuarioPorMail(this.emailDeLUsuarioDeLaSesion);
         modelo.put("usuarioEnSession",usuarioActualizadoSinSuscripcion);
         modelo.put("msgCancelacionExitosa", "¡Cancelacion exitosa! rata de alcatarilla");
+
         return new ModelAndView("redirect:/perfilUsuario/" + usuario.getId(), modelo);
     }
 

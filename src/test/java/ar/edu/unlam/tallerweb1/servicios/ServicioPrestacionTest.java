@@ -14,6 +14,8 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.*;
 
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -80,6 +82,46 @@ public class ServicioPrestacionTest {
         thenAnalizoElContradoSeaIgualAlQueEspero(1L, prestacionCONTRATADA);
     }
 
+
+    @Test
+    public void finalizarConExitoUnaPrestacion() throws Exception {
+       Prestacion prestacionActiva = givenUnaPrestacionActiva();
+        whenFinalizaLaPrestacion(prestacionActiva);
+        thenVerificarQueLaPrestacionNoEstaActiva();
+    }
+    @Test (expected = Exception.class)
+    public  void finalizarUnaPrestacionQueYaEstaFinalizadaDaError() throws Exception {
+       Prestacion prestacionFinalizada=  givenUnaPrestacionFinalizada();
+        whenFinalizoUnaPrestacionQueYaEstabaFinalizada(prestacionFinalizada);
+
+    }
+
+
+
+    private void whenFinalizoUnaPrestacionQueYaEstabaFinalizada(Prestacion prestacionFinalizada) throws Exception {
+        servicioContratar.finalizarPrestacion(prestacionFinalizada);
+    }
+
+    private Prestacion givenUnaPrestacionFinalizada() {
+        Prestacion prestacion = new Prestacion();
+        prestacion.setEstado("finalizado");
+        return prestacion;
+    }
+
+    private void thenVerificarQueLaPrestacionNoEstaActiva() {
+        verify(repositorioContratar,times(1)).update(anyObject());
+    }
+
+    private void whenFinalizaLaPrestacion(Prestacion prestacion) throws Exception {
+        servicioContratar.finalizarPrestacion(prestacion);
+    }
+
+    private Prestacion givenUnaPrestacionActiva() {
+        Prestacion prestacion = new Prestacion();
+        prestacion.setEstado("activo");
+        return prestacion;
+
+    }
 
     private void givenContratado() {
     }

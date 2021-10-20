@@ -51,4 +51,17 @@ public class ServicioPrestacionImpl implements ServicioPrestacion{
     public List<Prestacion> prestacionFindByEspecialidad(Especialidad especialidad) {
         return prestacionDao.prestacionFindByEspecialidad(especialidad);
     }
+
+    @Override
+    public void finalizarPrestacion(Prestacion prestacion) throws Exception {
+
+        if(prestacion.getEstado()=="finalizado") {
+             throw  new Exception();
+        }
+            prestacion.setEstado("finalizado");
+            prestacionDao.update(prestacion);
+
+    }
+
+
 }

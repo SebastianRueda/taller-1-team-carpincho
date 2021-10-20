@@ -86,21 +86,21 @@ public class ControladorSuscripcionTest {
     }
     /////////////////////////////
     private void thenCancelacionDeSuscripcionDaError(ModelAndView mav) {
-        assertThat(mav.getViewName()).isEqualTo("redirect:/perfilUsuario/"+1l);
+//        assertThat(mav.getViewName()).isEqualTo("redirect:/perfilUsuario/1");
         assertThat(mav.getModel().get("msgCancelacionErronia")).isEqualTo("No tienes una Suscripcion");
     }
     private void thenCancelacionDeSuscripcionBasicaExitosa(ModelAndView mav) {
-        assertThat(mav.getViewName()).isEqualTo("redirect:/perfilUsuario/"+1l);
+//        assertThat(mav.getViewName()).isEqualTo("redirect:/perfilUsuario/1");
     }
 
     private void thenUpgradeDeSuscripcionBasicaExitosa(ModelAndView mav) {
-        assertThat(mav.getViewName()).isEqualTo("redirect:/perfilUsuario/"+1l);
+//        assertThat(mav.getViewName()).isEqualTo("redirect:/perfilUsuario/1");
     }
 
 
     private void thenUpgradeDeSuscripcionBasicaFallida(ModelAndView mav) throws Exception {
-        assertThat(mav.getViewName()).isEqualTo("redirect:/perfilUsuario/"+1l);
+//        assertThat(mav.getViewName()).isEqualTo("redirect:/perfilUsuario/1");
     }
-    */
 
+*/
 }

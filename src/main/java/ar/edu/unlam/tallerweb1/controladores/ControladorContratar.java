@@ -99,4 +99,19 @@ public class ControladorContratar {
 
         return new ModelAndView("perfilUsuario", modelo);
     }
+
+    public ModelAndView finalizarPrestacion(Long idPrestacion){
+       Prestacion prestacion = servicioPrestacion.prestacionFindById(idPrestacion);
+       ModelMap model = new ModelMap();
+
+        try {
+            servicioPrestacion.finalizarPrestacion(prestacion);
+        } catch (Exception e) {
+            model.put("msgFinalizacionDeContratacionErronea", "Error al finalizar la Prestacion ");
+            return new ModelAndView("perfilUsuario", model);
+        }
+        model.put("msgFinalizacionDeContratacion","Prestacion finalizada correctamente");
+
+        return new ModelAndView("detalle-contratacion", model);
+    }
 }

@@ -66,6 +66,7 @@
                             <P class="card-text">${prestacion.especialidad.descripcion}</P>
                             <h5 class="card-title">Estado</h5>
                             <P class="card-text">${prestacion.estado}</P>
+
                         </div>
                     </div>
                 </div>

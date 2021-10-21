@@ -26,6 +26,7 @@ public class ControladorLogin {
 	// applicationContext.xml
 	private ServicioLogin servicioLogin;
 	private ServicioUsuario servicioUsuario;
+	HttpServletRequest request;
 
 	@Autowired
 	public ControladorLogin(ServicioLogin servicioLogin,ServicioUsuario servicioUsuario){
@@ -59,8 +60,9 @@ public class ControladorLogin {
 			UsuarioCache.setUsuario(usuarioBuscado);
 			request.getSession().setAttribute("ROL", usuarioBuscado.getRol());
 
-			HttpSession session = request.getSession();
-			session.setAttribute("user",servicioUsuario.buscarUsuarioPorMail(datosLogin.getEmail()));
+			HttpSession misession= request.getSession(true);
+			misession.setAttribute("usuarioLogueado",usuarioBuscado);
+
 			return new ModelAndView("redirect:/traerEspecialidades");
 		} else {
 			// si el usuario no existe agrega un mensaje de error en el modelo.

@@ -14,12 +14,17 @@ import ar.edu.unlam.tallerweb1.modelo.Provincia;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioFiltro;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class ControladorFiltros {
 	
 	
 	private ServicioFiltro servicioFiltro;
-	
+	private HttpServletRequest request;
+
+
 	@Autowired
 	public ControladorFiltros(ServicioFiltro servicioFiltro) {
 		this.servicioFiltro=servicioFiltro;
@@ -67,6 +72,7 @@ public class ControladorFiltros {
 		modelo.put("especialidades", lista);
 		List<Provincia> listaProv=servicioFiltro.traerprovincia();
 		modelo.put("provincias", listaProv);
+
 		return new ModelAndView("busquedaPrestadores", modelo);
 	}
 	

@@ -58,6 +58,8 @@
 				<button class="btn btn-lg btn-primary btn-block" Type="Submit">Contratar</button>
 			</form>	--%>
 		<%-- </c:if> --%>
+
+
 		<div class="col-12 ">
 			<div class="card card-table">
 				<div class="card-header">

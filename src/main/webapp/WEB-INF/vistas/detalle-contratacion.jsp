@@ -67,6 +67,16 @@
                             <h5 class="card-title">Estado</h5>
                             <P class="card-text">${prestacion.estado}</P>
 
+                            <%--@elvariable id="prestacion" type="ar.edu.unlam.tallerweb1.modelo.Prestacion"--%>
+                            <form:form action="finalizarPrestacion" method="post" modelAttribute="prestacion">
+                                <input type="number" path="id" id="id" value="${prestacion.id}" >
+                                <input type="text" path="estado" id="estado" value="${prestacion.estado}" >
+
+                                <p>${prestacion.id} </p>
+                                <button type="submit" class="btn btn-primary">Pagar Suscripcion</button>
+                            </form:form>
+
+
                         </div>
                     </div>
                 </div>

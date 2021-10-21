@@ -12,6 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -89,29 +92,41 @@ public class ControladorContratar {
         return new ModelAndView("prestaciones", modelo);
     }
 
-    @RequestMapping(path = "/perfilUsuario/{id}", method = RequestMethod.GET)
-    public ModelAndView IrAPerfilUsuario(@PathVariable("id") Long id){
-        //String mailPrueba="ecuevas@alumno.unlam.edu.ar";
-        Usuario usuario = servicioUsuario.usuarioFindById(id);
+    @RequestMapping(path = "/perfilUsuario", method = RequestMethod.GET)
+    public ModelAndView IrAPerfilUsuario(HttpServletRequest request){
+
+        HttpSession misession= request.getSession(true);
+        Usuario usuarioLogueado= (Usuario) misession.getAttribute("usuarioLogueado");
+
+        if (usuarioLogueado == null){
+            return new ModelAndView("redirect:/");
+        }
+
+        Usuario usuario = servicioUsuario.usuarioFindById(usuarioLogueado.getId());
         ModelMap modelo = new ModelMap();
-
         modelo.put("usuarioEnSession",usuario);
-
         return new ModelAndView("perfilUsuario", modelo);
     }
 
-    public ModelAndView finalizarPrestacion(Long idPrestacion){
-       Prestacion prestacion = servicioPrestacion.prestacionFindById(idPrestacion);
-       ModelMap model = new ModelMap();
+    @RequestMapping(path = "/finalizarPrestacion", method = RequestMethod.POST)
+    public ModelAndView finalizarPrestacion(@ModelAttribute("prestacion") Prestacion prestacionRecibido){
+
+       //Prestacion prestacion = servicioPrestacion.prestacionFindById(prestacionRecibido.getId());
+       // Prestacion prestacion = servicioPrestacion.buscarPrestacionPorId(prestacionRecibido.getId());
+
+        Prestacion prestacion1 = new Prestacion();
+        prestacion1.setId(1l);
+        prestacion1.setEstado("activo");
+        ModelMap model = new ModelMap();
 
         try {
-            servicioPrestacion.finalizarPrestacion(prestacion);
+            servicioPrestacion.finalizarPrestacion(prestacion1);
         } catch (Exception e) {
             model.put("msgFinalizacionDeContratacionErronea", "Error al finalizar la Prestacion ");
             return new ModelAndView("perfilUsuario", model);
         }
-        model.put("msgFinalizacionDeContratacion","Prestacion finalizada correctamente");
 
+        model.put("msgFinalizacionDeContratacion","Prestacion finalizada correctamente");
         return new ModelAndView("detalle-contratacion", model);
     }
 }

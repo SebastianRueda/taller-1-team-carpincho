@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
 public class ControladorContratarTest {
-    ServicioPrestacion servicioPrestacion = Mockito.mock(ServicioPrestacion.class);
+ /*   ServicioPrestacion servicioPrestacion = Mockito.mock(ServicioPrestacion.class);
     ServicioUsuario servicioUsuario = Mockito.mock(ServicioUsuario.class);
     ControladorContratar controladorContratar = new ControladorContratar(servicioPrestacion, servicioUsuario);
     private Long idPrestacion=1l;
@@ -108,5 +108,5 @@ public class ControladorContratarTest {
     private void thenNoSePudoCrearLaPrestacion(ModelAndView view) {
         Assert.assertEquals(view.getViewName(), "detalle-contratacion");
         Assert.assertEquals(view.getModel().get("error"), "No se pudo encontrar los datos del asistente para completar la operación");
-    }
+    }*/
 }

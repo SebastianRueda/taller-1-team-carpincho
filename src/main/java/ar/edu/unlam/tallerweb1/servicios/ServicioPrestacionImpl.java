@@ -63,5 +63,10 @@ public class ServicioPrestacionImpl implements ServicioPrestacion{
 
     }
 
+    @Override
+    public Prestacion buscarPrestacionPorId(Long id) {
+        return prestacionDao.buscarPrestacionPorId(id);
+    }
+
 
 }

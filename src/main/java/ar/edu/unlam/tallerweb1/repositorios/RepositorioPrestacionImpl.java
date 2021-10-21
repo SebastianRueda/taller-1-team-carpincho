@@ -2,6 +2,8 @@ package ar.edu.unlam.tallerweb1.repositorios;
 
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Prestacion;
+import ar.edu.unlam.tallerweb1.modelo.Suscripcion;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,14 +42,23 @@ public class RepositorioPrestacionImpl implements RepositorioPrestacion{
     @Override
     public Prestacion prestacionFindById(Long id) {
         return (Prestacion) sessionFactory.getCurrentSession().createCriteria(Prestacion.class)
-                .add(Restrictions.eq("id", id))
-                .uniqueResult();
+                .add(Restrictions.eq("id", id)).uniqueResult();
     }
+
 
     @Override
     public List<Prestacion> prestacionFindByEspecialidad(Especialidad especialidad) {
         return (List<Prestacion>) sessionFactory.getCurrentSession().createCriteria(Prestacion.class)
                 .add(Restrictions.eq("prestacion", especialidad))
+                .uniqueResult();
+    }
+
+    @Override
+    public Prestacion buscarPrestacionPorId(Long id) {
+        final Session session = sessionFactory.getCurrentSession();
+
+        return (Prestacion) session.createCriteria(Prestacion.class)
+                .add(Restrictions.eq("id", id))
                 .uniqueResult();
     }
 

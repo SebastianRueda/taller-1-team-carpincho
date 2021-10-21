@@ -16,4 +16,6 @@ public interface ServicioPrestacion {
     List<Prestacion> prestacionFindByEspecialidad(Especialidad especialidad);
 
     void finalizarPrestacion(Prestacion prestacion) throws Exception;
+
+    Prestacion buscarPrestacionPorId(Long id);
 }

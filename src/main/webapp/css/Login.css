@@ -11,6 +11,9 @@ body{
 .claro{
     color:white;
 }
+.colorIconoLogin{
+    color:#20a8a6;
+}
 
 .fondo-login{
     background: rgb(2,0,36);

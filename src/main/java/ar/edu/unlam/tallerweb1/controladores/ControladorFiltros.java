@@ -29,6 +29,8 @@ public class ControladorFiltros {
 	public ModelAndView usuariosPorEspecialidad() {
 		ModelMap modelo = new ModelMap();
 		List<Especialidad> lista = servicioFiltro.traerEspecialidad();
+		if (lista.size()!=7)
+			modelo.put("mensaje", "la lista de especialidades esta siendo mal cargada");
 		modelo.put("especialidades", lista);
 		return new ModelAndView("busquedaPrestadores", modelo);
 	}

@@ -12,13 +12,15 @@ import java.util.List;
 
 @Service("servicioPrestacion")
 @Transactional
-public class ServicioPrestacionImpl implements ServicioPrestacion{
+public class ServicioPrestacionImpl implements ServicioPrestacion {
 
     private RepositorioPrestacion prestacionDao;
+    private RepositorioUsuario repositorioUsuario;
 
     @Autowired
     public ServicioPrestacionImpl(RepositorioPrestacion prestacionDao, RepositorioUsuario repositorioUsuario) {
         this.prestacionDao = prestacionDao;
+        this.repositorioUsuario = repositorioUsuario;
     }
 
     @Override
@@ -68,5 +70,8 @@ public class ServicioPrestacionImpl implements ServicioPrestacion{
         return prestacionDao.buscarPrestacionPorId(id);
     }
 
-
+    @Override
+    public List<Prestacion> listarPrestacionesContratadasPorCliente(Long id) {
+        return prestacionDao.listarPrestacionesContratadasPorCliente(id);
+    }
 }

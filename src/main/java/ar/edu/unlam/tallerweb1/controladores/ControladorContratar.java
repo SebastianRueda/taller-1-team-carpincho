@@ -92,22 +92,6 @@ public class ControladorContratar {
         return new ModelAndView("prestaciones", modelo);
     }
 
-    @RequestMapping(path = "/perfilUsuario", method = RequestMethod.GET)
-    public ModelAndView IrAPerfilUsuario(HttpServletRequest request){
-
-        HttpSession misession= request.getSession(true);
-        Usuario usuarioLogueado= (Usuario) misession.getAttribute("usuarioLogueado");
-
-        if (usuarioLogueado == null){
-            return new ModelAndView("redirect:/");
-        }
-
-        Usuario usuario = servicioUsuario.usuarioFindById(usuarioLogueado.getId());
-        ModelMap modelo = new ModelMap();
-        modelo.put("usuarioEnSession",usuario);
-        return new ModelAndView("perfilUsuario", modelo);
-    }
-
     @RequestMapping(path = "/finalizarPrestacion", method = RequestMethod.POST)
     public ModelAndView finalizarPrestacion(@ModelAttribute("prestacion") Prestacion prestacionRecibido){
 

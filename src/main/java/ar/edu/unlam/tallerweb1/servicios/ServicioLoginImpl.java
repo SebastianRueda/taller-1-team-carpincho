@@ -21,6 +21,7 @@ import java.util.Date;
 public class ServicioLoginImpl implements ServicioLogin {
 
 	private RepositorioUsuario repositorioUsuario;
+	private Long codigoUsuarioConectado;
 
 	@Autowired
 	public ServicioLoginImpl(RepositorioUsuario servicioLoginDao){
@@ -46,5 +47,6 @@ public class ServicioLoginImpl implements ServicioLogin {
 		repositorioUsuario.guardar(nuevo);
 		return nuevo;
 	}
+
 
 }

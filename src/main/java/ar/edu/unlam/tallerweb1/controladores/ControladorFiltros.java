@@ -44,6 +44,13 @@ public class ControladorFiltros {
 		ModelMap modelo = new ModelMap();
 		List<Usuario> listaUsuarios=servicioFiltro.usuariosDeLaEspecialidad(especialidadBuscada);
 		modelo.put("resultadoUsuarios", listaUsuarios);
+		if(listaUsuarios.size()==0) {
+			ModelMap model=new ModelMap();
+			model.put("error","El tipo de Especialidad no se encuentra disponible en este momento," +
+					"puede optar por otras opciones desde la pagina Anterior" );
+			model.put("volver","Volver A La Pagina Anterior" );
+			return new ModelAndView ("excepcionFiltro",model);
+		}
 		return new ModelAndView("resultadoPrestadores",modelo);
 	}
 
@@ -61,6 +68,13 @@ public class ControladorFiltros {
 		ModelMap modelo = new ModelMap();
 		List<Usuario> listaUsuarios=servicioFiltro.usuariosDeLaProvincia(provinciaBuscada);
 		modelo.put("resultadoUsuarios", listaUsuarios);
+		if(listaUsuarios.size()==0) {
+			ModelMap model=new ModelMap();
+			model.put("error","El tipo de Especialidad no se encuentra disponible en este momento," +
+					"puede optar por otras opciones desde la pagina Anterior" );
+			model.put("volver","Volver A La Pagina Anterior" );
+			return new ModelAndView ("excepcionFiltro",model);
+		}
 		return new ModelAndView("resultadoPrestadores",modelo);
 	}
 
@@ -88,7 +102,8 @@ public class ControladorFiltros {
 		modelo.put("resultadoUsuarios", listaUsuarios);
 		if(listaUsuarios.size()==0) {
 			ModelMap model=new ModelMap();
-			model.put("error","El Numero de Especialista no corresponde" );
+			model.put("error","El tipo de Especialidad no se encuentra disponible en este momento" +
+					"puede optar por otras opciones desde la pagina Anterior" );
 			model.put("volver","Volver A La Pagina Anterior" );
 			return new ModelAndView ("excepcionFiltro",model);
 		}

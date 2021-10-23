@@ -76,8 +76,7 @@ public class ControladorFiltrosTest {
 		Mockito.when(servicioFiltro.usuariosDeLaEspecialidad(this.especialidad.getId()))
 									.thenReturn((List<Usuario>) especialidadEsperada);
 	}
-	
-	
+
 	private ModelAndView whenSolicitoEspecialidad(Especialidad especialidad) {
 		ModelMap modelo = new ModelMap();
 		Especialidad especialidadBuscada=(Especialidad) servicioFiltro.usuariosDeLaEspecialidad(especialidad.getId());

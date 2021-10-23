@@ -18,4 +18,5 @@ public interface ServicioPrestacion {
     void finalizarPrestacion(Prestacion prestacion) throws Exception;
 
     Prestacion buscarPrestacionPorId(Long id);
+    List<Prestacion> listarPrestacionesContratadasPorCliente(Long id);
 }

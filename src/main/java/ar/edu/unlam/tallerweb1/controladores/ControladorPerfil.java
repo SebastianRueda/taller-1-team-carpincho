@@ -36,6 +36,7 @@ public class ControladorPerfil {
         Usuario usuario = servicioUsuario.usuarioFindById(usuarioLogueado.getId());
         ModelMap modelo = new ModelMap();
         modelo.put("usuarioEnSession",usuario);
+        modelo.put("seccion", "perfil");
 
         return new ModelAndView("perfilUsuario", modelo);
     }
@@ -53,6 +54,8 @@ public class ControladorPerfil {
 
         ModelMap map = new ModelMap();
         map.put("historial", prestaciones);
+
+        map.put("seccion", "historial");
 
         return new ModelAndView("perfilUsuario", map);
     }

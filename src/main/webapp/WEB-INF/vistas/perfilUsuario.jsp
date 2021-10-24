@@ -164,12 +164,12 @@
             <div class="tab tab-primary">
                 <ul class="nav nav-pills nav-pills-sm nav-light mb-2"> <!-- empieza botones-->
                     <li class="nav-item">
-                        <a class="nav-link btn btn-active-light btn-color-muted py-2 px-4 active fw-bolder me-2"
-                           data-bs-toggle="tab" href="#primary-tab-1">Mi Perfil</a>
+                        <a class="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder me-2 ${seccion.equals("perfil") ? "active" : ""}"
+                            href="perfilUsuario">Mi Perfil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder me-2"
-                           data-bs-toggle="tab" href="#primary-tab-2">Mis Contrataciones</a>
+                        <a class="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder me-2 ${seccion.equals("historial") ? "active" : ""}"
+                           href="mostrar-historial">Mis Contrataciones</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder"
@@ -178,7 +178,7 @@
                 </ul><!-- Termina botones-->
                 <div class="tab-content">
                     <!-- Empieza primer boton-->
-                    <div class="tab-pane active" id="primary-tab-1" role="tabpanel">
+                    <div class="tab-pane ${seccion.equals("perfil") ? "active" : ""}" id="primary-tab-1" role="tabpanel">
                         <div class="row w-100 bg-light row w-100 h-100 m-auto justify-content-md-center">
                             <!--  empieza foto perfil-->
                             <div class="bg-danger col-12 col-md-6 d-flex bg-white align-content-center justify-content-center">
@@ -315,11 +315,10 @@
                     </div>
                     <!-- Termina primer boton-->
                     <!-- Empieza segundo boton-->
-                    <div class="tab-pane" id="primary-tab-2" role="tabpanel">
+                    <div class="tab-pane ${seccion.equals("historial") ? "active" : ""}" id="primary-tab-2" role="tabpanel">
                         <div class="row w-100 bg-info row w-100 h-100 m-auto justify-content-md-center px-2">
                             <div class="bg-white col-12 d-flex flex-column p-2 mb-2 mt-2 align-items-center justify-content-evenly">
                                 <h4 class="text-muted">Historial</h4>
-                                <p class="text-muted"><i class="fas fa-tools"></i> Estamos Trabajando para que quede bonito <i class="fas fa-tools"></i></p>
                                 <div class="card-body table-responsive">
                                     <table class="table  table-hover">
                                         <thead>
@@ -345,7 +344,7 @@
                                                     <td class="actions">
                                                         <button type="button" value="contratar" id="button-contratar" <%--onclick="contratar(${usuario.id})"--%>
                                                                 class="btn btn-primary fondo-gradiente-uno fondo-gradiente-1 border-0 bg-success">
-                                                            <a class="text-white text-decoration-none" href="<c:url value='/contratar-prestacion?asistente-id=${usuario.id}' />">Contratar</a>
+                                                            <a class="text-white text-decoration-none" href="<c:url value='/contratar-prestacion?asistente-id=${prestacion.usuarioAsistente.id}' />">Contratar</a>
                                                         </button>
                                                     </td>
                                                     <td class="actions"><button type="button" value="perfil" class="btn btn-primary  border-0">Perfil</button></td>

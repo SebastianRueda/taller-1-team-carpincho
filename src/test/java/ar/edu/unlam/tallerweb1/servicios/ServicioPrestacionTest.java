@@ -104,6 +104,49 @@ public class ServicioPrestacionTest {
         thenComprueboQueLaListaNoEstaVacia(prestaciones);
     }
 
+    @Test
+    public void clienteCalificaPrestacionFinalizadaSinCalificar() throws Exception {
+        givenUnaPrestacionFinalizadaSinCalificar(1l);
+        whenClienteCalificaPrestacionFinalizada(1l,5);
+        thenVerficoQueSellamoAlMetodoCalificarDelRepositorioPrestacion();
+    }
+
+    @Test (expected = Exception.class)
+    public  void clienteIntentaCalificarPrestacionActiva() throws Exception {
+       Prestacion prestacion = givenUnaPrestacionActiva();
+       whenClienteIntentaCalificarPrestacionActiva(prestacion.getId(),5);
+
+    }
+    @Test (expected = Exception.class)
+    public  void clienteCalificaPrestacionConUnValorQueNoEstaDentroDelRango() throws Exception {
+        givenUnaPrestacionFinalizadaSinCalificar(1l);
+        whenClienteCalificaConUnValorIncorrecto(1l,0);
+    }
+
+    public void whenClienteCalificaConUnValorIncorrecto (Long idPrestacion, Integer calificacion) throws Exception {
+        servicioPrestacion.ClienteCalificaPrestacion(idPrestacion,calificacion);
+    }
+
+    private void whenClienteIntentaCalificarPrestacionActiva(Long idPrestacion, Integer calificacion) throws Exception {
+        servicioPrestacion.ClienteCalificaPrestacion(idPrestacion,calificacion);
+    }
+
+    private void thenVerficoQueSellamoAlMetodoCalificarDelRepositorioPrestacion() {
+        verify(repositorioPrestacion,times(1)).update(anyObject());
+    }
+
+    private void givenUnaPrestacionFinalizadaSinCalificar(Long idPrestacion) {
+        Prestacion prestacion = new Prestacion();
+        prestacion.setEstado("finalizado");
+        prestacion.setId(idPrestacion);
+        prestacion.setCalificacionDadaPorElCliente(null);
+        when(repositorioPrestacion.buscarPrestacionFinalizadaSinCalificar(idPrestacion)).thenReturn(prestacion);
+    }
+
+    private void whenClienteCalificaPrestacionFinalizada(Long idPrestacion, Integer calificacion) throws Exception {
+        servicioPrestacion.ClienteCalificaPrestacion(idPrestacion,calificacion);
+    }
+
     private void whenFinalizoUnaPrestacionQueYaEstabaFinalizada(Prestacion prestacionFinalizada) throws Exception {
         servicioContratar.finalizarPrestacion(prestacionFinalizada);
     }
@@ -203,4 +246,5 @@ public class ServicioPrestacionTest {
     private void thenComprueboQueLaListaNoEstaVacia(List<Prestacion> prestaciones) {
         Assertions.assertThat(prestaciones).isNotEmpty();
     }
+
 }

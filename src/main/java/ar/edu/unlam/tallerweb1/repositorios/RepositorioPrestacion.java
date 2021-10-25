@@ -21,4 +21,6 @@ public interface RepositorioPrestacion {
     Prestacion buscarPrestacionPorId(Long id);
 
     List<Prestacion> listarPrestacionesContratadasPorCliente(Long id);
+
+    Prestacion buscarPrestacionFinalizadaSinCalificar(Long idPrestacion);
 }

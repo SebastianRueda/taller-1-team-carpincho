@@ -80,4 +80,9 @@ public class RepositorioPrestacionImpl implements RepositorioPrestacion{
         return prestaciones;
     }
 
+    @Override
+    public Prestacion buscarPrestacionFinalizadaSinCalificar(Long idPrestacion) {
+        return null;
+    }
+
 }

@@ -81,7 +81,10 @@ public class ServicioPrestacionImpl implements ServicioPrestacion {
             throw  new Exception();
         }
 
-             Prestacion prestacion =   prestacionDao.buscarPrestacionFinalizadaSinCalificar(idPrestacion);
+        Prestacion prestacion =   prestacionDao.buscarPrestacionFinalizadaSinCalificar(idPrestacion);
+        if(prestacion.getEstado()=="activo"){
+            throw  new Exception();
+        }
              prestacion.setCalificacionDadaPorElCliente(calificacion);
                 prestacionDao.update(prestacion);
 

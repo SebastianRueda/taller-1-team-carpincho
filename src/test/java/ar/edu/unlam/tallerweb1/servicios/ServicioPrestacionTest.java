@@ -9,6 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioUsuario;
 import org.assertj.core.api.Assertions;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -17,12 +18,12 @@ import org.mockito.MockitoAnnotations;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class ServicioPrestacionTest {
-
-
     private static final Long MECANICO = 638L;
     private static final Long CLIENTE = 201L;
 
@@ -35,14 +36,15 @@ public class ServicioPrestacionTest {
     private RepositorioPrestacion repositorioPrestacion;
     @Mock
     private RepositorioUsuario repositorioUsuario;
+    @Mock
     private ServicioPrestacion servicioPrestacion;
+
     private final Prestacion prestacionCONTRATADA = getContratado();
 
     private Prestacion getContratado(){
         Prestacion prestacionContratada = new Prestacion();
         return prestacionContratada;
     }
-
 
     private RepositorioPrestacion repositorioContratar = Mockito.mock(RepositorioPrestacion.class);
     private ServicioPrestacionImpl servicioContratar = new ServicioPrestacionImpl(repositorioContratar, repositorioUsuario);
@@ -82,21 +84,68 @@ public class ServicioPrestacionTest {
         thenAnalizoElContradoSeaIgualAlQueEspero(1L, prestacionCONTRATADA);
     }
 
-
     @Test
     public void finalizarConExitoUnaPrestacion() throws Exception {
        Prestacion prestacionActiva = givenUnaPrestacionActiva();
         whenFinalizaLaPrestacion(prestacionActiva);
         thenVerificarQueLaPrestacionNoEstaActiva();
     }
+
     @Test (expected = Exception.class)
-    public  void finalizarUnaPrestacionQueYaEstaFinalizadaDaError() throws Exception {
+    public void finalizarUnaPrestacionQueYaEstaFinalizadaDaError() throws Exception {
        Prestacion prestacionFinalizada=  givenUnaPrestacionFinalizada();
         whenFinalizoUnaPrestacionQueYaEstabaFinalizada(prestacionFinalizada);
-
     }
 
+    @Test
+    public void listaElHistorialDePrestacionesDeUnUsuario() {
+        givenUsuarioConPrestaciones(CLIENTE);
+        var prestaciones = whenBuscoLasPrestacionesDelUsuario(CLIENTE);
+        thenComprueboQueLaListaNoEstaVacia(prestaciones);
+    }
 
+    @Test
+    public void clienteCalificaPrestacionFinalizadaSinCalificar() throws Exception {
+        givenUnaPrestacionFinalizadaSinCalificar(1l);
+        whenClienteCalificaPrestacionFinalizada(1l,5);
+        thenVerficoQueSellamoAlMetodoCalificarDelRepositorioPrestacion();
+    }
+
+    @Test (expected = Exception.class)
+    public  void clienteIntentaCalificarPrestacionActiva() throws Exception {
+       Prestacion prestacion = givenUnaPrestacionActiva();
+       whenClienteIntentaCalificarPrestacionActiva(prestacion.getId(),5);
+
+    }
+    @Test (expected = Exception.class)
+    public  void clienteCalificaPrestacionConUnValorQueNoEstaDentroDelRango() throws Exception {
+        givenUnaPrestacionFinalizadaSinCalificar(1l);
+        whenClienteCalificaConUnValorIncorrecto(1l,0);
+    }
+
+    public void whenClienteCalificaConUnValorIncorrecto (Long idPrestacion, Integer calificacion) throws Exception {
+        servicioPrestacion.ClienteCalificaPrestacion(idPrestacion,calificacion);
+    }
+
+    private void whenClienteIntentaCalificarPrestacionActiva(Long idPrestacion, Integer calificacion) throws Exception {
+        servicioPrestacion.ClienteCalificaPrestacion(idPrestacion,calificacion);
+    }
+
+    private void thenVerficoQueSellamoAlMetodoCalificarDelRepositorioPrestacion() {
+        verify(repositorioPrestacion,times(1)).update(anyObject());
+    }
+
+    private void givenUnaPrestacionFinalizadaSinCalificar(Long idPrestacion) {
+        Prestacion prestacion = new Prestacion();
+        prestacion.setEstado("finalizado");
+        prestacion.setId(idPrestacion);
+        prestacion.setCalificacionDadaPorElCliente(null);
+        when(repositorioPrestacion.buscarPrestacionFinalizadaSinCalificar(idPrestacion)).thenReturn(prestacion);
+    }
+
+    private void whenClienteCalificaPrestacionFinalizada(Long idPrestacion, Integer calificacion) throws Exception {
+        servicioPrestacion.ClienteCalificaPrestacion(idPrestacion,calificacion);
+    }
 
     private void whenFinalizoUnaPrestacionQueYaEstabaFinalizada(Prestacion prestacionFinalizada) throws Exception {
         servicioContratar.finalizarPrestacion(prestacionFinalizada);
@@ -182,4 +231,20 @@ public class ServicioPrestacionTest {
     private void thenPrestacionServicioExitosoContratacionExitosa() {
         Assertions.assertThat(servicioContratar.prestacionFindById(prestacion.getId()));
     }
+
+    private void givenUsuarioConPrestaciones(Long id) {
+        final var prestaciones = new ArrayList<Prestacion>();
+        prestaciones.add(new Prestacion());
+
+        Mockito.when(repositorioPrestacion.listarPrestacionesContratadasPorCliente(id)).thenReturn(prestaciones);
+    }
+
+    private List<Prestacion> whenBuscoLasPrestacionesDelUsuario(Long id) {
+        return servicioPrestacion.listarPrestacionesContratadasPorCliente(id);
+    }
+
+    private void thenComprueboQueLaListaNoEstaVacia(List<Prestacion> prestaciones) {
+        Assertions.assertThat(prestaciones).isNotEmpty();
+    }
+
 }

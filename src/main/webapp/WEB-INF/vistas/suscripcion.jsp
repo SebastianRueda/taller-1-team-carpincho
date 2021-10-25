@@ -1,6 +1,6 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
          pageEncoding="ISO-8859-1" %>
 <html>
 <head>
@@ -9,7 +9,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link href="css/Login.css" rel="stylesheet">
-    <title>Suscripción</title>
+    <title>SuscripciÃ³n</title>
 </head>
 <body class="">
 <header>
@@ -31,7 +31,7 @@
                         <a class="nav-link" href="perfilUsuario">Contrataciones</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="suscripcion">Suscripción</a>
+                        <a class="nav-link" href="suscripcion">SuscripciÃ³n</a>
                     </li>
                 </ul>
             </div>
@@ -142,8 +142,10 @@
                                         <%-- <form:input path="id" type="hidden" id="id" value="${usuario.id}" class="form-control"/>--%>
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar
                                     </button>
-                                    <form:form action="contratar-suscripcion" method="get">
 
+                                    <%--@elvariable id="suscripcion" type="ar.edu.unlam.tallerweb1.modelo.Suscripcion"--%>
+                                    <form:form action="contratar-suscripcion" method="POST" modelAttribute="suscripcion">
+                                        <input path="descripcion"  id="descripcion" type="text" class="form-control"/>
                                         <button type="submit" class="btn btn-primary">Pagar Suscripcion</button>
                                     </form:form>
                                 </div>
@@ -280,7 +282,7 @@
                             </div>
 
                         </div>
-                        <div class="footer-copyright text-center py-3">© 2021 Copyright: AsegurAPP
+                        <div class="footer-copyright text-center py-3">Â© 2021 Copyright: AsegurAPP
                         </div>
                     </div>
 

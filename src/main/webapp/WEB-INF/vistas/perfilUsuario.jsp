@@ -165,7 +165,7 @@
                 <ul class="nav nav-pills nav-pills-sm nav-light mb-2"> <!-- empieza botones-->
                     <li class="nav-item">
                         <a class="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder me-2 ${seccion.equals("perfil") ? "active" : ""}"
-                            href="perfilUsuario">Mi Perfil</a>
+                           href="perfilUsuario">Mi Perfil</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder me-2 ${seccion.equals("historial") ? "active" : ""}"
@@ -178,12 +178,13 @@
                 </ul><!-- Termina botones-->
                 <div class="tab-content">
                     <!-- Empieza primer boton-->
-                    <div class="tab-pane ${seccion.equals("perfil") ? "active" : ""}" id="primary-tab-1" role="tabpanel">
+                    <div class="tab-pane ${seccion.equals("perfil") ? "active" : ""}" id="primary-tab-1"
+                         role="tabpanel">
                         <div class="row w-100 bg-light row w-100 h-100 m-auto justify-content-md-center">
                             <!--  empieza foto perfil-->
                             <div class="bg-danger col-12 col-md-6 d-flex bg-white align-content-center justify-content-center">
                                 <div class="d-flex align-items-center flex-column w-75  align-content-center justify-content-center flex-wrap text-center">
-                                    <img src="imagenes/perfil.png" alt="Foto Perfil" class="" width=150 height=150 />
+                                    <img src="imagenes/perfil.png" alt="Foto Perfil" class="" width=150 height=150/>
                                     <h3 class="mt-3">${usuarioEnSession.nombre} ${usuarioEnSession.apellido}</h3>
                                     <p class="text-muted m-0">${usuarioEnSession.email}</p>
                                     <p class="text-muted m-0">Argentino</p>
@@ -257,7 +258,8 @@
                                                     class="text-dark font-weight-bold ms-sm-2">${usuarioEnSession.suscripcion.fechaAlta}</span></span>
                                             <span class="mb-2 text-xs">Precio: <span
                                                     class="text-dark ms-sm-2 font-weight-bold">$${usuarioEnSession.suscripcion.precio}</span></span>
-                                            <span class="text-xs">Servicios: <span class="text-dark ms-sm-2 font-weight-bold">
+                                            <span class="text-xs">Servicios: <span
+                                                    class="text-dark ms-sm-2 font-weight-bold">
                         <c:choose>
                             <c:when test="${usuarioEnSession.suscripcion.descripcion=='suscripcion basica'}">
                                 <i class="fas fa-wrench mr-2"></i>
@@ -279,22 +281,28 @@
 
                                         <div class="text-end">
                                             <form:form action="cancelarSuscripcion" method="POST">
-                                                <button type="submit" class="btn btn-link text-danger text-gradient px-3 mb-0">
+                                                <button type="submit"
+                                                        class="btn btn-link text-danger text-gradient px-3 mb-0">
                                                     <i class="far fa-trash-alt me-2" aria-hidden="true"></i>Dar Baja
                                                 </button>
                                             </form:form>
                                             <c:choose>
                                                 <c:when test="${usuarioEnSession.suscripcion.descripcion=='suscripcion basica'}">
                                                     <form:form action="modificarSuscripcionBasicaUsuario" method="POST">
-                                                        <button type="submit" class="btn btn-link text-success text-gradient px-3 mb-0">
-                                                            <i class="far fa-arrow-alt-circle-up" aria-hidden="true"></i>UpGrade
+                                                        <button type="submit"
+                                                                class="btn btn-link text-success text-gradient px-3 mb-0">
+                                                            <i class="far fa-arrow-alt-circle-up"
+                                                               aria-hidden="true"></i>UpGrade
                                                         </button>
                                                     </form:form>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <form:form action="modificarSuscripcionPremiumUsuario" method="POST">
-                                                        <button type="submit" class="btn btn-link text-warning text-gradient px-3 mb-0">
-                                                            <i class="far fa-arrow-alt-circle-down" aria-hidden="true"></i>DownGrade
+                                                    <form:form action="modificarSuscripcionPremiumUsuario"
+                                                               method="POST">
+                                                        <button type="submit"
+                                                                class="btn btn-link text-warning text-gradient px-3 mb-0">
+                                                            <i class="far fa-arrow-alt-circle-down"
+                                                               aria-hidden="true"></i>DownGrade
                                                         </button>
                                                     </form:form>
                                                 </c:otherwise>
@@ -303,8 +311,9 @@
                                     </c:when>
                                     <c:otherwise>
                                         <div class="fondo-login col-12 text-center text-white align-items-center py-1 mt-2">
-                                            <p class="m-0">¡No tienes Suscripcion! Puede contratar uno <a class="text-white"
-                                                                                                          href="suscripcion">aqui</a>
+                                            <p class="m-0">¡No tienes Suscripcion! Puede contratar uno <a
+                                                    class="text-white"
+                                                    href="suscripcion">aqui</a>
                                             </p>
                                         </div>
                                     </c:otherwise>
@@ -315,44 +324,82 @@
                     </div>
                     <!-- Termina primer boton-->
                     <!-- Empieza segundo boton-->
-                    <div class="tab-pane ${seccion.equals("historial") ? "active" : ""}" id="primary-tab-2" role="tabpanel">
-                        <div class="row w-100 bg-info row w-100 h-100 m-auto justify-content-md-center px-2">
-                            <div class="bg-white col-12 d-flex flex-column p-2 mb-2 mt-2 align-items-center justify-content-evenly">
-                                <h4 class="text-muted">Historial</h4>
-                                <div class="card-body table-responsive">
-                                    <table class="table  table-hover">
-                                        <thead>
-                                        <tr>
-                                            <th style="width:20%;">Número de factura</th>
-                                            <th style="width:20%;">Especiliadad</th>
-                                            <th style="width:20%;">Asisitente</th>
-                                            <th style="width:20%;">Estado</th>
-                                            <th style="width:20%;">Descripción</th>
-                                            <th class="actions"></th>
-                                            <th class="actions"></th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <c:forEach items="${historial}" var="prestacion">
-                                            <form action="contratar-prestacion" method="GET">
-                                                <tr>
-                                                    <td class="user-avatar">${prestacion.numerofactura}</td>
-                                                    <td>${prestacion.especialidad.descripcion}</td>
-                                                    <td>${prestacion.usuarioAsistente.nombre}</td>
-                                                    <td>${prestacion.estado}</td>
-                                                    <td>${prestacion.descripcion}</td>
-                                                    <td class="actions">
-                                                        <button type="button" value="contratar" id="button-contratar" <%--onclick="contratar(${usuario.id})"--%>
-                                                                class="btn btn-primary fondo-gradiente-uno fondo-gradiente-1 border-0 bg-success">
-                                                            <a class="text-white text-decoration-none" href="<c:url value='/contratar-prestacion?asistente-id=${prestacion.usuarioAsistente.id}' />">Contratar</a>
-                                                        </button>
-                                                    </td>
-                                                    <td class="actions"><button type="button" value="perfil" class="btn btn-primary  border-0">Perfil</button></td>
-                                                </tr>
-                                            </form>
-                                        </c:forEach>
-                                        </tbody>
-                                    </table>
+                    <div class="tab-pane ${seccion.equals("historial") ? "active" : ""}" id="primary-tab-2"
+                         role="tabpanel">
+                        <div class="row w-100  row w-100 h-100 m-auto justify-content-md-center">
+                            <%-- <div class="bg-white col-12 d-flex flex-column p-2 mb-2 mt-2 align-items-center justify-content-evenly">
+                                 <h4 class="text-muted">Historial</h4>
+                                 <div class="card-body table-responsive">
+                                     <table class="table  table-hover">
+                                         <thead>
+                                         <tr>
+                                             <th style="width:20%;">Número de factura</th>
+                                             <th style="width:20%;">Especiliadad</th>
+                                             <th style="width:20%;">Asisitente</th>
+                                             <th style="width:20%;">Estado</th>
+                                             <th style="width:20%;">Descripción</th>
+                                             <th class="actions"></th>
+                                             <th class="actions"></th>
+                                         </tr>
+                                         </thead>
+                                         <tbody>
+                                         <c:forEach items="${historial}" var="prestacion">
+                                             <form action="contratar-prestacion" method="GET">
+                                                 <tr>
+                                                     <td class="user-avatar">${prestacion.numerofactura}</td>
+                                                     <td>${prestacion.especialidad.descripcion}</td>
+                                                     <td>${prestacion.usuarioAsistente.nombre}</td>
+                                                     <td>${prestacion.estado}</td>
+                                                     <td>${prestacion.descripcion}</td>
+                                                     <td class="actions">
+                                                         <button type="button" value="contratar" id="button-contratar" onclick="contratar(${usuario.id})"
+                                                                 class="btn btn-primary fondo-gradiente-uno fondo-gradiente-1 border-0 bg-success">
+                                                             <a class="text-white text-decoration-none" href="<c:url value='/contratar-prestacion?asistente-id=${prestacion.usuarioAsistente.id}' />">Contratar</a>
+                                                         </button>
+                                                     </td>
+                                                     <td class="actions"><button type="button" value="perfil" class="btn btn-primary  border-0">Perfil</button></td>
+                                                 </tr>
+                                             </form>
+                                         </c:forEach>
+                                         </tbody>
+                                     </table>
+                                 </div>
+                             </div>--%>
+                            <div class="col-12 p-2 ">
+                                <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
+                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">Numero Factura</p>
+                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">Especiliadad</p>
+                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">Asisitente</p>
+                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">Estado</p>
+                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">Calificacion</p>
+                                </div>
+                                <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
+                                    <p class="my-auto" style="width:20%;">#412341123</p>
+                                    <p class="my-auto" style="width:20%;">Especialidad</p>
+                                    <p class="my-auto" style="width:20%;">Juan Perry</p>
+                                    <p class="ps-9 my-auto" style="width:20%;"><span class="py-1 px-3 estadoActivo font-weight-bold redondeadoEstado">Activo</span></p>
+                                    <p class="my-auto" style="width:20%;"><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i></p>
+                                </div>
+                                <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
+                                    <p class="my-auto" style="width:20%;">#412341123</p>
+                                    <p class="my-auto" style="width:20%;">Especialidad</p>
+                                    <p class="my-auto" style="width:20%;">Juan Perry</p>
+                                    <p class="ps-9 my-auto" style="width:20%;"><span class="py-1 px-3 estadoFinalizado font-weight-bold redondeadoEstado">Finalizado</span></p>
+                                    <p class="my-auto" style="width:20%;"><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-muted"></i><i class="fas fa-star text-muted"></i></p>
+                                </div>
+                                <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
+                                    <p class="my-auto" style="width:20%;">#412341123</p>
+                                    <p class="my-auto" style="width:20%;">Especialidad</p>
+                                    <p class="my-auto" style="width:20%;">Juan Perry</p>
+                                    <p class="ps-9 my-auto" style="width:20%;"><span class="py-1 px-3 estadoCancelado font-weight-bold redondeadoEstado">Cancelado</span></p>
+                                    <p class="my-auto" style="width:20%;"><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-muted"></i><i class="fas fa-star text-muted"></i></p>
+                                </div>
+                                <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
+                                    <p class="my-auto" style="width:20%;">#412341123</p>
+                                    <p class="my-auto" style="width:20%;">Especialidad</p>
+                                    <p class="my-auto" style="width:20%;">Juan Perry</p>
+                                    <p class="ps-9 my-auto" style="width:20%;"><span class="py-1 px-3 estadoCancelado font-weight-bold redondeadoEstado">Cancelado</span></p>
+                                    <button class="my-auto py-1 px-3 calificar font-weight-bold redondeadoEstado" style="width:20%;"> Calificar</button>
                                 </div>
                             </div>
                         </div>
@@ -363,7 +410,8 @@
                         <div class="row w-100 bg-info row w-100 h-100 m-auto justify-content-md-center px-2">
                             <div class="bg-white col-12 d-flex flex-column  p-2 mb-2 mt-2 align-items-center">
                                 <h4 class="text-muted"> Proximamente...</h4>
-                                <p class=" text-muted"><i class="fas fa-tools"></i> Estamos Trabajando para que quede bonito <i class="fas fa-tools"></i></p>
+                                <p class=" text-muted"><i class="fas fa-tools"></i> Estamos Trabajando para que quede
+                                    bonito <i class="fas fa-tools"></i></p>
                             </div>
                         </div>
                     </div>

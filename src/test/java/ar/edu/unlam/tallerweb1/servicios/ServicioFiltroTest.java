@@ -1,6 +1,7 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
 import static org.mockito.Mockito.mock;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,14 +12,17 @@ import org.mockito.Mockito;
 
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Provincia;
+import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioEspecialidad;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioProvincias;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioUsuario;
+
 
 public class ServicioFiltroTest {
 	private ServicioFiltro servicioFiltro=new ServicioFiltroImp(mock(RepositorioEspecialidad.class),mock(RepositorioProvincias.class),mock(RepositorioUsuario.class));
 	private List <Especialidad> especialidades;
 	private List <Provincia> provincias;
+	private List <Usuario> usuarios;
 	
 	@Before
 	public void intanciarEspecialidades() {
@@ -31,7 +35,12 @@ public class ServicioFiltroTest {
 		provincias = new ArrayList<Provincia>();
 		
 	} 
-	
+
+	@Before
+	public void intanciarListaUsuarios() {
+		usuarios = new ArrayList<Usuario>();
+		
+	}
 	@Test
 	public void testQueTraeLaListaDeEspecialidadesCompleta() {
 		givenLaListaDeEspecialidades();
@@ -88,6 +97,7 @@ public class ServicioFiltroTest {
 	private void thenSonLasProvincias(List<Provincia> provincias) {
 		Provincia caba =provincias.get(0);
 		Assertions.assertThat(caba.getId()).isEqualTo(1L);
+		Assertions.assertThat(caba).hasFieldOrProperty("nombre");
 		Assertions.assertThat(caba.getNombre()).isEqualTo("CABA");
 		Assertions.assertThat(provincias.size()).isNotNull();
 		Assertions.assertThat(provincias.size()).isEqualTo(3);
@@ -95,5 +105,89 @@ public class ServicioFiltroTest {
 		Assertions.assertThat((List<?>) provincias).hasOnlyElementsOfType(Provincia.class);
 		
 	}
+	
+	//test
+	@Test
+	public void testQueTraeUsuariosDeUnaProvincia() {
+		givenUsuariosEspecialidadesYprovincia();
+		this.usuarios=whenTraigoLosUsuariosDeUnaProvincia();
+		thenSonLosUsuariosDeLaProvincia(this.usuarios);
+	}
+	
+	private void givenUsuariosEspecialidadesYprovincia() {
+		Provincia caba=new Provincia(1L,"CABA");
+		Especialidad especialidad=new Especialidad(1L,"grua");
+		Especialidad especialidad2=new Especialidad(2L,"mecanico");
+		Especialidad especialidad3=new Especialidad(3L,"gestor");
+		this.usuarios.add(new Usuario("juan","perez",especialidad,caba));
+		this.usuarios.add(new Usuario("jose","martinez",especialidad2,caba));
+		this.usuarios.add( new Usuario("carlos","lobos",especialidad3,caba));
+		Mockito.when(servicioFiltro.usuariosDeLaProvincia(caba.getId())).thenReturn(this.usuarios);
+	}
 
+	private List<Usuario> whenTraigoLosUsuariosDeUnaProvincia() {
+		return servicioFiltro.usuariosDeLaProvincia(1L);
+		
+	}
+	
+	private void thenSonLosUsuariosDeLaProvincia(List<Usuario> usuarios) {
+		Usuario usuario=usuarios.get(0);
+		Assertions.assertThat(usuario).hasFieldOrProperty("nombre");
+		Assertions.assertThat(usuario).hasFieldOrProperty("apellido");
+		Assertions.assertThat(usuario).hasFieldOrProperty("especialidad");
+		Assertions.assertThat(usuario).hasFieldOrProperty("provincia");
+		Assertions.assertThat(usuario.getProvincia().getNombre()).isEqualTo("CABA");
+		
+		Usuario usuario2=usuarios.get(1);
+		Assertions.assertThat(usuario2).hasFieldOrProperty("nombre");
+		Assertions.assertThat(usuario2).hasFieldOrProperty("apellido");
+		Assertions.assertThat(usuario2).hasFieldOrProperty("especialidad");
+		Assertions.assertThat(usuario2).hasFieldOrProperty("provincia");
+		Assertions.assertThat(usuario2.getProvincia().getNombre()).isEqualTo("CABA");
+		
+	}
+	
+	//test
+		@Test
+		public void testQueTraeUsuariosDeLaMismaEspecialidad() {
+			givenUsuariosProvinciasYEspecialidad();
+			this.usuarios=whenTraigoLosUsuariosDeLaMismaEspecialidad();
+			thenSonLosUsuariosDeLaMismaEspecialidad(this.usuarios);
+		}
+		
+		private void givenUsuariosProvinciasYEspecialidad() {
+			Provincia caba=new Provincia(1L,"CABA");
+			Provincia ba=new Provincia(2L,"Buenos Aires");
+			Provincia cba=new Provincia(3L,"Cordoba");
+			Especialidad especialidad=new Especialidad(1L,"grua");
+			this.usuarios.add(new Usuario("juan","perez",especialidad,caba));
+			this.usuarios.add(new Usuario("jose","martinez",especialidad,cba));
+			this.usuarios.add( new Usuario("carlos","lobos",especialidad,ba));
+			Mockito.when(servicioFiltro.usuariosDeLaEspecialidad(especialidad.getId())).thenReturn(usuarios);
+					
+		}
+
+		private List<Usuario> whenTraigoLosUsuariosDeLaMismaEspecialidad() {
+			return servicioFiltro.usuariosDeLaEspecialidad(1L);
+			
+		}
+		
+		private void thenSonLosUsuariosDeLaMismaEspecialidad(List<Usuario> usuarios) {
+			Usuario usuario=usuarios.get(0);
+			Assertions.assertThat(usuario).hasFieldOrProperty("nombre");
+			Assertions.assertThat(usuario).hasFieldOrProperty("apellido");
+			Assertions.assertThat(usuario).hasFieldOrProperty("especialidad");
+			Assertions.assertThat(usuario).hasFieldOrProperty("provincia");
+			Assertions.assertThat(usuario.getProvincia().getNombre()).isEqualTo("CABA");
+			
+			Usuario usuario2=usuarios.get(1);
+			Assertions.assertThat(usuario2).hasFieldOrProperty("nombre");
+			Assertions.assertThat(usuario2).hasFieldOrProperty("apellido");
+			Assertions.assertThat(usuario2).hasFieldOrProperty("especialidad");
+			Assertions.assertThat(usuario2).hasFieldOrProperty("provincia");
+			Assertions.assertThat(usuario2.getProvincia().getNombre()).isEqualTo("Cordoba");
+			
+		}
+
+	
 }

@@ -12,10 +12,11 @@ public class Especialidad {
 	private Long id;
 	private String descripcion;
 	
-	public Especialidad() {
-		
-	}
 	
+	
+	public Especialidad() {
+		super();
+	}
 	public Especialidad(long id, String descripcion) {
 		this.id=id;
 		this.descripcion=descripcion;

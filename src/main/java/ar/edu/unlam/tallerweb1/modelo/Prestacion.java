@@ -22,7 +22,7 @@ public class Prestacion {
 
 	private String numerofactura;
 
-//	id=1 ; chofer ; idAsistente=7 ; idSolicitante=1;
+	
 
 	public Long getId() {
 		return id;

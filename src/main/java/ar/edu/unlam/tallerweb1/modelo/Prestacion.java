@@ -21,6 +21,7 @@ public class Prestacion {
 	private String estado;
 
 	private String numerofactura;
+	private Integer calificacionDadaPorElCliente= null;
 
 //	id=1 ; chofer ; idAsistente=7 ; idSolicitante=1;
 
@@ -73,5 +74,11 @@ public class Prestacion {
 		this.numerofactura = numerofactura;
 	}
 
+	public Integer getCalificacionDadaPorElCliente() {
+		return calificacionDadaPorElCliente;
+	}
 
+	public void setCalificacionDadaPorElCliente(Integer calificacionDadaPorElCliente) {
+		this.calificacionDadaPorElCliente = calificacionDadaPorElCliente;
+	}
 }

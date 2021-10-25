@@ -19,4 +19,8 @@ public interface RepositorioPrestacion {
     List<Prestacion> prestacionFindByEspecialidad(Especialidad especialidad);
 
     Prestacion buscarPrestacionPorId(Long id);
+
+    List<Prestacion> listarPrestacionesContratadasPorCliente(Long id);
+
+    Prestacion buscarPrestacionFinalizadaSinCalificar(Long idPrestacion);
 }

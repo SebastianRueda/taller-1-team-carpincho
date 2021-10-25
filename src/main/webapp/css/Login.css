@@ -1,3 +1,4 @@
+
 html{
     width: 100%;
     height: 100%;
@@ -25,4 +26,32 @@ body{
 .video-login{
  width: 100%;
  height: 100%;
+}
+.sombra{
+    box-shadow: 2px 7px 5px -1px rgba(0,0,0,0.2);
+}
+
+.estadoActivo{
+    color: #01a2b9;
+    background-color: #b3e8fc;
+}
+
+.estadoFinalizado{
+    color: green;
+    background-color: #91ff98;
+}
+
+.estadoCancelado{
+    color: red;
+    background-color: #ffbaba;
+}
+
+.calificar{
+    color: rgb(255, 199, 0);
+    background-color: rgba(253, 255, 156, 0.85);
+}
+
+.redondeadoEstado{
+    border-radius: 50px 50px 50px 50px;
+    border: 0px solid #000000;
 }

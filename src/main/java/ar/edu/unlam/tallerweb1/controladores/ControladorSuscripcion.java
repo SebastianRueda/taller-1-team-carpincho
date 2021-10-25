@@ -8,6 +8,7 @@ import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -50,10 +51,10 @@ public class ControladorSuscripcion {
         return new ModelAndView("suscripcion", modelo);
     }
 
-    @RequestMapping(path = "/contratar-suscripcion", method = RequestMethod.GET)
-    public ModelAndView contratarSuscripcion() {
+    @RequestMapping(path = "/contratar-suscripcion", method = RequestMethod.POST)
+    public ModelAndView contratarSuscripcion(@ModelAttribute("suscripcion") String suscripcionAContratar) {
         String nombre = "suscripcion basica";
-        Suscripcion suscripcion = servicioSuscripcion.buscarPorNombre(nombre);
+        Suscripcion suscripcion = servicioSuscripcion.buscarPorNombre(suscripcionAContratar);
 
         /*Long idDeUsuarioObtenidoPorSession = 1l;
         Usuario usuario = servicioUsuario.usuarioFindById(idDeUsuarioObtenidoPorSession);*/

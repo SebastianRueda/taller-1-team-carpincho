@@ -14,28 +14,65 @@
     <link href="css/Login.css" rel="stylesheet">
 </head>
 <body class=" h-100">
+<header>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="home">AsegurApp</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ir-a-registrarme">Registrarte</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="suscripcion">Suscripción</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+
 <div class=" h-100 w-100">
     <div class="fondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-center">
     <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div class="card-body bg-light mb-3">
         <form:form action="registrarme" method="POST" modelAttribute="datos">
-            <h3 class="form-signin-heading">Nuevo Usuario ${parametro}</h3>
+            <h3 class="card-title">Nuevo Usuario ${parametro}</h3>
             <hr class="colorgraph"><br>
 
-            <form:input path="email" id="email" class="form-control" />
-            <form:input path="clave" type="password" id="clave" class="form-control"/>
-            <form:input path="repiteClave" type="password" id="clave" class="form-control"/>
+            <form:label for="exampleInputEmail1" path="email" class="form-label"><i class="fas fa-envelope colorIconoLogin"></i> Ingrese su Mail </form:label>
+            <form:input path="email" id="email"  type="email" class="form-control" />
+
+            <form:label path="clave" class="form-label" for="exampleInputEmail1"><i class="fas fa-key colorIconoLogin"></i> Ingrese su Clave </form:label>
+            <form:input path="clave" type="clave" id="clave" class="form-control"/>
+
+            <form:label path="repiteClave" class="form-label" for="exampleInputEmail1"><i class="fas fa-key colorIconoLogin"></i> Repita su Clave </form:label>
+            <form:input path="repiteClave" type="repiteClave" id="repiteClave" class="form-control"/>
             <br>
-            <button id="btn-registrarme" class="btn btn-lg btn-primary btn-block" Type="Submit"/>Registrarme</button>
+            <button id="btn-registrarme" class="fondo-login rounded-3 btn btn-primary border-0 w-100 shadow-sm " Type="Submit"/>Registrarme</button>
         </form:form>
             <br>
             <br>
-            <a style="color: white" href="login">Volver al inicio de Sesión</a>
+            <a  href="login">Volver al inicio de Sesión</a>
 
         <c:if test="${not empty msg}">
             <h4><span>${msg}</span></h4>
             <br>
         </c:if>
          </div>
+    </div>
     </div>
 </div>
 

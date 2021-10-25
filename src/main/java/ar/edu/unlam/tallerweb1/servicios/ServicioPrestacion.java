@@ -19,4 +19,6 @@ public interface ServicioPrestacion {
 
     Prestacion buscarPrestacionPorId(Long id);
     List<Prestacion> listarPrestacionesContratadasPorCliente(Long id);
+
+    void ClienteCalificaPrestacion(Long idPrestacion, Integer calificacion) throws Exception;
 }

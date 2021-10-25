@@ -74,4 +74,19 @@ public class ServicioPrestacionImpl implements ServicioPrestacion {
     public List<Prestacion> listarPrestacionesContratadasPorCliente(Long id) {
         return prestacionDao.listarPrestacionesContratadasPorCliente(id);
     }
+
+    @Override
+    public void ClienteCalificaPrestacion(Long idPrestacion, Integer calificacion) throws Exception {
+        if (idPrestacion ==null || calificacion <1 || calificacion >5) {
+            throw  new Exception();
+        }
+
+             Prestacion prestacion =   prestacionDao.buscarPrestacionFinalizadaSinCalificar(idPrestacion);
+             prestacion.setCalificacionDadaPorElCliente(calificacion);
+                prestacionDao.update(prestacion);
+
+
+        }
+
+
 }

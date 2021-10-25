@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
 public class ControladorContratarTest {
- /*   ServicioPrestacion servicioPrestacion = Mockito.mock(ServicioPrestacion.class);
+    ServicioPrestacion servicioPrestacion = Mockito.mock(ServicioPrestacion.class);
     ServicioUsuario servicioUsuario = Mockito.mock(ServicioUsuario.class);
     ControladorContratar controladorContratar = new ControladorContratar(servicioPrestacion, servicioUsuario);
     private Long idPrestacion=1l;
@@ -35,23 +35,23 @@ public class ControladorContratarTest {
         thenNoSePudoCrearLaPrestacion(mov);
     }
 
-    @Test
+   /* @Test
     public  void finalizarPrestacion(){
         givenPrestacionActiva(idPrestacion);
         ModelAndView mav =whenFinalizaPrestacion(idPrestacion);
         thenLaPrestacionFinalizoCorrectacmente(mav);
-    }
+    }*/
 
-    @Test
+   /* @Test
     public void finalizarPrestacionDaError() throws Exception {
         givenPrestacionFinalizada();
        ModelAndView mav = whenFinalizaUnaPrestacionQueYaEstaFinalizada(2l);
         thenPrestacionDaErrorAlFinalizar(mav);
-    }
+    }*/
 
-    private ModelAndView whenFinalizaUnaPrestacionQueYaEstaFinalizada(Long idPRestacion1) {
+    /*private ModelAndView whenFinalizaUnaPrestacionQueYaEstaFinalizada(Long idPRestacion1) {
        return controladorContratar.finalizarPrestacion(idPRestacion1);
-    }
+    }*/
 
     private void thenPrestacionDaErrorAlFinalizar(ModelAndView mav) {
         assertThat(mav.getViewName()).isEqualTo("perfilUsuario");
@@ -73,9 +73,9 @@ public class ControladorContratarTest {
         assertThat(mav.getModel().get("msgFinalizacionDeContratacion")).isEqualTo("Prestacion finalizada correctamente");
     }
 
-    private ModelAndView whenFinalizaPrestacion(Long idPrestacion){
+   /* private ModelAndView whenFinalizaPrestacion(Long idPrestacion){
       return   controladorContratar.finalizarPrestacion(idPrestacion);
-    }
+    }*/
     private void givenPrestacionActiva(Long idPrestacion) {
     }
 
@@ -108,5 +108,5 @@ public class ControladorContratarTest {
     private void thenNoSePudoCrearLaPrestacion(ModelAndView view) {
         Assert.assertEquals(view.getViewName(), "detalle-contratacion");
         Assert.assertEquals(view.getModel().get("error"), "No se pudo encontrar los datos del asistente para completar la operación");
-    }*/
+    }
 }

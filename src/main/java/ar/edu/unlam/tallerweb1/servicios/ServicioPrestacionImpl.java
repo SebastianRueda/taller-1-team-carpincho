@@ -62,7 +62,6 @@ public class ServicioPrestacionImpl implements ServicioPrestacion {
         }
             prestacion.setEstado("finalizado");
             prestacionDao.update(prestacion);
-
     }
 
     @Override
@@ -85,10 +84,8 @@ public class ServicioPrestacionImpl implements ServicioPrestacion {
         if(prestacion.getEstado()=="activo"){
             throw  new Exception();
         }
-             prestacion.setCalificacionDadaPorElCliente(calificacion);
-                prestacionDao.update(prestacion);
-
-
+            prestacion.setCalificacionDadaPorElCliente(calificacion);
+            prestacionDao.update(prestacion);
         }
 
 

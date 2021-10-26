@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
+import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
 
 import java.util.ArrayList;
@@ -24,6 +25,10 @@ public class ServicioFiltroTest {
 	private List <Provincia> provincias;
 	private List <Usuario> usuarios;
 	
+	Provincia caba=new Provincia(1L,"CABA");
+	Especialidad grua=new Especialidad(1L,"grua");
+	
+	
 	@Before
 	public void intanciarEspecialidades() {
 		especialidades = new ArrayList<Especialidad>();
@@ -41,6 +46,19 @@ public class ServicioFiltroTest {
 		usuarios = new ArrayList<Usuario>();
 		
 	}
+	
+	@Before
+	public void intanciarProvincia() {
+		caba = new Provincia();
+		
+	}
+	
+	@Before
+	public void intanciarEspecialidad() {
+		grua = new Especialidad();
+		
+	} 
+	
 	@Test
 	public void testQueTraeLaListaDeEspecialidadesCompleta() {
 		givenLaListaDeEspecialidades();
@@ -185,9 +203,38 @@ public class ServicioFiltroTest {
 			Assertions.assertThat(usuario2).hasFieldOrProperty("apellido");
 			Assertions.assertThat(usuario2).hasFieldOrProperty("especialidad");
 			Assertions.assertThat(usuario2).hasFieldOrProperty("provincia");
-			Assertions.assertThat(usuario2.getProvincia().getNombre()).isEqualTo("Cordoba");
-			
+			Assertions.assertThat(usuario2.getProvincia().getNombre()).isEqualTo("Cordoba");			
+		}
+		
+		//test
+		@Test
+		public void testQueTraeUsuariosDeLaMismaEspecialidadYprovincia() {
+			givenUsuariosDeLaMismaProvinciaYEspecialidad();
+			this.usuarios=whenTraigoLosUsuariosDeLaMismaEspecialidadYprovincia(grua.getId(), caba.getId());
+			thenSonLosUsuariosDeLaMismaEspecialidadYprovincia(this.usuarios);
 		}
 
-	
+
+		private void givenUsuariosDeLaMismaProvinciaYEspecialidad() {
+			this.usuarios.add(new Usuario("juan","perez",this.grua,this.caba));
+			this.usuarios.add(new Usuario("jose","martinez",this.grua,this.caba));
+			this.usuarios.add( new Usuario("carlos","lobos",this.grua,this.caba));
+			Mockito.when(servicioFiltro.usuariosDeLaEspecialidadYprovincia(grua.getId(), caba.getId())).thenReturn(this.usuarios);
+		}
+		
+		private List<Usuario> whenTraigoLosUsuariosDeLaMismaEspecialidadYprovincia(Long idEspecialidad, Long idProvincia) {
+			return servicioFiltro.usuariosDeLaEspecialidadYprovincia(idEspecialidad, idProvincia);
+			
+		}
+		
+		private void thenSonLosUsuariosDeLaMismaEspecialidadYprovincia(List<Usuario> usuarios) {
+			Usuario usuario =usuarios.get(0);
+			Usuario usuario2 =usuarios.get(1);
+			Usuario usuario3 =usuarios.get(2);
+			Assertions.assertThat(usuario.getProvincia().getNombre()).isEqualTo(usuario2.getProvincia().getNombre());	
+			Assertions.assertThat(usuario3.getProvincia().getNombre()).isEqualTo(usuario.getProvincia().getNombre());
+			Assertions.assertThat(usuario.getEspecialidad().getDescripcion()).isEqualTo(usuario2.getEspecialidad().getDescripcion());
+			Assertions.assertThat(usuario3.getEspecialidad().getDescripcion()).isEqualTo(usuario.getEspecialidad().getDescripcion());		
+			
+		}
 }

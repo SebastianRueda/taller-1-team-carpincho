@@ -19,9 +19,7 @@ import javax.servlet.http.HttpSession;
 public class ControladorPrestacionTest {
     private ServicioPrestacion servicioPrestacion = Mockito.mock(ServicioPrestacion.class);
     private ServicioUsuario servicioUsuario = Mockito.mock(ServicioUsuario.class);
-
     private ControladorPerfil controlador = new ControladorPerfil(servicioPrestacion, servicioUsuario);
-
     private HttpServletRequest request = Mockito.mock(HttpServletRequest.class);
 
     private Long USUARIO_ID = 12L;
@@ -34,15 +32,18 @@ public class ControladorPrestacionTest {
         thenCompruebaQueSeListaronCorrectamenteLasPrestaciones(mav, prestaciones.size());
     }
 
+    @Test
+    public void lkal() {
+
+    }
+
     private List<Prestacion> givenUsuarioConPrestaciones() {
         var cliente = new Usuario();
         cliente.setId(USUARIO_ID);
 
         var session = Mockito.mock(HttpSession.class);
         Mockito.when(session.getAttribute(Mockito.any())).thenReturn(cliente);
-
         Mockito.when(request.getSession(true)).thenReturn(session);
-
         final var prestaciones = new ArrayList<Prestacion>();
 
         for (int i = 0; i < 10; i++) {
@@ -50,7 +51,6 @@ public class ControladorPrestacionTest {
         }
 
         Mockito.when(servicioPrestacion.listarPrestacionesContratadasPorCliente(cliente.getId())).thenReturn(prestaciones);
-
         return prestaciones;
     }
 

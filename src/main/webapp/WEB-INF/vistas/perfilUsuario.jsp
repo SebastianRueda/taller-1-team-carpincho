@@ -173,7 +173,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder"
-                           data-bs-toggle="tab" href="#primary-tab-3">Algo</a>
+                           data-bs-toggle="tab" href="#primary-tab-3">Favoritos</a>
                     </li>
                 </ul><!-- Termina botones-->
                 <div class="tab-content">

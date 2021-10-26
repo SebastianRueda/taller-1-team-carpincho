@@ -1,7 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
 <html>
@@ -28,10 +27,10 @@
 							<a class="nav-link active" aria-current="page" href="traerEspecialidades">Home</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="/proyecto_limpio_spring_war_exploded/perfilUsuario">Perfil</a>
+							<a class="nav-link" href="perfilUsuario">Perfil</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="detalle-contratacion">Contrataciones</a>
+							<a class="nav-link" href="perfilUsuario">Contrataciones</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="suscripcion">Suscripción</a>
@@ -191,3 +190,8 @@
 	</footer>
 	</body>
 </html>
+
+
+
+
+

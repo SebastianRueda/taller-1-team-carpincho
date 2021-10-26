@@ -8,5 +8,4 @@ public interface ServicioLogin {
 	Usuario consultarUsuario(String email, String password);
 	Usuario registrar(String email, String password) throws Exception;
 
-
 }

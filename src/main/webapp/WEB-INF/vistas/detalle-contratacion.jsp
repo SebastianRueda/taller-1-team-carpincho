@@ -29,10 +29,10 @@
                             <a class="nav-link active" aria-current="page" href="traerEspecialidades">Home</a>
                          </li>
                          <li class="nav-item">
-                             <a class="nav-link" href="/proyecto_limpio_spring_war_exploded/perfilUsuario">Perfil</a>
+                             <a class="nav-link" href="perfilUsuario">Perfil</a>
                          </li>
                          <li class="nav-item">
-                            <a class="nav-link" href="../vistas/detalles-contrataciones">Contrataciones</a>
+                            <a class="nav-link" href="perfilUsuario">Contrataciones</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="suscripcion">Suscripción</a>

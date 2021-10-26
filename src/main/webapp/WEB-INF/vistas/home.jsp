@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link href="css/Login.css" rel="stylesheet">
 
-    <title>Busqueda Prestadores</title>
+    <title>AsegurAPP</title>
 </head>
 <body>
 
@@ -43,7 +43,7 @@
     </nav>
 </header>
 
-<div class=" h-200 w-100">
+<div class="w-100">
     <div class="fondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-centerfondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-center">
         <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-10 col-md-offset-3 col-sm-8 col-sm-offset-2">
 
@@ -254,7 +254,7 @@
             </div>
 
         </div>
-        <div class="footer-copyright text-center py-3">� 2021 Copyright: AsegurAPP
+        <div class="footer-copyright text-center py-3"> 2021 Copyright: AsegurAPP
         </div>
     </div>
 </footer>

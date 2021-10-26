@@ -52,9 +52,9 @@ values('eric','cuevas','ecuevas@alumno.unlam.edu.ar','root',1,1,1, true),
     ('lalo','landa','llanda@alumno.unlam.edu.ar','root',4,1,1, true),
     ('lito','perez','lperez@alumno.unlam.edu.ar','root',4,1,1, true),
     ('hernan','cuevas','hcuevas@alumno.unlam.edu.ar','root',4,1,1, true),
-    ('rocio','moran','rocio@alumno.unlam.edu.ar','root',5,1, true),
-		('andrea','galvan','andrea@alumno.unlam.edu.ar','root',6,1, true),
-        ('silvana','urquiza;','silvana@alumno.unlam.edu.ar','root',7,1, true);
+    ('rocio','moran','rocio@alumno.unlam.edu.ar','root',5,1,1, true),
+	('andrea','galvan','andrea@alumno.unlam.edu.ar','root',6,1,1, true),
+	('silvana','urquiza;','silvana@alumno.unlam.edu.ar','root',7,1,1, true);
 
 
 /* usuario que no tiene una especialidad, es decir usuario final*/

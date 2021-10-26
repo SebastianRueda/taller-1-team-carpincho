@@ -12,6 +12,15 @@ public class Especialidad {
 	private Long id;
 	private String descripcion;
 	
+	
+	
+	public Especialidad() {
+		super();
+	}
+	public Especialidad(long id, String descripcion) {
+		this.id=id;
+		this.descripcion=descripcion;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -24,5 +33,5 @@ public class Especialidad {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	//fin de la clase
+
 }

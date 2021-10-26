@@ -27,6 +27,8 @@ public class ControladorFiltrosTest {
 	private Usuario usuario;
 	private Especialidad especialidad;
 	private Provincia provincia;
+	Integer cantEspecialidades = 7;
+	private List <Especialidad> especialidades;
 
 	// La anotación @Before ejecuta el método que la lleve siempre antes que se ejecute
 	// un método con la anotación @Test. En este caso antes de testear un método se va a instanciar un
@@ -46,59 +48,139 @@ public class ControladorFiltrosTest {
 	public void intanciarProvincia() {
 		provincia = new Provincia();
 	}
+	
+	@Before
+	public void intanciarEspecialidades() {
+		especialidades = new ArrayList<Especialidad>();
+	}
+	
+	//inicio test
+		@Test
+		public void traerLaCantidadDeEspecialidadesEsperadas() {
+			
+			givenLaCantidadDeEspecialidadesEsperadas();
+			ModelAndView especialidades = whenEspecialidadesEsperadas();
+			thenTraerEspecialidadesEsperadas(especialidades);
+		}
+		
+		private void givenLaCantidadDeEspecialidadesEsperadas() {
+			for (int i = 0; i < cantEspecialidades; i++) {
+				especialidades.add(new Especialidad());
+			}
+			Mockito.when(servicioFiltro.traerEspecialidad()).thenReturn(especialidades);	
+		}
+		
+		private ModelAndView whenEspecialidadesEsperadas() {
+			return  controladorFiltros.listaEspecialidadesDesplegable();
+		}
+		
+		private void thenTraerEspecialidadesEsperadas(ModelAndView especialidades) {
+			var listaEspecialidades = especialidades.getModel().get("especialidades");
+			Assertions.assertThat(listaEspecialidades).isNotNull();
+			Assertions.assertThat(listaEspecialidades).isInstanceOf(List.class);
+			Assertions.assertThat((List<?>) listaEspecialidades).hasOnlyElementsOfType(Especialidad.class);
+			Assertions.assertThat((List<?>) listaEspecialidades).hasSize(cantEspecialidades);
+		}
+		
+		//inicio test
+		@Test
+		public void traerLaListaDeProvinciasYEspecialidadesEsperadas() {
+			final var cantEspecialidades = 7;
+			final var cantProvincias = 24;
+			givenTraerLaListaDeProvinciasYEspecialidadesEsperadas(cantEspecialidades, cantProvincias);
+			var mav = whenTraerLaListaDeProvinciasYEspecialidadesEsperadas();
+			thenTraerLaListaDeProvinciasYEspecialidadesEsperadas(mav, cantEspecialidades, cantProvincias);
+		}
+		
+		private void givenTraerLaListaDeProvinciasYEspecialidadesEsperadas(int cantEspecialidadesEsperadas, int cantProvinciasEsperadas) {
+			var especialidades = new ArrayList<Especialidad>();
+			for (int i = 0; i < cantEspecialidadesEsperadas; i++) {
+				especialidades.add(new Especialidad());
+			}
 
+			Mockito.when(servicioFiltro.traerEspecialidad()).thenReturn(especialidades);
+
+			var provincias = new ArrayList<Provincia>();
+			for (int i = 0; i < cantProvinciasEsperadas; i++) {
+				provincias.add(new Provincia());
+			}
+
+			Mockito.when(servicioFiltro.traerprovincia()).thenReturn(provincias);
+		}
+
+		private ModelAndView whenTraerLaListaDeProvinciasYEspecialidadesEsperadas() {
+			return controladorFiltros.listaEspecialidadesDesplegable();
+		}
+
+		private void thenTraerLaListaDeProvinciasYEspecialidadesEsperadas(ModelAndView mav, int cantEspecilidades, int cantProvincias) {
+			Assertions.assertThat(mav.getViewName()).isEqualTo("busquedaPrestadores");
+
+			var model = mav.getModel();
+
+			var especialidades = model.get("especialidades");
+
+			Assertions.assertThat(especialidades).isInstanceOf(List.class);
+			Assertions.assertThat((List<?>) especialidades).hasOnlyElementsOfType(Especialidad.class);
+			Assertions.assertThat((List<?>) especialidades).hasSize(cantEspecilidades);
+
+			var provincias = model.get("provincias");
+
+			Assertions.assertThat(provincias).isInstanceOf(List.class);
+			Assertions.assertThat((List<?>) provincias).hasOnlyElementsOfType(Provincia.class);
+			Assertions.assertThat((List<?>) provincias).hasSize(cantProvincias);
+		}
+		
+		//inicio test
+		@Test
+		public void testQueTeLLevaAOtraVistaCuandoLLegaUnaEspecialidadNulaporGET()  {
+			givenUnaEspecialidad(8L);
+			ModelAndView mav =whenSolicitoEspecialidad(this.especialidad);
+			ModelAndView errorMav = thenEsLaEspecialidadSolicitada(mav);
+			Assertions.assertThat(errorMav.getViewName()).isEqualTo("excepcionFiltro");
+		}
+		
+		private void givenUnaEspecialidad(Long especialidadInexistente) {
+			Especialidad especialidadEsperada = null;
+			Mockito.when(servicioFiltro.usuariosDeLaEspecialidad(this.especialidad.getId()))
+										.thenReturn((List<Usuario>) especialidadEsperada);
+		}
+		
+		
+		private ModelAndView whenSolicitoEspecialidad(Especialidad especialidad) {
+			ModelMap modelo = new ModelMap();
+			Especialidad especialidadBuscada=(Especialidad) servicioFiltro.usuariosDeLaEspecialidad(especialidad.getId());
+			modelo.put("especialidadBuscada", especialidadBuscada);
+			return new ModelAndView("busquedaPrestadores",modelo);
+		}
+
+		private ModelAndView thenEsLaEspecialidadSolicitada(ModelAndView mav){
+	        Assertions.assertThat(mav.getViewName()).isEqualTo("busquedaPrestadores");
+			var especialidad= mav.getModel().get("especialidadBuscada");
+			Assertions.assertThat(especialidad).isNull();
+			ModelMap model=new ModelMap();
+			
+			if(especialidad ==null) {
+				model.put("error","El Numero de Especialista no corresponde" );
+				model.put("volver","Volver A La Pagina Anterior" );
+				return new ModelAndView ("excepcionFiltro",model);
+			}
+			return null;	 
+	    }
+
+		
+	
+	
+		
+	
+	//inicio test
 	@Test
 	public void testQueTraeUnUsuarioFiltrandoPorEspecialidadYProvincia() {
 		givenUnUsuarioConEspecialidadYProvincia(usuario,"grua","CABA");
 		ModelAndView mav =whenSolicitoEspecialista(especialidad,provincia);
 		thenElUsuarioEsElSolicitado(mav);
 	}
-
-	@Test
-	public void traerLaListaDeProvinciasYEspecialidadesEsperadas() {
-		final var cantEspecialidades = 10;
-		final var cantProvincias = 12;
-		givenTraerLaListaDeProvinciasYEspecialidadesEsperadas(cantEspecialidades, cantProvincias);
-		var mav = whenTraerLaListaDeProvinciasYEspecialidadesEsperadas();
-		thenTraerLaListaDeProvinciasYEspecialidadesEsperadas(mav, cantEspecialidades, cantProvincias);
-	}
 	
-	@Test
-	public void testQueTeLLevaAOtraVistaCuandoLLegaUnaEspecialidadNulaporGET()  {
-		givenUnaEspecialidad(8L);
-		ModelAndView mav =whenSolicitoEspecialidad(this.especialidad);
-		ModelAndView errorMav = thenEsLaEspecialidadSolicitada(mav);
-		Assertions.assertThat(errorMav.getViewName()).isEqualTo("excepcionFiltro");
-	}
 	
-	private void givenUnaEspecialidad(Long especialidadInexistente) {
-		Especialidad especialidadEsperada = null;
-		Mockito.when(servicioFiltro.usuariosDeLaEspecialidad(this.especialidad.getId()))
-									.thenReturn((List<Usuario>) especialidadEsperada);
-	}
-
-	private ModelAndView whenSolicitoEspecialidad(Especialidad especialidad) {
-		ModelMap modelo = new ModelMap();
-		Especialidad especialidadBuscada=(Especialidad) servicioFiltro.usuariosDeLaEspecialidad(especialidad.getId());
-		modelo.put("especialidadBuscada", especialidadBuscada);
-		return new ModelAndView("busquedaPrestadores",modelo);
-	}
-
-	private ModelAndView thenEsLaEspecialidadSolicitada(ModelAndView mav){
-        Assertions.assertThat(mav.getViewName()).isEqualTo("busquedaPrestadores");
-		var especialidad= mav.getModel().get("especialidadBuscada");
-		Assertions.assertThat(especialidad).isNull();
-		ModelMap model=new ModelMap();
-		
-		if(especialidad ==null) {
-			model.put("error","El Numero de Especialista no corresponde" );
-			model.put("volver","Volver A La Pagina Anterior" );
-			return new ModelAndView ("excepcionFiltro",model);
-		}
-		return null;
-		 
-    }
-
 	private void givenUnUsuarioConEspecialidadYProvincia(Usuario usuario, String especialidad, String provincia) {
 		this.especialidad.setDescripcion(especialidad);
 		this.especialidad.setId(1L);
@@ -140,41 +222,4 @@ public class ControladorFiltrosTest {
 		Assertions.assertThat(((List<?>) usuarios).contains(usuario));
     }
 	
-	private void givenTraerLaListaDeProvinciasYEspecialidadesEsperadas(int cantEspecialidadesEsperadas, int cantProvinciasEsperadas) {
-		var especialidades = new ArrayList<Especialidad>();
-		for (int i = 0; i < cantEspecialidadesEsperadas; i++) {
-			especialidades.add(new Especialidad());
-		}
-
-		Mockito.when(servicioFiltro.traerEspecialidad()).thenReturn(especialidades);
-
-		var provincias = new ArrayList<Provincia>();
-		for (int i = 0; i < cantProvinciasEsperadas; i++) {
-			provincias.add(new Provincia());
-		}
-
-		Mockito.when(servicioFiltro.traerprovincia()).thenReturn(provincias);
-	}
-
-	private ModelAndView whenTraerLaListaDeProvinciasYEspecialidadesEsperadas() {
-		return controladorFiltros.listaEspecialidadesDesplegable();
-	}
-
-	private void thenTraerLaListaDeProvinciasYEspecialidadesEsperadas(ModelAndView mav, int cantEspecilidades, int cantProvincias) {
-		Assertions.assertThat(mav.getViewName()).isEqualTo("busquedaPrestadores");
-
-		var model = mav.getModel();
-
-		var especialidades = model.get("especialidades");
-
-		Assertions.assertThat(especialidades).isInstanceOf(List.class);
-		Assertions.assertThat((List<?>) especialidades).hasOnlyElementsOfType(Especialidad.class);
-		Assertions.assertThat((List<?>) especialidades).hasSize(cantEspecilidades);
-
-		var provincias = model.get("provincias");
-
-		Assertions.assertThat(provincias).isInstanceOf(List.class);
-		Assertions.assertThat((List<?>) provincias).hasOnlyElementsOfType(Provincia.class);
-		Assertions.assertThat((List<?>) provincias).hasSize(cantProvincias);
-	}
 }

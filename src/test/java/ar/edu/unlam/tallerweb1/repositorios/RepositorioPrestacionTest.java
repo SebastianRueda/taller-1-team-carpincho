@@ -23,6 +23,7 @@ public class RepositorioPrestacionTest extends SpringTest {
         prestacion = new Prestacion();
     }
 
+
     @Autowired
     private RepositorioPrestacion repositorioPrestacion;
 
@@ -102,6 +103,26 @@ public class RepositorioPrestacionTest extends SpringTest {
     }
 
     // ------------------------------------------------
+
+    @Test @Rollback @Transactional
+    public void buscarPrestacionFinalizadaSinCalificar(){
+
+        Prestacion prestacionGuardada = givenPrestacionFinalizadaSinCalificar();
+        Prestacion prestacionObtenida = whenBuscarPrestacionFinalizadaSinCalificar(prestacionGuardada.getId());
+        thenComparoQueSeanLasMismasLaPrestacionGuardadaConLaObtenida(prestacionGuardada,prestacionObtenida);
+    }
+
+    private Prestacion whenBuscarPrestacionFinalizadaSinCalificar(long idPRestacion) {
+       return  repositorioPrestacion.buscarPrestacionFinalizadaSinCalificar(idPRestacion);
+    }
+
+    private Prestacion givenPrestacionFinalizadaSinCalificar() {
+        this.prestacion.setEstado("finalizado");
+       this.prestacion.setCalificacionDadaPorElCliente(null);
+
+        repositorioPrestacion.save(this.prestacion);
+        return prestacion;
+    }
 
     private void givenGuardarPrestacionExitosamente(Prestacion prestacion) {
         repositorioPrestacion.save(prestacion);

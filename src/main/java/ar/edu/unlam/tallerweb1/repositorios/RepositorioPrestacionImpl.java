@@ -82,7 +82,9 @@ public class RepositorioPrestacionImpl implements RepositorioPrestacion{
 
     @Override
     public Prestacion buscarPrestacionFinalizadaSinCalificar(Long idPrestacion) {
-        return null;
+
+     return (Prestacion) sessionFactory.getCurrentSession().createCriteria(Prestacion.class).add(Restrictions.eq("id",idPrestacion)).add(Restrictions.like("estado", "finalizado")).add(Restrictions.isNull("calificacionDadaPorElCliente")).uniqueResult();
+
     }
 
 }

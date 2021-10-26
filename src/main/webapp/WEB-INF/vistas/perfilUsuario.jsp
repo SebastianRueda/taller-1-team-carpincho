@@ -199,33 +199,33 @@
                                         <tbody>
                                         <tr class="table-primary">
                                             <th scope="row">
-                                                <spa class="text-muted fw-normal">Nombre</spa>
+                                                <span class="text-muted fw-normal">Nombre</span>
                                             </th>
                                             <td class="user-avatar fw-bold">${usuarioEnSession.nombre}
                                                 ${usuarioEnSession.apellido}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">
-                                                <spa class="text-muted fw-normal">Rol</spa>
+                                                <span class="text-muted fw-normal">Rol</span>
                                             </th>
                                             <td class="user-avatar fw-bold">${usuarioEnSession.rol.descripcion}</td>
                                         </tr>
                                         <tr class="table-primary">
                                             <th scope="row">
-                                                <spa class="text-muted fw-normal">Mail</spa>
+                                                <span class="text-muted fw-normal">Mail</span>
                                             </th>
                                             <td class="user-avatar fw-bold">${usuarioEnSession.email}</td>
                                         </tr>
                                         <tr class="">
                                             <th scope="row">
-                                                <spa class="text-muted fw-normal">Ciudad</spa>
+                                                <span class="text-muted fw-normal">Ciudad</span>
                                             </th>
                                             <td class="user-avatar fw-bold">${usuarioEnSession.provincia.nombre}
                                             </td>
                                         </tr>
                                         <tr class="table-primary">
                                             <th scope="row">
-                                                <spa class="text-muted fw-normal">Fecha Alta</spa>
+                                                <span class="text-muted fw-normal">Fecha Alta</span>
                                             </th>
                                             <td class="user-avatar fw-bold">12/07/2020</td>
                                         </tr>
@@ -234,7 +234,9 @@
                                 </div>
                             </div>
                             <!--termina tabla-->
-
+                            <c:forEach items="${listaPrestaciones}" var="prestaciones">
+                                <p>factura: ${prestaciones.numerofactura}</p>
+                            </c:forEach>
                             <!-- empieza suscripcion-->
                             <div class="bg-white col-12 col-md-10 d-flex flex-column flex-md-row p-2 mb-2 mt-3 align-items-center justify-content-evenly">
                                 <c:choose>
@@ -324,10 +326,9 @@
                     </div>
                     <!-- Termina primer boton-->
                     <!-- Empieza segundo boton-->
-                    <div class="tab-pane ${seccion.equals("historial") ? "active" : ""}" id="primary-tab-2"
-                         role="tabpanel">
+                    <div class="tab-pane ${seccion.equals('historial') ? 'active' : ''}" id="primary-tab-2" role="tabpanel">
                         <div class="row w-100  row w-100 h-100 m-auto justify-content-md-center">
-                            <%-- <div class="bg-white col-12 d-flex flex-column p-2 mb-2 mt-2 align-items-center justify-content-evenly">
+                             <div class="bg-white col-12 d-flex flex-column p-2 mb-2 mt-2 align-items-center justify-content-evenly">
                                  <h4 class="text-muted">Historial</h4>
                                  <div class="card-body table-responsive">
                                      <table class="table  table-hover">
@@ -364,48 +365,63 @@
                                          </tbody>
                                      </table>
                                  </div>
-                             </div>--%>
-                            <div class="col-12 p-2 ">
+
+                                 <div class="col-12 p-2 ">
+                                     <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
+                                         <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">Numero Factura</p>
+                                         <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">Tipo Servicio</p>
+                                         <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">Asisitente</p>
+                                         <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">Fecha Contratado</p>
+                                         <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">Estado</p>
+                                         <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">Calificacion</p>
+                                     </div>
+                                     <c:forEach items="${historial}" var="prestacion">
+                                         <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
+                                             <p class="my-auto" style="width:20%;">${prestacion.numerofactura}</p>
+                                             <p class="my-auto" style="width:20%;">${prestacion.usuarioAsistente.especialidad}</p>
+                                             <p class="my-auto" style="width:20%;">${prestacion.usuarioAsistente.nombre} ${prestacion.usuarioAsistente.apellido}</p
+                                             <p class="my-auto" style="width:20%;">11/23/22</p>
+                                             <p class="my-auto" style="width:20%;"><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i></p>
+                                         </div>
+                                     </c:forEach>
+                                 </div>
+                             </div>
+                            <%--<div class="col-12 p-2 ">
                                 <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
                                     <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">Numero Factura</p>
-                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">Especiliadad</p>
+                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">Tipo Servicio</p>
                                     <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">Asisitente</p>
+                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">Fecha Contratado</p>
                                     <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">Estado</p>
                                     <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">Calificacion</p>
                                 </div>
-                                <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
-                                    <p class="my-auto" style="width:20%;">#412341123</p>
-                                    <p class="my-auto" style="width:20%;">Especialidad</p>
-                                    <p class="my-auto" style="width:20%;">Juan Perry</p>
-                                    <p class="ps-9 my-auto" style="width:20%;"><span class="py-1 px-3 estadoActivo font-weight-bold redondeadoEstado">Activo</span></p>
-                                    <p class="my-auto" style="width:20%;"><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i></p>
-                                </div>
-                                <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
-                                    <p class="my-auto" style="width:20%;">#412341123</p>
-                                    <p class="my-auto" style="width:20%;">Especialidad</p>
-                                    <p class="my-auto" style="width:20%;">Juan Perry</p>
-                                    <p class="ps-9 my-auto" style="width:20%;"><span class="py-1 px-3 estadoFinalizado font-weight-bold redondeadoEstado">Finalizado</span></p>
-                                    <p class="my-auto" style="width:20%;"><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-muted"></i><i class="fas fa-star text-muted"></i></p>
-                                </div>
-                                <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
-                                    <p class="my-auto" style="width:20%;">#412341123</p>
-                                    <p class="my-auto" style="width:20%;">Especialidad</p>
-                                    <p class="my-auto" style="width:20%;">Juan Perry</p>
-                                    <p class="ps-9 my-auto" style="width:20%;"><span class="py-1 px-3 estadoCancelado font-weight-bold redondeadoEstado">Cancelado</span></p>
-                                    <p class="my-auto" style="width:20%;"><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-muted"></i><i class="fas fa-star text-muted"></i></p>
-                                </div>
-                                <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
-                                    <p class="my-auto" style="width:20%;">#412341123</p>
-                                    <p class="my-auto" style="width:20%;">Especialidad</p>
-                                    <p class="my-auto" style="width:20%;">Juan Perry</p>
-                                    <p class="ps-9 my-auto" style="width:20%;"><span class="py-1 px-3 estadoCancelado font-weight-bold redondeadoEstado">Cancelado</span></p>
-                                    <button class="my-auto py-1 px-3 calificar font-weight-bold redondeadoEstado" style="width:20%;"> Calificar</button>
-                                </div>
-                            </div>
+                                <c:forEach items="${historial}" var="prestacion">
+                                    <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
+                                        <p class="my-auto" style="width:20%;">${prestacion.numerofactura}</p>
+                                        <p class="my-auto" style="width:20%;">${prestacion.especialidad.descripcion}</p>
+                                        <p class="my-auto" style="width:20%;">${prestacion.usuarioAsistente.nombre} ${prestacion.usuarioAsistente.apellido}</p
+                                        <p class="my-auto" style="width:20%;">11/23/22</p>
+                                        <c:choose>
+                                            <c:when test="${prestacion.estado=='activo'}">
+                                                <p class="ps-9 my-auto" style="width:20%;"><span class="py-1 px-3 estadoActivo font-weight-bold redondeadoEstado">Activo</span></p>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <c:when test="${prestacion.estado=='finalizado'}">
+                                                    <p class="ps-9 my-auto" style="width:20%;"><span class="py-1 px-3 estadoFinalizado font-weight-bold redondeadoEstado">Finalizado</span></p>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <p class="ps-9 my-auto" style="width:20%;"><span class="py-1 px-3 estadoCancelado font-weight-bold redondeadoEstado">Cancelado</span></p>
+                                                </c:otherwise>
+                                            </c:otherwise>
+                                        </c:choose>
+                                        <p class="my-auto" style="width:20%;"><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i></p>
+                                    </div>
+                                </c:forEach>
+                            </div>--%>
                         </div>
                     </div>
-                    <!-- Termina segundo boton-->
-                    <!-- Empieza tercer boton-->
+                    <%-- Termina segundo boton--%>
+                    <%-- Empeiza tercer boton--%>
                     <div class="tab-pane" id="primary-tab-3" role="tabpanel">
                         <div class="row w-100 bg-info row w-100 h-100 m-auto justify-content-md-center px-2">
                             <div class="bg-white col-12 d-flex flex-column  p-2 mb-2 mt-2 align-items-center">
@@ -422,7 +438,6 @@
     </div>
 
 </div>
-
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
         integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous">

@@ -73,7 +73,6 @@ public class RepositorioPrestacionImpl implements RepositorioPrestacion{
         prestaciones.sort((o1, o2) -> {
             var p1 = (Prestacion) o1;
             var p2 = (Prestacion) o2;
-
             return  p1.getEstado().compareTo(p2.getEstado());
         });
 
@@ -83,8 +82,11 @@ public class RepositorioPrestacionImpl implements RepositorioPrestacion{
     @Override
     public Prestacion buscarPrestacionFinalizadaSinCalificar(Long idPrestacion) {
 
-     return (Prestacion) sessionFactory.getCurrentSession().createCriteria(Prestacion.class).add(Restrictions.eq("id",idPrestacion)).add(Restrictions.like("estado", "finalizado")).add(Restrictions.isNull("calificacionDadaPorElCliente")).uniqueResult();
-
+     return (Prestacion) sessionFactory.getCurrentSession().createCriteria(Prestacion.class)
+             .add(Restrictions.eq("id",idPrestacion))
+             .add(Restrictions.like("estado", "finalizado"))
+             .add(Restrictions.isNull("calificacionDadaPorElCliente"))
+             .uniqueResult();
     }
 
 }

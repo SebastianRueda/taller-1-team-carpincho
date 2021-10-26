@@ -33,10 +33,12 @@ public class ControladorPerfil {
             return new ModelAndView("redirect:/");
         }
 
+        var prestaciones = servicioPrestacion.listarPrestacionesContratadasPorCliente(usuarioLogueado.getId());
         Usuario usuario = servicioUsuario.usuarioFindById(usuarioLogueado.getId());
         ModelMap modelo = new ModelMap();
         modelo.put("usuarioEnSession",usuario);
         modelo.put("seccion", "perfil");
+        modelo.put("listaPrestaciones", prestaciones);
 
         return new ModelAndView("perfilUsuario", modelo);
     }
@@ -51,12 +53,9 @@ public class ControladorPerfil {
         }
 
         var prestaciones = servicioPrestacion.listarPrestacionesContratadasPorCliente(usuarioLogueado.getId());
-
         ModelMap map = new ModelMap();
         map.put("historial", prestaciones);
-
         map.put("seccion", "historial");
-
         return new ModelAndView("perfilUsuario", map);
     }
 }

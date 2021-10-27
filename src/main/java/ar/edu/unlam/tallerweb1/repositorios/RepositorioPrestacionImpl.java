@@ -89,4 +89,11 @@ public class RepositorioPrestacionImpl implements RepositorioPrestacion{
              .uniqueResult();
     }
 
+    @Override
+    public List<Prestacion> buscarPrestacionesCalificadasPorUsuario(Long idUsuario) {
+        return  (List<Prestacion>) sessionFactory.getCurrentSession().createCriteria(Prestacion.class)
+                .add(Restrictions.eq("usuarioSolicitante",idUsuario))
+                .list();
+    }
+
 }

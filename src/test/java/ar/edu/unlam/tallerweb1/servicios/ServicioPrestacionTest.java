@@ -9,7 +9,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioUsuario;
 import org.assertj.core.api.Assertions;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -20,6 +19,7 @@ import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -121,6 +121,56 @@ public class ServicioPrestacionTest {
     public  void clienteCalificaPrestacionConUnValorQueNoEstaDentroDelRango() throws Exception {
         givenUnaPrestacionFinalizadaSinCalificar(1l);
         whenClienteCalificaConUnValorIncorrecto(1l,0);
+    }
+
+    @Test
+    public void mostrarPromedioDeCalificacionDeUsuarioFinal() throws Exception {
+        Usuario usuario =new Usuario();
+        usuario.setId(20l);
+        Float promedioEsperado = givenIdDeUnUsuarioConCalificaciones(usuario);
+        Float promedioObtenido = whenSeObtienePromedioDeCalificacion(usuario);
+        thenSeMuestraCalificacionEsperada(promedioEsperado,promedioObtenido,usuario.getId());
+    }
+
+    @Test(expected = Exception.class)
+    public void alQuererMostrarPromedioDeCalificacionDeUsuarioFinalLaListaVieneVacia() throws Exception {
+        Usuario usuario =new Usuario();
+        usuario.setId(20l);
+        givenIdDeUnUsuarioSinCalificaciones(usuario);
+        whenSeObtienePromedioDeCalificacion(usuario);
+    }
+
+    private void givenIdDeUnUsuarioSinCalificaciones(Usuario usuario) {
+        when(repositorioPrestacion.buscarPrestacionesCalificadasPorUsuario(usuario.getId())).thenReturn(anyList());
+    }
+
+    private void thenSeMuestraCalificacionEsperada(Float promedioEsperado, Float promedioObtenido,Long idUsuario) {
+        assertThat(promedioObtenido).isEqualTo(promedioEsperado);
+        verify(repositorioPrestacion,times(1)).buscarPrestacionesCalificadasPorUsuario(idUsuario);
+    }
+
+    private Float whenSeObtienePromedioDeCalificacion(Usuario usuario) throws Exception {
+        return servicioPrestacion.obtenerPromedioDeCalificicacionDeUnUsuario(usuario);
+    }
+
+    private Float givenIdDeUnUsuarioConCalificaciones(Usuario usuario) {
+        List<Prestacion>listaPrestaciones = new ArrayList<>();
+
+        Float promedio = 0f;
+        Integer sumatoria = 0;
+
+        for (int i=1;i<=5;i++){
+            Random r = new Random();
+            Integer valorDado = r.nextInt(4)+1;
+            Prestacion prestacion = new Prestacion();
+            prestacion.setUsuarioSolicitante(usuario);
+            prestacion.setCalificacionDadaPorUsuarioAsistente(valorDado);
+            sumatoria+=valorDado;
+            listaPrestaciones.add(prestacion);
+        }
+
+        when(repositorioPrestacion.buscarPrestacionesCalificadasPorUsuario(usuario.getId())).thenReturn(listaPrestaciones);
+        return promedio= sumatoria.floatValue()/listaPrestaciones.size();
     }
 
     public void whenClienteCalificaConUnValorIncorrecto (Long idPrestacion, Integer calificacion) throws Exception {

@@ -34,6 +34,14 @@ values ('CABA'),
        ('Tucuman'),
        ('La Rioja');
 
+insert into denuncia (id, descripcion)
+values (1,'El Asistente nunca se presentó.'),
+       (2,'El Asistente me agredió verbalmente.'),
+       (3,'El Asistente me agredió físicamente'),
+       (4,'El Asistente me cobró un extra'),
+       (5,'El Asistente no se correspondía con el registrado en la App');
+    
+
 insert into rol (descripcion)
 values('prestador'),
       ('cliente final');

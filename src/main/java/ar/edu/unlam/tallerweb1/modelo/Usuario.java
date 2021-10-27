@@ -34,7 +34,20 @@ public class Usuario {
 	@OneToOne(cascade = CascadeType.ALL)
 	private Suscripcion suscripcion;
 
+	
+	
+	
+	public Usuario() {
+		super();
+	}
 
+	public Usuario(String nombre, String apellido, Especialidad especialidad, Provincia provincia) {
+		super();
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.especialidad = especialidad;
+		this.provincia = provincia;
+	}
 
 	public Suscripcion getSuscripcion() {
 		return suscripcion;

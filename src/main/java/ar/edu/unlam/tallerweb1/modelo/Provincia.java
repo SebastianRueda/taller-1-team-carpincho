@@ -12,6 +12,15 @@ public class Provincia {
 	private Long id;
 	private String nombre;
 	
+	
+	public Provincia() {
+		super();
+	}
+	public Provincia(Long id, String nombre) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+	}
 	public Long getId() {
 		return id;
 	}

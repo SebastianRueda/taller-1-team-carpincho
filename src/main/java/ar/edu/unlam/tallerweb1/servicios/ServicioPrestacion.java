@@ -2,6 +2,7 @@ package ar.edu.unlam.tallerweb1.servicios;
 
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Prestacion;
+import ar.edu.unlam.tallerweb1.modelo.Usuario;
 
 import java.util.List;
 
@@ -21,4 +22,6 @@ public interface ServicioPrestacion {
     List<Prestacion> listarPrestacionesContratadasPorCliente(Long id);
 
     void ClienteCalificaPrestacion(Long idPrestacion, Integer calificacion) throws Exception;
+
+    Float obtenerPromedioDeCalificicacionDeUnUsuario(Usuario usuario) throws Exception;
 }

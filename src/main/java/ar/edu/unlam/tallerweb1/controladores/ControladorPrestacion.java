@@ -41,8 +41,8 @@ public class ControladorPrestacion {
 
         } catch (Exception e) {
             model.put("error","error de rango de calificacion");
-            return new ModelAndView("perfilUsuario",model);
+            return new ModelAndView("redirect:/perfilUsuario",model);
         }
-        return new ModelAndView("perfilUsuario");
+        return new ModelAndView("redirect:/perfilUsuario");
     }
 }

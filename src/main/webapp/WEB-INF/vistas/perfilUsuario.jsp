@@ -235,6 +235,8 @@
                             </div>
                             <!--termina tabla-->
 
+                            <p>Promedio De Calificacion: ${promedio}</p>
+
                             <!-- empieza suscripcion-->
                             <div class="bg-white col-12 col-md-10 d-flex flex-column flex-md-row p-2 mb-2 mt-3 align-items-center justify-content-evenly">
                                 <c:choose>
@@ -458,9 +460,9 @@
                                         </c:if>
 
                                         <c:if test="${prestacion.calificacionDadaPorElCliente==null and prestacion.estado == 'cancelado'}">
-                                            <button class="my-auto py-1 px-3 calificar font-weight-bold redondeadoEstado" data-bs-toggle="modal"data-bs-target="#exampleModal1"
-                                                    style="width:20%;"> Calificar
-                                            </button>
+                                            <form:form action="contratar-prestacion?asistente-id=${prestacion.usuarioAsistente.id}" method="get">
+                                                <button class="my-auto py-1 px-3 calificar font-weight-bold redondeadoEstado" style="width:20%;"> Calificar</button>
+                                            </form:form>
                                         </c:if>
                                         <button class="my-auto py-1 px-3 denunciar font-weight-bold redondeadoEstado" style="width:20%;"> Denunciar </button>
                                     </div>
@@ -489,29 +491,6 @@
 </div>
 
 
-<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Calificacion De la Prestacion: ${prestacion.usuarioAsistente.especialidad.descripcion}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="mb-5 mt-5 text-center">
-                    <h3> Calificar</h3>
-                    <p> id Prestacion:${prestacion.id}</p>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar
-                </button>
-                <button type="submit" class="btn btn-primary">Calificar</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 
 

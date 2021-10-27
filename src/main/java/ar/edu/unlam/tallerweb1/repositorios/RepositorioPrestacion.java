@@ -23,4 +23,6 @@ public interface RepositorioPrestacion {
     List<Prestacion> listarPrestacionesContratadasPorCliente(Long id);
 
     Prestacion buscarPrestacionFinalizadaSinCalificar(Long idPrestacion);
+
+    List<Prestacion> buscarPrestacionesCalificadasPorUsuario(Long id);
 }

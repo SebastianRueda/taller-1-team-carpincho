@@ -22,11 +22,10 @@ import static org.junit.Assert.assertThat;
 public class RepositorioPrestacionTest extends SpringTest {
      private Prestacion prestacion;
 
-  @Before
+    @Before
     public void createPrestacion() {
         prestacion = new Prestacion();
     }
-
 
     @Autowired
     private RepositorioPrestacion repositorioPrestacion;
@@ -115,29 +114,24 @@ public class RepositorioPrestacionTest extends SpringTest {
         Prestacion prestacionObtenida = whenBuscarPrestacionFinalizadaSinCalificar(prestacionGuardada.getId());
         thenComparoQueSeanLasMismasLaPrestacionGuardadaConLaObtenida(prestacionGuardada,prestacionObtenida);
     }
-/*
+
     @Test @Rollback @Transactional
     public void devolverListaPrestacionesDeUnUsuarioFinalDondeLoCalificaron(){
+        Usuario usuario33 = new Usuario();
+        usuario33.setId(20l);
+        repositorioUsuario.guardar(usuario33);
 
-        Usuario usuario = givenListaDePrestacionesCalificaDel();
-        List<Prestacion> listaDePrestacionesObtenida = whenBuscaListaPrestacionesDeUnUsuarioFinalDondeLoCalificaron(usuario.getId());
-        thenComparoQueSeanLasMismasLaPrestacionGuardadaConLaObtenida(5,listaDePrestacionesObtenida.size());
+        List<Prestacion> listaDePrestacionesEsperada = givenListaDePrestacionesCalificaDel(usuario33);
+        List<Prestacion> listaDePrestacionesObtenida = whenBuscaListaPrestacionesDeUnUsuarioFinalDondeLoCalificaron(usuario33.getId());
+        thenComparoQueSeanLasMismasLaPrestacionGuardadaConLaObtenida(listaDePrestacionesEsperada,listaDePrestacionesObtenida);
     }
 
-    private void thenComparoQueSeanLasMismasLaPrestacionGuardadaConLaObtenida(int listaTamanioEsperada, int listaTamanioObtenida) {
-        assertEquals(listaTamanioEsperada,listaTamanioObtenida);
+    private void thenComparoQueSeanLasMismasLaPrestacionGuardadaConLaObtenida(List<Prestacion> listaDePrestacionesEsperada, List<Prestacion> listaDePrestacionesObtenida) {
+        assertEquals(listaDePrestacionesEsperada.size(),listaDePrestacionesObtenida.size());
     }
 
-    private List whenBuscaListaPrestacionesDeUnUsuarioFinalDondeLoCalificaron(Long id) {
-        return repositorioPrestacion.buscarPrestacionesCalificadasPorUsuario(id);
-    }
-
-    private Usuario givenListaDePrestacionesCalificaDel() {
-        //List<Prestacion>listaDePrestaciones = new ArrayList<>();
-
-        Usuario usuario = new Usuario();
-        usuario.setId(20l);
-        repositorioUsuario.guardar(usuario);
+    private List<Prestacion> givenListaDePrestacionesCalificaDel( Usuario usuario33) {
+        List<Prestacion>listaDePrestaciones = new ArrayList<>();
 
         for (int i=1;i<=5;i++){
             Random r = new Random();
@@ -148,16 +142,20 @@ public class RepositorioPrestacionTest extends SpringTest {
 
             Prestacion prestacion = new Prestacion();
             //prestacion.setId(50l + i);
-            prestacion.setUsuarioSolicitante(usuario);
+            prestacion.setUsuarioSolicitante(usuario33);
             prestacion.setUsuarioAsistente(usuarioAsistente);
             prestacion.setCalificacionDadaPorUsuarioAsistente(valorDado);
             repositorioPrestacion.save(prestacion);
 
-            //listaDePrestaciones.add(prestacion);
+            listaDePrestaciones.add(prestacion);
         }
-        return usuario;
+
+        return listaDePrestaciones;
     }
-*/
+
+    private List whenBuscaListaPrestacionesDeUnUsuarioFinalDondeLoCalificaron(Long id) {
+        return repositorioPrestacion.buscarPrestacionesCalificadasPorUsuario(id);
+    }
     private Prestacion whenBuscarPrestacionFinalizadaSinCalificar(long idPRestacion) {
        return  repositorioPrestacion.buscarPrestacionFinalizadaSinCalificar(idPRestacion);
     }

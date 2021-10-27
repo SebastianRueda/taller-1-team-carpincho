@@ -22,7 +22,7 @@ import static org.mockito.Mockito.when;
 
 
 public class ControladorPrestacionTest {
-   /* private ServicioPrestacion servicioPrestacion = Mockito.mock(ServicioPrestacion.class);
+    private ServicioPrestacion servicioPrestacion = Mockito.mock(ServicioPrestacion.class);
     private ServicioUsuario servicioUsuario = Mockito.mock(ServicioUsuario.class);
     private ControladorPerfil controlador = new ControladorPerfil(servicioPrestacion, servicioUsuario);
     private HttpServletRequest request = Mockito.mock(HttpServletRequest.class);
@@ -64,8 +64,7 @@ public class ControladorPrestacionTest {
     }
 
     private void thenCalificaErroneamente(ModelAndView mav) {
-        assertThat(mav.getViewName()).isEqualTo("perfilUsuario");
-        assertThat(mav.getModel().get("error")).isEqualTo("error de rango de calificacion");
+        assertThat(mav.getViewName()).isEqualTo("redirect:/perfilUsuario");
     }
 
     private Prestacion giveUnUsuarioConPrestacion() throws Exception {
@@ -84,7 +83,7 @@ public class ControladorPrestacionTest {
     }
 
     private void thenCalificaExistosamente(ModelAndView mav) {
-        assertThat(mav.getViewName()).isEqualTo("redirect:/mostrar-historial");
+        assertThat(mav.getViewName()).isEqualTo("redirect:/perfilUsuario");
     }
 
 
@@ -115,5 +114,5 @@ public class ControladorPrestacionTest {
         Assertions.assertThat(prestaciones).isNotNull();
         Assertions.assertThat(prestaciones).isInstanceOf(List.class);
         Assertions.assertThat(prestaciones).hasSize(cantPrestaciones);
-    }*/
+    }
 }

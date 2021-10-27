@@ -23,10 +23,10 @@
 			<form action="especialidadElegida" >
 				<label for="listaEspecialidadDesplegable">Seleccione motivo:</label> 
 				<select name="listaEspecialidadDesplegable">
-					<c:forEach items="${denuncias}" var="especialidad">
+					<c:forEach items="${denuncias}" var="denuncia">
 						<option value="${denuncia.id}">${denuncia.descripcion}</option>
 					</c:forEach>
-				</select>
+				</select><br>
 				<label>Comentario: </label> 
 				<textarea rows="4" cols="50"></textarea>
 				

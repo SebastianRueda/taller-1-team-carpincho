@@ -460,9 +460,9 @@
                                         </c:if>
 
                                         <c:if test="${prestacion.calificacionDadaPorElCliente==null and prestacion.estado == 'cancelado'}">
-                                            <form:form action="contratar-prestacion?asistente-id=${prestacion.usuarioAsistente.id}" method="get">
-                                                <button class="my-auto py-1 px-3 calificar font-weight-bold redondeadoEstado" style="width:20%;"> Calificar</button>
-                                            </form:form>
+                                         <form:form  style="width:20%;" action="contratar-prestacion?asistente-id=${prestacion.usuarioAsistente.id}" method="get">
+                                             <button class="my-auto py-1 px-3 calificar font-weight-bold redondeadoEstado w-100"> Calificar</button>
+                                         </form:form>
                                         </c:if>
                                         <button class="my-auto py-1 px-3 denunciar font-weight-bold redondeadoEstado" style="width:20%;"> Denunciar </button>
                                     </div>

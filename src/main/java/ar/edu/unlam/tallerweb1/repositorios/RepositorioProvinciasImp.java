@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import ar.edu.unlam.tallerweb1.modelo.Prestacion;
 import ar.edu.unlam.tallerweb1.modelo.Provincia;
 
 @Repository("repositorioProvincias")
@@ -53,6 +53,12 @@ public class RepositorioProvinciasImp implements RepositorioProvincias{
     public void update(Provincia provinciaExistente) {
 		sessionFactory.getCurrentSession().update(provinciaExistente);
     }
+
+	@Override
+	public Provincia buscarProvinciaPorId(Provincia provinciaExistente) {
+		return (Provincia) sessionFactory.getCurrentSession().createCriteria(Provincia.class)
+				.add(Restrictions.eq("id", provinciaExistente.getId())).uniqueResult();
+	}
 
 	private Session getSession() {
 		return sessionFactory.getCurrentSession();

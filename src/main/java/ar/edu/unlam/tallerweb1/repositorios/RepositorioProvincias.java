@@ -12,4 +12,6 @@ public interface RepositorioProvincias {
 	void save(Provincia provincia);
 	void delete(Provincia provinciaExistente);
 	void update(Provincia provinciaExistente);
+
+	Provincia buscarProvinciaPorId(Provincia provinciaExistente);
 }

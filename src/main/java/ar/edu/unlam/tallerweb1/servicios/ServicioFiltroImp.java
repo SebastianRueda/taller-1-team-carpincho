@@ -29,7 +29,6 @@ public class ServicioFiltroImp implements ServicioFiltro{
 		this.repositorioUsuario=repositorioUsuario;
 	}
 	
-
 	@Override
 	public List<Especialidad> traerEspecialidad() {
 		List <Especialidad> especialidadLista= repositorioEspecialidades.traerEspecialidad();

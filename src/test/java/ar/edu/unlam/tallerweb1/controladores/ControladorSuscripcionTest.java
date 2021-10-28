@@ -7,6 +7,8 @@ import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
 import org.junit.Test;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
@@ -19,7 +21,8 @@ public class ControladorSuscripcionTest {
     private String nombreSuscripcionBasica = "suscripcion basica";
     private ServicioSuscripcion servicioSuscripcion = mock(ServicioSuscripcion.class);
     private ServicioUsuario servicioUsuario = mock(ServicioUsuario.class);
-    private ControladorSuscripcion controladorSuscripcion = new ControladorSuscripcion(servicioSuscripcion, servicioUsuario);
+    private HttpServletRequest request = mock(HttpServletRequest.class);
+    private ControladorSuscripcion controladorSuscripcion = new ControladorSuscripcion(request,servicioSuscripcion, servicioUsuario);
 
 
     @Test

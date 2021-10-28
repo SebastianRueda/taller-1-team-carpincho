@@ -9,4 +9,7 @@ public interface RepositorioProvincias {
 	void actualizar(Provincia provincia);
 	void eliminar(Provincia provincia);
 	List<Provincia> traerProvincia();
+	void save(Provincia provincia);
+	void delete(Provincia provinciaExistente);
+	void update(Provincia provinciaExistente);
 }

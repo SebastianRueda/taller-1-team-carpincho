@@ -29,10 +29,10 @@
                             <a class="nav-link active" aria-current="page" href="traerEspecialidades">Home</a>
                          </li>
                          <li class="nav-item">
-                             <a class="nav-link" href="/proyecto_limpio_spring_war_exploded/perfilUsuario">Perfil</a>
+                             <a class="nav-link" href="perfilUsuario">Perfil</a>
                          </li>
                          <li class="nav-item">
-                            <a class="nav-link" href="../vistas/detalles-contrataciones">Contrataciones</a>
+                            <a class="nav-link" href="perfilUsuario">Contrataciones</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="suscripcion">Suscripción</a>
@@ -66,6 +66,16 @@
                             <P class="card-text">${prestacion.especialidad.descripcion}</P>
                             <h5 class="card-title">Estado</h5>
                             <P class="card-text">${prestacion.estado}</P>
+
+                            <%--@elvariable id="prestacion" type="ar.edu.unlam.tallerweb1.modelo.Prestacion"--%>
+                            <form:form action="finalizarPrestacion" method="post" modelAttribute="prestacion">
+                                <input type="number" path="id" id="id" value="${prestacion.id}" >
+                                <input type="text" path="estado" id="estado" value="${prestacion.estado}" >
+
+                                <p>${prestacion.id} </p>
+                                <button type="submit" class="btn btn-primary">Pagar Suscripcion</button>
+                            </form:form>
+
 
                         </div>
                     </div>

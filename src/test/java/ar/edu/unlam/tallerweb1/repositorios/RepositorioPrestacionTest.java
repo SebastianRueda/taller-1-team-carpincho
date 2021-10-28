@@ -4,6 +4,7 @@ import ar.edu.unlam.tallerweb1.SpringTest;
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Prestacion;
 import ar.edu.unlam.tallerweb1.modelo.PrestacionEstado;
+import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,8 +23,12 @@ public class RepositorioPrestacionTest extends SpringTest {
         prestacion = new Prestacion();
     }
 
+
     @Autowired
     private RepositorioPrestacion repositorioPrestacion;
+
+    @Autowired
+    private RepositorioUsuario repositorioUsuario;
 
     @Test
     @Rollback
@@ -81,7 +86,43 @@ public class RepositorioPrestacionTest extends SpringTest {
         thenFiltrarPrestacionesPorEspecialidad(prestaciones, cantEsperada);
     }*/
 
+    @Test
+    @Transactional
+    @Rollback
+    public void listarPrestacionesDeUnCliente() {
+        var cliente = new Usuario();
+        cliente.setId(12L);
+
+        repositorioUsuario.guardar(cliente);
+
+        var cantDePrestaciones = 10;
+
+        givenUsuarioListarCliente(cliente, cantDePrestaciones);
+        var prestacionesObtenidas = whenListarPrescationesUnCliente(cliente);
+        thenCompruboQueElListadoSeGuardadoCorrectamente(prestacionesObtenidas, cantDePrestaciones);
+    }
+
     // ------------------------------------------------
+
+    @Test @Rollback @Transactional
+    public void buscarPrestacionFinalizadaSinCalificar(){
+
+        Prestacion prestacionGuardada = givenPrestacionFinalizadaSinCalificar();
+        Prestacion prestacionObtenida = whenBuscarPrestacionFinalizadaSinCalificar(prestacionGuardada.getId());
+        thenComparoQueSeanLasMismasLaPrestacionGuardadaConLaObtenida(prestacionGuardada,prestacionObtenida);
+    }
+
+    private Prestacion whenBuscarPrestacionFinalizadaSinCalificar(long idPRestacion) {
+       return  repositorioPrestacion.buscarPrestacionFinalizadaSinCalificar(idPRestacion);
+    }
+
+    private Prestacion givenPrestacionFinalizadaSinCalificar() {
+        this.prestacion.setEstado("finalizado");
+       this.prestacion.setCalificacionDadaPorElCliente(null);
+
+        repositorioPrestacion.save(this.prestacion);
+        return prestacion;
+    }
 
     private void givenGuardarPrestacionExitosamente(Prestacion prestacion) {
         repositorioPrestacion.save(prestacion);
@@ -183,5 +224,23 @@ public class RepositorioPrestacionTest extends SpringTest {
 
     private void thenFiltrarPrestacionesPorEspecialidad(List<Prestacion> prestaciones, int cantEsperado) {
         Assert.assertEquals(prestaciones.size(), cantEsperado);
+    }
+
+    private void givenUsuarioListarCliente(Usuario cliente, int cantDePrestaciones) {
+        for (int i = 0; i < cantDePrestaciones; i++) {
+            var p = new Prestacion();
+            p.setUsuarioSolicitante(cliente);
+            p.setEstado(PrestacionEstado.ACTIVO.getEstado());
+
+            repositorioPrestacion.save(p);
+        }
+    }
+
+    private List<Prestacion> whenListarPrescationesUnCliente(Usuario usuario) {
+        return repositorioPrestacion.listarPrestacionesContratadasPorCliente(usuario.getId());
+    }
+
+    private void thenCompruboQueElListadoSeGuardadoCorrectamente(List<Prestacion> prestacionesObtenidas, int cantPrestacionesGuardadas) {
+        Assert.assertEquals(prestacionesObtenidas.size(), cantPrestacionesGuardadas);
     }
 }

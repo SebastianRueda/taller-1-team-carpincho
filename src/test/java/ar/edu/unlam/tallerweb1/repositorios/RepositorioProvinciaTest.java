@@ -98,7 +98,7 @@ public class RepositorioProvinciaTest extends SpringTest{
 
     private void thenComparoQueLaProvinciaSeHayaActualizado(Provincia original, Provincia actualizada) {
         Assert.assertNotNull(actualizada);
-        Assert.assertEquals(original, actualizada);
+        Assert.assertNotEquals(original, actualizada);
     }
 
     private void whenEliminoLaProvincia(Provincia provincia) {

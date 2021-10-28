@@ -464,7 +464,7 @@
                                              <button class="my-auto py-1 px-3 calificar font-weight-bold redondeadoEstado w-100"> Calificar</button>
                                          </form:form>
                                         </c:if>
-                                        <button class="my-auto py-1 px-3 denunciar font-weight-bold redondeadoEstado" style="width:20%;"> Denunciar </button>
+                                        <button class="my-auto py-1 px-3 denunciar font-weight-bold redondeadoEstado" style="width:20%;"><a href="denunciarAsistente"> Denunciar </a></button>
                                     </div>
 
                                 </c:forEach>

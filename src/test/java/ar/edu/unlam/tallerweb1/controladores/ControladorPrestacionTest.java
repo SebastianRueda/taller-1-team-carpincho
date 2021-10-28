@@ -64,8 +64,7 @@ public class ControladorPrestacionTest {
     }
 
     private void thenCalificaErroneamente(ModelAndView mav) {
-        assertThat(mav.getViewName()).isEqualTo("perfilUsuario");
-        assertThat(mav.getModel().get("error")).isEqualTo("error de rango de calificacion");
+        assertThat(mav.getViewName()).isEqualTo("redirect:/perfilUsuario");
     }
 
     private Prestacion giveUnUsuarioConPrestacion() throws Exception {
@@ -84,7 +83,7 @@ public class ControladorPrestacionTest {
     }
 
     private void thenCalificaExistosamente(ModelAndView mav) {
-        assertThat(mav.getViewName()).isEqualTo("redirect:/mostrar-historial");
+        assertThat(mav.getViewName()).isEqualTo("redirect:/perfilUsuario");
     }
 
 

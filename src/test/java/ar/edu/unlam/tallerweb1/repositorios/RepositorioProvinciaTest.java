@@ -1,7 +1,5 @@
 package ar.edu.unlam.tallerweb1.repositorios;
 
-import static org.junit.Assert.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,35 +21,65 @@ public class RepositorioProvinciaTest extends SpringTest{
 	
 	@Autowired
 	RepositorioProvincias repositorioProvincias;
-	
+
+	////////////TEST/////////////
 	@Test
     @Rollback
     @Transactional
     public void guardarProvinciaTest() {
         givenGuardarProvinciaExitosamente(provincia);
-        Provincia encontrada = whenBuscoLaPresatacionQueGuarde(this.provincia);
+        Provincia encontrada = whenBuscoLaProvinciaQueGuarde(this.provincia);
         thenComparoQueSeanLasMismasLaPrestacionGuardadaConLaObtenida(this.provincia, encontrada);
     }
+	
+	 private void givenGuardarProvinciaExitosamente(Provincia provincia) {
+			repositorioProvincias.save(provincia);
+	}
+		
+	private Provincia whenBuscoLaProvinciaQueGuarde(Provincia provincia) {
+			return repositorioProvincias.buscarProvinciaPorId(provincia);
+		
+	}
+		
+	private void thenComparoQueSeanLasMismasLaPrestacionGuardadaConLaObtenida(Provincia guardada, Provincia obtenida) {
+        Assert.assertEquals(guardada, obtenida);
+	}
 
+	////////////TEST/////////////
     @Test
     @Rollback
     @Transactional
     public void actualizarProvinciaTest() {
-        var original = clone(provincia);
-        givenGuardarProvinciaExitosamente(provincia);
-        whenActualizoLaProvincia(provincia);
+    	Provincia original = clone(this.provincia);
+        givenGuardarProvinciaExitosamente(this.provincia);
+        whenActualizoLaProvincia(this.provincia);
         thenComparoQueLaProvinciaSeHayaActualizado(original, provincia);
     }
+    
+    private Provincia clone(Provincia provincia) {
+    	Provincia clone = new Provincia();
+        clone.setId(provincia.getId());
+        clone.setNombre(provincia.getNombre());
 
-    @Test
-    @Rollback
-    @Transactional
-    public void testQueVerificaQueTraeLasProvinciasGuardadas() {
-        givenGuardarListaDeProvincias(cantProvincias);
-        provincias = whenTraerTodasLasProvincias();
-        thenComprueboQueLaCantidadDeProvinciasSeaLaMismaQueGuardada(provincias, cantProvincias);
+        return clone;
+    }
+    
+//    private void givenGuardarProvinciaExitosamente(Provincia provincia) {
+//		repositorioProvincias.save(provincia);
+//}
+    
+    private void whenActualizoLaProvincia(Provincia provincia) {
+        repositorioProvincias.actualizar(provincia);
     }
 
+    private void thenComparoQueLaProvinciaSeHayaActualizado(Provincia original, Provincia actualizada) {
+        Assert.assertNotNull(actualizada);
+        Assert.assertNotEquals(original, actualizada);
+    }
+    
+   
+    
+	////////////TEST/////////////
     @Test
     @Rollback
     @Transactional
@@ -60,18 +88,25 @@ public class RepositorioProvinciaTest extends SpringTest{
         whenEliminoLaProvincia(provincia);
         thenCompruboQueSeHayaEliminadoLaProvincia(provincia);
     }
+    private void whenEliminoLaProvincia(Provincia provincia) {
+        repositorioProvincias.delete(provincia);
+    }
 
-	private void givenGuardarProvinciaExitosamente(Provincia provincia) {
-		repositorioProvincias.save(provincia);
-	}
+    private void thenCompruboQueSeHayaEliminadoLaProvincia(Provincia provincia) {
+        var p = repositorioProvincias.buscarProvinciaPorId(provincia);
+        Assert.assertNull(p);
+    }
+    
 	
-	private Provincia whenBuscoLaPresatacionQueGuarde(Provincia provincia) {
-		return repositorioProvincias.buscarProvinciaPorId(provincia);
-	}
-	
-	private void thenComparoQueSeanLasMismasLaPrestacionGuardadaConLaObtenida(Provincia guardada, Provincia obtenida) {
-        Assert.assertEquals(guardada, obtenida);
-	}
+	////////////TEST/////////////
+	@Test
+    @Rollback
+    @Transactional
+    public void testQueVerificaQueTraeLasProvinciasGuardadas() {
+        givenGuardarListaDeProvincias(cantProvincias);
+        provincias = whenTraerTodasLasProvincias();
+        thenComprueboQueLaCantidadDeProvinciasSeaLaMismaQueGuardada(provincias, cantProvincias);
+    }
 	
 	private void givenGuardarListaDeProvincias(int cantProvincias) {
         for (int i = 0; i < cantProvincias; i++) {
@@ -92,29 +127,5 @@ public class RepositorioProvinciaTest extends SpringTest{
         Assertions.assertThat(provincias).isInstanceOf(List.class);
     }
 
-    private void whenActualizoLaProvincia(Provincia provincia) {
-        repositorioProvincias.actualizar(provincia);
-    }
-
-    private void thenComparoQueLaProvinciaSeHayaActualizado(Provincia original, Provincia actualizada) {
-        Assert.assertNotNull(actualizada);
-        Assert.assertNotEquals(original, actualizada);
-    }
-
-    private void whenEliminoLaProvincia(Provincia provincia) {
-        repositorioProvincias.delete(provincia);
-    }
-
-    private void thenCompruboQueSeHayaEliminadoLaProvincia(Provincia provincia) {
-        var p = repositorioProvincias.buscarProvinciaPorId(provincia);
-        Assert.assertNull(p);
-    }
-
-    private Provincia clone(Provincia provincia) {
-        var clone = new Provincia();
-        clone.setId(provincia.getId());
-        clone.setNombre(provincia.getNombre());
-
-        return clone;
-    }
+    
 }

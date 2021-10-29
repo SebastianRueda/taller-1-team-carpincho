@@ -2,7 +2,7 @@
          pageEncoding="ISO-8859-1" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
+<%@ taglib prefix="input" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -94,9 +94,10 @@
                     <h5 class="card-title">Prestacion ID:${prestacion.id} </h5>
 
                     <%--@elvariable id="prestacion" type="ar.edu.unlam.tallerweb1.modelo.Prestacion"--%>
-                    <form:form action="clienteCalifica" method="post" modelAttribute="prestacion">
-                    <div class="form-check form-check-inline">
-                        <input path="calificacionDadaPorElCliente" id="calificacionDadaPorElCliente" type="number" class="form-control">
+                    <form:form action="clienteCalifica" method="post" modelAttribute="datosCalificacion">
+                        <form:input type="text" path="prestacionId" value="${prestacion.id}" name="prestacionId" />
+                        <div class="form-check form-check-inline">
+                        <form:input path="calificacion" id="calificacionDadaPorElCliente" type="number" class="form-control" />
                         <button type="submit" class="btn btn-primary">Calificar</button>
                     </div>
                     </form:form>

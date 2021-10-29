@@ -34,10 +34,10 @@ public class ControladorPrestacion {
     }
 
     @RequestMapping(path = "/clienteCalifica",method = RequestMethod.POST)
-    public ModelAndView clienteCalificaPrestacion(Long idPrestacion, Integer calificacion) {
+    public ModelAndView clienteCalificaPrestacion(@ModelAttribute("datosCalificacion") DatosCalificacion datosCalificacion) {
         ModelMap model = new ModelMap();
         try {
-            servicioPrestacion.ClienteCalificaPrestacion(5l,5);
+            servicioPrestacion.ClienteCalificaPrestacion(datosCalificacion.getPrestacionId(),datosCalificacion.getCalificacion());
 
         } catch (Exception e) {
             model.put("error","error de rango de calificacion");

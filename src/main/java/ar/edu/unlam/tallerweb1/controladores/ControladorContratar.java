@@ -66,6 +66,7 @@ public class ControladorContratar {
             prestacion.getId();
 
             model.put("prestacion", prestacion);
+            model.put("datosCalificacion", new DatosCalificacion());
         }
 
         return new ModelAndView("detalle-contratacion", model);

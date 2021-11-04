@@ -2,6 +2,8 @@ package ar.edu.unlam.tallerweb1.controladores;
 
 import java.util.List;
 
+
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -12,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import ar.edu.unlam.tallerweb1.modelo.Denuncia;
+import ar.edu.unlam.tallerweb1.modelo.MotivoDenuncia;
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Provincia;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
@@ -55,7 +57,7 @@ public class ControladorDenuncia {
 		modelo.put("especialidades", lista);
 		List<Provincia> listaProv=servicioFiltro.traerprovincia();
 		modelo.put("provincias", listaProv);
-		List<Denuncia> listaDenuncias = servicioDenuncia.traerDenuncia();
+		List<MotivoDenuncia> listaDenuncias = servicioDenuncia.traerDenuncia();
 		modelo.put("denuncias", listaDenuncias);
 		return new ModelAndView("generarDenuncia", modelo);
 	}

@@ -50,7 +50,7 @@ public class ControladorContratar {
         var model = new ModelMap();
 
         if (asistente == null) {
-            model.put("error", "No se pudo encontrar los datos del asistente para completar la operación");
+            model.put("error", "No se pudo encontrar los datos del asistente para completar la operacion");
         } else {
             Prestacion prestacion = new Prestacion();
             prestacion.setEstado(PrestacionEstado.ACTIVO.getEstado());
@@ -108,6 +108,6 @@ public class ControladorContratar {
         }
 
         model.put("msgFinalizacionDeContratacion","Prestacion finalizada correctamente");
-        return new ModelAndView("detalle-contratacion", model);
+        return new ModelAndView("detallePrestacionFinalizada", model);
     }
 }

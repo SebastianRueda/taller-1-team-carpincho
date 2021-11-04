@@ -444,9 +444,20 @@
                                                                 class="fas fa-star text-warning"></i></p>
                                                 </c:if>
                                                 <c:if test="${prestacion.calificacionDadaPorElCliente==null and prestacion.estado=='activo'}">
-                                                    <button class="my-auto py-1 px-3 finalizar font-weight-bold redondeadoEstado"
+
+                                                   <%-- <form:form  class="" style="width:20%;" action="finalizarPrestacion" method="post" modelAttribute="prestacion">
+
+                                                        <form:input type="hidden" path="id" id="id" value="${prestacion.id}"/>
+                                                        <form:input type="hidden" path="estado" id="estado" value="${prestacion.estado}"/>
+
+                                                    <button type="submit" class="my-auto py-1 px-3 finalizar font-weight-bold redondeadoEstado"
                                                             style="width:20%;"> Finalizar
                                                     </button>
+
+                                                    </form:form>--%>
+                                                        <a href="irADetallePrestacionFinalida?prestacion=${prestacion.id}" class="my-auto py-1 px-3 finalizar font-weight-bold redondeadoEstado"
+                                                                style="width:20%;"> Finalizar
+                                                        </a>
                                                 </c:if>
 
                                                 <c:if test="${prestacion.calificacionDadaPorElCliente==null and prestacion.estado == 'finalizado'}">
@@ -455,6 +466,7 @@
                                                 </c:if>
 
                                                 <c:if test="${prestacion.calificacionDadaPorElCliente==null and prestacion.estado == 'cancelado'}">
+
                                                     <form:form  style="width:20%;" action="contratar-prestacion?asistente-id=${prestacion.usuarioAsistente.id}" method="get">
                                                         <button class="my-auto py-1 px-3 calificar font-weight-bold redondeadoEstado w-100"> Calificar</button>
                                                     </form:form>
@@ -486,7 +498,7 @@
 </div>
 
 
-<footer class="page-footer font-small color-light bg-dark text-light" style="width: 100vw; position: fixed; bottom: 0">
+<!--<footer class="page-footer font-small color-light bg-dark text-light mt-4" style="width: 100vw;  bottom: 0">
 
     <div>
         <div class="container">
@@ -561,7 +573,7 @@
         <div class="footer-copyright text-center py-3"> 2021 Copyright: AsegurAPP
         </div>
     </div>
-</footer>
+</footer>-->
 
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"

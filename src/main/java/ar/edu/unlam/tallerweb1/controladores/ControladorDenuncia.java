@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.HistorialDenuncia;
+import ar.edu.unlam.tallerweb1.modelo.MotivoDenuncia;
 import ar.edu.unlam.tallerweb1.modelo.Prestacion;
 import ar.edu.unlam.tallerweb1.modelo.Provincia;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
@@ -60,8 +61,8 @@ public class ControladorDenuncia {
 	  servicioFiltro.traerEspecialidad(); modelo.put("especialidades", lista);
 	  List<Provincia> listaProv=servicioFiltro.traerprovincia();
 	  modelo.put("provincias", listaProv); 
-	  List<HistorialDenuncia> listaDenuncias = servicioDenuncia.traerDenuncia(); 
-	  modelo.put("denuncias", listaDenuncias);
+	  List<MotivoDenuncia> listaDenuncias = servicioDenuncia.traerDenuncia(); 
+	  modelo.put("motivoDenuncias", listaDenuncias);
 	  return new ModelAndView("generarDenuncia", modelo);}}
 	 
 	  

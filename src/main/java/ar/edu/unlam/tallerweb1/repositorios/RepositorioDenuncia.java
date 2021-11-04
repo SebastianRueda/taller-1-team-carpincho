@@ -8,7 +8,7 @@ import ar.edu.unlam.tallerweb1.modelo.MotivoDenuncia;
 
 public interface RepositorioDenuncia {
 
-	List<HistorialDenuncia> traerDenuncia();
+	List<MotivoDenuncia> traerDenuncia();
 
 	List<MotivoDenuncia> listarDenunciasPorCliente(Long id);
 	}

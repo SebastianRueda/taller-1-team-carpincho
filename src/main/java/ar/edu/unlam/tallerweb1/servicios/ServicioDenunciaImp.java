@@ -26,8 +26,8 @@ public class ServicioDenunciaImp implements ServicioDenuncia {
 
 	
 	@Override
-	public List<HistorialDenuncia> traerDenuncia() {
-		List <HistorialDenuncia> denunciasDescripcion= denunciaDao.traerDenuncia();
+	public List<MotivoDenuncia> traerDenuncia() {
+		List <MotivoDenuncia> denunciasDescripcion= denunciaDao.traerDenuncia();
 		return denunciasDescripcion ;
 	}
 	

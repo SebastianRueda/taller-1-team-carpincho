@@ -49,8 +49,8 @@
 				<br>
 				<label for="listaEspecialidadDesplegable">Seleccione motivo:</label> 
 				<select name="listaEspecialidadDesplegable">
-					<c:forEach items="${denuncias}" var="denuncia">
-						<option value="${denuncia.id}">${denuncia.descripcion}</option>
+					<c:forEach items="${motivoDenuncias}" var="motivoDenuncias">
+						<option value="${motivoDenuncias.id}">${motivoDenuncias.descripcion}</option>
 					</c:forEach>
 				</select><br>
 				<label>Comentario: </label> 

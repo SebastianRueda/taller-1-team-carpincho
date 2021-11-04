@@ -23,8 +23,8 @@ public class RepositorioDenunciaImpl implements RepositorioDenuncia {
 	}
 	
 	@Override
-	public List<HistorialDenuncia> traerDenuncia() {
-		return sessionFactory.getCurrentSession().createCriteria(HistorialDenuncia.class).list();
+	public List<MotivoDenuncia> traerDenuncia() {
+		return sessionFactory.getCurrentSession().createCriteria(MotivoDenuncia.class).list();
 	}
 
 	@Override
@@ -32,7 +32,7 @@ public class RepositorioDenunciaImpl implements RepositorioDenuncia {
 		final Session session = sessionFactory.getCurrentSession();
 
         List denuncias = session.createCriteria(HistorialDenuncia.class)
-                .add(Restrictions.eq("usuarioDenunciante.id", id))
+                .add(Restrictions.eq("usuarioSolicitante.id", id))
                 .list();
 		return denuncias;
 	}

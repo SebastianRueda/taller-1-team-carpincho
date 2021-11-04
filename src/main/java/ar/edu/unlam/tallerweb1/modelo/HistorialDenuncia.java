@@ -9,8 +9,16 @@ public class HistorialDenuncia {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String comentario;
+	@OneToOne
+	private Usuario usuarioSolicitante;
 	
 	
+	public Usuario getUsuarioSolicitante() {
+		return usuarioSolicitante;
+	}
+	public void setUsuarioSolicitante(Usuario usuarioSolicitante) {
+		this.usuarioSolicitante = usuarioSolicitante;
+	}
 	public Long getId() {
 		return id;
 	}

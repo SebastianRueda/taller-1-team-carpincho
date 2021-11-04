@@ -354,44 +354,7 @@
                     <div class="tab-pane ${seccion.equals("historial") ? "active" : ""}" id="primary-tab-2"
                          role="tabpanel">
                         <div class="row w-100  row w-100 h-100 m-auto justify-content-md-center">
-                            <%-- <div class="bg-white col-12 d-flex flex-column p-2 mb-2 mt-2 align-items-center justify-content-evenly">
-                                 <h4 class="text-muted">Historial</h4>
-                                 <div class="card-body table-responsive">
-                                     <table class="table  table-hover">
-                                         <thead>
-                                         <tr>
-                                             <th style="width:20%;">Número de factura</th>
-                                             <th style="width:20%;">Especiliadad</th>
-                                             <th style="width:20%;">Asisitente</th>
-                                             <th style="width:20%;">Estado</th>
-                                             <th style="width:20%;">Descripción</th>
-                                             <th class="actions"></th>
-                                             <th class="actions"></th>
-                                         </tr>
-                                         </thead>
-                                         <tbody>
-                                         <c:forEach items="${historial}" var="prestacion">
-                                             <form action="contratar-prestacion" method="GET">
-                                                 <tr>
-                                                     <td class="user-avatar">${prestacion.numerofactura}</td>
-                                                     <td>${prestacion.especialidad.descripcion}</td>
-                                                     <td>${prestacion.usuarioAsistente.nombre}</td>
-                                                     <td>${prestacion.estado}</td>
-                                                     <td>${prestacion.descripcion}</td>
-                                                     <td class="actions">
-                                                         <button type="button" value="contratar" id="button-contratar" onclick="contratar(${usuario.id})"
-                                                                 class="btn btn-primary fondo-gradiente-uno fondo-gradiente-1 border-0 bg-success">
-                                                             <a class="text-white text-decoration-none" href="<c:url value='/contratar-prestacion?asistente-id=${prestacion.usuarioAsistente.id}' />">Contratar</a>
-                                                         </button>
-                                                     </td>
-                                                     <td class="actions"><button type="button" value="perfil" class="btn btn-primary  border-0">Perfil</button></td>
-                                                 </tr>
-                                             </form>
-                                         </c:forEach>
-                                         </tbody>
-                                     </table>
-                                 </div>
-                             </div>--%>
+
                             <div class="col-12 p-2 ">
                                 <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
                                     <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">N°
@@ -520,8 +483,6 @@
                 </div>
             </div>
         </div>
-    </div>
-
 </div>
 
 

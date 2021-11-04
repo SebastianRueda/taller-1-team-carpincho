@@ -71,11 +71,11 @@
 
                                 <%--@elvariable id="prestacion" type="ar.edu.unlam.tallerweb1.modelo.Prestacion"--%>
                             <form:form action="finalizarPrestacion" method="post" modelAttribute="prestacion">
-                                <input type="number" path="id" id="id" value="${prestacion.id}">
-                                <input type="text" path="estado" id="estado" value="${prestacion.estado}">
+                                <form:input  path="id" id="id" value="${prestacion.id}"/>
+                                <form:input  path="estado" id="estado" value="${prestacion.estado}"/>
 
                                 <p>${prestacion.id} </p>
-                                <button type="submit" class="btn btn-primary">Pagar Suscripcion</button>
+                                <button type="submit" class="btn btn-primary">Finalizar Prestacion</button>
                             </form:form>
 
 
@@ -94,12 +94,12 @@
                     <h5 class="card-title">Prestacion ID:${prestacion.id} </h5>
 
                     <%--@elvariable id="prestacion" type="ar.edu.unlam.tallerweb1.modelo.Prestacion"--%>
-                    <form:form action="clienteCalifica" method="post" modelAttribute="prestacion">
-                    <div class="form-check form-check-inline">
-                        <input path="calificacionDadaPorElCliente" id="calificacionDadaPorElCliente" type="number" class="form-control">
-                        <button type="submit" class="btn btn-primary">Calificar</button>
-                    </div>
-                    </form:form>
+                    <%-- <form:form action="clienteCalifica" method="post" modelAttribute="prestacion">
+                     <div class="form-check form-check-inline">
+                         <input path="calificacionDadaPorElCliente" id="calificacionDadaPorElCliente" type="number" class="form-control">
+                         <button type="submit" class="btn btn-primary">Calificar</button>
+                     </div>
+                     </form:form>--%>
                 </div>
             </div>
         </div>

@@ -38,7 +38,6 @@ public class ControladorPrestacion {
         ModelMap model = new ModelMap();
         try {
             servicioPrestacion.ClienteCalificaPrestacion(5l,5);
-
         } catch (Exception e) {
             model.put("error","error de rango de calificacion");
             return new ModelAndView("redirect:/perfilUsuario",model);

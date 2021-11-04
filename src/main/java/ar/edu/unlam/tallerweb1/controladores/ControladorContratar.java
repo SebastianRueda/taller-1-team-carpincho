@@ -92,19 +92,21 @@ public class ControladorContratar {
     @RequestMapping(path = "/finalizarPrestacion", method = RequestMethod.POST)
     public ModelAndView finalizarPrestacion(@ModelAttribute("prestacion") Prestacion prestacionRecibido){
 
-       //Prestacion prestacion = servicioPrestacion.prestacionFindById(prestacionRecibido.getId());
-       //Prestacion prestacion = servicioPrestacion.buscarPrestacionPorId(prestacionRecibido.getId());
+        //Prestacion prestacion = servicioPrestacion.prestacionFindById(prestacionRecibido.getId());
+        Prestacion prestacion = servicioPrestacion.buscarPrestacionPorId(prestacionRecibido.getId());
 
-        ModelMap model = new ModelMap();
-        Prestacion prestacion1 = new Prestacion();
+        /*Prestacion prestacion1 = new Prestacion();
         prestacion1.setId(1l);
-        prestacion1.setEstado("activo");
+        prestacion1.setEstado("activo");*/
+        ModelMap model = new ModelMap();
+
         try {
-            servicioPrestacion.finalizarPrestacion(prestacion1);
+            servicioPrestacion.finalizarPrestacion(prestacion);
         } catch (Exception e) {
             model.put("msgFinalizacionDeContratacionErronea", "Error al finalizar la Prestacion ");
             return new ModelAndView("perfilUsuario", model);
         }
+
         model.put("msgFinalizacionDeContratacion","Prestacion finalizada correctamente");
         return new ModelAndView("detalle-contratacion", model);
     }

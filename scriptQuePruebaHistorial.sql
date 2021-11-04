@@ -45,8 +45,15 @@ values (`1`,'El Asistente nunca se presentó.'),
        (`4`,'El Asistente me cobró un extra'),
        (`5`,'El Asistente no se correspondía con el registrado en la App'),
        (`6`,'Otro motivo...');       
-          
-
+ 
+insert into historialdenuncia (`id`,descripcion)
+values (`1`,'El Asistente me agredió físicamente'),
+       (`2`,'El Asistente me agredió físicamente'),
+       (`3`,'El Asistente nunca se presentó.');
+       
+       
+       
+       
 insert into suscripcion (descripcion,precio,activo)
 values ('suscripcion basica',100.0,true),
        ('suscripcion premium',300.0,true);

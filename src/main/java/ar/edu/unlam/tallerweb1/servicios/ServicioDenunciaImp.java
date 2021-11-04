@@ -3,10 +3,11 @@ package ar.edu.unlam.tallerweb1.servicios;
 import java.util.List;
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ar.edu.unlam.tallerweb1.modelo.MotivoDenuncia;
+import ar.edu.unlam.tallerweb1.modelo.HistorialDenuncia;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioDenuncia;
 
 
@@ -23,8 +24,8 @@ public class ServicioDenunciaImp implements ServicioDenuncia {
 
 	
 	@Override
-	public List<MotivoDenuncia> traerDenuncia() {
-		List <MotivoDenuncia> denunciasDescripcion= repositorioDenuncia.traerDenuncia();
+	public List<HistorialDenuncia> traerDenuncia() {
+		List <HistorialDenuncia> denunciasDescripcion= repositorioDenuncia.traerDenuncia();
 		return denunciasDescripcion ;
 	}
 

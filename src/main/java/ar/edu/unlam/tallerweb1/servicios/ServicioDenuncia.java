@@ -1,9 +1,10 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
 import java.util.List;
-import ar.edu.unlam.tallerweb1.modelo.MotivoDenuncia;
+
+import ar.edu.unlam.tallerweb1.modelo.HistorialDenuncia;
 
 public interface ServicioDenuncia {
 
-	List<MotivoDenuncia> traerDenuncia();
+	List<HistorialDenuncia> traerDenuncia();
 }

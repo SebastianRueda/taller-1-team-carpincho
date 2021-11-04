@@ -3,12 +3,12 @@ package ar.edu.unlam.tallerweb1.modelo;
 import javax.persistence.*;
 
 @Entity
-public class MotivoDenuncia {
+public class HistorialDenuncia {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String descripcion;
+	private String comentario;
 	
 	public Long getId() {
 		return id;
@@ -16,11 +16,11 @@ public class MotivoDenuncia {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getDescripcion() {
-		return descripcion;
+	public String getComentario() {
+		return comentario;
 	}
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
+	public void setComentario(String descripcion) {
+		this.comentario = descripcion;
 	}
 	
 }

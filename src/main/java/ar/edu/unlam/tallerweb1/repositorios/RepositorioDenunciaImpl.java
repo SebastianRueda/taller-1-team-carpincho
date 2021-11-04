@@ -2,10 +2,8 @@ package ar.edu.unlam.tallerweb1.repositorios;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import ar.edu.unlam.tallerweb1.modelo.MotivoDenuncia;
-
+import ar.edu.unlam.tallerweb1.modelo.HistorialDenuncia;
 import java.util.List;
-
 import org.hibernate.SessionFactory;
 
 @Repository("repositorioDenuncia")
@@ -19,7 +17,7 @@ public class RepositorioDenunciaImpl implements RepositorioDenuncia {
 	}
 	
 	@Override
-	public List<MotivoDenuncia> traerDenuncia() {
-		return sessionFactory.getCurrentSession().createCriteria(MotivoDenuncia.class).list();
+	public List<HistorialDenuncia> traerDenuncia() {
+		return sessionFactory.getCurrentSession().createCriteria(HistorialDenuncia.class).list();
 	}
 }

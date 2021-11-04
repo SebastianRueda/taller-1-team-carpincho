@@ -15,6 +15,29 @@
 	<title>Generar Denuncia</title>
 	</head>
 	<body class=" h-100">
+	
+	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="login">AsegurApp</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav">
+						
+						<li class="nav-item">
+							<a class="nav-link" aria-current="page" href="traerEspecialidades">Contratar</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="perfilUsuario">Perfil</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active" href="denunciarAsistente">Nueva Denuncia</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
 	<div class=" h-100 w-100">
 		<div class="fondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-centerfondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-center">
 			<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-10 col-md-offset-3 col-sm-8 col-sm-offset-2">

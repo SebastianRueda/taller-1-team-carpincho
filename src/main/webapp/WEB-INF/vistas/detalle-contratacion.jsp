@@ -33,12 +33,8 @@
                         <a class="nav-link" href="perfilUsuario">Perfil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="perfilUsuario">Contrataciones</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="suscripcion">Suscripción</a>
                     </li>
-
                 </ul>
             </div>
         </div>

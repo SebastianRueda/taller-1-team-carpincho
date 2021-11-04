@@ -37,17 +37,20 @@ values ('CABA'),
 insert into rol (descripcion)
 values('prestador'),
       ('cliente final');
-
-insert into suscripcion (descripcion,precio,activo)
-values ('suscripcion basica',100.0,true),
-       ('suscripcion premium',300.0,true);
-       
+      
 insert into motivodenuncia (descripcion)
 values ('El Asistente nunca se presentó.'),
        ('El Asistente me agredió verbalmente.'),
        ('El Asistente me agredió físicamente'),
        ('El Asistente me cobró un extra'),
-       ('El Asistente no se correspondía con el registrado en la App');
+       ('El Asistente no se correspondía con el registrado en la App');       
+          
+
+insert into suscripcion (descripcion,precio,activo)
+values ('suscripcion basica',100.0,true),
+       ('suscripcion premium',300.0,true);
+       
+
 
 insert into usuario (nombre, apellido, email, password, especialidad_id, provincia_id, rol_id, activo)
 values ('eric','cuevas','ecuevas@alumno.unlam.edu.ar','root',1,1,1, true);

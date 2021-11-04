@@ -15,23 +15,21 @@
 <header>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="login">AsegurApp</a>
+            <a class="navbar-brand" href="home">AsegurApp</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="traerEspecialidades">Home</a>
+                        <a class="nav-link" href="traerEspecialidades">Contratar</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="perfilUsuario">Perfil</a>
                     </li>
+                   
                     <li class="nav-item">
-                        <a class="nav-link" href="perfilUsuario">Contrataciones</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="suscripcion">Suscripción</a>
+                        <a class="nav-link active" href="suscripcion">Suscripción</a>
                     </li>
                 </ul>
             </div>

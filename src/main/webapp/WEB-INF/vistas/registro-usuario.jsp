@@ -25,13 +25,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="home">Home</a>
+                        <a class="nav-link" aria-current="page" href="home">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="login">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="ir-a-registrarme">Registrarte</a>
+                        <a class="nav-link active" href="ir-a-registrarme">Registrarte</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="suscripcion">Suscripción</a>

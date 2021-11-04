@@ -1,6 +1,7 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
+import ar.edu.unlam.tallerweb1.servicios.ServicioDenuncia;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPrestacion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +18,13 @@ import javax.servlet.http.HttpSession;
 public class ControladorPerfil {
     private ServicioPrestacion servicioPrestacion;
     private ServicioUsuario servicioUsuario;
+	private ServicioDenuncia servicioDenuncia;
 
     @Autowired
-    public ControladorPerfil(ServicioPrestacion servicioPrestacion, ServicioUsuario servicioUsuario) {
+    public ControladorPerfil(ServicioPrestacion servicioPrestacion, ServicioUsuario servicioUsuario, ServicioDenuncia servicioDenuncia) {
         this.servicioPrestacion = servicioPrestacion;
         this.servicioUsuario = servicioUsuario;
+        this.servicioDenuncia = servicioDenuncia;
     }
 
     @RequestMapping(path = "/perfilUsuario", method = RequestMethod.GET)
@@ -64,6 +67,23 @@ public class ControladorPerfil {
         ModelMap map = new ModelMap();
         map.put("historial", prestaciones);
         map.put("seccion", "historial");
+        return new ModelAndView("perfilUsuario", map);
+    }
+    @RequestMapping(value = "mostrar-denuncias", method = RequestMethod.GET)
+    public ModelAndView mostrarDenuncias(HttpServletRequest request) {
+        HttpSession misession = request.getSession(true);
+        Usuario usuarioLogueado= (Usuario) misession.getAttribute("usuarioLogueado");
+
+        if (usuarioLogueado == null){
+            return new ModelAndView("redirect:/");
+        }
+
+        
+        var denuncias = servicioDenuncia.listarDenunciasPorCliente(usuarioLogueado.getId());
+
+        ModelMap map = new ModelMap();
+        map.put("historial", denuncias);
+        map.put("seccion", "historialDenuncias");
         return new ModelAndView("perfilUsuario", map);
     }
 }

@@ -58,6 +58,10 @@
                            href="mostrar-historial">Mis Contrataciones</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder me-2 ${seccion.equals("historialDenuncias") ? "active" : ""}"
+                           href="mostrar-denuncias">Mis Denuncias</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder"
                            data-bs-toggle="tab" href="#primary-tab-3">Algo</a>
                     </li>

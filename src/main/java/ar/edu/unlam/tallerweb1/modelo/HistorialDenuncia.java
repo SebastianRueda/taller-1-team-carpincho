@@ -10,6 +10,7 @@ public class HistorialDenuncia {
 	private Long id;
 	private String comentario;
 	
+	
 	public Long getId() {
 		return id;
 	}
@@ -22,5 +23,6 @@ public class HistorialDenuncia {
 	public void setComentario(String descripcion) {
 		this.comentario = descripcion;
 	}
+
 	
 }

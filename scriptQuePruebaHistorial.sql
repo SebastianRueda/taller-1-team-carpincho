@@ -43,7 +43,8 @@ values ('El Asistente nunca se presentó.'),
        ('El Asistente me agredió verbalmente.'),
        ('El Asistente me agredió físicamente'),
        ('El Asistente me cobró un extra'),
-       ('El Asistente no se correspondía con el registrado en la App');       
+       ('El Asistente no se correspondía con el registrado en la App'),
+       ('Otro motivo...');       
           
 
 insert into suscripcion (descripcion,precio,activo)

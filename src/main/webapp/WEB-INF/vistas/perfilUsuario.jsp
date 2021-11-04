@@ -329,16 +329,36 @@
                     </div>
                     <!-- Termina segundo boton-->
                     <!-- Empieza tercer boton-->
+                    <div class="tab-pane ${seccion.equals("historialDenuncias") ? "active" : ""}" id="primary-tab-2"
+                         role="tabpanel">
+                        <div class="row w-100  row w-100 h-100 m-auto justify-content-md-center">
+                    <div class="col-12 p-2 ">
+                                <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
+                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">N°
+                                        Prestacion</p>
+                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">
+                                        Categoria</p>
+                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">
+                                        Asisitente</p>
+                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">
+                                        Motivo Denunciado</p>
+                                </div>
+                    </div>
+                     </div>
+                      </div>
+                    <!-- Termina tercer boton-->
+                    <!-- Empieza cuarto boton-->
                     <div class="tab-pane" id="primary-tab-3" role="tabpanel">
                         <div class="row w-100 bg-info row w-100 h-100 m-auto justify-content-md-center px-2">
                             <div class="bg-white col-12 d-flex flex-column  p-2 mb-2 mt-2 align-items-center">
                                 <h4 class="text-muted"> Proximamente...</h4>
                                 <p class=" text-muted"><i class="fas fa-tools"></i> Estamos Trabajando para que quede
                                     bonito <i class="fas fa-tools"></i></p>
+                            
                             </div>
                         </div>
                     </div>
-                    <!-- Termina tercer boton-->
+                    <!-- Termina cuarto boton-->
                 </div>
             </div>
         </div>

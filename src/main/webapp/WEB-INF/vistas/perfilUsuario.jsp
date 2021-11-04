@@ -339,11 +339,21 @@
                                     <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">
                                         Categoria</p>
                                     <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">
-                                        Asisitente</p>
+                                        Asistente</p>
                                     <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">
                                         Motivo Denunciado</p>
                                 </div>
                     </div>
+                    <c:forEach items="${historialDenuncias}" var="historialDenuncias">
+                                    <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
+                                        <p class="my-auto" style="width:20%;">#${historialDenuncias.id}</p>
+                                        <p class="my-auto"
+                                           style="width:20%;">${prestacion.usuarioAsistente.especialidad.descripcion}</p>
+                                        <p class="my-auto"
+                                           style="width:20%;">${prestacion.usuarioAsistente.nombre} ${prestacion.usuarioAsistente.apellido}</p>
+                                        <p class="my-auto" style="width:20%;">11/23/22</p>
+                     </div>
+                     </c:forEach>
                      </div>
                       </div>
                     <!-- Termina tercer boton-->

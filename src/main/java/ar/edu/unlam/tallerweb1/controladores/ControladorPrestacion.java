@@ -34,7 +34,7 @@ public class ControladorPrestacion {
     }
 
     @RequestMapping(path = "/clienteCalifica",method = RequestMethod.POST)
-    public ModelAndView clienteCalificaPrestacion(long idPrestacion, Integer calificacion) {
+    public ModelAndView clienteCalificaPrestacion(Long idPrestacion, Integer calificacion) {
         ModelMap model = new ModelMap();
         try {
             servicioPrestacion.ClienteCalificaPrestacion(5l,5);

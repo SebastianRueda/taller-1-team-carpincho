@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Objects;
 
 @Entity
 public class Especialidad {
@@ -34,4 +35,15 @@ public class Especialidad {
 		this.descripcion = descripcion;
 	}
 
+	@Override
+	public boolean equals(Object o) {
+		if (o == null || getClass() != o.getClass()) return false;
+		Especialidad that = (Especialidad) o;
+		return Objects.equals(id, that.id) && Objects.equals(descripcion, that.descripcion);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, descripcion);
+	}
 }

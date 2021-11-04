@@ -21,6 +21,12 @@
 		<h1>Bienvenido A SegurAPP</h1>
 
 			<form action="especialidadElegida" >
+			<label for="listaPrestaciones">Seleccione Asistente:</label> 
+				<select name="listaPrestaciones">
+					<c:forEach items="${prestaciones}" var="denuncia">
+						<option value="${prestacion.usuarioAsistente}">${prestacion.usuarioAsistente}</option>
+					</c:forEach>
+					</select>
 				<label for="listaEspecialidadDesplegable">Seleccione motivo:</label> 
 				<select name="listaEspecialidadDesplegable">
 					<c:forEach items="${denuncias}" var="denuncia">

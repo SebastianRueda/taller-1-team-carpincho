@@ -68,7 +68,7 @@ public class ControladorContratarTest {
     }
 
     private void thenLaPrestacionFinalizoCorrectacmente(ModelAndView mav,Prestacion prestacion ) throws Exception {
-        assertThat(mav.getViewName()).isEqualTo("detalle-contratacion");
+        assertThat(mav.getViewName()).isEqualTo("detallePrestacionFinalizada");
         assertThat(mav.getModel().get("msgFinalizacionDeContratacion")).isEqualTo("Prestacion finalizada correctamente");
     }
 
@@ -109,6 +109,6 @@ public class ControladorContratarTest {
 
     private void thenNoSePudoCrearLaPrestacion(ModelAndView view) {
         Assert.assertEquals(view.getViewName(), "detalle-contratacion");
-        Assert.assertEquals(view.getModel().get("error"), "No se pudo encontrar los datos del asistente para completar la operación");
+        Assert.assertEquals(view.getModel().get("error"), "No se pudo encontrar los datos del asistente para completar la operacion");
     }
 }

@@ -455,7 +455,7 @@
                                                     </button>
 
                                                     </form:form>--%>
-                                                        <a href="contratar-prestacion?asistente-id=${prestacion.usuarioAsistente.id}" class="my-auto py-1 px-3 finalizar font-weight-bold redondeadoEstado"
+                                                        <a href="irADetallePrestacionFinalida?prestacion=${prestacion.id}" class="my-auto py-1 px-3 finalizar font-weight-bold redondeadoEstado"
                                                                 style="width:20%;"> Finalizar
                                                         </a>
                                                 </c:if>

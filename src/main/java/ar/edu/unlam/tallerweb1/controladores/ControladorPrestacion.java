@@ -10,9 +10,7 @@ import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,6 +30,16 @@ public class ControladorPrestacion {
         this.servicioUsuario = servicioUsuario;
         this.session=session;
     }
+
+    @RequestMapping(path = "/irADetallePrestacionFinalida",method = RequestMethod.GET)
+    public ModelAndView irADetallePrestacionFinalida(@RequestParam(value = "prestacion") Long prestacionId) {
+        ModelMap model = new ModelMap();
+        Prestacion prestacion = servicioPrestacion.buscarPrestacionPorId(prestacionId);
+        model.put("prestacion" ,prestacion );
+
+        return new ModelAndView("detallePrestacionFinalizada",model);
+    }
+
 
     @RequestMapping(path = "/clienteCalifica",method = RequestMethod.POST)
     public ModelAndView clienteCalificaPrestacion(Long idPrestacion, Integer calificacion) {

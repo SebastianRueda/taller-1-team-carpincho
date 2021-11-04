@@ -108,6 +108,6 @@ public class ControladorContratar {
         }
 
         model.put("msgFinalizacionDeContratacion","Prestacion finalizada correctamente");
-        return new ModelAndView("detalle-contratacion", model);
+        return new ModelAndView("detallePrestacionFinalizada", model);
     }
 }

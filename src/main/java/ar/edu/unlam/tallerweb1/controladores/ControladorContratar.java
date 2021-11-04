@@ -58,13 +58,10 @@ public class ControladorContratar {
             prestacion.setUsuarioAsistente(asistente);
 
             var cliente = UsuarioCache.getUsuario();
-
             prestacion.setUsuarioSolicitante(cliente);
-
             servicioPrestacion.save(prestacion);
 
             prestacion.getId();
-
             model.put("prestacion", prestacion);
         }
 
@@ -96,20 +93,18 @@ public class ControladorContratar {
     public ModelAndView finalizarPrestacion(@ModelAttribute("prestacion") Prestacion prestacionRecibido){
 
        //Prestacion prestacion = servicioPrestacion.prestacionFindById(prestacionRecibido.getId());
-       // Prestacion prestacion = servicioPrestacion.buscarPrestacionPorId(prestacionRecibido.getId());
+       //Prestacion prestacion = servicioPrestacion.buscarPrestacionPorId(prestacionRecibido.getId());
 
+        ModelMap model = new ModelMap();
         Prestacion prestacion1 = new Prestacion();
         prestacion1.setId(1l);
         prestacion1.setEstado("activo");
-        ModelMap model = new ModelMap();
-
         try {
             servicioPrestacion.finalizarPrestacion(prestacion1);
         } catch (Exception e) {
             model.put("msgFinalizacionDeContratacionErronea", "Error al finalizar la Prestacion ");
             return new ModelAndView("perfilUsuario", model);
         }
-
         model.put("msgFinalizacionDeContratacion","Prestacion finalizada correctamente");
         return new ModelAndView("detalle-contratacion", model);
     }

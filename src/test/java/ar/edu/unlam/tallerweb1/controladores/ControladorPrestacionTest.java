@@ -69,6 +69,7 @@ public class ControladorPrestacionTest {
 
     private Prestacion giveUnUsuarioConPrestacion() throws Exception {
         Usuario usuarioConPrestacion = new Usuario();
+
         Prestacion prestacion = new Prestacion();
         prestacion.setId(10l);
         prestacion.setUsuarioSolicitante(usuarioConPrestacion);

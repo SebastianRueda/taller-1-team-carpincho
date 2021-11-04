@@ -58,8 +58,8 @@ public class ServicioPrestacionImpl implements ServicioPrestacion {
 
     @Override
     public void finalizarPrestacion(Prestacion prestacion) throws Exception {
-
-        if(prestacion.getEstado()=="finalizado") {
+        String estado = prestacion.getEstado();
+        if(estado=="finalizado") {
              throw  new Exception();
         }
             prestacion.setEstado("finalizado");

@@ -27,6 +27,7 @@ public class ControladorLogin {
 	private ServicioLogin servicioLogin;
 	private ServicioUsuario servicioUsuario;
 	HttpServletRequest request;
+	Usuario usuarioBuscado;
 
 	@Autowired
 	public ControladorLogin(ServicioLogin servicioLogin,ServicioUsuario servicioUsuario){
@@ -37,7 +38,9 @@ public class ControladorLogin {
 	// Este metodo escucha la URL localhost:8080/NOMBRE_APP/login si la misma es invocada por metodo http GET
 	@RequestMapping("/login")
 	public ModelAndView irALogin() {
-
+		if (usuarioBuscado != null) {
+			return new ModelAndView("redirect:/traerEspecialidades");
+		}
 		ModelMap modelo = new ModelMap();
 		// Se agrega al modelo un objeto con key 'datosLogin' para que el mismo sea asociado
 		// al model attribute del form que esta definido en la vista 'login'
@@ -55,7 +58,7 @@ public class ControladorLogin {
 		ModelMap model = new ModelMap();
 		// invoca el metodo consultarUsuario del servicio y hace un redirect a la URL /home, esto es, en lugar de enviar a una vista
 		// hace una llamada a otro action a traves de la URL correspondiente a esta
-		Usuario usuarioBuscado = servicioLogin.consultarUsuario(datosLogin.getEmail(), datosLogin.getPassword());
+		usuarioBuscado = servicioLogin.consultarUsuario(datosLogin.getEmail(), datosLogin.getPassword());
 		if (usuarioBuscado != null) {
 			UsuarioCache.setUsuario(usuarioBuscado);
 			request.getSession().setAttribute("ROL", usuarioBuscado.getRol());

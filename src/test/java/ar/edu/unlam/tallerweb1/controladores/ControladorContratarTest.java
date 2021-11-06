@@ -18,7 +18,7 @@ public class ControladorContratarTest {
     ServicioUsuario servicioUsuario = Mockito.mock(ServicioUsuario.class);
     ControladorContratar controladorContratar = new ControladorContratar(servicioPrestacion, servicioUsuario);
     private Long idPrestacion=1l;
-
+    private Long idPrestacionFinalizada=20l;
 
 
     @Test
@@ -35,56 +35,58 @@ public class ControladorContratarTest {
         thenNoSePudoCrearLaPrestacion(mov);
     }
 
-   /* @Test
-    public  void finalizarPrestacion(){
-        givenPrestacionActiva(idPrestacion);
-        ModelAndView mav =whenFinalizaPrestacion(idPrestacion);
-        thenLaPrestacionFinalizoCorrectacmente(mav);
-    }*/
+    @Test
+    public void finalizarPrestacion() throws Exception {
+        Prestacion prestacion = givenPrestacionActiva(idPrestacion);
+        ModelAndView mav =whenFinalizaPrestacion(prestacion);
+        thenLaPrestacionFinalizoCorrectacmente(mav,prestacion);
+    }
 
-   /* @Test
+  /* @Test
     public void finalizarPrestacionDaError() throws Exception {
-        givenPrestacionFinalizada();
-       ModelAndView mav = whenFinalizaUnaPrestacionQueYaEstaFinalizada(2l);
-        thenPrestacionDaErrorAlFinalizar(mav);
-    }*/
+       Prestacion prestacionFinalizada = new Prestacion();
+       prestacionFinalizada.setId(idPrestacionFinalizada);
+       prestacionFinalizada.setEstado("finalizado");
 
-    /*private ModelAndView whenFinalizaUnaPrestacionQueYaEstaFinalizada(Long idPRestacion1) {
-       return controladorContratar.finalizarPrestacion(idPRestacion1);
+        givenPrestacionFinalizada(prestacionFinalizada);
+        ModelAndView mav = whenFinalizaUnaPrestacionQueYaEstaFinalizada(prestacionFinalizada);
+        thenPrestacionDaErrorAlFinalizar(mav);
     }*/
 
     private void thenPrestacionDaErrorAlFinalizar(ModelAndView mav) {
         assertThat(mav.getViewName()).isEqualTo("perfilUsuario");
         assertThat(mav.getModel().get("msgFinalizacionDeContratacionErronea")).isEqualTo("Error al finalizar la Prestacion ");
-
     }
 
-    private void givenPrestacionFinalizada() throws Exception {
-        Prestacion prestacion = new Prestacion();
-        prestacion.setId(2l);
-        prestacion.setEstado("finalizado");
-       when(servicioPrestacion.prestacionFindById(2l)).thenReturn(prestacion);
-        doThrow(Exception.class).when(servicioPrestacion).finalizarPrestacion(prestacion);
-
+    private ModelAndView whenFinalizaUnaPrestacionQueYaEstaFinalizada(Prestacion prestacionFinalizada) {
+        return controladorContratar.finalizarPrestacion(prestacionFinalizada);
     }
 
-    private void thenLaPrestacionFinalizoCorrectacmente(ModelAndView mav) {
-        assertThat(mav.getViewName()).isEqualTo("detalle-contratacion");
+    private void givenPrestacionFinalizada(Prestacion prestacionFinalizada) throws Exception {
+        when(servicioPrestacion.prestacionFindById(idPrestacion)).thenReturn(prestacionFinalizada);
+        doThrow(Exception.class).when(servicioPrestacion).finalizarPrestacion(prestacionFinalizada);
+    }
+
+    private void thenLaPrestacionFinalizoCorrectacmente(ModelAndView mav,Prestacion prestacion ) throws Exception {
+        assertThat(mav.getViewName()).isEqualTo("detallePrestacionFinalizada");
         assertThat(mav.getModel().get("msgFinalizacionDeContratacion")).isEqualTo("Prestacion finalizada correctamente");
     }
 
-   /* private ModelAndView whenFinalizaPrestacion(Long idPrestacion){
-      return   controladorContratar.finalizarPrestacion(idPrestacion);
-    }*/
-    private void givenPrestacionActiva(Long idPrestacion) {
+    private ModelAndView whenFinalizaPrestacion(Prestacion prestacion){
+      return controladorContratar.finalizarPrestacion(prestacion);
+    }
+
+    private Prestacion givenPrestacionActiva(Long idPrestacion) throws Exception {
+        Prestacion prestacion = new Prestacion();
+        prestacion.setId(idPrestacion);
+        prestacion.setEstado("activo");
+        return prestacion;
     }
 
 
     private Usuario givenElAsistenteExiste() {
         var asistente = new Usuario();
-
         Mockito.when(servicioUsuario.usuarioFindById(Matchers.any())).thenReturn(asistente);
-
         return asistente;
     }
 
@@ -107,6 +109,6 @@ public class ControladorContratarTest {
 
     private void thenNoSePudoCrearLaPrestacion(ModelAndView view) {
         Assert.assertEquals(view.getViewName(), "detalle-contratacion");
-        Assert.assertEquals(view.getModel().get("error"), "No se pudo encontrar los datos del asistente para completar la operación");
+        Assert.assertEquals(view.getModel().get("error"), "No se pudo encontrar los datos del asistente para completar la operacion");
     }
 }

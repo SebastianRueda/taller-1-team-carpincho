@@ -18,6 +18,31 @@
 
 <body class="fondo-login ">
 
+<header>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="home">AsegurApp</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="perfilUsuario">Perfil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="suscripcion">Suscripción</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
 <!--<div class="container-fluid mt-5 rounded-3">
     <div class="row w-100 bg-light m-auto p-2 justify-content-md-center" style="min-height: 500px; max-width: 1024px;">
         <div class="col-12 col-md-6 d-flex bg-white p-1 align-content-center justify-content-center">
@@ -159,7 +184,7 @@
 </div>-->
 
 <div class="container-fluid  mt-5 rounded-3 ">
-    <div class="row w-100 bg-light m-auto p-1 justify-content-md-center" style="max-width: 1024px;">
+    <div class="row w-100 bg-light m-auto p-1 justify-content-md-center" style="max-width: 1250px;">
         <div class="col-12 px-1">
             <div class="tab tab-primary">
                 <ul class="nav nav-pills nav-pills-sm nav-light mb-2"> <!-- empieza botones-->
@@ -234,6 +259,8 @@
                                 </div>
                             </div>
                             <!--termina tabla-->
+
+                            <p>Promedio De Calificacion: ${promedio}</p>
 
                             <!-- empieza suscripcion-->
                             <div class="bg-white col-12 col-md-10 d-flex flex-column flex-md-row p-2 mb-2 mt-3 align-items-center justify-content-evenly">
@@ -327,100 +354,129 @@
                     <div class="tab-pane ${seccion.equals("historial") ? "active" : ""}" id="primary-tab-2"
                          role="tabpanel">
                         <div class="row w-100  row w-100 h-100 m-auto justify-content-md-center">
-                            <%-- <div class="bg-white col-12 d-flex flex-column p-2 mb-2 mt-2 align-items-center justify-content-evenly">
-                                 <h4 class="text-muted">Historial</h4>
-                                 <div class="card-body table-responsive">
-                                     <table class="table  table-hover">
-                                         <thead>
-                                         <tr>
-                                             <th style="width:20%;">Número de factura</th>
-                                             <th style="width:20%;">Especiliadad</th>
-                                             <th style="width:20%;">Asisitente</th>
-                                             <th style="width:20%;">Estado</th>
-                                             <th style="width:20%;">Descripción</th>
-                                             <th class="actions"></th>
-                                             <th class="actions"></th>
-                                         </tr>
-                                         </thead>
-                                         <tbody>
-                                         <c:forEach items="${historial}" var="prestacion">
-                                             <form action="contratar-prestacion" method="GET">
-                                                 <tr>
-                                                     <td class="user-avatar">${prestacion.numerofactura}</td>
-                                                     <td>${prestacion.especialidad.descripcion}</td>
-                                                     <td>${prestacion.usuarioAsistente.nombre}</td>
-                                                     <td>${prestacion.estado}</td>
-                                                     <td>${prestacion.descripcion}</td>
-                                                     <td class="actions">
-                                                         <button type="button" value="contratar" id="button-contratar" onclick="contratar(${usuario.id})"
-                                                                 class="btn btn-primary fondo-gradiente-uno fondo-gradiente-1 border-0 bg-success">
-                                                             <a class="text-white text-decoration-none" href="<c:url value='/contratar-prestacion?asistente-id=${prestacion.usuarioAsistente.id}' />">Contratar</a>
-                                                         </button>
-                                                     </td>
-                                                     <td class="actions"><button type="button" value="perfil" class="btn btn-primary  border-0">Perfil</button></td>
-                                                 </tr>
-                                             </form>
-                                         </c:forEach>
-                                         </tbody>
-                                     </table>
-                                 </div>
-                             </div>--%>
+
                             <div class="col-12 p-2 ">
                                 <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
-                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">N° Factura</p>
-                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">Categoria</p>
-                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">Asisitente</p>
-                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">Fecha</p>
-                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">Estado</p>
-                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">Calificacion</p>
+                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">N°
+                                        Factura</p>
+                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">
+                                        Categoria</p>
+                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">
+                                        Asisitente</p>
+                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">
+                                        Fecha</p>
+                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">
+                                        Estado</p>
+                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">
+                                        Calificacion</p>
+                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">
+                                        ¿La pasaste mal Perri?</p>
                                 </div>
-                                <c:forEach items="${historial}" var="prestacion">
-                                <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
-                                    <p class="my-auto" style="width:20%;">#${prestacion.numerofactura}</p>
-                                    <p class="my-auto" style="width:20%;">${prestacion.usuarioAsistente.especialidad.descripcion}</p>
-                                    <p class="my-auto" style="width:20%;">${prestacion.usuarioAsistente.nombre} ${prestacion.usuarioAsistente.apellido}</p>
-                                    <p class="my-auto" style="width:20%;">11/23/22</p>
-                                    <c:if test="${prestacion.estado=='activo'}">
-                                        <p class="ps-9 my-auto" style="width:20%;"><span class="py-1 px-3 estadoActivo font-weight-bold redondeadoEstado">Activo</span></p>
+                                <c:choose>
+                                    <c:when test="${empty historial}">
+                                        <div class="d-flex justify-content-center align-items-center" style="width: 100%; height: 24em">
+                                            <h4>Todavía no realizaste ninguna contratación</h4>
+                                        </div>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:forEach items="${historial}" var="prestacion">
+                                            <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
+                                                <p class="my-auto" style="width:20%;">#${prestacion.id}</p>
+                                                <p class="my-auto"
+                                                   style="width:20%;">${prestacion.usuarioAsistente.especialidad.descripcion}</p>
+                                                <p class="my-auto"
+                                                   style="width:20%;">${prestacion.usuarioAsistente.nombre} ${prestacion.usuarioAsistente.apellido}</p>
+                                                <p class="my-auto" style="width:20%;">11/23/22</p>
+                                                <c:if test="${prestacion.estado=='activo'}">
+                                                    <p class="ps-9 my-auto" style="width:20%;"><span
+                                                            class="py-1 px-3 estadoFinalizado font-weight-bold redondeadoEstado">Activo</span>
+                                                    </p>
+                                                </c:if>
+                                                <c:if test="${prestacion.estado=='finalizado'}">
+                                                    <p class="ps-9 my-auto" style="width:20%;"><span
+                                                            class="py-1 px-3 estadoActivo font-weight-bold redondeadoEstado">Finalizado</span>
+                                                    </p>
+                                                </c:if>
+                                                <c:if test="${prestacion.estado=='cancelado'}">
+                                                    <p class="ps-9 my-auto" style="width:20%;"><span
+                                                            class="py-1 px-3 estadoCancelado font-weight-bold redondeadoEstado">Cancelado</span>
+                                                    </p>
+                                                </c:if>
 
-                                    </c:if>
-                                    <c:if test="${prestacion.estado=='finalizado'}">
-                                        <p class="ps-9 my-auto" style="width:20%;"><span class="py-1 px-3 estadoFinalizado font-weight-bold redondeadoEstado">Finalizado</span></p>
-                                    </c:if>
-                                    <c:if test="${prestacion.estado=='cancelado'}">
-                                        <p class="ps-9 my-auto" style="width:20%;"><span class="py-1 px-3 estadoCancelado font-weight-bold redondeadoEstado">Cancelado</span></p>
-                                    </c:if>
+                                                <c:if test="${prestacion.calificacionDadaPorElCliente==1}">
+                                                    <p class="my-auto" style="width:20%;"><i
+                                                            class="fas fa-star text-warning"></i>
+                                                        <i class="fas fa-star text-muted"></i><i
+                                                                class="fas fa-star text-muted"></i>
+                                                        <i class="fas fa-star text-muted"></i><i
+                                                                class="fas fa-star text-muted"></i></p>
+                                                </c:if>
+                                                <c:if test="${prestacion.calificacionDadaPorElCliente==2}">
+                                                    <p class="my-auto" style="width:20%;"><i
+                                                            class="fas fa-star text-warning"></i>
+                                                        <i class="fas fa-star text-warning"></i><i
+                                                                class="fas fa-star text-muted"></i>
+                                                        <i class="fas fa-star text-muted"></i><i
+                                                                class="fas fa-star text-muted"></i></p>
+                                                </c:if>
+                                                <c:if test="${prestacion.calificacionDadaPorElCliente==3}">
+                                                    <p class="my-auto" style="width:20%;"><i
+                                                            class="fas fa-star text-warning"></i>
+                                                        <i class="fas fa-star text-warning"></i><i
+                                                                class="fas fa-star text-warning"></i>
+                                                        <i class="fas fa-star text-muted"></i><i
+                                                                class="fas fa-star text-muted"></i></p>
+                                                </c:if>
+                                                <c:if test="${prestacion.calificacionDadaPorElCliente==4}">
+                                                    <p class="my-auto" style="width:20%;"><i
+                                                            class="fas fa-star text-warning"></i>
+                                                        <i class="fas fa-star text-warning"></i><i
+                                                                class="fas fa-star text-warning"></i>
+                                                        <i class="fas fa-star text-warning"></i><i
+                                                                class="fas fa-star text-muted"></i></p>
+                                                </c:if>
+                                                <c:if test="${prestacion.calificacionDadaPorElCliente==5}">
+                                                    <p class="my-auto" style="width:20%;"><i
+                                                            class="fas fa-star text-warning"></i>
+                                                        <i class="fas fa-star text-warning"></i><i
+                                                                class="fas fa-star text-warning"></i>
+                                                        <i class="fas fa-star text-warning"></i><i
+                                                                class="fas fa-star text-warning"></i></p>
+                                                </c:if>
+                                                <c:if test="${prestacion.calificacionDadaPorElCliente==null and prestacion.estado=='activo'}">
 
-                                    <c:if test="${prestacion.calificacionDadaPorElCliente==1}">
-                                    <p class="my-auto" style="width:20%;"><i class="fas fa-star text-warning"></i>
-                                        <i class="fas fa-star text-muted"></i><i class="fas fa-star text-muted"></i>
-                                        <i class="fas fa-star text-muted"></i><i class="fas fa-star text-muted"></i></p>
-                                    </c:if>
-                                    <c:if test="${prestacion.calificacionDadaPorElCliente==2}">
-                                        <p class="my-auto" style="width:20%;"><i class="fas fa-star text-warning"></i>
-                                            <i class="fas fa-star text-warning"></i><i class="fas fa-star text-muted"></i>
-                                            <i class="fas fa-star text-muted"></i><i class="fas fa-star text-muted"></i></p>
-                                    </c:if>
-                                    <c:if test="${prestacion.calificacionDadaPorElCliente==3}">
-                                        <p class="my-auto" style="width:20%;"><i class="fas fa-star text-warning"></i>
-                                            <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i>
-                                            <i class="fas fa-star text-muted"></i><i class="fas fa-star text-muted"></i></p>
-                                    </c:if>
-                                    <c:if test="${prestacion.calificacionDadaPorElCliente==4}">
-                                        <p class="my-auto" style="width:20%;"><i class="fas fa-star text-warning"></i>
-                                            <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i>
-                                            <i class="fas fa-star text-warning"></i><i class="fas fa-star text-muted"></i></p>
-                                    </c:if>
-                                    <c:if test="${prestacion.calificacionDadaPorElCliente==5}">
-                                        <p class="my-auto" style="width:20%;"><i class="fas fa-star text-warning"></i>
-                                            <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i>
-                                            <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i></p>
-                                    </c:if>
-                                    <c:if test="${prestacion.calificacionDadaPorElCliente==null}">
-                                        <button class="my-auto py-1 px-3 calificar font-weight-bold redondeadoEstado" style="width:20%;"> Calificar</button>
-                                    </c:if>
-                                </div>
-                                </c:forEach>
+                                                   <%-- <form:form  class="" style="width:20%;" action="finalizarPrestacion" method="post" modelAttribute="prestacion">
+
+                                                        <form:input type="hidden" path="id" id="id" value="${prestacion.id}"/>
+                                                        <form:input type="hidden" path="estado" id="estado" value="${prestacion.estado}"/>
+
+                                                    <button type="submit" class="my-auto py-1 px-3 finalizar font-weight-bold redondeadoEstado"
+                                                            style="width:20%;"> Finalizar
+                                                    </button>
+
+                                                    </form:form>--%>
+                                                        <a href="irADetallePrestacionFinalida?prestacion=${prestacion.id}" class="my-auto py-1 px-3 finalizar font-weight-bold redondeadoEstado"
+                                                                style="width:20%;"> Finalizar
+                                                        </a>
+                                                </c:if>
+
+                                                <c:if test="${prestacion.calificacionDadaPorElCliente==null and prestacion.estado == 'finalizado'}">
+                                                    <button class="my-auto py-1 px-3 calificar font-weight-bold redondeadoEstado " data-bs-toggle="modal" data-bs-target="#exampleModal1" style="width:20%;"> Calificar
+                                                    </button>
+                                                </c:if>
+
+                                                <c:if test="${prestacion.calificacionDadaPorElCliente==null and prestacion.estado == 'cancelado'}">
+
+                                                    <form:form  style="width:20%;" action="contratar-prestacion?asistente-id=${prestacion.usuarioAsistente.id}" method="get">
+                                                        <button class="my-auto py-1 px-3 calificar font-weight-bold redondeadoEstado w-100"> Calificar</button>
+                                                    </form:form>
+                                                </c:if>
+                                                <button class="my-auto py-1 px-3 denunciar font-weight-bold redondeadoEstado" style="width:20%;"> Denunciar </button>
+                                            </div>
+
+                                        </c:forEach>
+                                    </c:otherwise>
+                                </c:choose>
                             </div>
                         </div>
                     </div>
@@ -441,7 +497,83 @@
         </div>
 </div>
 
-</div>
+
+<!--<footer class="page-footer font-small color-light bg-dark text-light mt-4" style="width: 100vw;  bottom: 0">
+
+    <div>
+        <div class="container">
+
+            <div class="col-md-6 col-lg-7 text-center text-md-right">
+
+                <a class="fb-ic">
+                    <i class="fab fa-facebook-f white-text mr-4"> </i>
+                </a>
+
+                <a class="tw-ic">
+                    <i class="fab fa-twitter white-text mr-4"> </i>
+                </a>
+
+                <a class="gplus-ic">
+                    <i class="fab fa-google-plus-g white-text mr-4"> </i>
+                </a>
+
+                <a class="li-ic">
+                    <i class="fab fa-linkedin-in white-text mr-4"> </i>
+                </a>
+
+                <a class="ins-ic">
+                    <i class="fab fa-instagram white-text"> </i>
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <div class="container text-center text-md-left mt-5">
+
+
+        <div class="row mt-3">
+
+
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                <h6 class="text-uppercase font-weight-bold">Acceso directo</h6>
+                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                <p>
+                    <a href="#!">Login</a>
+                </p>
+                <p>
+                    <a href="#!">Registro</a>
+                </p>
+
+                <p>
+                    <a href="#!">Ayuda</a>
+                </p>
+
+            </div>
+
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+                <h6 class="text-uppercase font-weight-bold">Contacto</h6>
+                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                <p>
+                    <i class="fas fa-home mr-3"></i> calle Siempre viva 742, Springfield</p>
+                <p>
+                    <i class="fas fa-envelope mr-3"></i> info@asegurapp.com</p>
+                <p>
+                    <i class="fas fa-phone mr-3"></i> +011 4444-4444 </p>
+
+            </div>
+
+        </div>
+        <div class="footer-copyright text-center py-3"> 2021 Copyright: AsegurAPP
+        </div>
+    </div>
+</footer>-->
 
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"

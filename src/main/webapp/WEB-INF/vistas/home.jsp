@@ -5,9 +5,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link href="css/Login.css" rel="stylesheet">
 
@@ -101,78 +103,113 @@
             <section class="services">
                 <div class="container">
 
-                    <div class="row">
-                        <div class="text-center text-decoration-none text-dark fw-bold">
-                        <h3>Suscripcion Básica</h3>
-                        </div>
-                        <div class="card border-primary  col-md-3 col-lg-3 mb-3 " style="margin: 2.7em">
-                            <div class="card-header text-primary fw-bold">
-                                <i class="fas fa-truck-pickup"></i>Servicio de Grúa</div>
-                            <div class="card-body text-dark">
-                                <p class="card-text">Servicio de Auxilio de Grúas plancha para autos-Camionetas
-                                    4x4-Combis y Autoelevadores las 24 Hs todo el año.</p>
-                            </div>
-                        </div>
+                        <div class="row">
+                            <div class="text-center text-decoration-none text-dark fw-bold">
+                            <h3 >Suscripcion Básica</h3>
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                    Contratar Suscripción Básica
+                                </button>
 
+                                <!-- Modal -->
+                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Contratar Suscripcíón</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
 
-                        <div class="card border-primary  col-md-3 col-lg-3 mb-3" style="margin: 2.7em">
-                            <div class="card-header text-primary fw-bold">
-                                <i class="fab fa-old-republic"></i></i>Asistencia Policial</div>
-                            <div class="card-body text-dark">
-                                <p class="card-text">Asistencia Policíal en caso de emergencia</p>
-                            </div>
-                        </div>
+                                               <p>Para contratar la suscripción y acceder a los servicios incluidos debes estar Logueado.</p>
+                                               <p>Si aún no estas registrado podes hacerlo desde <a href="ir-a-registrarme">Aqui.</a></p>
+                                               <p>Si estas registrado, pero no te logueaste podes hacerlo desde <a href="login">Aquí.</a></p>
+                                                <p>Accede a la Suscripción desde <a href="suscripcion">Aquí.</a></p>
 
-                        <div class="card border-primary  col-md-3 col-lg-3 mb-3" style="margin: 2.7em">
-                            <div class="card-header text-primary fw-bold">
-                                <i class="fas fa-ambulance"></i>Servicio Medico</div>
-                            <div class="card-body text-dark">
-                                <p class="card-text">Te ofrecemos un cuerpo médico que puede atenderte
-                                    rápidamente de forma presencial</p>
-                            </div>
-                        </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
 
-                        <div class="text-center text-decoration-none text-dark fw-bold">
-                        <h3>Suscripción Premium</h3>
-                        </div>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                            <div class="card border-success  col-md-6 col-lg-3 mb-3" style="max-width: 18rem; ">
-                                <div class="card-header text-success fw-bold">
-                                    <i class="fas fa-wrench"></i>Servicio Mecanico
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+
+                            </div>
+
+
+                            <div class="card border-primary  col-md-3 col-lg-3 mb-3" style="margin: 2.7em">
+                                <div class="card-header text-primary fw-bold">
+                                    <i class="fab fa-old-republic"></i></i>Servicio de Grúa</div>
                                 <div class="card-body text-dark">
-                                    <p class="card-text">Encontra el profesional que se ajuste a las necesidades de tu vehiculo.</p>
+                                    <p class="card-text">Servicio de Auxilio de Grúas plancha para autos-Camionetas
+                                        4x4-Combis y Autoelevadores las 24 Hs todo el año.</p>
                                 </div>
                             </div>
 
-                            <div class="card border-success  col-md-6 col-lg-3 mb-3" style="max-width: 18rem; ">
-                                <div class="card-header text-success fw-bold">
-                                    <i class="fas fa-tools"></i>Chofer</div>
+                            <div class="card border-primary  col-md-3 col-lg-3 mb-3" style="margin: 2.7em">
+                                <div class="card-header text-primary fw-bold">
+                                    <i class="fab fa-old-republic"></i></i>Asistencia Policial</div>
                                 <div class="card-body text-dark">
-                                    <p class="card-text">Contrate un chófer privado para su comodidad, seguridad y en tiempo record ... calidad de servicio a prueba de una larga lista de clientes satisfechos.</p>
+                                    <p class="card-text">Asistencia Policíal en caso de emergencia</p>
                                 </div>
                             </div>
 
-                            <div class="card border-success  col-md-6 col-lg-3 mb-3" style="max-width: 18rem; ">
-                                <div class="card-header text-success fw-bold">
-                                    <i class="fas fa-cogs"></i>Repuestos Livianos</div>
+                            <div class="card border-primary  col-md-3 col-lg-3 mb-3" style="margin: 2.7em">
+                                <div class="card-header text-primary fw-bold">
+                                    <i class="fas fa-ambulance"></i>Servicio Medico</div>
                                 <div class="card-body text-dark">
-                                    <p class="card-text">Nuestros socios cuentan con una flota de auxilio mecánico en todo el país para ayudarlo en todo tipo de incidentes</p>
+                                    <p class="card-text">Te ofrecemos un cuerpo médico que puede atenderte
+                                        rápidamente de forma presencial</p>
                                 </div>
                             </div>
 
-                            <div class="card border-success  col-md-6 col-lg-3 mb-3" style="max-width: 18rem; ">
-                                <div class="card-header text-success fw-bold">
-                                    <i class="fas fa-balance-scale"></i>Asistencia Legal</div>
-                                <div class="card-body text-dark">
-                                    <p class="card-text">Asistencia legal en el momento ante un litigio.</p>
-                                </div>
+                            <div class="text-center text-decoration-none text-dark fw-bold">
+                            <h3>Suscripción Premium</h3>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                    Contratar Suscripción Premium
+                                </button>
                             </div>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                                <div class="card border-success  col-md-6 col-lg-3 mb-3" style="max-width: 18rem; ">
+                                    <div class="card-header text-success fw-bold">
+                                        <i class="fas fa-wrench"></i>Servicio Mecanico
+                                    </div>
+                                    <div class="card-body text-dark">
+                                        <p class="card-text">Encontra el profesional que se ajuste a las necesidades de tu vehiculo.</p>
+                                    </div>
+                                </div>
 
-                    </div>
+                                <div class="card border-success  col-md-6 col-lg-3 mb-3" style="max-width: 18rem; ">
+                                    <div class="card-header text-success fw-bold">
+                                        <i class="fas fa-tools"></i>Chofer</div>
+                                    <div class="card-body text-dark">
+                                        <p class="card-text">Contrate un chófer privado para su comodidad, seguridad y en tiempo record ... calidad de servicio a prueba de una larga lista de clientes satisfechos.</p>
+                                    </div>
+                                </div>
+
+                                <div class="card border-success  col-md-6 col-lg-3 mb-3" style="max-width: 18rem; ">
+                                    <div class="card-header text-success fw-bold">
+                                        <i class="fas fa-cogs"></i>Repuestos Livianos</div>
+                                    <div class="card-body text-dark">
+                                        <p class="card-text">Nuestros socios cuentan con una flota de auxilio mecánico en todo el país para ayudarlo en todo tipo de incidentes</p>
+                                    </div>
+                                </div>
+
+                                <div class="card border-success  col-md-6 col-lg-3 mb-3" style="max-width: 18rem; ">
+                                    <div class="card-header text-success fw-bold">
+                                        <i class="fas fa-balance-scale"></i>Asistencia Legal</div>
+                                    <div class="card-body text-dark">
+                                        <p class="card-text">Asistencia legal en el momento ante un litigio.</p>
+                                    </div>
+                                </div>
+
+                        </div>
                 </div>
             </section>
             <br>
@@ -263,8 +300,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
 <script src="js/bootstrap.min.js" type="text/javascript"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+
 </body>
 </html>

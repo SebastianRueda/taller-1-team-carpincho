@@ -14,15 +14,18 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 public class RepositorioPrestacionTest extends SpringTest {
-    private Prestacion prestacion;
+     private Prestacion prestacion;
 
     @Before
     public void createPrestacion() {
         prestacion = new Prestacion();
     }
-
 
     @Autowired
     private RepositorioPrestacion repositorioPrestacion;
@@ -112,6 +115,47 @@ public class RepositorioPrestacionTest extends SpringTest {
         thenComparoQueSeanLasMismasLaPrestacionGuardadaConLaObtenida(prestacionGuardada,prestacionObtenida);
     }
 
+    @Test @Rollback @Transactional
+    public void devolverListaPrestacionesDeUnUsuarioFinalDondeLoCalificaron(){
+        Usuario usuario33 = new Usuario();
+        usuario33.setId(20l);
+        repositorioUsuario.guardar(usuario33);
+
+        List<Prestacion> listaDePrestacionesEsperada = givenListaDePrestacionesCalificaDel(usuario33);
+        List<Prestacion> listaDePrestacionesObtenida = whenBuscaListaPrestacionesDeUnUsuarioFinalDondeLoCalificaron(usuario33.getId());
+        thenComparoQueSeanLasMismasLaPrestacionGuardadaConLaObtenida(listaDePrestacionesEsperada,listaDePrestacionesObtenida);
+    }
+
+    private void thenComparoQueSeanLasMismasLaPrestacionGuardadaConLaObtenida(List<Prestacion> listaDePrestacionesEsperada, List<Prestacion> listaDePrestacionesObtenida) {
+        assertEquals(listaDePrestacionesEsperada.size(),listaDePrestacionesObtenida.size());
+    }
+
+    private List<Prestacion> givenListaDePrestacionesCalificaDel( Usuario usuario33) {
+        List<Prestacion>listaDePrestaciones = new ArrayList<>();
+
+        for (int i=1;i<=5;i++){
+            Random r = new Random();
+            Integer valorDado = r.nextInt(4)+1;
+
+            Usuario usuarioAsistente = new Usuario();
+            repositorioUsuario.guardar(usuarioAsistente);
+
+            Prestacion prestacion = new Prestacion();
+            //prestacion.setId(50l + i);
+            prestacion.setUsuarioSolicitante(usuario33);
+            prestacion.setUsuarioAsistente(usuarioAsistente);
+            prestacion.setCalificacionDadaPorUsuarioAsistente(valorDado);
+            repositorioPrestacion.save(prestacion);
+
+            listaDePrestaciones.add(prestacion);
+        }
+
+        return listaDePrestaciones;
+    }
+
+    private List whenBuscaListaPrestacionesDeUnUsuarioFinalDondeLoCalificaron(Long id) {
+        return repositorioPrestacion.buscarPrestacionesCalificadasPorUsuario(id);
+    }
     private Prestacion whenBuscarPrestacionFinalizadaSinCalificar(long idPRestacion) {
        return  repositorioPrestacion.buscarPrestacionFinalizadaSinCalificar(idPRestacion);
     }
@@ -133,7 +177,7 @@ public class RepositorioPrestacionTest extends SpringTest {
     }
 
     private void thenComparoQueSeanLasMismasLaPrestacionGuardadaConLaObtenida(Prestacion guardada, Prestacion buscada) {
-        Assert.assertEquals(guardada.getId(), buscada.getId());
+        assertEquals(guardada.getId(), buscada.getId());
     }
 
     // ------------------------------------------------
@@ -163,7 +207,7 @@ public class RepositorioPrestacionTest extends SpringTest {
     }
 
     private void thenCompruboQueSeHayaActualizadoLaPrestacionCorrectamente(Prestacion prestacion) {
-        Assert.assertEquals(prestacion.getEstado(), PrestacionEstado.FINALIZADO.getEstado());
+        assertEquals(prestacion.getEstado(), PrestacionEstado.FINALIZADO.getEstado());
     }
 
     // ------------------------------------------------
@@ -182,7 +226,7 @@ public class RepositorioPrestacionTest extends SpringTest {
     }
 
     private void thenComprueboQueLaCantidadDePrestacionesSeaLaMismaQueGuardada(List<Prestacion> prestacions, int cantPrestaciones) {
-        Assert.assertEquals(repositorioPrestacion.getAll().size(), cantPrestaciones);
+        assertEquals(repositorioPrestacion.getAll().size(), cantPrestaciones);
     }
 
     // ------------------------------------------------
@@ -223,7 +267,7 @@ public class RepositorioPrestacionTest extends SpringTest {
     }
 
     private void thenFiltrarPrestacionesPorEspecialidad(List<Prestacion> prestaciones, int cantEsperado) {
-        Assert.assertEquals(prestaciones.size(), cantEsperado);
+        assertEquals(prestaciones.size(), cantEsperado);
     }
 
     private void givenUsuarioListarCliente(Usuario cliente, int cantDePrestaciones) {
@@ -241,6 +285,6 @@ public class RepositorioPrestacionTest extends SpringTest {
     }
 
     private void thenCompruboQueElListadoSeGuardadoCorrectamente(List<Prestacion> prestacionesObtenidas, int cantPrestacionesGuardadas) {
-        Assert.assertEquals(prestacionesObtenidas.size(), cantPrestacionesGuardadas);
+        assertEquals(prestacionesObtenidas.size(), cantPrestacionesGuardadas);
     }
 }

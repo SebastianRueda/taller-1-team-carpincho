@@ -22,8 +22,16 @@ public class Prestacion {
 
 	private String numerofactura;
 	private Integer calificacionDadaPorElCliente= null;
+	private Integer calificacionDadaPorUsuarioAsistente= null;
 
-	
+
+	public Integer getCalificacionDadaPorUsuarioAsistente() {
+		return calificacionDadaPorUsuarioAsistente;
+	}
+
+	public void setCalificacionDadaPorUsuarioAsistente(Integer calificacionDadaPorUsuarioAsistente) {
+		this.calificacionDadaPorUsuarioAsistente = calificacionDadaPorUsuarioAsistente;
+	}
 
 	public Long getId() {
 		return id;

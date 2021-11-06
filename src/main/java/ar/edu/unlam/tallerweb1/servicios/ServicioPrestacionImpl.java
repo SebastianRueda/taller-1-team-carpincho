@@ -2,12 +2,14 @@ package ar.edu.unlam.tallerweb1.servicios;
 
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Prestacion;
+import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioPrestacion;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service("servicioPrestacion")
@@ -56,8 +58,8 @@ public class ServicioPrestacionImpl implements ServicioPrestacion {
 
     @Override
     public void finalizarPrestacion(Prestacion prestacion) throws Exception {
-
-        if(prestacion.getEstado()=="finalizado") {
+        String estado = prestacion.getEstado();
+        if(estado=="finalizado") {
              throw  new Exception();
         }
             prestacion.setEstado("finalizado");
@@ -87,6 +89,27 @@ public class ServicioPrestacionImpl implements ServicioPrestacion {
             prestacion.setCalificacionDadaPorElCliente(calificacion);
             prestacionDao.update(prestacion);
         }
+
+    @Override
+    public Float obtenerPromedioDeCalificicacionDeUnUsuario(Usuario usuario) throws Exception {
+
+        List<Prestacion>listaDePrestaciones;
+        listaDePrestaciones = prestacionDao.buscarPrestacionesCalificadasPorUsuario(usuario.getId());
+        Float sumatoria=0f;
+        Float promedio;
+
+        if (listaDePrestaciones.isEmpty()){
+            throw new Exception();
+        }
+
+        for (int i = 0; i< listaDePrestaciones.size(); i++){
+            Prestacion prestacion = listaDePrestaciones.get(i);
+            sumatoria +=prestacion.getCalificacionDadaPorUsuarioAsistente().floatValue();
+        }
+
+        promedio = sumatoria/listaDePrestaciones.size();
+        return promedio;
+    }
 
 
 }

@@ -4,16 +4,20 @@ import ar.edu.unlam.tallerweb1.modelo.Suscripcion;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioSuscripcion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
+import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
+import org.springframework.mock.web.MockHttpSession;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
 public class ControladorSuscripcionTest {
-/*
+
     private static final String EMAIL = "emiliano@gmail.com";
     private Long idSuscripcionPremium=2l;
     private Long idSuscripcionBasica=1l;
@@ -23,7 +27,13 @@ public class ControladorSuscripcionTest {
     private ServicioUsuario servicioUsuario = mock(ServicioUsuario.class);
     private HttpServletRequest request = mock(HttpServletRequest.class);
     private ControladorSuscripcion controladorSuscripcion = new ControladorSuscripcion(request,servicioSuscripcion, servicioUsuario);
+    private HttpSession session = Mockito.mock(HttpSession.class);
 
+    public void crearSession(Usuario usuario){
+
+        when(session.getAttribute(Mockito.any())).thenReturn(usuario);
+        when(request.getSession(true)).thenReturn(session);
+    }
 
     @Test
     public void usuarioCancelaSuscripcion() throws Exception {
@@ -56,14 +66,17 @@ public class ControladorSuscripcionTest {
     }
     ///////////////////////////////
 
+
     private void givenUsuarioConSuscripcionbasicaQueIntentaModificarPorLaMismaSuscripcion(String email) throws Exception {
+      Usuario usuario = new Usuario();
+       crearSession(usuario);
         doThrow(Exception.class).when(servicioSuscripcion).modificarSuscripcionBasicaAPremium(anyString(),anyObject() );
     }
 
     private void givenUsuarioSinSuscripcion(String email) throws Exception {
         Usuario usuario = new Usuario();
         usuario.setEmail(email);
-
+        crearSession(usuario);
         doThrow(Exception.class).when(servicioSuscripcion).cancelarSuscripcion(email);
     }
 
@@ -72,7 +85,10 @@ public class ControladorSuscripcionTest {
         Suscripcion suscripcionBasica = new Suscripcion();
         usuario.setEmail(email);
         usuario.setSuscripcion(suscripcionBasica);
+
+        crearSession(usuario);
         when(servicioUsuario.buscarUsuarioPorMail(email)).thenReturn(usuario);
+
     }
 /////////////////////////////
     private ModelAndView whenUsuarioCancelaSuSuscripcion(String email) {
@@ -89,21 +105,21 @@ public class ControladorSuscripcionTest {
     }
     /////////////////////////////
     private void thenCancelacionDeSuscripcionDaError(ModelAndView mav) {
-//        assertThat(mav.getViewName()).isEqualTo("redirect:/perfilUsuario/1");
+        assertThat(mav.getViewName()).isEqualTo("redirect:/perfilUsuario");
         assertThat(mav.getModel().get("msgCancelacionErronia")).isEqualTo("No tienes una Suscripcion");
     }
     private void thenCancelacionDeSuscripcionBasicaExitosa(ModelAndView mav) {
-//        assertThat(mav.getViewName()).isEqualTo("redirect:/perfilUsuario/1");
+       assertThat(mav.getViewName()).isEqualTo("redirect:/perfilUsuario");
     }
 
     private void thenUpgradeDeSuscripcionBasicaExitosa(ModelAndView mav) {
-//        assertThat(mav.getViewName()).isEqualTo("redirect:/perfilUsuario/1");
+        assertThat(mav.getViewName()).isEqualTo("redirect:/perfilUsuario");
     }
 
 
     private void thenUpgradeDeSuscripcionBasicaFallida(ModelAndView mav) throws Exception {
-//        assertThat(mav.getViewName()).isEqualTo("redirect:/perfilUsuario/1");
+        assertThat(mav.getViewName()).isEqualTo("redirect:/perfilUsuario");
     }
 
-*/
+
 }

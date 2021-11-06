@@ -28,18 +28,22 @@ public class ControladorPerfil {
     public ModelAndView IrAPerfilUsuario(HttpServletRequest request){
         HttpSession misession= request.getSession(true);
         Usuario usuarioLogueado= (Usuario) misession.getAttribute("usuarioLogueado");
+        ModelMap modelo = new ModelMap();
 
         if (usuarioLogueado == null){
             return new ModelAndView("redirect:/");
         }
 
-        var prestaciones = servicioPrestacion.listarPrestacionesContratadasPorCliente(usuarioLogueado.getId());
+        try {
+            Float promedio= servicioPrestacion.obtenerPromedioDeCalificicacionDeUnUsuario(usuarioLogueado);
+            modelo.put("promedio",promedio);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         Usuario usuario = servicioUsuario.usuarioFindById(usuarioLogueado.getId());
-        ModelMap modelo = new ModelMap();
         modelo.put("usuarioEnSession",usuario);
         modelo.put("seccion", "perfil");
-        modelo.put("listaPrestaciones", prestaciones);
-
         return new ModelAndView("perfilUsuario", modelo);
     }
 
@@ -53,6 +57,7 @@ public class ControladorPerfil {
         }
 
         var prestaciones = servicioPrestacion.listarPrestacionesContratadasPorCliente(usuarioLogueado.getId());
+
         ModelMap map = new ModelMap();
         map.put("historial", prestaciones);
         map.put("seccion", "historial");

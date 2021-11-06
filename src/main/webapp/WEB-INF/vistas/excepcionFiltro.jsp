@@ -63,7 +63,7 @@
 
 
 			<div class="text-center">
-				<a href="traerEspecialidades" style="color:white" >${volver}</a
+				<a href="traerEspecialidades" style="color:white" >${volver}</a>
 			</div>
 		</div>
 		<br>

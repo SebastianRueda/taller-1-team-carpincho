@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Objects;
 
 @Entity
 public class Provincia {
@@ -11,16 +12,17 @@ public class Provincia {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nombre;
-	
-	
-	public Provincia() {
-		super();
-	}
+
 	public Provincia(Long id, String nombre) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 	}
+
+	public Provincia() {
+
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -33,6 +35,16 @@ public class Provincia {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
-	
+
+	@Override
+	public boolean equals(Object o) {
+		if (o == null || getClass() != o.getClass()) return false;
+		Provincia provincia = (Provincia) o;
+		return Objects.equals(id, provincia.id) && Objects.equals(nombre, provincia.nombre);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, nombre);
+	}
 }

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
 <html>
@@ -43,22 +44,34 @@
 			<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-10 col-md-offset-3 col-sm-8 col-sm-offset-2">
 		<h1>Bienvenido A SegurAPP</h1>
 
-			<form action="" >
-			<label for="listaPrestaciones">Estás denunciando a:</label>
-			Eric Cuevas
-				<br>
-				<label for="listaEspecialidadDesplegable">Seleccione motivo:</label> 
-				<select name="listaEspecialidadDesplegable">
-					<c:forEach items="${motivoDenuncias}" var="motivoDenuncias">
-						<option value="${motivoDenuncias.id}">${motivoDenuncias.descripcion}</option>
-					</c:forEach>
-				</select><br>
-				<label>Comentario: </label> 
-				<textarea rows="4" cols="50"></textarea>
-				
-				<button class="btn btn-lg btn-primary btn-block" Type="Submit">Confirmar</button>
-			</form>
+			<form:form action="denunciaRealizada" method="post" modelAttribute="denunciaRequest">
+				<label for="listaPrestaciones">Estás denunciando a:</label>
+				${asistente.nombre} ${asistente.apellido}
 
+				<form:input path="clienteId" name="clienteId" value="${usuarioEnSession.id}" cssStyle="display: none" />
+				<form:input path="asistenteId" name="asistenteId" value="${asistente.id}" cssStyle="display: none"/>
+
+					<br>
+					<label for="listaEspecialidadDesplegable">Seleccione motivo:</label>
+					<form:select path="motivoId" name="motivoDenuncia">
+						<c:forEach items="${motivoDenuncias}" var="motivoDenuncias">
+							<option value="${motivoDenuncias.id}">${motivoDenuncias.descripcion}</option>
+						</c:forEach>
+					</form:select>
+
+					<label>Comentario: </label>
+					<form:textarea path="comentario" name="comentario" rows="4" cols="50" />
+
+					<button class="btn btn-lg btn-primary btn-block" Type="Submit">Confirmar</button>
+			</form:form>
+
+				<%--<form:form action="clienteCalifica" method="post" modelAttribute="datosCalificacion">
+					<form:input type="text" path="prestacionId" value="${prestacion.id}" name="prestacionId" />
+					<div class="form-check form-check-inline">
+						<form:input path="calificacion" id="calificacionDadaPorElCliente" type="number" class="form-control" />
+						<button type="submit" class="btn btn-primary">Calificar</button>
+					</div>
+				</form:form>--%>
 
 			</div>
 		</div>

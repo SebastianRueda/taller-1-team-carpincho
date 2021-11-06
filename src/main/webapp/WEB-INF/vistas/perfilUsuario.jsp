@@ -1,6 +1,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="input" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,11 +60,11 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder me-2 ${seccion.equals("historialDenuncias") ? "active" : ""}"
-                           href="mostrar-denuncias">Mis Denuncias</a>
+                           href="mostrar-denuncias" href="#primary-tab-3">Mis Denuncias</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder"
-                           data-bs-toggle="tab" href="#primary-tab-3">Algo</a>
+                           data-bs-toggle="tab" href="#primary-tab-4">Algo</a>
                     </li>
                 </ul><!-- Termina botones-->
                 <div class="tab-content">
@@ -317,9 +318,11 @@
                                              <button class="my-auto py-1 px-3 calificar font-weight-bold redondeadoEstado w-100"> Calificar</button>
                                          </form:form>
                                         </c:if>
-                                        <form:form  style="width:20%;" action="denunciarAsistente" method="get">
-                                             <button class="my-auto py-1 px-3 denunciar font-weight-bold redondeadoEstado" style="width:20%;">Denunciar</button>
-                                         </form:form>
+
+                                        <%--<form:form  style="width:20%;" action="denunciarAsistente?prestacion-id=${prestacion.id}" method="get">
+                                            <button class="my-auto py-1 px-3 denunciar font-weight-bold redondeadoEstado" style="width:20%;">Denunciar</button>
+                                        </form:form>--%>
+                                        <a style="margin-right: 2em" href="denunciarAsistente?prestacion-id=${prestacion.id}">Denunciar</a>
                                         
                                     </div>
 
@@ -329,10 +332,10 @@
                     </div>
                     <!-- Termina segundo boton-->
                     <!-- Empieza tercer boton-->
-                    <div class="tab-pane ${seccion.equals("historialDenuncias") ? "active" : ""}" id="primary-tab-2"
+                    <div class="tab-pane ${seccion.equals("historialDenuncias") ? "active" : ""}" id="primary-tab-3"
                          role="tabpanel">
                         <div class="row w-100  row w-100 h-100 m-auto justify-content-md-center">
-                    <div class="col-12 p-2 ">
+                            <div class="col-12 p-2 ">
                                 <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
                                     <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">N°
                                         Prestacion</p>
@@ -343,22 +346,22 @@
                                     <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">
                                         Motivo Denunciado</p>
                                 </div>
+                            </div>
+                            <c:forEach items="${denuncias}" var="denuncia">
+                                <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
+                                    <p class="my-auto" style="width:20%;">#${denuncia.id}</p>
+                                    <p class="my-auto"
+                                       style="width:20%;">${denuncia.usuarioSolicitante.nombre}</p>
+                                    <p class="my-auto"
+                                       style="width:20%;">${denuncia.asistente.nombre} ${denuncia.asistente.apellido}</p>
+                                    <p class="my-auto" style="width:20%;">11/23/22</p>
+                                </div>
+                            </c:forEach>
+                        </div>
                     </div>
-                    <c:forEach items="${historialDenuncias}" var="historialDenuncias">
-                                    <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
-                                        <p class="my-auto" style="width:20%;">#${historialDenuncias.id}</p>
-                                        <p class="my-auto"
-                                           style="width:20%;">${prestacion.usuarioAsistente.especialidad.descripcion}</p>
-                                        <p class="my-auto"
-                                           style="width:20%;">${prestacion.usuarioAsistente.nombre} ${prestacion.usuarioAsistente.apellido}</p>
-                                        <p class="my-auto" style="width:20%;">11/23/22</p>
-                     </div>
-                     </c:forEach>
-                     </div>
-                      </div>
                     <!-- Termina tercer boton-->
                     <!-- Empieza cuarto boton-->
-                    <div class="tab-pane" id="primary-tab-3" role="tabpanel">
+                    <div class="tab-pane" id="primary-tab-4" role="tabpanel">
                         <div class="row w-100 bg-info row w-100 h-100 m-auto justify-content-md-center px-2">
                             <div class="bg-white col-12 d-flex flex-column  p-2 mb-2 mt-2 align-items-center">
                                 <h4 class="text-muted"> Proximamente...</h4>

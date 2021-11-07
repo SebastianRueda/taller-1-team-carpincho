@@ -28,15 +28,34 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="home">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="login">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="ir-a-registrarme">Registrarte</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="suscripcion">Suscripción</a>
-                    </li>
+	                <c:if test="${empty logueado}">    
+	                    <li class="nav-item">
+	                        <a class="nav-link" href="login">Login</a>
+	                    </li>
+	                    <li class="nav-item">
+	                        <a class="nav-link" href="ir-a-registrarme">Registrarte</a>
+	                    </li>
+	                </c:if>    
+                    <c:if test="${empty logueado}">
+	                    <li class="nav-item">
+	                        <a class="nav-link" href="suscripcion">Suscripción</a>
+	                    </li>
+	                </c:if>
+	                <c:if test="${not empty logueado}">
+	                    <li class="nav-item">
+	                        <a class="nav-link" href="traerEspecialidades">Contratar</a>
+	                    </li>
+	                </c:if>        
+                    <c:if test="${not empty logueado}">
+    					 <li class="nav-item">
+                        	<a class="nav-link" href="perfilUsuario">Perfil</a>
+                    	</li>
+					</c:if>  
+	                <c:if test="${not empty logueado}">
+	                    <li class="nav-item">
+	                        <a class="nav-link" href="suscripcion">Suscripción</a>
+	                    </li>
+	                </c:if>        
                     <c:if test="${not empty logueado}">
     					 <li class="nav-item">
                         	<a class="nav-link" href="login">Cerrar Sesion</a>
@@ -101,6 +120,10 @@
             </section>
 
             <br>
+            
+			<c:if test="${empty logueado}">
+				<h1>Para acceder a una suscripcion primero debes iniciar sesion.</h1>
+			</c:if>
             <br>
 
             <section class="services">
@@ -108,7 +131,7 @@
 
                     <div class="row">
                         <div class="text-center text-decoration-none text-dark fw-bold">
-                        <h3>Suscripcion Básica</h3>
+                        <a href="suscripcion"><h3>Suscripcion Básica</h3></a>
                         </div>
                         <div class="card border-primary  col-md-3 col-lg-3 mb-3 " style="margin: 2.7em">
                             <div class="card-header text-primary fw-bold">
@@ -138,7 +161,7 @@
                         </div>
 
                         <div class="text-center text-decoration-none text-dark fw-bold">
-                        <h3>Suscripción Premium</h3>
+                        <a href="suscripcion"><h3>Suscripción Premium</h3></a>
                         </div>
                         <br>
                         <br>

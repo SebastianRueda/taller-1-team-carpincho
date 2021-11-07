@@ -31,6 +31,11 @@
                     <li class="nav-item">
                         <a class="nav-link active" href="suscripcion">Suscripción</a>
                     </li>
+                    
+   					<li class="nav-item">
+                       	<a class="nav-link" href="login">Cerrar Sesion</a>
+                   	</li>
+					
                 </ul>
             </div>
         </div>

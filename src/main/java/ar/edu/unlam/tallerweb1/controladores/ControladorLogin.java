@@ -74,10 +74,25 @@ public class ControladorLogin {
 		return new ModelAndView("login", model);
 	}
 
-	// Escucha la URL /home por GET, y redirige a una vista.
+//	// Escucha la URL /home por GET, y redirige a una vista.
+//	@RequestMapping(path = "/home", method = RequestMethod.GET)
+//	public ModelAndView irAHome() {
+//		return new ModelAndView("home");
+//	}
+	
+	
+//	@RequestMapping(path = "/home", method = RequestMethod.POST)
+//	public ModelAndView irAHome(@ModelAttribute("logueado")Boolean logueado, HttpServletRequest request) {
+//		ModelMap model = new ModelMap();
+//		
+//		return new ModelAndView("home");
+//	}
+	
 	@RequestMapping(path = "/home", method = RequestMethod.GET)
 	public ModelAndView irAHome() {
-		return new ModelAndView("home");
+		ModelMap model = new ModelMap();
+		model.put("logueado", usuarioBuscado);
+		return new ModelAndView("home",model);
 	}
 
 	// Escucha la url /, y redirige a la URL /login, es lo mismo que si se invoca la url /login directamente.

@@ -37,6 +37,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="suscripcion">Suscripción</a>
                     </li>
+                    <c:if test="${not empty logueado}">
+    					 <li class="nav-item">
+                        	<a class="nav-link" href="login">Cerrar Sesion</a>
+                    	</li>
+					</c:if>
                 </ul>
             </div>
         </div>

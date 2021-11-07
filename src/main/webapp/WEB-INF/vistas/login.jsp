@@ -14,8 +14,6 @@
     <link href="css/Login.css" rel="stylesheet">
 </head>
 <body class=" h-100 w-100">
-
-
 <header>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <div class="container-fluid">
@@ -31,7 +29,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="login">Login</a>
-                    </li>
+                    </li>				
                     <li class="nav-item">
                         <a class="nav-link" href="ir-a-registrarme">Registrarte</a>
                     </li>

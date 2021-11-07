@@ -1,5 +1,7 @@
-
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <meta charset="UTF-8">
@@ -140,13 +142,13 @@
                 /////////////////////////////////////////////////////
                 <!-- Title -->
                 <h2 class="text-uppercase">
-                    Empezar aca
+                    Empezar affcad
                 </h2>
 
                 <!-- Text -->
                 <div class="container-fluid kanban-container">
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-md-6">
 
                             <!-- Card -->
                             <div class="card">
@@ -154,17 +156,50 @@
 
                                     <!-- Category -->
                                     <div class="kanban-category">
+                                        <c:if test="${prestacion.estado=='finalizado'}">
 
                                         <!-- Item -->
-                                        <div class="kanban-item">...</div>
-                                        asdasdws
+                                        <div class="kanban-item"><h4 class="text-uppercase">Califica el Servicio</h4>
+
+                                                <%--@elvariable id="prestacion" type="ar.edu.unlam.tallerweb1.modelo.Prestacion"--%>
+                                            <form:form action="clienteCalificaPrestacion" method="post" modelAttribute="prestacion">
+
+
+                                                <p class="clasificacion">
+                                                    <input id="radio1" type="radio" name="estrellas" value="5"><!--
+                                              --><label class="labelFormCalificar" for="radio1">★</label><!--
+                                              --><input id="radio2" type="radio" name="estrellas" value="4"><!--
+                                              --><label class="labelFormCalificar" for="radio2">★</label><!--
+                                              --><input id="radio3" type="radio" name="estrellas" value="3"><!--
+                                              --><label class="labelFormCalificar" for="radio3">★</label><!--
+                                              --><input id="radio4" type="radio" name="estrellas" value="2"><!--
+                                              --><label class="labelFormCalificar" for="radio4">★</label><!--
+                                              --><input id="radio5" type="radio" name="estrellas" value="1"><!--
+                                              --><label class="labelFormCalificar" for="radio5">★</label>
+                                                </p>
+                                                <button type="submit" class="btn btn-primary">Calificar Prestacion</button>
+                                            </form:form>
+                                        </div>
+                                        </c:if>
+
+                                        <c:if test="${prestacion.estado=='activo'}">
+                                            <%--@elvariable id="prestacion" type="ar.edu.unlam.tallerweb1.modelo.Prestacion"--%>
+                                            <form:form action="finalizarPrestacion" method="post" modelAttribute="prestacion">
+                                                <form:input type="hidden"  path="id" id="id" value="${prestacion.id}"/>
+                                                <form:input type="hidden" path="estado" id="estado" value="${prestacion.estado}"/>
+
+
+                                                <button type="submit" class="btn btn-primary">Finalizar Prestacion</button>
+                                            </form:form>
+                                        </c:if>
                                     </div>
+
 
                                 </div>
                             </div>
 
                         </div>
-                        <div class="col-12">
+                        <div class="col-md-6">
 
                             <!-- Card -->
                             <div class="card">

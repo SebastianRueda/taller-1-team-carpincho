@@ -11,7 +11,10 @@ public class HistorialDenuncia {
 	private String comentario;
 	@OneToOne
 	private Usuario usuarioSolicitante;
-	
+	@OneToOne
+	private Usuario asistente;
+	@OneToOne
+	private MotivoDenuncia motivoDenuncia;
 	
 	public Usuario getUsuarioSolicitante() {
 		return usuarioSolicitante;
@@ -32,5 +35,19 @@ public class HistorialDenuncia {
 		this.comentario = descripcion;
 	}
 
-	
+	public Usuario getAsistente() {
+		return asistente;
+	}
+
+	public void setAsistente(Usuario asistente) {
+		this.asistente = asistente;
+	}
+
+	public MotivoDenuncia getMotivoDenuncia() {
+		return motivoDenuncia;
+	}
+
+	public void setMotivoDenuncia(MotivoDenuncia motivoDenuncia) {
+		this.motivoDenuncia = motivoDenuncia;
+	}
 }

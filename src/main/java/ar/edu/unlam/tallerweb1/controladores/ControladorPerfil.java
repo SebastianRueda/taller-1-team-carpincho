@@ -67,23 +67,24 @@ public class ControladorPerfil {
         ModelMap map = new ModelMap();
         map.put("historial", prestaciones);
         map.put("seccion", "historial");
+
         return new ModelAndView("perfilUsuario", map);
     }
     @RequestMapping(value = "mostrar-denuncias", method = RequestMethod.GET)
     public ModelAndView mostrarDenuncias(HttpServletRequest request) {
         HttpSession misession = request.getSession(true);
-        Usuario usuarioLogueado= (Usuario) misession.getAttribute("usuarioLogueado");
+        Usuario usuarioLogueado = (Usuario) misession.getAttribute("usuarioLogueado");
 
         if (usuarioLogueado == null){
             return new ModelAndView("redirect:/");
         }
 
-        
         var denuncias = servicioDenuncia.listarDenunciasPorCliente(usuarioLogueado.getId());
 
         ModelMap map = new ModelMap();
-        map.put("historial", denuncias);
+        map.put("denuncias", denuncias);
         map.put("seccion", "historialDenuncias");
+
         return new ModelAndView("perfilUsuario", map);
     }
 }

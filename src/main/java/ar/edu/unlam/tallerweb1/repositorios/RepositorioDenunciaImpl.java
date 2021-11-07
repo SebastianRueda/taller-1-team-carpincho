@@ -28,12 +28,27 @@ public class RepositorioDenunciaImpl implements RepositorioDenuncia {
 	}
 
 	@Override
-	public List<MotivoDenuncia> listarDenunciasPorCliente(Long id) {
+	public List<HistorialDenuncia> listarDenunciasPorCliente(Long id) {
 		final Session session = sessionFactory.getCurrentSession();
 
         List denuncias = session.createCriteria(HistorialDenuncia.class)
                 .add(Restrictions.eq("usuarioSolicitante.id", id))
                 .list();
+
 		return denuncias;
+	}
+
+	@Override
+	public MotivoDenuncia buscarPorId(Long id) {
+		final var session = sessionFactory.getCurrentSession();
+
+		return (MotivoDenuncia) session.createCriteria(MotivoDenuncia.class)
+				.add(Restrictions.eq("id", id))
+				.uniqueResult();
+	}
+
+	@Override
+	public void guardar(HistorialDenuncia historialDenuncia) {
+		sessionFactory.getCurrentSession().save(historialDenuncia);
 	}
 }

@@ -9,5 +9,9 @@ public interface ServicioDenuncia {
 
 	List<MotivoDenuncia> traerDenuncia();
 
-	List<MotivoDenuncia> listarDenunciasPorCliente(Long id);
+	List<HistorialDenuncia> listarDenunciasPorCliente(Long id);
+
+	MotivoDenuncia buscarPorId(Long id);
+
+	void guardar(HistorialDenuncia historialDenuncia);
 }

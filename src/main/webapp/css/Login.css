@@ -67,3 +67,43 @@ body{
     color: rgb(255, 98, 0);
     background-color: rgb(255, 207, 144);
 }
+
+#form {
+    width: 250px;
+    margin: 0 auto;
+    height: 50px;
+}
+
+#form p {
+    text-align: center;
+}
+
+#form label {
+    font-size: 20px;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.labelFormCalificar{
+    color: grey;
+    width: 60px;
+    height: 60px;
+    font-size: 40px;
+}
+
+.clasificacion {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+}
+
+label:hover,
+label:hover ~ label {
+    color: orange;
+}
+
+input[type="radio"]:checked ~ label {
+    color: orange;
+    
+}

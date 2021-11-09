@@ -42,7 +42,7 @@ public class ControladorContratarTest {
         thenLaPrestacionFinalizoCorrectacmente(mav,prestacion);
     }
 
-  /* @Test
+ /*  @Test
     public void finalizarPrestacionDaError() throws Exception {
        Prestacion prestacionFinalizada = new Prestacion();
        prestacionFinalizada.setId(idPrestacionFinalizada);

@@ -92,12 +92,10 @@ public class ControladorContratar {
     @RequestMapping(path = "/finalizarPrestacion", method = RequestMethod.POST)
     public ModelAndView finalizarPrestacion(@ModelAttribute("prestacion") Prestacion prestacionRecibido){
 
-        //Prestacion prestacion = servicioPrestacion.prestacionFindById(prestacionRecibido.getId());
+
         Prestacion prestacion = servicioPrestacion.buscarPrestacionPorId(prestacionRecibido.getId());
 
-        /*Prestacion prestacion1 = new Prestacion();
-        prestacion1.setId(1l);
-        prestacion1.setEstado("activo");*/
+
         ModelMap model = new ModelMap();
 
         try {

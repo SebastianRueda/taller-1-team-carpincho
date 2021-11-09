@@ -41,18 +41,18 @@ public class ControladorPrestacionTest {
     @Test
     public void usuarioCalificaUnPrestacion() throws Exception {
         Prestacion pretacion = giveUnUsuarioConPrestacion();
-        ModelAndView mav=whenUsuarioCalifica(pretacion.getId(),5);
+        ModelAndView mav=whenUsuarioCalifica(pretacion);
         thenCalificaExistosamente(mav);
     }
 
     @Test
     public void usuarioCalificaConValorFueraDeRango() throws Exception {
-        giveUnUsuarioConPrestacionACalificar();
-        ModelAndView mav=whenUsuarioCalifica(10l,8);
+        Prestacion prestacion = giveUnUsuarioConPrestacionACalificar();
+        ModelAndView mav=whenUsuarioCalifica(prestacion);
         thenCalificaErroneamente(mav);
     }
 
-    private void giveUnUsuarioConPrestacionACalificar() throws Exception {
+    private Prestacion giveUnUsuarioConPrestacionACalificar() throws Exception {
         Usuario usuarioConPrestacion = new Usuario();
         Prestacion prestacion = new Prestacion();
         prestacion.setId(10l);
@@ -61,6 +61,7 @@ public class ControladorPrestacionTest {
         prestacion.setCalificacionDadaPorElCliente(null);
 
         doThrow(Exception.class).when(servicioPrestacion).ClienteCalificaPrestacion(prestacion.getId(),8);
+        return prestacion;
     }
 
     private void thenCalificaErroneamente(ModelAndView mav) {
@@ -79,8 +80,8 @@ public class ControladorPrestacionTest {
         return prestacion;
     }
 
-    private ModelAndView whenUsuarioCalifica(long idPrestacion, Integer calificacion) {
-        return controladorPrestacion.clienteCalificaPrestacion(idPrestacion,calificacion);
+    private ModelAndView whenUsuarioCalifica(Prestacion prestacion) {
+        return controladorPrestacion.clienteCalificaPrestacion(prestacion);
     }
 
     private void thenCalificaExistosamente(ModelAndView mav) {

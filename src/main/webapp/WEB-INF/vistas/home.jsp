@@ -9,7 +9,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link href="css/Login.css" rel="stylesheet">
 
@@ -116,12 +115,12 @@
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Contratar Suscripcíón</h5>
+                                                <h5 class="modal-title text-primary fw-bold" id="exampleModalLabel">Contratar Suscripcíón</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-                                            <div class="modal-body">
+                                            <div class="modal-body ">
 
                                                <p>Para contratar la suscripción y acceder a los servicios incluidos debes estar Logueado.</p>
                                                <p>Si aún no estas registrado podes hacerlo desde <a href="ir-a-registrarme">Aqui.</a></p>
@@ -130,7 +129,7 @@
 
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
 
                                             </div>
                                         </div>
@@ -140,6 +139,281 @@
                             </div>
 
 
+                            <div class="card border-primary  col-md-3 col-lg-3 mb-3" style="margin: 2.7em">
+                                <div class="card-header text-primary fw-bold">
+                                    <i class="fas fa-truck-pickup"></i>Servicio de Grúa</div>
+                                <div class="card-body text-dark">
+                                    <img class="card-img-top" src="imagenes/grua.jpg" alt="Card image cap">
+                                </div>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalGrua">
+                                    + Info
+                                </button>
+                                <br>
+                                <!-- Modal -->
+                                <div class="modal fade" id="myModalGrua" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelGrua" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title text-primary fw-bold" id="exampleModalLabelGrua">Servicio de Grúa</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body ">
+                                                <p>Servicio de Auxilio de Grúas plancha para autos-Camionetas 4x4-Combis y Autoelevadores las 24 Hs todo el año.</p>
+                                                <p>Para contratar la suscripción y acceder a los servicios incluidos debes estar Logueado. <a href="login">Aquí.</a></p>
+                                                <p class="card-text"><small class="text-muted">Servicio incluido en la Suscripción Básica</small></p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card border-primary  col-md-3 col-lg-3 mb-3" style="margin: 2.7em">
+                                <div class="card-header text-primary fw-bold">
+                                    <i class="fab fa-old-republic"></i></i>Asistencia Policial</div>
+                                <div class="card-body text-dark">
+                                    <img class="card-img-top" src="imagenes/patrullero.jpg" alt="Card image cap">
+                                </div>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalpatrullero">
+                                    + Info
+                                </button>
+                                <br>
+                                <!-- Modal -->
+                                <div class="modal fade" id="myModalpatrullero" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelpatrullero" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title text-primary fw-bold" id="exampleModalLabelpatrullero">Asistencia Policial</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body ">
+                                                <p>Asistencia Policíal de forma inmediata en caso de emergencia.</p>
+                                                <p>Para contratar la suscripción y acceder a los servicios incluidos debes estar Logueado. <a href="login">Aquí.</a></p>
+                                                <p class="card-text"><small class="text-muted">Servicio incluido en la Suscripción Básica</small></p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="card border-primary  col-md-3 col-lg-3 mb-3" style="margin: 2.7em">
+                                <div class="card-header text-primary fw-bold">
+                                    <i class="fas fa-ambulance"></i></i>Servicio Medico</div>
+                                <div class="card-body text-dark">
+                                    <img class="card-img-top" src="imagenes/ambulancia.jpg" alt="Card image cap">
+                                </div>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalMedico">
+                                    + Info
+                                </button>
+                                <br>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="myModalMedico" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelMedico" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title text-primary fw-bold" id="exampleModalLabelMedico">Servicio Médico</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body ">
+                                                <p>Te ofrecemos un cuerpo médico que puede atenderte rápidamente de forma presencial.</p>
+                                                <p>Para contratar la suscripción y acceder a los servicios incluidos debes estar Logueado. <a href="login">Aquí.</a></p>
+                                                <p class="card-text"><small class="text-muted">Servicio incluido en la Suscripción Básica</small></p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="text-center text-decoration-none text-dark fw-bold">
+                                <h3>Suscripción Premium</h3>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                    Contratar Suscripción Premium
+                                </button>
+                            </div>
+
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+
+                            <div class="card border-success  col-md-6 col-lg-3 mb-3" style="max-width: 18rem; ">
+                                <div class="card-header text-success fw-bold">
+                                    <i class="fas fa-wrench"></i>Servicio Mecanico
+                                </div>
+                                <div class="card-body text-dark">
+                                    <img class="card-img-top" src="imagenes/mecanico.png" alt="Card image cap">
+                                </div>
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModalMecanico">
+                                    + Info
+                                </button>
+                                <br>
+
+                                <div class="modal fade" id="myModalMecanico" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelMecanico" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title text-success fw-bold" id="exampleModalLabelMecanico">Servicio Mecanico</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body ">
+                                                <p>Encontra el profesional que se ajuste a las necesidades de tu vehiculo.</p>
+                                                <p>Para contratar la suscripción y acceder a los servicios incluidos debes estar Logueado. <a href="login">Aquí.</a></p>
+                                                <p class="card-text"><small class="text-muted">Servicio incluido en la Suscripción Premium</small></p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+
+                            <div class="card border-success  col-md-6 col-lg-3 mb-3" style="max-width: 18rem; ">
+                                <div class="card-header text-success fw-bold">
+                                    <i class="fas fa-tools"></i>Chofer
+                                </div>
+                                <div class="card-body text-dark">
+                                    <img class="card-img-top" src="imagenes/chofer.jpg" alt="Card image cap">
+                                </div>
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModalChofer">
+                                    + Info
+                                </button>
+                                <br>
+                                <div class="modal fade" id="myModalChofer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelChofer" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title text-success fw-bold" id="exampleModalLabelChofer">Chofer</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body ">
+                                                <p>Contrate un chófer privado para su comodidad, seguridad y en tiempo record ... calidad de servicio a prueba de una larga lista de clientes satisfechos.</p>
+                                                <p>Para contratar la suscripción y acceder a los servicios incluidos debes estar Logueado. <a href="login">Aquí.</a></p>
+                                                <p class="card-text"><small class="text-muted">Servicio incluido en la Suscripción Premium</small></p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="card border-success  col-md-6 col-lg-3 mb-3" style="max-width: 18rem; ">
+                                <div class="card-header text-success fw-bold">
+                                    <i class="fas fa-cogs"></i>Repuestos Livianos
+                                </div>
+                                <div class="card-body text-dark">
+                                    <img class="card-img-top" src="imagenes/repuestos.jpg" alt="Card image cap">
+                                </div>
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModalRepuestos">
+                                    + Info
+                                </button>
+                                <br>
+                                <div class="modal fade" id="myModalRepuestos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelRepuestos" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title text-success fw-bold" id="exampleModalLabelRepuestos">Repuestos Livianos</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body ">
+                                                <p>Nuestros socios cuentan con una flota de auxilio mecánico en todo el país para ayudarlo en todo tipo de incidentes.</p>
+                                                <p>Para contratar la suscripción y acceder a los servicios incluidos debes estar Logueado. <a href="login">Aquí.</a></p>
+                                                <p class="card-text"><small class="text-muted">Servicio incluido en la Suscripción Premium</small></p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="card border-success  col-md-6 col-lg-3 mb-3" style="max-width: 18rem; ">
+                                <div class="card-header text-success fw-bold">
+                                    <i class="fas fa-balance-scale"></i>Asistencia Legal
+                                </div>
+                                <div class="card-body text-dark">
+                                    <img class="card-img-top" src="imagenes/legal.jpg" alt="Card image cap">
+                                </div>
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModalLegal">
+                                    + Info
+                                </button>
+                                <br>
+
+                                <div class="modal fade" id="myModalLegal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLegal" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title text-success fw-bold" id="exampleModalLabelLegal">Asistencia Legal</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body ">
+                                                <p>Asistencia legal en el momento ante un litigio.</p>
+                                                <p>Para contratar la suscripción y acceder a los servicios incluidos debes estar Logueado. <a href="login">Aquí.</a></p>
+                                                <p class="card-text"><small class="text-muted">Servicio incluido en la Suscripción Premium</small></p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                </div>
+            </section>
+            <br>
+            <br>
+        </div>
+    </div>
+</div>
+
+
+                            <!--
                             <div class="card border-primary  col-md-3 col-lg-3 mb-3" style="margin: 2.7em">
                                 <div class="card-header text-primary fw-bold">
                                     <i class="fab fa-old-republic"></i></i>Servicio de Grúa</div>
@@ -217,7 +491,7 @@
         </div>
     </div>
 </div>
-
+-->
 
 <footer class="page-footer font-small color-light bg-dark text-light">
 

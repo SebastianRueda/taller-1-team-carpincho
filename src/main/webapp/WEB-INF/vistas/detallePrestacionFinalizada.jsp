@@ -216,6 +216,26 @@
                                                 <button type="submit" class="btn btn-primary">Finalizar Prestacion</button>
                                             </form:form>
                                         </c:if>
+                                        <c:if test="${prestacion.estado=='cancelado'}">
+                                            <%--@elvariable id="prestacion" type="ar.edu.unlam.tallerweb1.modelo.Prestacion"--%>
+                                            <form:form action="clienteCalificaPrestacion" method="post" modelAttribute="prestacion">
+
+
+                                                <p class="clasificacion">
+                                                    <input id="radio1" type="radio" name="estrellas" value="5"><!--
+                                              --><label class="labelFormCalificar" for="radio1">★</label><!--
+                                              --><input id="radio2" type="radio" name="estrellas" value="4"><!--
+                                              --><label class="labelFormCalificar" for="radio2">★</label><!--
+                                              --><input id="radio3" type="radio" name="estrellas" value="3"><!--
+                                              --><label class="labelFormCalificar" for="radio3">★</label><!--
+                                              --><input id="radio4" type="radio" name="estrellas" value="2"><!--
+                                              --><label class="labelFormCalificar" for="radio4">★</label><!--
+                                              --><input id="radio5" type="radio" name="estrellas" value="1"><!--
+                                              --><label class="labelFormCalificar" for="radio5">★</label>
+                                                </p>
+                                                <button type="submit" class="btn btn-primary">Calificar Prestacion</button>
+                                            </form:form>
+                                        </c:if>
                                     </div>
 
 

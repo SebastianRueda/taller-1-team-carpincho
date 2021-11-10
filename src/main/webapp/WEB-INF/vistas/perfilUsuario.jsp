@@ -461,15 +461,17 @@
                                                 </c:if>
 
                                                 <c:if test="${prestacion.calificacionDadaPorElCliente==null and prestacion.estado == 'finalizado'}">
-                                                    <button class="my-auto py-1 px-3 calificar font-weight-bold redondeadoEstado " data-bs-toggle="modal" data-bs-target="#exampleModal1" style="width:20%;"> Calificar
-                                                    </button>
+                                                    <a href="irADetallePrestacionFinalida?prestacion=${prestacion.id}" class="my-auto py-1 px-3 finalizar font-weight-bold redondeadoEstado"
+                                                       style="width:20%;"> Calificar
+                                                    </a>
                                                 </c:if>
 
                                                 <c:if test="${prestacion.calificacionDadaPorElCliente==null and prestacion.estado == 'cancelado'}">
 
-                                                    <form:form  style="width:20%;" action="contratar-prestacion?asistente-id=${prestacion.usuarioAsistente.id}" method="get">
-                                                        <button class="my-auto py-1 px-3 calificar font-weight-bold redondeadoEstado w-100"> Calificar</button>
-                                                    </form:form>
+
+                                                    <a href="irADetallePrestacionFinalida?prestacion=${prestacion.id}" class="my-auto py-1 px-3 finalizar font-weight-bold redondeadoEstado"
+                                                       style="width:20%;"> Calificar
+                                                    </a>
                                                 </c:if>
                                                 <button class="my-auto py-1 px-3 denunciar font-weight-bold redondeadoEstado" style="width:20%;"> Denunciar </button>
                                             </div>

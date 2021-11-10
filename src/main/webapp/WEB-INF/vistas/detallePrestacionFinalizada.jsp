@@ -15,6 +15,30 @@
     <title>Document</title>
 </head>
 <body class="fondo-login">
+
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="home">AsegurApp</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="perfilUsuario">Perfil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="suscripcion">Suscripción</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
 <div class="w-100 container-fluid  mt-5  rounded-3 bg-light" style="max-width: 1024px;">
     <div class="card card-body p-5 ">
         <div class="row">
@@ -57,7 +81,8 @@
 
                 <!-- Text -->
                 <p class="text-muted mb-4">
-                    <strong class="text-body"> ${prestacion.usuarioSolicitante.nombre} ${prestacion.usuarioSolicitante.apellido}</strong> <br>
+                    <strong class="text-body"> ${prestacion.usuarioSolicitante.nombre} ${prestacion.usuarioSolicitante.apellido}</strong>
+                    <br>
                     ${prestacion.usuarioSolicitante.email} <br>
                     Argentino <br>
                     ${prestacion.usuarioSolicitante.provincia.nombre}
@@ -72,7 +97,8 @@
 
                 <!-- Text -->
                 <p class="text-muted mb-4">
-                    <strong class="text-body">${prestacion.usuarioAsistente.nombre} ${prestacion.usuarioAsistente.apellido}</strong> <br>
+                    <strong class="text-body">${prestacion.usuarioAsistente.nombre} ${prestacion.usuarioAsistente.apellido}</strong>
+                    <br>
                     ${prestacion.usuarioAsistente.email}<br>
                     Argentino <br>
                     ${prestacion.usuarioAsistente.provincia.nombre}
@@ -139,58 +165,109 @@
 
                 <hr class="my-3">
 
-                /////////////////////////////////////////////////////
+
                 <!-- Title -->
                 <h2 class="text-uppercase">
-                    Empezar affcad
+                   ¿Deseas hacer algo Perri?
                 </h2>
 
                 <!-- Text -->
                 <div class="container-fluid kanban-container">
                     <div class="row">
                         <div class="col-md-6">
-
                             <!-- Card -->
                             <div class="card">
-                                <div class="card-body">
-
+                                <div class=" d-flex card-body align-items-center ">
                                     <!-- Category -->
                                     <div class="kanban-category">
                                         <c:if test="${prestacion.estado=='finalizado'}">
 
-                                        <!-- Item -->
-                                        <div class="kanban-item"><h4 class="text-uppercase">Califica el Servicio</h4>
+                                            <!-- Item -->
+                                            <div class="kanban-item"><h4 class="text-uppercase">Califica el
+                                                Servicio</h4>
+                                                    <%--@elvariable id="prestacion" type="ar.edu.unlam.tallerweb1.modelo.Prestacion"--%>
+                                                <form:form action="clienteCalifica" method="post"
+                                                           modelAttribute="prestacion">
 
-                                                <%--@elvariable id="prestacion" type="ar.edu.unlam.tallerweb1.modelo.Prestacion"--%>
-                                            <form:form action="clienteCalificaPrestacion" method="post" modelAttribute="prestacion">
+                                                    <p class="clasificacion">
+                                                        <form:radiobutton path="calificacionDadaPorElCliente" id="radio1"  value="5"/>
+                                                         <label class="labelFormCalificar" for="radio1">★</label>
+
+                                             <form:radiobutton path="calificacionDadaPorElCliente" id="radio2"
+                                                               name="estrellas" value="4"/>
+                                                        <label class="labelFormCalificar" for="radio2">★</label>
+
+                                                        <form:radiobutton path="calificacionDadaPorElCliente" id="radio3"
+                                                                     name="estrellas" value="3"/>
+                                                        <label class="labelFormCalificar" for="radio3">★</label>
+
+                                                        <form:radiobutton path="calificacionDadaPorElCliente" id="radio4"
+                                                                   name="estrellas" value="2"/>
+                                                        <label class="labelFormCalificar" for="radio4">★</label>
 
 
-                                                <p class="clasificacion">
-                                                    <input id="radio1" type="radio" name="estrellas" value="5"><!--
-                                              --><label class="labelFormCalificar" for="radio1">★</label><!--
-                                              --><input id="radio2" type="radio" name="estrellas" value="4"><!--
-                                              --><label class="labelFormCalificar" for="radio2">★</label><!--
-                                              --><input id="radio3" type="radio" name="estrellas" value="3"><!--
-                                              --><label class="labelFormCalificar" for="radio3">★</label><!--
-                                              --><input id="radio4" type="radio" name="estrellas" value="2"><!--
-                                              --><label class="labelFormCalificar" for="radio4">★</label><!--
-                                              --><input id="radio5" type="radio" name="estrellas" value="1"><!--
-                                              --><label class="labelFormCalificar" for="radio5">★</label>
-                                                </p>
-                                                <button type="submit" class="btn btn-primary">Calificar Prestacion</button>
-                                            </form:form>
-                                        </div>
+                                               <form:radiobutton  path="calificacionDadaPorElCliente" id="radio5"
+                                                                 name="estrellas" value="1"/>
+                                              <label class="labelFormCalificar" for="radio5">★</label>
+                                                    </p>
+
+                                                    <form:hidden path="id" id="id" value="${prestacion.id}"/>
+
+                                                    <button type="submit" class="btn btn-primary">Calificar Prestacion
+                                                    </button>
+                                                </form:form>
+                                            </div>
                                         </c:if>
 
                                         <c:if test="${prestacion.estado=='activo'}">
                                             <%--@elvariable id="prestacion" type="ar.edu.unlam.tallerweb1.modelo.Prestacion"--%>
-                                            <form:form action="finalizarPrestacion" method="post" modelAttribute="prestacion">
-                                                <form:input type="hidden"  path="id" id="id" value="${prestacion.id}"/>
-                                                <form:input type="hidden" path="estado" id="estado" value="${prestacion.estado}"/>
+                                            <form:form action="finalizarPrestacion" method="post"
+                                                       modelAttribute="prestacion">
+                                                <form:hidden  path="id" id="id" value="${prestacion.id}"/>
+                                                <form:hidden  path="estado" id="estado"
+                                                            value="${prestacion.estado}"/>
 
 
-                                                <button type="submit" class="btn btn-primary">Finalizar Prestacion</button>
+                                                <button type="submit" class="btn btn-primary">Finalizar Prestacion
+                                                </button>
                                             </form:form>
+                                        </c:if>
+
+                                        <c:if test="${prestacion.estado=='cancelado'}">
+                                            <!-- Item -->
+                                            <div class="kanban-item"><h4 class="text-uppercase">Califica el
+                                                Servicio</h4>
+                                                    <%--@elvariable id="prestacion" type="ar.edu.unlam.tallerweb1.modelo.Prestacion"--%>
+                                                <form:form action="clienteCalifica" method="post" modelAttribute="prestacion">
+
+                                                    <p class="clasificacion">
+                                                        <form:radiobutton path="calificacionDadaPorElCliente" id="radio1"  value="5"/>
+                                                        <label class="labelFormCalificar" for="radio1">★</label>
+
+                                                        <form:radiobutton path="calificacionDadaPorElCliente" id="radio2"
+                                                                          name="estrellas" value="4"/>
+                                                        <label class="labelFormCalificar" for="radio2">★</label>
+
+                                                        <form:radiobutton path="calificacionDadaPorElCliente" id="radio3"
+                                                                          name="estrellas" value="3"/>
+                                                        <label class="labelFormCalificar" for="radio3">★</label>
+
+                                                        <form:radiobutton path="calificacionDadaPorElCliente" id="radio4"
+                                                                          name="estrellas" value="2"/>
+                                                        <label class="labelFormCalificar" for="radio4">★</label>
+
+
+                                                        <form:radiobutton  path="calificacionDadaPorElCliente" id="radio5"
+                                                                           name="estrellas" value="1"/>
+                                                        <label class="labelFormCalificar" for="radio5">★</label>
+                                                    </p>
+
+                                                    <form:hidden path="id" id="id" value="${prestacion.id}"/>
+
+                                                    <button type="submit" class="btn btn-primary">Calificar Prestacion
+                                                    </button>
+                                                </form:form>
+                                            </div>
                                         </c:if>
                                     </div>
 

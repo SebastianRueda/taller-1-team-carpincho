@@ -52,13 +52,8 @@ public class ControladorSuscripcion {
     }
 
     @RequestMapping(path = "/contratar-suscripcion", method = RequestMethod.POST)
-    public ModelAndView contratarSuscripcion(@ModelAttribute("suscripcion") String suscripcionAContratar) {
-        String nombre = "suscripcion basica";
-        Suscripcion suscripcion = servicioSuscripcion.buscarPorNombre(suscripcionAContratar);
-
-        /*Long idDeUsuarioObtenidoPorSession = 1l;
-        Usuario usuario = servicioUsuario.usuarioFindById(idDeUsuarioObtenidoPorSession);*/
-
+    public ModelAndView contratarSuscripcion(@ModelAttribute("Suscripcion") Suscripcion suscripcionAContratar) {
+        Suscripcion suscripcion = servicioSuscripcion.buscarPorNombre(suscripcionAContratar.getDescripcion());
         HttpSession misession= this.request.getSession(true);
         Usuario usuarioLogueado= (Usuario) misession.getAttribute("usuarioLogueado");
 

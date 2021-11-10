@@ -98,7 +98,8 @@ public class ControladorPerfil {
             List<Denuncia> listaDenunciasHechas = servicioDenunciaL.mostrarHistorialDeDenunciasRealizadasPorUnUsuario(usuarioLogueado);
             model.put("listaDenunciasHechas", listaDenunciasHechas);
             model.put("historialDenuncias", "todas las denuncias que hiciste perri");
-            return new ModelAndView("historialDeDenunciasHechas", model);
+            model.put("seccion", "historialDenuncias");
+            return new ModelAndView("perfilUsuario", model);
         } catch (Exception e) {
             model.put("sinUsuario", "Logueate perri");
             return new ModelAndView("/", model);

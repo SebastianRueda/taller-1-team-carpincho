@@ -102,6 +102,6 @@ public class ControladorContratar {
         }
 
         model.put("msgFinalizacionDeContratacion","Prestacion finalizada correctamente");
-        return new ModelAndView("redirect:/irADetallePrestacionFinalida?prestacion=" +prestacion.getId(), model);
+        return new ModelAndView("redirect:/irADetallePrestacionFinalida?prestacion=" + prestacion.getId(), model);
     }
 }

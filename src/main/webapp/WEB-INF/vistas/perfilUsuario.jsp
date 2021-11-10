@@ -384,8 +384,25 @@
                                                 <p class="my-auto" style="width:20%;">#${prestacion.id}</p>
                                                 <p class="my-auto"
                                                    style="width:20%;">${prestacion.usuarioAsistente.especialidad.descripcion}</p>
-                                                <p class="my-auto"
-                                                   style="width:20%;">${prestacion.usuarioAsistente.nombre} ${prestacion.usuarioAsistente.apellido}</p>
+
+                                                <%--<form:form action="clienteCalifica" method="post" modelAttribute="datosCalificacion">
+                                                    <form:input type="text" path="prestacionId" value="${prestacion.id}" name="prestacionId" />
+                                                    <div class="form-check form-check-inline">
+                                                        <form:input path="calificacion" id="calificacionDadaPorElCliente" type="number" class="form-control" />
+                                                        <button type="submit" class="btn btn-primary">Calificar</button>
+                                                    </div>
+                                                </form:form>--%>
+
+                                                <%--<form:form action="asistentePerfil" method="post" modelAttribute="irAsistentePerfilRequest">
+                                                    <form:input path="asistenteId" id="asitenteId" />
+                                                    <form:button type="submit" class="btn-link" >${prestacion.usuarioAsistente.fullName()}</form:button>
+                                                </form:form>--%>
+
+                                                <a class="my-auto" href="asistentePerfil?asistente-id=${prestacion.usuarioAsistente.id}"
+                                                   style="width:20%;">${prestacion.usuarioAsistente.nombre} ${prestacion.usuarioAsistente.apellido}</a>
+
+                                                <%--<p class="my-auto"
+                                                   style="width:20%;">${prestacion.usuarioAsistente.nombre} ${prestacion.usuarioAsistente.apellido}</p>--%>
                                                 <p class="my-auto" style="width:20%;">11/23/22</p>
                                                 <c:if test="${prestacion.estado=='activo'}">
                                                     <p class="ps-9 my-auto" style="width:20%;"><span

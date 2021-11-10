@@ -1,6 +1,7 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
+import ar.edu.unlam.tallerweb1.modelo.request.IrAsistentePerfilRequest;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPrestacion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,8 @@ public class ControladorPerfil {
         Usuario usuario = servicioUsuario.usuarioFindById(usuarioLogueado.getId());
         modelo.put("usuarioEnSession",usuario);
         modelo.put("seccion", "perfil");
+        modelo.put("irAsistentePerfilRequest", new IrAsistentePerfilRequest());
+
         return new ModelAndView("perfilUsuario", modelo);
     }
 

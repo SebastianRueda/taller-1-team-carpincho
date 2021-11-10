@@ -133,5 +133,7 @@ public class Usuario {
 		this.provincia = provincia;
 	}
     
-    
+    public String fullName() {
+		return nombre + " " + apellido;
+	}
 }

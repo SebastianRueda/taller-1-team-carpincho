@@ -24,9 +24,10 @@ public class RepositorioFavoritosImpl implements RepositorioFavoritos {
     }
 
     @Override
-    public Favorito clienteAgregaAsistenteASusFavoritos(Usuario cliente, Usuario asistente) throws IllegalArgumentException {
+    public Favorito clienteAgregaAsistenteASusFavoritos(Usuario cliente, Usuario asistente) {
         if (cliente.getId().equals(asistente.getId())) {
-            throw new IllegalArgumentException("El cliente no puede agregarse así mismo como favorito");
+            //throw new IllegalArgumentException("El cliente no puede agregarse así mismo como favorito");
+            return null;
         }
 
         var favorito = new Favorito(cliente, asistente);
@@ -37,10 +38,33 @@ public class RepositorioFavoritosImpl implements RepositorioFavoritos {
 
     @Override
     public List<Favorito> listaDeAsistentesFavotitosDe(Long id) {
-        var query = getSession().createQuery("FROM Favorito  where cliente.id=:id");
+        var query = getSession().createQuery("FROM Favorito WHERE cliente.id=:id");
         query.setParameter("id", id);
 
         return  (List<Favorito>) query.list();
+    }
+
+    @Override
+    public boolean removerAsistenteFavorito(Long clienteId, Long asistenteId) {
+        var query = getSession().createQuery("DELETE FROM Favorito " +
+                "WHERE cliente.id = :clienteId AND asistente.id = :asistenteId");
+        query.setParameter("clienteId", clienteId);
+        query.setParameter("asistenteId", asistenteId);
+
+        try {
+            return query.executeUpdate() == 1;
+        } catch (Exception exception) {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean esFavorito(Long clienteId, Long asistenteId) {
+        var query = getSession().createQuery("FROM Favorito  WHERE  cliente.id = :clienteId AND asistente.id = :asistenteId");
+        query.setParameter("clienteId", clienteId);
+        query.setParameter("asistenteId", asistenteId);
+
+        return !query.list().isEmpty();
     }
 
     private Session getSession() {

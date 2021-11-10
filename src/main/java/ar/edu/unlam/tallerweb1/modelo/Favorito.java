@@ -1,6 +1,7 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 public class Favorito {
@@ -43,5 +44,18 @@ public class Favorito {
 
     public void setAsistente(Usuario asistente) {
         this.asistente = asistente;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Favorito favorito = (Favorito) o;
+        return Objects.equals(id, favorito.id) && Objects.equals(cliente, favorito.cliente) && Objects.equals(asistente, favorito.asistente);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, cliente, asistente);
     }
 }

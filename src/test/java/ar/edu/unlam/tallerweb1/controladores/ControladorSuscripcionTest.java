@@ -77,7 +77,6 @@ public class ControladorSuscripcionTest {
         Usuario usuario = new Usuario();
         usuario.setEmail(email);
         crearSession(usuario);
-
         doThrow(Exception.class).when(servicioSuscripcion).cancelarSuscripcion(email);
     }
 

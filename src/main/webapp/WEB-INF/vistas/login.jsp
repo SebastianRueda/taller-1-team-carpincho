@@ -12,6 +12,7 @@
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <link href="css/Login.css" rel="stylesheet">
+    <link href="css/EfectoGlitch.css" rel="stylesheet">
 </head>
 <body class=" h-100 w-100">
 <header>
@@ -86,7 +87,7 @@ ${msg}
 
 <div class="fondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-center">
     <div class="row p-0 shadow container-xl m-0 mt-5 h-75 ">
-        <div class="col-12 col-md-6 bg-danger d-none d-md-flex rounded-3 p-0">
+        <div class="col-12 col-md-6 bg-danger d-none d-md-flex rounded-3 p-0 efecto-glitch">
             <img class="h-100 w-100 rounded-3" src="imagenes/ge.jpg" alt="">
         </div>
 

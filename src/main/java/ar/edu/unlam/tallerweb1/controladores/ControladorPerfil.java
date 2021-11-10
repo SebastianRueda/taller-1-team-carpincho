@@ -32,11 +32,10 @@ public class ControladorPerfil {
         HttpSession misession= request.getSession(true);
         Usuario usuarioLogueado= (Usuario) misession.getAttribute("usuarioLogueado");
         ModelMap modelo = new ModelMap();
+
         if (usuarioLogueado == null){
             return new ModelAndView("redirect:/");
         }
-
-        var prestaciones = servicioPrestacion.listarPrestacionesContratadasPorCliente(usuarioLogueado.getId());
 
         try {
             Float promedio= servicioPrestacion.obtenerPromedioDeCalificicacionDeUnUsuario(usuarioLogueado);
@@ -48,8 +47,6 @@ public class ControladorPerfil {
         Usuario usuario = servicioUsuario.usuarioFindById(usuarioLogueado.getId());
         modelo.put("usuarioEnSession",usuario);
         modelo.put("seccion", "perfil");
-        modelo.put("listaPrestaciones", prestaciones);
-
         return new ModelAndView("perfilUsuario", modelo);
     }
 

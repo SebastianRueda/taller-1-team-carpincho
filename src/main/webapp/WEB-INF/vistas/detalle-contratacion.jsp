@@ -11,7 +11,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link href="css/Login.css" rel="stylesheet">
-    <title>Detalle de contratación</title>
+    <title>Detalle de contrataciï¿½n</title>
 </head>
 
 <body class=" h-100">
@@ -33,7 +33,7 @@
                         <a class="nav-link" href="perfilUsuario">Perfil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="suscripcion">Suscripción</a>
+                        <a class="nav-link" href="suscripcion">Suscripciï¿½n</a>
                     </li>
                 </ul>
             </div>
@@ -52,7 +52,7 @@
                 <div id="loginbox" style="margin-top:50px;"
                      class="mainbox col-md-10 col-md-offset-3 col-sm-8 col-sm-offset-2">
 
-                    <h1>Detalle de contratación</h1>
+                    <h1>Detalle de contrataciï¿½n</h1>
                     <div class="col-12 col-md-3 p-5 pb-0 p-md-1 bg-white rounded-3 mx-1">
                         <div class="card text-center" style="width: 18rem;">
 
@@ -67,11 +67,9 @@
 
                                 <%--@elvariable id="prestacion" type="ar.edu.unlam.tallerweb1.modelo.Prestacion"--%>
                             <form:form action="finalizarPrestacion" method="post" modelAttribute="prestacion">
-                                <input type="number" path="id" id="id" value="${prestacion.id}">
-                                <input type="text" path="estado" id="estado" value="${prestacion.estado}">
-
-                                <p>${prestacion.id} </p>
-                                <button type="submit" class="btn btn-primary">Pagar Suscripcion</button>
+                                <form:hidden  path="id" id="id" value="${prestacion.id}"/>
+                                <form:hidden  path="estado" id="estado" value="${prestacion.estado}"/>
+                                <button type="submit" class="btn btn-primary">Finalizar Prestacion</button>
                             </form:form>
 
 
@@ -170,7 +168,7 @@
                         <i class="fas fa-phone mr-3"></i> +011 4444-4444 </p>
                 </div>
             </div>
-            <div class="footer-copyright text-center py-3">© 2021 Copyright: AsegurAPP</div>
+            <div class="footer-copyright text-center py-3">ï¿½ 2021 Copyright: AsegurAPP</div>
         </div>
 
     </footer>

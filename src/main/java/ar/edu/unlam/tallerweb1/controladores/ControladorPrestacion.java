@@ -10,9 +10,7 @@ import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -33,12 +31,21 @@ public class ControladorPrestacion {
         this.session=session;
     }
 
+    @RequestMapping(path = "/irADetallePrestacionFinalida",method = RequestMethod.GET)
+    public ModelAndView irADetallePrestacionFinalida(@RequestParam(value = "prestacion") Long prestacionId) {
+        ModelMap model = new ModelMap();
+        Prestacion prestacion = servicioPrestacion.buscarPrestacionPorId(prestacionId);
+        model.put("prestacion" ,prestacion );
+
+        return new ModelAndView("detallePrestacionFinalizada",model);
+    }
+
+
     @RequestMapping(path = "/clienteCalifica",method = RequestMethod.POST)
-    public ModelAndView clienteCalificaPrestacion(@ModelAttribute("datosCalificacion") DatosCalificacion datosCalificacion) {
+    public ModelAndView clienteCalificaPrestacion(@ModelAttribute("prestacion") Prestacion prestacionRecibido) {
         ModelMap model = new ModelMap();
         try {
-            servicioPrestacion.ClienteCalificaPrestacion(datosCalificacion.getPrestacionId(),datosCalificacion.getCalificacion());
-
+            servicioPrestacion.ClienteCalificaPrestacion(prestacionRecibido.getId(),prestacionRecibido.getCalificacionDadaPorElCliente());
         } catch (Exception e) {
             model.put("error","error de rango de calificacion");
             return new ModelAndView("redirect:/perfilUsuario",model);

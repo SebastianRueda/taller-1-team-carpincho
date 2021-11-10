@@ -143,7 +143,7 @@
                                 <div class="card-header text-primary fw-bold">
                                     <i class="fas fa-truck-pickup"></i>Servicio de Grúa</div>
                                 <div class="card-body text-dark">
-                                    <img class="card-img-top" src="imagenes/grua.jpg" alt="Card image cap">
+                                    <img class="card-img-top h-100" src="imagenes/grua.jpg" alt="Card image cap">
                                 </div>
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalGrua">
                                     + Info
@@ -177,7 +177,7 @@
                                 <div class="card-header text-primary fw-bold">
                                     <i class="fab fa-old-republic"></i></i>Asistencia Policial</div>
                                 <div class="card-body text-dark">
-                                    <img class="card-img-top" src="imagenes/patrullero.jpg" alt="Card image cap">
+                                    <img class="card-img-top h-100" src="imagenes/patrullero.jpg" alt="Card image cap">
                                 </div>
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalpatrullero">
                                     + Info
@@ -212,7 +212,7 @@
                                 <div class="card-header text-primary fw-bold">
                                     <i class="fas fa-ambulance"></i></i>Servicio Medico</div>
                                 <div class="card-body text-dark">
-                                    <img class="card-img-top" src="imagenes/ambulancia.jpg" alt="Card image cap">
+                                    <img class="card-img-top h-100" src="imagenes/ambulancia.jpg" alt="Card image cap">
                                 </div>
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalMedico">
                                     + Info
@@ -262,7 +262,7 @@
                                     <i class="fas fa-wrench"></i>Servicio Mecanico
                                 </div>
                                 <div class="card-body text-dark">
-                                    <img class="card-img-top" src="imagenes/mecanico.png" alt="Card image cap">
+                                    <img class="card-img-top h-100" src="imagenes/mecanico.jpg" alt="Card image cap">
                                 </div>
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModalMecanico">
                                     + Info
@@ -300,7 +300,7 @@
                                     <i class="fas fa-tools"></i>Chofer
                                 </div>
                                 <div class="card-body text-dark">
-                                    <img class="card-img-top" src="imagenes/chofer.jpg" alt="Card image cap">
+                                    <img class="card-img-top h-100" src="imagenes/chofer.jpg" alt="Card image cap">
                                 </div>
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModalChofer">
                                     + Info
@@ -335,7 +335,7 @@
                                     <i class="fas fa-cogs"></i>Repuestos Livianos
                                 </div>
                                 <div class="card-body text-dark">
-                                    <img class="card-img-top" src="imagenes/repuestos.jpg" alt="Card image cap">
+                                    <img class="card-img-top h-100" src="imagenes/repuestos.jpg" alt="Card image cap">
                                 </div>
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModalRepuestos">
                                     + Info
@@ -371,7 +371,7 @@
                                     <i class="fas fa-balance-scale"></i>Asistencia Legal
                                 </div>
                                 <div class="card-body text-dark">
-                                    <img class="card-img-top" src="imagenes/legal.jpg" alt="Card image cap">
+                                    <img class="card-img-top h-100" src="imagenes/legales.png" alt="Card image cap">
                                 </div>
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModalLegal">
                                     + Info

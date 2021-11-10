@@ -1,7 +1,9 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
+import ar.edu.unlam.tallerweb1.modelo.Denuncia;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioDenuncia;
+import ar.edu.unlam.tallerweb1.servicios.ServicioDenunciaL;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPrestacion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,18 +15,19 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 public class ControladorPerfil {
     private ServicioPrestacion servicioPrestacion;
     private ServicioUsuario servicioUsuario;
-	private ServicioDenuncia servicioDenuncia;
+	private ServicioDenunciaL servicioDenunciaL;
 
     @Autowired
-    public ControladorPerfil(ServicioPrestacion servicioPrestacion, ServicioUsuario servicioUsuario, ServicioDenuncia servicioDenuncia) {
+    public ControladorPerfil(ServicioPrestacion servicioPrestacion, ServicioUsuario servicioUsuario, ServicioDenunciaL servicioDenunciaL) {
         this.servicioPrestacion = servicioPrestacion;
         this.servicioUsuario = servicioUsuario;
-        this.servicioDenuncia = servicioDenuncia;
+        this.servicioDenunciaL = servicioDenunciaL;
     }
 
     @RequestMapping(path = "/perfilUsuario", method = RequestMethod.GET)
@@ -67,7 +70,7 @@ public class ControladorPerfil {
 
         return new ModelAndView("perfilUsuario", map);
     }
-    @RequestMapping(value = "mostrar-denuncias", method = RequestMethod.GET)
+    /*@RequestMapping(value = "mostrar-denuncias", method = RequestMethod.GET)
     public ModelAndView mostrarDenuncias(HttpServletRequest request) {
         HttpSession misession = request.getSession(true);
         Usuario usuarioLogueado = (Usuario) misession.getAttribute("usuarioLogueado");
@@ -83,5 +86,23 @@ public class ControladorPerfil {
         map.put("seccion", "historialDenuncias");
 
         return new ModelAndView("perfilUsuario", map);
+    }*/
+
+    @RequestMapping(value = "mostrar-denuncias", method = RequestMethod.GET)
+    public ModelAndView mostrarListaDeDenunciasRealizadasPorUnUsuario(HttpServletRequest request) {
+        ModelMap model = new ModelMap();
+        HttpSession misession = request.getSession(true);
+        Usuario usuarioLogueado= (Usuario) misession.getAttribute("usuarioLogueado");
+
+        try {
+            List<Denuncia> listaDenunciasHechas = servicioDenunciaL.mostrarHistorialDeDenunciasRealizadasPorUnUsuario(usuarioLogueado);
+            model.put("listaDenunciasHechas", listaDenunciasHechas);
+            model.put("historialDenuncias", "todas las denuncias que hiciste perri");
+            return new ModelAndView("historialDeDenunciasHechas", model);
+        } catch (Exception e) {
+            model.put("sinUsuario", "Logueate perri");
+            return new ModelAndView("/", model);
+        }
+
     }
 }

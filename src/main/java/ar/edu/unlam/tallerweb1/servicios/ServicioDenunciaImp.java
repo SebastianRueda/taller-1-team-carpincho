@@ -18,7 +18,7 @@ import ar.edu.unlam.tallerweb1.repositorios.RepositorioDenuncia;
 public class ServicioDenunciaImp implements ServicioDenuncia {
 	
 	private RepositorioDenuncia denunciaDao;
-	
+
 	@Autowired
 	public ServicioDenunciaImp(RepositorioDenuncia denunciaDao) {
 		this.denunciaDao=denunciaDao;

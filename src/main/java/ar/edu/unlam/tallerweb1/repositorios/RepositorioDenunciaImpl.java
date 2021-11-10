@@ -14,14 +14,14 @@ import org.hibernate.criterion.Restrictions;
 
 @Repository("repositorioDenuncia")
 public class RepositorioDenunciaImpl implements RepositorioDenuncia {
-	
+
 	private SessionFactory sessionFactory;
-	
+
 	@Autowired
 	public RepositorioDenunciaImpl(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
-	
+
 	@Override
 	public List<MotivoDenuncia> traerDenuncia() {
 		return sessionFactory.getCurrentSession().createCriteria(MotivoDenuncia.class).list();

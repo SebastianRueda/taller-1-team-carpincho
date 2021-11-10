@@ -81,7 +81,8 @@
 
                 <!-- Text -->
                 <p class="text-muted mb-4">
-                    <strong class="text-body"> ${prestacion.usuarioSolicitante.nombre} ${prestacion.usuarioSolicitante.apellido}</strong> <br>
+                    <strong class="text-body"> ${prestacion.usuarioSolicitante.nombre} ${prestacion.usuarioSolicitante.apellido}</strong>
+                    <br>
                     ${prestacion.usuarioSolicitante.email} <br>
                     Argentino <br>
                     ${prestacion.usuarioSolicitante.provincia.nombre}
@@ -96,7 +97,8 @@
 
                 <!-- Text -->
                 <p class="text-muted mb-4">
-                    <strong class="text-body">${prestacion.usuarioAsistente.nombre} ${prestacion.usuarioAsistente.apellido}</strong> <br>
+                    <strong class="text-body">${prestacion.usuarioAsistente.nombre} ${prestacion.usuarioAsistente.apellido}</strong>
+                    <br>
                     ${prestacion.usuarioAsistente.email}<br>
                     Argentino <br>
                     ${prestacion.usuarioAsistente.provincia.nombre}
@@ -182,58 +184,88 @@
                                     <div class="kanban-category">
                                         <c:if test="${prestacion.estado=='finalizado'}">
 
-                                        <!-- Item -->
-                                        <div class="kanban-item"><h4 class="text-uppercase">Califica el Servicio</h4>
+                                            <!-- Item -->
+                                            <div class="kanban-item"><h4 class="text-uppercase">Califica el
+                                                Servicio</h4>
 
-                                                <%--@elvariable id="prestacion" type="ar.edu.unlam.tallerweb1.modelo.Prestacion"--%>
-                                            <form:form action="clienteCalificaPrestacion" method="post" modelAttribute="prestacion">
+                                                    <%--@elvariable id="prestacion" type="ar.edu.unlam.tallerweb1.modelo.Prestacion"--%>
+                                                <form:form action="clienteCalificaPrestacion" method="post"
+                                                           modelAttribute="prestacion">
 
 
-                                                <p class="clasificacion">
-                                                    <input id="radio1" type="radio" name="estrellas" value="5"><!--
-                                              --><label class="labelFormCalificar" for="radio1">★</label><!--
-                                              --><input id="radio2" type="radio" name="estrellas" value="4"><!--
-                                              --><label class="labelFormCalificar" for="radio2">★</label><!--
-                                              --><input id="radio3" type="radio" name="estrellas" value="3"><!--
-                                              --><label class="labelFormCalificar" for="radio3">★</label><!--
-                                              --><input id="radio4" type="radio" name="estrellas" value="2"><!--
-                                              --><label class="labelFormCalificar" for="radio4">★</label><!--
-                                              --><input id="radio5" type="radio" name="estrellas" value="1"><!--
+                                                    <p class="clasificacion">
+                                                        <form:input path="calificacionDadaPorElCliente" id="radio1"
+                                                                    type="radio" name="estrellas" value="5"/>
+                                                        --> <label class="labelFormCalificar" for="radio1">★</label><!--
+
+                                              --> <form:input path="calificacionDadaPorElCliente" id="radio2"
+                                                              type="radio" name="estrellas" value="4"/>
+                                                        --><label class="labelFormCalificar" for="radio2">★</label>
+
+                                                        <form:input path="calificacionDadaPorElCliente" id="radio3"
+                                                                    type="radio" name="estrellas" value="3"/>
+                                                        <label class="labelFormCalificar" for="radio3">★</label>
+
+                                                        <form:input path="calificacionDadaPorElCliente" id="radio4"
+                                                                    type="radio" name="estrellas" value="2"/>
+                                                        --><label class="labelFormCalificar" for="radio4">★</label><!--
+
+
+                                               <form:input  path="calificacionDadaPorElCliente" id="radio5"
+                                                                type="radio" name="estrellas" value="1"/>
                                               --><label class="labelFormCalificar" for="radio5">★</label>
-                                                </p>
-                                                <button type="submit" class="btn btn-primary">Calificar Prestacion</button>
-                                            </form:form>
-                                        </div>
+                                                    </p>
+                                                    <button type="submit" class="btn btn-primary">Calificar Prestacion
+                                                    </button>
+                                                </form:form>
+
+
+                                            </div>
                                         </c:if>
 
                                         <c:if test="${prestacion.estado=='activo'}">
                                             <%--@elvariable id="prestacion" type="ar.edu.unlam.tallerweb1.modelo.Prestacion"--%>
-                                            <form:form action="finalizarPrestacion" method="post" modelAttribute="prestacion">
-                                                <form:input type="hidden"  path="id" id="id" value="${prestacion.id}"/>
-                                                <form:input type="hidden" path="estado" id="estado" value="${prestacion.estado}"/>
+                                            <form:form action="finalizarPrestacion" method="post"
+                                                       modelAttribute="prestacion">
+                                                <form:input type="hidden" path="id" id="id" value="${prestacion.id}"/>
+                                                <form:input type="hidden" path="estado" id="estado"
+                                                            value="${prestacion.estado}"/>
 
 
-                                                <button type="submit" class="btn btn-primary">Finalizar Prestacion</button>
+                                                <button type="submit" class="btn btn-primary">Finalizar Prestacion
+                                                </button>
                                             </form:form>
                                         </c:if>
                                         <c:if test="${prestacion.estado=='cancelado'}">
                                             <%--@elvariable id="prestacion" type="ar.edu.unlam.tallerweb1.modelo.Prestacion"--%>
-                                            <form:form action="clienteCalificaPrestacion" method="post" modelAttribute="prestacion">
+                                            <form:form action="clienteCalificaPrestacion" method="post"
+                                                       modelAttribute="prestacion">
 
 
                                                 <p class="clasificacion">
-                                                    <input id="radio1" type="radio" name="estrellas" value="5"><!--
-                                              --><label class="labelFormCalificar" for="radio1">★</label><!--
-                                              --><input id="radio2" type="radio" name="estrellas" value="4"><!--
-                                              --><label class="labelFormCalificar" for="radio2">★</label><!--
-                                              --><input id="radio3" type="radio" name="estrellas" value="3"><!--
-                                              --><label class="labelFormCalificar" for="radio3">★</label><!--
-                                              --><input id="radio4" type="radio" name="estrellas" value="2"><!--
-                                              --><label class="labelFormCalificar" for="radio4">★</label><!--
-                                              --><input id="radio5" type="radio" name="estrellas" value="1"><!--
+                                                    <form:input path="calificacionDadaPorElCliente" id="radio1"
+                                                                type="radio" name="estrellas" value="5"/>
+                                                    --> <label class="labelFormCalificar" for="radio1">★</label><!--
+
+                                              --> <form:input path="calificacionDadaPorElCliente" id="radio2"
+                                                              type="radio" name="estrellas" value="4"/>
+                                                    --><label class="labelFormCalificar" for="radio2">★</label>
+
+                                                    <form:input path="calificacionDadaPorElCliente" id="radio3"
+                                                                type="radio" name="estrellas" value="3"/>
+                                                    <label class="labelFormCalificar" for="radio3">★</label>
+
+                                                    <form:input path="calificacionDadaPorElCliente" id="radio4"
+                                                                type="radio" name="estrellas" value="2"/>
+                                                    --><label class="labelFormCalificar" for="radio4">★</label><!--
+
+
+                                               <form:input  path="calificacionDadaPorElCliente" id="radio5"
+                                                                type="radio" name="estrellas" value="1"/>
                                               --><label class="labelFormCalificar" for="radio5">★</label>
                                                 </p>
-                                                <button type="submit" class="btn btn-primary">Calificar Prestacion</button>
+                                                <button type="submit" class="btn btn-primary">Calificar Prestacion
+                                                </button>
                                             </form:form>
                                         </c:if>
                                     </div>

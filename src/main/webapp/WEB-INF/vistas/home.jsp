@@ -38,9 +38,9 @@
 	                </c:if>    
                     <c:if test="${empty logueado}">
 	                    <li class="nav-item">
-	                        <a class="nav-link" href="suscripcion">Suscripción</a>
+	                        <a class="nav-link" href="cerrarSesion">Suscripción</a>
 	                    </li>
-	                </c:if>
+	                </c:if> 
 	                <c:if test="${not empty logueado}">
 	                    <li class="nav-item">
 	                        <a class="nav-link" href="traerEspecialidades">Contratar</a>
@@ -55,10 +55,11 @@
 	                    <li class="nav-item">
 	                        <a class="nav-link" href="suscripcion">Suscripción</a>
 	                    </li>
-	                </c:if>        
+	                </c:if>   
+	                      
                     <c:if test="${not empty logueado}">
     					 <li class="nav-item">
-                        	<a class="nav-link" href="login">Cerrar Sesion</a>
+                        	<a class="nav-link" href="cerrarSesion">Cerrar Sesion</a>
                     	</li>
 					</c:if>
                 </ul>
@@ -121,8 +122,8 @@
 
             <br>
             
-			<c:if test="${empty logueado}">
-				<h1>Para acceder a una suscripcion primero debes iniciar sesion.</h1>
+			<c:if test="${not empty mensaje}">
+				<h1>${mensaje}</h1>
 			</c:if>
             <br>
 

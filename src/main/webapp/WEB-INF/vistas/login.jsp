@@ -33,9 +33,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="ir-a-registrarme">Registrarte</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="suscripcion">Suscripción</a>
-                    </li>
+                    <c:if test="${empty logueado}">
+	                    <li class="nav-item">
+	                        <a class="nav-link" href="mensajeErrorSuscripcion">Suscripción</a>
+	                    </li>
+	                </c:if> 
+                    
                 </ul>
             </div>
         </div>
@@ -43,7 +46,10 @@
 </header>
 
 
-<%--<div class=" h-100 w-100">
+<%--
+
+
+	<div class=" h-100 w-100">
     <div class="fondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-center">
     <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
         <%--Definicion de un form asociado a la accion /validar-login por POST. Se indica ademas que el model attribute se--%>
@@ -85,11 +91,12 @@ ${msg}
         </div>
 
         <div class="col-12 col-md-6 p-5 pb-0 p-md-1 bg-white rounded-3">
-
+				
                 <form:form class="m-5 mb-3" action="validar-login" method="POST" modelAttribute="datosLogin">
                 <h2 class="text-center mb-lg-5">
                     Bienvenido a AsegurApp
                 </h2>
+                
 
                     <div class="mb-3 mt-5">
                         <!--<label for="exampleInputEmail1" class="form-label"><i class="fas fa-envelope"></i> Ingrese su Mail</label>
@@ -128,7 +135,9 @@ ${msg}
     </div>
 </div>
 
-
+<c:if test="${not empty mensaje}">
+					<h1>${mensaje}</h1>
+				</c:if>
 <footer class="page-footer font-small color-light bg-dark text-light">
 
     <div>

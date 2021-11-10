@@ -74,13 +74,6 @@ public class ControladorLogin {
 		return new ModelAndView("login", model);
 	}
 
-//	// Escucha la URL /home por GET, y redirige a una vista.
-//	@RequestMapping(path = "/home", method = RequestMethod.GET)
-//	public ModelAndView irAHome() {
-//		return new ModelAndView("home");
-//	}
-	
-	
 //	@RequestMapping(path = "/home", method = RequestMethod.POST)
 //	public ModelAndView irAHome(@ModelAttribute("logueado")Boolean logueado, HttpServletRequest request) {
 //		ModelMap model = new ModelMap();
@@ -98,8 +91,34 @@ public class ControladorLogin {
 	// Escucha la url /, y redirige a la URL /login, es lo mismo que si se invoca la url /login directamente.
 	@RequestMapping(path = "/", method = RequestMethod.GET)
 	public ModelAndView inicio() {
-		return new ModelAndView("redirect:/home");
+		return new ModelAndView("home");
 	}
+	
+	@RequestMapping(path = "/cerrarSesion", method = RequestMethod.GET)
+	public ModelAndView cerrarSesion() {
+		usuarioBuscado=null;
+		ModelMap model = new ModelMap();
+		model.put("mensaje", "Debes Iniciar Sesion antes de realizar una suscripcion");
+		return new ModelAndView("home",model);
+	}
+	
+	@RequestMapping(path = "/mensajeErrorSuscripcion", method = RequestMethod.GET)
+	public ModelAndView loguearsePrimeroAntesDeSuscribirte() {
+		usuarioBuscado=null;
+		ModelMap model = new ModelMap();
+		model.put("mensaje", "Debes Iniciar Sesion antes de realizar una suscripcion");
+		return new ModelAndView("login",model);
+	}
+//	@RequestMapping(path = "/loguearsePrimeroAntesDeSuscribirte", method = RequestMethod.GET)
+//	public ModelAndView loguearsePrimeroAntesDeSuscribirte() {
+//		if(usuarioBuscado==null) {
+//			ModelMap model = new ModelMap();
+//			model.put("logueado", usuarioBuscado);
+//			return new ModelAndView("redirect:/home",model);
+//		}
+//			
+//			return new ModelAndView("redirect:/home");
+//	}
 
 
 }

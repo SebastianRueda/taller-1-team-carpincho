@@ -75,7 +75,7 @@ public class ControladorDenunciaTest {
     }
 
     private void thenCompruebaQueSeListaronCorrectamenteLasPrestaciones(ModelAndView mav) {
-        assertThat(mav.getViewName()).isEqualTo("historialDeDenunciasHechas");
+        assertThat(mav.getViewName()).isEqualTo("perfilUsuario");
         assertThat(mav.getModel().get("historialDenuncias")).isEqualTo("todas las denuncias que hiciste perri");
     }
 }

@@ -47,8 +47,33 @@
 		<div class="fondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-centerfondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-center">
 			<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-10 col-md-offset-3 col-sm-8 col-sm-offset-2">
 
-		<h1>Bienvenido a AsegurAPP</h1>
+		<h1 style="text-align: center">Bienvenido a AsegurAPP</h1>
 
+			<div class="container">
+				<div class="row">
+				<div class="card border-primary col-md-3 col-lg-3 mb-3" style="margin: 2.7em">
+					<form action="usuarioEspecialidadElegida" >
+					<div class="card-header text-center fw-bold"><label for="listaEspecialistas">Servicios</label>
+					</div>
+					<div class="card-body text-primary">
+						<i class="fab fa-stripe-s colorIconoLogin"></i> Seleccione el servicio
+						<br>
+						<br>
+						<select name="usuarioEspecialidades">
+							<c:forEach items="${especialidades}" var="especialidad">
+								<option value="${especialidad.id}">${especialidad.descripcion}</option>
+							</c:forEach>
+						</select>
+						<br>
+						<br>
+						<br>
+						<br>
+						<button class="fondo-login rounded-3 btn btn-primary border-0 w-100 shadow-sm " Type="Submit">Confirmar</button>
+					</div>
+					</form>
+				</div>
+
+				<!--
 				<form action="usuarioEspecialidadElegida" >
 					<label for="listaEspecialistas">Seleccione Servicio</label>
 					<select name="usuarioEspecialidades">
@@ -60,13 +85,33 @@
 					<br>
 					<button class="btn btn-primary btn-lg" Type="Submit">Confirmar</button>
 				</form>
-
-				<br>
-				<br>
-				<br>
-				<br>
+				-->
 
 
+				<div class="card border-primary col-md-3 col-lg-3 mb-3" style="margin: 2.7em">
+					<form action="usuarioProvinciaElegida" >
+						<div class="card-header text-center fw-bold"><label for="usuariosPorProvincia">Provincias</label>
+						</div>
+						<div class="card-body text-primary">
+							<i class="fas fa-map-marker-alt colorIconoLogin"></i> Seleccione su provincia
+							<br>
+							<br>
+							<select name="usuarioProvincia">
+								<c:forEach items="${provincias}" var="provincia">
+									<option value="${provincia.id}">${provincia.nombre}</option>
+								</c:forEach>
+							</select>
+							<br>
+							<br>
+							<br>
+							<br>
+							<button class="fondo-login rounded-3 btn btn-primary border-0 w-100 shadow-sm " Type="Submit">Confirmar</button>
+
+						</div>
+					</form>
+				</div>
+
+				<!--
 				<form action="usuarioProvinciaElegida" >
 					<label for="usuariosPorProvincia">Seleccione Provincia</label>
 					<select name="usuarioProvincia">
@@ -78,12 +123,39 @@
 					<br>
 					<button class="btn btn-primary btn-lg" Type="Submit">Confirmar</button>
 				</form>
+				-->
 
-				<br>
-				<br>
-				<br>
-				<br>
 
+				<div class="card border-primary col-md-3 col-lg-3 mb-3" style="margin: 2.7em">
+					<form action="especialidadElegida" >
+						<div class="card-header text-center fw-bold"><label for="listaEspecialidadDesplegable">Servicios y Provincias</label>
+						</div>
+						<div class="card-body text-primary">
+							<i class="fab fa-stripe-s colorIconoLogin"></i> <i class="fas fa-map-marker-alt colorIconoLogin"></i> Seleccione los parametros
+							<br>
+							<br>
+							<select name="listaEspecialidadDesplegable">
+								<c:forEach items="${especialidades}" var="especialidad">
+									<option value="${especialidad.id}">${especialidad.descripcion}</option>
+								</c:forEach>
+							</select>
+							<br>
+							<br>
+							<select name="listaProvinciaDesplegable">
+								<c:forEach items="${provincias}" var="provincia">
+									<option value="${provincia.id}">${provincia.nombre}</option>
+								</c:forEach>
+							</select>
+							<br>
+							<br>
+							<button class="fondo-login rounded-3 btn btn-primary border-0 w-100 shadow-sm " Type="Submit">Confirmar</button>
+
+						</div>
+					</form>
+				</div>
+
+
+				<!--
 				<form action="especialidadElegida" >
 					<label for="listaEspecialidadDesplegable">Seleccione Servicio</label>
 
@@ -106,6 +178,9 @@
 					<button class="btn btn-primary btn-lg" Type="Submit">Confirmar</button>
 
 				</form>
+				-->
+				</div>
+			</div>
 			</div>
 		</div>
 	</div>

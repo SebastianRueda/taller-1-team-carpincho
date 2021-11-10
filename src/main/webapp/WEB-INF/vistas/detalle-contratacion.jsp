@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="input" uri="http://www.springframework.org/tags/form" %>
@@ -11,7 +10,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link href="css/Login.css" rel="stylesheet">
-    <title>Detalle de contrataci�n</title>
+    <title>Detalle de contratacion</title>
 </head>
 
 <body class=" h-100">
@@ -33,7 +32,7 @@
                         <a class="nav-link" href="perfilUsuario">Perfil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="suscripcion">Suscripci�n</a>
+                        <a class="nav-link" href="suscripcion">Suscripcin</a>
                     </li>
                 </ul>
             </div>
@@ -52,7 +51,7 @@
                 <div id="loginbox" style="margin-top:50px;"
                      class="mainbox col-md-10 col-md-offset-3 col-sm-8 col-sm-offset-2">
 
-                    <h1>Detalle de contrataci�n</h1>
+                    <h1>Detalle de contratacion</h1>
                     <div class="col-12 col-md-3 p-5 pb-0 p-md-1 bg-white rounded-3 mx-1">
                         <div class="card text-center" style="width: 18rem;">
 
@@ -79,25 +78,7 @@
             </c:when>
         </c:choose>
 
-        <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-10 col-md-offset-3 col-sm-8 col-sm-offset-2">
 
-            <h1>Opciones de La Prestacion</h1>
-            <div class="col-12 col-md-3 p-5 pb-0 p-md-1 bg-white rounded-3 mx-1">
-                <div class="card text-center" style="width: 18rem;">
-
-                    <h5 class="card-title">Prestacion ID:${prestacion.id} </h5>
-
-                    <%--@elvariable id="prestacion" type="ar.edu.unlam.tallerweb1.modelo.Prestacion"--%>
-                    <form:form action="clienteCalifica" method="post" modelAttribute="datosCalificacion">
-                        <form:input type="text" path="prestacionId" value="${prestacion.id}" name="prestacionId" />
-                        <div class="form-check form-check-inline">
-                        <form:input path="calificacion" id="calificacionDadaPorElCliente" type="number" class="form-control" />
-                        <button type="submit" class="btn btn-primary">Calificar</button>
-                    </div>
-                    </form:form>
-                </div>
-            </div>
-        </div>
 
     </div>
 

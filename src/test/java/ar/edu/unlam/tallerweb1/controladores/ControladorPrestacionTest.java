@@ -1,7 +1,8 @@
-/*
+
 package ar.edu.unlam.tallerweb1.controladores;
 
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
+import ar.edu.unlam.tallerweb1.servicios.ServicioDenunciaL;
 import org.junit.Test;
 import java.util.List;
 import org.junit.Assert;
@@ -25,7 +26,8 @@ import static org.mockito.Mockito.when;
 public class ControladorPrestacionTest {
     private ServicioPrestacion servicioPrestacion = Mockito.mock(ServicioPrestacion.class);
     private ServicioUsuario servicioUsuario = Mockito.mock(ServicioUsuario.class);
-    private ControladorPerfil controlador = new ControladorPerfil(servicioPrestacion, servicioUsuario);
+    private ServicioDenunciaL servicioDenunciaL = Mockito.mock(ServicioDenunciaL.class);
+    private ControladorPerfil controlador = new ControladorPerfil(servicioPrestacion, servicioUsuario,servicioDenunciaL);
     private HttpServletRequest request = Mockito.mock(HttpServletRequest.class);
     private ControladorPrestacion controladorPrestacion= new ControladorPrestacion(servicioPrestacion,servicioUsuario,request);
 
@@ -118,4 +120,4 @@ public class ControladorPrestacionTest {
         Assertions.assertThat(prestaciones).isInstanceOf(List.class);
         Assertions.assertThat(prestaciones).hasSize(cantPrestaciones);
     }
-}*/
+}

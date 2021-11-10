@@ -186,8 +186,7 @@
                                             <div class="kanban-item"><h4 class="text-uppercase">Califica el
                                                 Servicio</h4>
                                                     <%--@elvariable id="prestacion" type="ar.edu.unlam.tallerweb1.modelo.Prestacion"--%>
-                                                <form:form action="clienteCalifica" method="post"
-                                                           modelAttribute="prestacion">
+                                                <form:form action="clienteCalifica" method="post" modelAttribute="prestacion">
 
                                                     <p class="clasificacion">
                                                         <form:radiobutton path="calificacionDadaPorElCliente" id="radio1"  value="5"/>

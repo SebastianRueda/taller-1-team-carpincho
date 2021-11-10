@@ -360,21 +360,24 @@
                                     <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">N°
                                         Prestacion</p>
                                     <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">
-                                        Categoria</p>
+                                        Servicio</p>
                                     <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">
-                                        Asistente</p>
+                                        Usuario Denunciado</p>
                                     <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">
-                                        Motivo Denunciado</p>
+                                        Motivo De la Denuncia</p>
+                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">
+                                        Detalles de la Denuncia</p>
                                 </div>
                             </div>
-                            <c:forEach items="${denuncias}" var="denuncia">
+                            <c:forEach items="${listaDenunciasHechas}" var="denunciaHechas">
                                 <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
-                                    <p class="my-auto" style="width:20%;">#${denuncia.id}</p>
+                                    <p class="my-auto" style="width:20%;">N° ${denunciaHechas.prestacion.id}</p>
                                     <p class="my-auto"
-                                       style="width:20%;">${denuncia.usuarioSolicitante.nombre}</p>
+                                       style="width:20%;">${denunciaHechas.usuarioDenunciado.especialidad.descripcion}</p>
                                     <p class="my-auto"
-                                       style="width:20%;">${denuncia.asistente.nombre} ${denuncia.asistente.apellido}</p>
-                                    <p class="my-auto" style="width:20%;">11/23/22</p>
+                                       style="width:20%;">${denunciaHechas.usuarioDenunciado.nombre} ${denunciaHechas.usuarioDenunciado.apellido}</p>
+                                    <p class="my-auto" style="width:20%;">${denunciaHechas.motivo}</p>
+                                    <button class="my-auto py-1 px-3 denunciar font-weight-bold redondeadoEstado" style="width:20%;">Ver Detalles </button>
                                 </div>
                             </c:forEach>
                         </div>

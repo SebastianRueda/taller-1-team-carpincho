@@ -1,6 +1,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="input" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +14,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link href="css/Login.css" rel="stylesheet">
-    <title>Document</title>
+    <title>Perfil Usuario</title>
 </head>
 
 <body class="fondo-login ">
@@ -147,41 +148,6 @@
 
                     </div>
 
-                    <div class="text-end">
-                        <form:form action="cancelarSuscripcion" method="POST">
-                            <button type="submit" class="btn btn-link text-danger text-gradient px-3 mb-0">
-                                <i class="far fa-trash-alt me-2" aria-hidden="true"></i>Dar Baja
-                            </button>
-                        </form:form>
-                        <c:choose>
-                            <c:when test="${usuarioEnSession.suscripcion.descripcion=='suscripcion basica'}">
-                                <form:form action="modificarSuscripcionBasicaUsuario" method="POST">
-                                    <button type="submit" class="btn btn-link text-success text-gradient px-3 mb-0">
-                                        <i class="far fa-arrow-alt-circle-up" aria-hidden="true"></i>UpGrade
-                                    </button>
-                                </form:form>
-                            </c:when>
-                            <c:otherwise>
-                                <form:form action="modificarSuscripcionPremiumUsuario" method="POST">
-                                    <button type="submit" class="btn btn-link text-warning text-gradient px-3 mb-0">
-                                        <i class="far fa-arrow-alt-circle-down" aria-hidden="true"></i>DownGrade
-                                    </button>
-                                </form:form>
-                            </c:otherwise>
-                        </c:choose>
-                    </div>
-                </c:when>
-                <c:otherwise>
-                    <div class="fondo-login col-12 text-center text-white align-items-center py-1 mt-2">
-                        <p class="m-0">¡No tienes Suscripcion! Puede contratar uno <a class="text-white"
-                                                                                      href="suscripcion">aqui</a>
-                        </p>
-                    </div>
-                </c:otherwise>
-            </c:choose>
-        </div>
-    </div>
-</div>-->
 
 <div class="container-fluid  mt-5 rounded-3 ">
     <div class="row w-100 bg-light m-auto p-1 justify-content-md-center" style="max-width: 1250px;">
@@ -197,8 +163,12 @@
                            href="mostrar-historial">Mis Contrataciones</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder me-2 ${seccion.equals("historialDenuncias") ? "active" : ""}"
+                           href="mostrar-denuncias" href="#primary-tab-3">Mis Denuncias</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder"
-                           data-bs-toggle="tab" href="#primary-tab-3">Algo</a>
+                           data-bs-toggle="tab" href="#primary-tab-4">Algo</a>
                     </li>
                 </ul><!-- Termina botones-->
                 <div class="tab-content">
@@ -484,16 +454,46 @@
                     </div>
                     <!-- Termina segundo boton-->
                     <!-- Empieza tercer boton-->
-                    <div class="tab-pane" id="primary-tab-3" role="tabpanel">
+                    <div class="tab-pane ${seccion.equals("historialDenuncias") ? "active" : ""}" id="primary-tab-3"
+                         role="tabpanel">
+                        <div class="row w-100  row w-100 h-100 m-auto justify-content-md-center">
+                            <div class="col-12 p-2 ">
+                                <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
+                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">N°
+                                        Prestacion</p>
+                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">
+                                        Categoria</p>
+                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">
+                                        Asistente</p>
+                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">
+                                        Motivo Denunciado</p>
+                                </div>
+                            </div>
+                            <c:forEach items="${denuncias}" var="denuncia">
+                                <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
+                                    <p class="my-auto" style="width:20%;">#${denuncia.id}</p>
+                                    <p class="my-auto"
+                                       style="width:20%;">${denuncia.usuarioSolicitante.nombre}</p>
+                                    <p class="my-auto"
+                                       style="width:20%;">${denuncia.asistente.nombre} ${denuncia.asistente.apellido}</p>
+                                    <p class="my-auto" style="width:20%;">11/23/22</p>
+                                </div>
+                            </c:forEach>
+                        </div>
+                    </div>
+                    <!-- Termina tercer boton-->
+                    <!-- Empieza cuarto boton-->
+                    <div class="tab-pane" id="primary-tab-4" role="tabpanel">
                         <div class="row w-100 bg-info row w-100 h-100 m-auto justify-content-md-center px-2">
                             <div class="bg-white col-12 d-flex flex-column  p-2 mb-2 mt-2 align-items-center">
                                 <h4 class="text-muted"> Proximamente...</h4>
                                 <p class=" text-muted"><i class="fas fa-tools"></i> Estamos Trabajando para que quede
                                     bonito <i class="fas fa-tools"></i></p>
+                            
                             </div>
                         </div>
                     </div>
-                    <!-- Termina tercer boton-->
+                    <!-- Termina cuarto boton-->
                 </div>
             </div>
         </div>

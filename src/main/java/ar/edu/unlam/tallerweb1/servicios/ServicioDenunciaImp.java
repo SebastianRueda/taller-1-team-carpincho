@@ -2,11 +2,14 @@ package ar.edu.unlam.tallerweb1.servicios;
 
 import java.util.List;
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import ar.edu.unlam.tallerweb1.modelo.Denuncia;
+import ar.edu.unlam.tallerweb1.modelo.HistorialDenuncia;
+import ar.edu.unlam.tallerweb1.modelo.MotivoDenuncia;
+import ar.edu.unlam.tallerweb1.modelo.Prestacion;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioDenuncia;
 
 
@@ -14,18 +17,32 @@ import ar.edu.unlam.tallerweb1.repositorios.RepositorioDenuncia;
 @Transactional
 public class ServicioDenunciaImp implements ServicioDenuncia {
 	
-	private RepositorioDenuncia repositorioDenuncia;
+	private RepositorioDenuncia denunciaDao;
 	
 	@Autowired
-	public ServicioDenunciaImp(RepositorioDenuncia repositorioDenuncia) {
-		this.repositorioDenuncia=repositorioDenuncia;
+	public ServicioDenunciaImp(RepositorioDenuncia denunciaDao) {
+		this.denunciaDao=denunciaDao;
 	}
 
 	
 	@Override
-	public List<Denuncia> traerDenuncia() {
-		List <Denuncia> denunciasDescripcion= repositorioDenuncia.traerDenuncia();
+	public List<MotivoDenuncia> traerDenuncia() {
+		List <MotivoDenuncia> denunciasDescripcion= denunciaDao.traerDenuncia();
 		return denunciasDescripcion ;
 	}
+	
+	@Override
+    public List<HistorialDenuncia> listarDenunciasPorCliente(Long id) {
+        return denunciaDao.listarDenunciasPorCliente(id);
+    }
 
+	@Override
+	public MotivoDenuncia buscarPorId(Long id) {
+		return denunciaDao.buscarPorId(id);
+	}
+
+	@Override
+	public void guardar(HistorialDenuncia historialDenuncia) {
+		denunciaDao.guardar(historialDenuncia);
+	}
 }

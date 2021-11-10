@@ -37,17 +37,25 @@ values ('CABA'),
 insert into rol (descripcion)
 values('prestador'),
       ('cliente final');
-
-insert into suscripcion (descripcion,precio,activo)
-values ('suscripcion basica',100.0,true),
-       ('suscripcion premium',300.0,true);
-       
-insert into denuncia (id, descripcion)
+      
+insert into motivodenuncia (id ,descripcion)
 values (1,'El Asistente nunca se presentó.'),
        (2,'El Asistente me agredió verbalmente.'),
        (3,'El Asistente me agredió físicamente'),
        (4,'El Asistente me cobró un extra'),
-       (5,'El Asistente no se correspondía con el registrado en la App');
+       (5,'El Asistente no se correspondía con el registrado en la App'),
+       (6,'Otro motivo...');       
+ 
+insert into historialdenuncia (id ,comentario)
+values (1, 'El Asistente me agredió físicamente'),
+       (2, 'El Asistente me agredió físicamente'),
+       (3, 'El Asistente nunca se presentó.');
+       
+insert into suscripcion (descripcion,precio,activo)
+values ('suscripcion basica',100.0,true),
+       ('suscripcion premium',300.0,true);
+       
+
 
 insert into usuario (nombre, apellido, email, password, especialidad_id, provincia_id, rol_id, activo)
 values ('eric','cuevas','ecuevas@alumno.unlam.edu.ar','root',1,1,1, true);
@@ -65,11 +73,14 @@ VALUES ('1', 1,3,'hola', 'finalizado', '11111', '1', '2'),
 
 UPDATE `db`.`prestacion` SET `calificacionDadaPorElCliente` = '4' WHERE (`id` = '1');
 
-select *
-from usuario;
 
-select *
-from suscripcion;
 
-select *
-from prestacion;
+
+
+
+
+
+
+
+
+

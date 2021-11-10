@@ -91,11 +91,7 @@ public class ControladorContratar {
 
     @RequestMapping(path = "/finalizarPrestacion", method = RequestMethod.POST)
     public ModelAndView finalizarPrestacion(@ModelAttribute("prestacion") Prestacion prestacionRecibido){
-
-
         Prestacion prestacion = servicioPrestacion.buscarPrestacionPorId(prestacionRecibido.getId());
-
-
         ModelMap model = new ModelMap();
 
         try {
@@ -106,6 +102,6 @@ public class ControladorContratar {
         }
 
         model.put("msgFinalizacionDeContratacion","Prestacion finalizada correctamente");
-        return new ModelAndView("detallePrestacionFinalizada", model);
+        return new ModelAndView("redirect:/irADetallePrestacionFinalida?prestacion=" +prestacion.getId(), model);
     }
 }

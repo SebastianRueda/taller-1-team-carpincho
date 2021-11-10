@@ -9,6 +9,7 @@ public class Denuncia {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String descripcion;
+	
 	public Long getId() {
 		return id;
 	}

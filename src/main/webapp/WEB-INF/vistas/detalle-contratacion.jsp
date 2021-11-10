@@ -71,10 +71,8 @@
 
                                 <%--@elvariable id="prestacion" type="ar.edu.unlam.tallerweb1.modelo.Prestacion"--%>
                             <form:form action="finalizarPrestacion" method="post" modelAttribute="prestacion">
-                                <form:input  path="id" id="id" value="${prestacion.id}"/>
-                                <form:input  path="estado" id="estado" value="${prestacion.estado}"/>
-
-                                <p>${prestacion.id} </p>
+                                <form:hidden  path="id" id="id" value="${prestacion.id}"/>
+                                <form:hidden  path="estado" id="estado" value="${prestacion.estado}"/>
                                 <button type="submit" class="btn btn-primary">Finalizar Prestacion</button>
                             </form:form>
 
@@ -84,25 +82,6 @@
                 </div>
             </c:when>
         </c:choose>
-
-        <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-10 col-md-offset-3 col-sm-8 col-sm-offset-2">
-
-            <h1>Opciones de La Prestacion</h1>
-            <div class="col-12 col-md-3 p-5 pb-0 p-md-1 bg-white rounded-3 mx-1">
-                <div class="card text-center" style="width: 18rem;">
-
-                    <h5 class="card-title">Prestacion ID:${prestacion.id} </h5>
-
-                    <%--@elvariable id="prestacion" type="ar.edu.unlam.tallerweb1.modelo.Prestacion"--%>
-                    <%-- <form:form action="clienteCalifica" method="post" modelAttribute="prestacion">
-                     <div class="form-check form-check-inline">
-                         <input path="calificacionDadaPorElCliente" id="calificacionDadaPorElCliente" type="number" class="form-control">
-                         <button type="submit" class="btn btn-primary">Calificar</button>
-                     </div>
-                     </form:form>--%>
-                </div>
-            </div>
-        </div>
 
     </div>
 

@@ -84,7 +84,6 @@ public class RepositorioPrestacionImpl implements RepositorioPrestacion{
 
      return (Prestacion) sessionFactory.getCurrentSession().createCriteria(Prestacion.class)
              .add(Restrictions.eq("id",idPrestacion))
-             .add(Restrictions.like("estado", "finalizado"))
              .add(Restrictions.isNull("calificacionDadaPorElCliente"))
              .uniqueResult();
     }

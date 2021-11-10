@@ -35,6 +35,9 @@
 					<li class="nav-item">
 						<a class="nav-link" href="suscripcion">Suscripción</a>
 					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="login">Cerrar Sesion</a>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -45,8 +48,12 @@
 <div class=" w-100">
 	<div class="fondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-centerfondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-center">
 		<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-10 col-md-offset-3 col-sm-8 col-sm-offset-2">
-
-
+			<div class="container">
+			<div class="text-center">
+				<a href="traerEspecialidades" style="color:white" >${volver}</a>
+			</div>
+			<br>
+			<br>
 			<div class="col-md-6 col-lg-6 mb-3 bg-danger d-none d-md-flex rounded-3 " style="margin-left: 17em;margin-right: 15em;margin-top:1em  ">
 				<div class="card text-center text-white bg-danger mb-3">
 					<div class="card-header"><i class="fas fa-exclamation-triangle"></i>Ocurrio un Error<i
@@ -54,16 +61,12 @@
 					<div class="card-body">
 						<p class="card-text">${error}</p>
 					</div>
+
+						<img src="imagenes/error2.jpg" class="h-100 w-100 " alt="">
+
 				</div>
 			</div>
-			<div class="col-md-6 col-lg-6 mb-3 bg-danger d-none d-md-flex rounded-3 " style="margin-left: 17em;margin-right: 15em;">
-				<img src="imagenes/error.jpg" class="h-100 w-100 rounded-3" alt="">
-			</div>
 
-
-
-			<div class="text-center">
-				<a href="traerEspecialidades" style="color:white" >${volver}</a>
 			</div>
 		</div>
 		<br>

@@ -52,4 +52,18 @@ public class ControladorPrestacion {
         }
         return new ModelAndView("redirect:/perfilUsuario");
     }
+
+    @RequestMapping(path = "/clienteCancelaPrestacion",method = RequestMethod.POST)
+    public ModelAndView cancelarPrestacion(@ModelAttribute("prestacion") Prestacion prestacion) {
+        ModelMap model = new ModelMap();
+        Prestacion prestacionEncontrada = servicioPrestacion.buscarPrestacionPorId(prestacion.getId());
+        String ruta = "redirect:/irADetallePrestacionFinalida?prestacion=" + prestacionEncontrada.getId();
+        try {
+            servicioPrestacion.cancelarPrestacionActiva(prestacionEncontrada);
+        } catch (Exception e) {
+            model.put("error","error al cancelar prestacion");
+            return new ModelAndView(ruta,model);
+        }
+        return new ModelAndView(ruta);
+    }
 }

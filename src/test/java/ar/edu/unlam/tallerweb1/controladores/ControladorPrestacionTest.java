@@ -56,6 +56,61 @@ public class ControladorPrestacionTest {
         thenCalificaErroneamente(mav);
     }
 
+    @Test
+    public void usuarioCancelaPrestacionActiva(){
+        Prestacion prestacion = giveUnaPrestacionActivaDeUnUsuarioFinal();
+        ModelAndView mav=whenUsuarioCancelaPrestacionActiva(prestacion);
+        thenCancelaExitosamente(mav,prestacion);
+    }
+
+    @Test
+    public void errorCuandousuarioCancelaPrestacionFinalizada() throws Exception{
+        Prestacion prestacion = giveUnaPrestacionFinalizadaDeUnUsuarioFinal();
+        ModelAndView mav=whenUsuarioCancelaPrestacionFinalizada(prestacion);
+        thenErrorAlCancelarPrestacion(mav,prestacion);
+    }
+
+    private void thenErrorAlCancelarPrestacion(ModelAndView mav, Prestacion prestacion) {
+        String ruta = "redirect:/irADetallePrestacionFinalida?prestacion="+ prestacion.getId();
+        assertThat(mav.getViewName()).isEqualTo(ruta);
+        assertThat(mav.getModel().get("error")).isEqualTo("error al cancelar prestacion");
+    }
+
+    private ModelAndView whenUsuarioCancelaPrestacionFinalizada(Prestacion prestacion) {
+        return controladorPrestacion.cancelarPrestacion(prestacion);
+    }
+
+    private Prestacion giveUnaPrestacionFinalizadaDeUnUsuarioFinal() throws Exception {
+        Usuario usuarioConPrestacionActiva = new Usuario();
+        Prestacion prestacion = new Prestacion();
+        prestacion.setId(10l);
+        prestacion.setUsuarioSolicitante(usuarioConPrestacionActiva);
+        prestacion.setEstado("finalizado");
+        when(servicioPrestacion.buscarPrestacionPorId(prestacion.getId())).thenReturn(prestacion);
+        doThrow(Exception.class).when(servicioPrestacion).cancelarPrestacionActiva(prestacion);
+        return prestacion;
+    }
+
+    private Prestacion giveUnaPrestacionActivaDeUnUsuarioFinal() {
+        Usuario usuarioConPrestacionActiva = new Usuario();
+        Prestacion prestacion = new Prestacion();
+        prestacion.setId(10l);
+        prestacion.setUsuarioSolicitante(usuarioConPrestacionActiva);
+        prestacion.setEstado("activo");
+        when(servicioPrestacion.buscarPrestacionPorId(prestacion.getId())).thenReturn(prestacion);
+
+        return prestacion;
+    }
+
+    private ModelAndView whenUsuarioCancelaPrestacionActiva(Prestacion prestacion) {
+        return controladorPrestacion.cancelarPrestacion(prestacion);
+    }
+
+    private void thenCancelaExitosamente(ModelAndView mav,Prestacion prestacion) {
+        String ruta = "redirect:/irADetallePrestacionFinalida?prestacion="+ prestacion.getId();
+        assertThat(mav.getViewName()).isEqualTo(ruta);
+    }
+
     private Prestacion giveUnUsuarioConPrestacionACalificar() throws Exception {
         Usuario usuarioConPrestacion = new Usuario();
         Prestacion prestacion = new Prestacion();

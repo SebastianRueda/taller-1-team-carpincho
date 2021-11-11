@@ -56,8 +56,8 @@
 
 <div class="container">
 <div class="container-fluid  mt-5 rounded-3 ">
-    <div class="row w-100 bg-light m-auto p-1 justify-content-md-center" style="max-width: 1250px;">
-        <div class="col-12 px-1">
+    <div class="row w-100 bg-light m-auto p-1 justify-content-md-center mb-5" style="max-width: 1250px;">
+        <div class="col-12 px-1 ">
             <div class="tab tab-primary">
                 <ul class="nav nav-pills nav-pills-sm nav-light mb-2"> <!-- empieza botones-->
                     <li class="nav-item">
@@ -188,39 +188,107 @@
 
                                         <div class="text-end">
                                             <form:form action="cancelarSuscripcion" method="POST">
-                                                <button type="submit"
-                                                        class="btn btn-link text-danger text-gradient px-3 mb-0">
+                                                <button type="button" class="btn btn-link text-danger text-gradient px-3 mb-0 " data-bs-toggle="modal" data-bs-target="#exampleModalDarBaja">
                                                     <i class="far fa-trash-alt me-2" aria-hidden="true"></i>Dar Baja
                                                 </button>
+
+                                                <div class="modal fade" id="exampleModalDarBaja" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title"
+                                                                    id="exampleModalLabel">¡Estas a punto de quedarte suscripcion!</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div class="mb-5 mt-5 text-center">
+                                                                    <h2> Usuario </h2>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                                        Cancelar
+                                                                    </button>
+
+                                                                    <button type="submit" class="btn btn-primary">Exiliarse de Suscripciones</button>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </form:form>
                                             <c:choose>
                                                 <c:when test="${usuarioEnSession.suscripcion.descripcion=='suscripcion basica'}">
                                                     <form:form action="modificarSuscripcionBasicaUsuario" method="POST">
-                                                        <button type="submit"
-                                                                class="btn btn-link text-success text-gradient px-3 mb-0">
-                                                            <i class="far fa-arrow-alt-circle-up"
-                                                               aria-hidden="true"></i>UpGrade
+                                                        <button type="button" class="btn btn-link text-success text-gradient px-3 mb-0 " data-bs-toggle="modal" data-bs-target="#exampleModalUpGrade">
+                                                            <i class="far fa-arrow-alt-circle-up" aria-hidden="true"></i>UpGrade
                                                         </button>
+                                                        <div class="modal fade" id="exampleModalUpGrade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title"
+                                                                            id="exampleModalLabel">¿Queres ser parte de la noblesa?</h5>
+                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <div class="mb-5 mt-5 text-center">
+                                                                            <h2> Usuario </h2>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                                                Cancelar
+                                                                            </button>
+
+                                                                            <button type="submit" class="btn btn-primary">Ascender de pebleyo a la nobleza</button>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
                                                     </form:form>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <form:form action="modificarSuscripcionPremiumUsuario"
-                                                               method="POST">
-                                                        <button type="submit"
-                                                                class="btn btn-link text-warning text-gradient px-3 mb-0">
-                                                            <i class="far fa-arrow-alt-circle-down"
-                                                               aria-hidden="true"></i>DownGrade
+
+                                                        <button type="button" class="btn btn-link text-warning text-gradient px-3 mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal222">
+                                                            <i class="far fa-arrow-alt-circle-down" aria-hidden="true"></i>DownGrade
                                                         </button>
-                                                    </form:form>
+
+                                                        <div class="modal fade" id="exampleModal222" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title"
+                                                                            id="exampleModalLabel">¿No te da el cuero para la suscripcion Premium?</h5>
+                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <div class="mb-5 mt-5 text-center">
+                                                                            <h2> Usuario </h2>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                                                Cancelar
+                                                                            </button>
+                                                                                <form:form action="modificarSuscripcionPremiumUsuario" method="POST">
+                                                                                <button type="submit" class="btn btn-primary">Rebajarse a Suscripcion Basica</button>
+                                                                                </form:form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
                                                 </c:otherwise>
                                             </c:choose>
                                         </div>
                                     </c:when>
                                     <c:otherwise>
                                         <div class="fondo-login col-12 text-center text-white align-items-center py-1 mt-2">
-                                            <p class="m-0">¡No tienes Suscripcion! Puede contratar uno <a
-                                                    class="text-white"
-                                                    href="suscripcion">aqui</a>
+                                            <p class="m-0">¡No tienes Suscripcion! Puede contratar uno
+                                                <a class="text-white" href="suscripcion">aqui</a>
                                             </p>
                                         </div>
                                     </c:otherwise>
@@ -324,24 +392,13 @@
                                                                 class="fas fa-star text-warning"></i></p>
                                                 </c:if>
                                                 <c:if test="${prestacion.calificacionDadaPorElCliente==null and prestacion.estado=='activo'}">
-
-                                                   <%-- <form:form  class="" style="width:20%;" action="finalizarPrestacion" method="post" modelAttribute="prestacion">
-
-                                                        <form:input type="hidden" path="id" id="id" value="${prestacion.id}"/>
-                                                        <form:input type="hidden" path="estado" id="estado" value="${prestacion.estado}"/>
-
-                                                    <button type="submit" class="my-auto py-1 px-3 finalizar font-weight-bold redondeadoEstado"
-                                                            style="width:20%;"> Finalizar
-                                                    </button>
-
-                                                    </form:form>--%>
-                                                        <a href="irADetallePrestacionFinalida?prestacion=${prestacion.id}" class="my-auto py-1 px-3 finalizar font-weight-bold redondeadoEstado"
-                                                                style="width:20%;"> Finalizar
-                                                        </a>
+                                                    <a href="irADetallePrestacionFinalida?prestacion=${prestacion.id}" class="my-auto py-1 px-3 finalizar font-weight-bold redondeadoEstado text-decoration-none text-center" style="width:20%;">
+                                                        Finalizar
+                                                    </a>
                                                 </c:if>
 
                                                 <c:if test="${prestacion.calificacionDadaPorElCliente==null and prestacion.estado == 'finalizado'}">
-                                                    <a href="irADetallePrestacionFinalida?prestacion=${prestacion.id}" class="my-auto py-1 px-3 finalizar font-weight-bold redondeadoEstado"
+                                                    <a href="irADetallePrestacionFinalida?prestacion=${prestacion.id}" class="my-auto py-1 px-3 finalizar font-weight-bold redondeadoEstado text-decoration-none text-center"
                                                        style="width:20%;"> Calificar
                                                     </a>
                                                 </c:if>
@@ -349,7 +406,7 @@
                                                 <c:if test="${prestacion.calificacionDadaPorElCliente==null and prestacion.estado == 'cancelado'}">
 
 
-                                                    <a href="irADetallePrestacionFinalida?prestacion=${prestacion.id}" class="my-auto py-1 px-3 finalizar font-weight-bold redondeadoEstado"
+                                                    <a href="irADetallePrestacionFinalida?prestacion=${prestacion.id}" class="my-auto py-1 px-3 finalizar font-weight-bold redondeadoEstado text-decoration-none text-center"
                                                        style="width:20%;"> Calificar
                                                     </a>
                                                 </c:if>
@@ -449,7 +506,7 @@
 </div>
 </div>
 </div>
-<footer class="page-footer font-small color-light bg-dark text-light">
+<footer class="page-footer font-small color-light bg-dark text-light mt-5">
     <div>
         <div class="container">
             <div class="col-md-6 col-lg-7 text-center text-md-right">

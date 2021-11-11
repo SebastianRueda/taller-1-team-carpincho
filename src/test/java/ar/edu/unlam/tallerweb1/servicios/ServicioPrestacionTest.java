@@ -136,9 +136,52 @@ public class ServicioPrestacionTest {
     public void alQuererMostrarPromedioDeCalificacionDeUsuarioFinalLaListaVieneVacia() throws Exception {
         Usuario usuario =new Usuario();
         usuario.setId(20l);
+
         givenIdDeUnUsuarioSinCalificaciones(usuario);
         whenSeObtienePromedioDeCalificacion(usuario);
     }
+
+    @Test
+    public void usuarioFinalCancelaUnaPrestacionActivaExitosamente() throws Exception {
+        Prestacion prestacion = givenUnaPrestacionActivaDeUnCliente();
+        whenUsuarioFinalCancelaUnaPrestacionActiva(prestacion);
+        thenCancelaExitosamenteConMetodoUpdate(prestacion);
+    }
+
+    @Test (expected= Exception.class)
+    public void usuarioFinalIntentaCancelarUnaPrestacionYaFinalizada() throws Exception {
+        Prestacion prestacion = givenUnaPrestacionFinalizadaDeUnCliente();
+        whenUsuarioFinalIntentaCancelarUnaPrestacionYaFinalizada(prestacion);
+    }
+
+    private void whenUsuarioFinalIntentaCancelarUnaPrestacionYaFinalizada(Prestacion prestacion) throws Exception {
+        servicioPrestacion.cancelarPrestacionActiva(prestacion);
+    }
+
+    private Prestacion givenUnaPrestacionFinalizadaDeUnCliente() {
+        Prestacion prestacion = new Prestacion();
+        prestacion.setEstado("finalizado");
+        prestacion.setId(1l);
+        prestacion.setUsuarioSolicitante(this.cliente);
+        return prestacion;
+    }
+
+    private void thenCancelaExitosamenteConMetodoUpdate(Prestacion prestacion) {
+        verify(repositorioPrestacion,times(1)).update(prestacion);
+    }
+
+    private Prestacion givenUnaPrestacionActivaDeUnCliente() {
+        Prestacion prestacion = new Prestacion();
+        prestacion.setEstado("activo");
+        prestacion.setId(1l);
+        prestacion.setUsuarioSolicitante(this.cliente);
+        return prestacion;
+    }
+
+    private void whenUsuarioFinalCancelaUnaPrestacionActiva(Prestacion prestacion) throws Exception {
+        servicioPrestacion.cancelarPrestacionActiva(prestacion);
+    }
+
 
     private void givenIdDeUnUsuarioSinCalificaciones(Usuario usuario) {
         when(repositorioPrestacion.buscarPrestacionesCalificadasPorUsuario(usuario.getId())).thenReturn(anyList());
@@ -219,7 +262,6 @@ public class ServicioPrestacionTest {
         Prestacion prestacion = new Prestacion();
         prestacion.setEstado("activo");
         return prestacion;
-
     }
 
     private void givenContratado() {

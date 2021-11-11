@@ -48,6 +48,16 @@ public class ControladorPerfilAsistente {
         model.put("seccion", "perfil");
         model.put("irAsistentePerfilRequest", new IrAsistentePerfilRequest());
 
+        var promedio = -1f;
+
+        try {
+            promedio = servicioPrestacion.obtenerPromedioDeCalificicacionDeUnUsuario(asistente);
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+
+        model.put("promedio", promedio);
+
         return new ModelAndView("perfilAsistente", model);
     }
 

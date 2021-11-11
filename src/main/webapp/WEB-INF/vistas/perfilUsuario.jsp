@@ -66,7 +66,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder me-2 ${seccion.equals("favoritos") ? "active" : ""}"
-                           href="mostrar-favoritos">Mis favoritos</a>
+                           href="mostrar-favoritos">Mis Favoritos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder"
@@ -368,7 +368,7 @@
                                 <c:choose>
                                     <c:when test="${empty favoritos}">
                                         <div class="d-flex justify-content-center align-items-center" style="width: 100%; height: 24em">
-                                            <h4>Todavía no tenés un asistentes favoritos</h4>
+                                            <h4>Todavía no tenés asistentes favoritos</h4>
                                         </div>
                                     </c:when>
                                     <c:otherwise>

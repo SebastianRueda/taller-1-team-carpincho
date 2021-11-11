@@ -27,9 +27,8 @@ public class ControladorPrestacionTest {
     private ServicioPrestacion servicioPrestacion = Mockito.mock(ServicioPrestacion.class);
     private ServicioUsuario servicioUsuario = Mockito.mock(ServicioUsuario.class);
     private ServicioDenunciaL servicioDenunciaL = Mockito.mock(ServicioDenunciaL.class);
-    private ControladorPerfil controlador = new ControladorPerfil(servicioPrestacion, servicioUsuario,servicioDenunciaL);
     private ServicioFavoritos servicioFavoritos = Mockito.mock(ServicioFavoritos.class);
-    private ControladorPerfil controlador = new ControladorPerfil(servicioPrestacion, servicioUsuario, servicioFavoritos);
+    private ControladorPerfil controlador = new ControladorPerfil(servicioPrestacion, servicioUsuario,servicioDenunciaL, servicioFavoritos);
     private HttpServletRequest request = Mockito.mock(HttpServletRequest.class);
     private ControladorPrestacion controladorPrestacion= new ControladorPrestacion(servicioPrestacion,servicioUsuario,request);
 

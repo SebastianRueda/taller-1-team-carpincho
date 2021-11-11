@@ -26,19 +26,19 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="traerEspecialidades">Home</a>
+                        <a class="nav-link active" aria-current="page" href="home">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="perfilUsuario">Perfil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="cerrarSesion">Suscripción</a>
+                        <a class="nav-link" href="traerEspecialidades">Contratar</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="suscripcion">Suscripción</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="login">Cerrar Sesion</a>
+                        <a class="nav-link" href="cerrarSesion">Cerrar Sesion</a>
                     </li>
                 </ul>
             </div>

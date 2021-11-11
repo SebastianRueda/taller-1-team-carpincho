@@ -94,31 +94,26 @@ public class ControladorLogin {
 		return new ModelAndView("home");
 	}
 	
-	@RequestMapping(path = "/cerrarSesion", method = RequestMethod.GET)
-	public ModelAndView cerrarSesion() {
+	@RequestMapping(path = "/cerrarSesion", method = RequestMethod.POST)
+	public ModelAndView cerrarSesion( HttpServletRequest request) {
 		usuarioBuscado=null;
+		HttpSession misession= request.getSession(true);
+		misession.setAttribute("usuarioLogueado",usuarioBuscado);
 		ModelMap model = new ModelMap();
 		model.put("mensaje", "Debes Iniciar Sesion antes de realizar una suscripcion");
 		return new ModelAndView("home",model);
 	}
+//	HttpSession misession= request.getSession(true);
+//	misession.setAttribute("usuarioLogueado",usuarioBuscado);
+//
+//	return new ModelAndView("redirect:/traerEspecialidades");
 	
 	@RequestMapping(path = "/mensajeErrorSuscripcion", method = RequestMethod.GET)
 	public ModelAndView loguearsePrimeroAntesDeSuscribirte() {
-		usuarioBuscado=null;
 		ModelMap model = new ModelMap();
 		model.put("mensaje", "Debes Iniciar Sesion antes de realizar una suscripcion");
-		return new ModelAndView("login",model);
+		return new ModelAndView("home",model);
 	}
-//	@RequestMapping(path = "/loguearsePrimeroAntesDeSuscribirte", method = RequestMethod.GET)
-//	public ModelAndView loguearsePrimeroAntesDeSuscribirte() {
-//		if(usuarioBuscado==null) {
-//			ModelMap model = new ModelMap();
-//			model.put("logueado", usuarioBuscado);
-//			return new ModelAndView("redirect:/home",model);
-//		}
-//			
-//			return new ModelAndView("redirect:/home");
-//	}
 
 
 }

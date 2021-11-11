@@ -39,7 +39,7 @@
 	                </c:if>    
                     <c:if test="${empty logueado}">
 	                    <li class="nav-item">
-	                        <a class="nav-link" href="cerrarSesion">Suscripción</a>
+	                        <a class="nav-link" href="mensajeErrorSuscripcion">Suscripción</a>
 	                    </li>
 	                </c:if> 
 	                <c:if test="${not empty logueado}">
@@ -59,9 +59,11 @@
 	                </c:if>   
 	                      
                     <c:if test="${not empty logueado}">
-    					 <li class="nav-item">
-                        	<a class="nav-link" href="cerrarSesion">Cerrar Sesion</a>
-                    	</li>
+                    	<form:form action="cerrarSesion" method="POST">              
+                        		<button>
+                            		cerrarSesion
+                        		</button>
+                		</form:form>
 					</c:if>
                 </ul>
             </div>

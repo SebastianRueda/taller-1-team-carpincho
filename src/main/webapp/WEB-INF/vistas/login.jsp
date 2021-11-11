@@ -144,7 +144,7 @@ ${msg}
     <div>
         <div class="container">
 
-            <div class="col-md-6 col-lg-7 text-center text-md-right">
+            <div class=" text-center text-md-right">
 
                 <a class="fb-ic">
                     <i class="fab fa-facebook-f white-text mr-4"> </i>

@@ -26,13 +26,19 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="traerEspecialidades">Home</a>
+                        <a class="nav-link active" aria-current="page" href="home">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="perfilUsuario">Perfil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="suscripcion">Suscripcin</a>
+                        <a class="nav-link" href="traerEspecialidades">Contratar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="suscripcion">Suscripción</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cerrarSesion">Cerrar Sesion</a>
                     </li>
                 </ul>
             </div>
@@ -42,18 +48,18 @@
 
 
 <div class=" h-100 w-100">
-    <div class="fondo-login container-fluid px-2 h-100 w-100 d-flex flex-column justify-content-centerfondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-center">
+    <div class="fondo-login container-fluid px-2 h-100 w-100 d-flex flex-column justify-content-centerfondo-login container-fluid px-2 h-100 w-100  justify-content-center">
         <c:choose>
             <c:when test="${not empty error}">
                 <h4 class="text-white mt-5">${error}</h4>
             </c:when>
             <c:when test="${empty error}">
-                <div id="loginbox" style="margin-top:50px;"
-                     class="mainbox col-md-10 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                <div class="container">
+                <div id="loginbox"  class="mainbox col-md-12 ">
+                    <div class="card-body bg-light mb-3" style="margin-right: 16rem; margin-left: 26rem; max-width: 18rem">
+                        <h1 style="text-align: center">Detalle de contratación</h1>
 
-                    <h1>Detalle de contratacion</h1>
-                    <div class="col-12 col-md-3 p-5 pb-0 p-md-1 bg-white rounded-3 mx-1">
-                        <div class="card text-center" style="width: 18rem;">
+
 
                             <h5 class="card-title">Cliente</h5>
                             <P class="card-text">${prestacion.usuarioSolicitante.email}</P>
@@ -68,17 +74,13 @@
                             <form:form action="finalizarPrestacion" method="post" modelAttribute="prestacion">
                                 <form:hidden  path="id" id="id" value="${prestacion.id}"/>
                                 <form:hidden  path="estado" id="estado" value="${prestacion.estado}"/>
-                                <button type="submit" class="btn btn-primary">Finalizar Prestacion</button>
+                                <button type="submit" class="fondo-login rounded-3 btn btn-primary border-0 w-100 shadow-sm ">Finalizar Prestacion</button>
                             </form:form>
-
-
-                        </div>
                     </div>
+                </div>
                 </div>
             </c:when>
         </c:choose>
-
-
 
     </div>
 

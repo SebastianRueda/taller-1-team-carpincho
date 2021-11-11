@@ -34,7 +34,7 @@
                         <a class="nav-link active" href="ir-a-registrarme">Registrarte</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="suscripcion">Suscripción</a>
+                        <a class="nav-link" href="mensajeErrorSuscripcion">Suscripción</a>
                     </li>
                 </ul>
             </div>

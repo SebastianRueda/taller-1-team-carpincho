@@ -33,17 +33,19 @@
                         <a class="nav-link" aria-current="page" href="home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="perfilUsuario">Perfil</a>
+                        <a class="nav-link" href="traerEspecialidades">Contratar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="traerEspecialidades">Contratar</a>
+                        <a class="nav-link active" href="perfilUsuario">Perfil</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="suscripcion">Suscripción</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="cerrarSesion">Cerrar Sesion</a>
-                    </li>
+                    <form:form action="cerrarSesion" method="POST">              
+               			<button>
+                   			cerrarSesion
+               			</button>
+           			</form:form>
                 </ul>
             </div>
         </div>

@@ -42,7 +42,9 @@ public class ControladorPerfil {
         ModelMap modelo = new ModelMap();
 
         if (usuarioLogueado == null){
-            return new ModelAndView("redirect:/");
+        	ModelMap model= new ModelMap();
+        	model.put("mensaje", "Debes iniciar Sesion para entrar a tu perfil");
+            return new ModelAndView("home",model);
         }
 
         try {

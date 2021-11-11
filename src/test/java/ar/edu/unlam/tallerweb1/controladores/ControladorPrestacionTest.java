@@ -1,8 +1,8 @@
-
 package ar.edu.unlam.tallerweb1.controladores;
 
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioDenunciaL;
+import ar.edu.unlam.tallerweb1.servicios.ServicioFavoritos;
 import org.junit.Test;
 import java.util.List;
 import org.junit.Assert;
@@ -28,6 +28,8 @@ public class ControladorPrestacionTest {
     private ServicioUsuario servicioUsuario = Mockito.mock(ServicioUsuario.class);
     private ServicioDenunciaL servicioDenunciaL = Mockito.mock(ServicioDenunciaL.class);
     private ControladorPerfil controlador = new ControladorPerfil(servicioPrestacion, servicioUsuario,servicioDenunciaL);
+    private ServicioFavoritos servicioFavoritos = Mockito.mock(ServicioFavoritos.class);
+    private ControladorPerfil controlador = new ControladorPerfil(servicioPrestacion, servicioUsuario, servicioFavoritos);
     private HttpServletRequest request = Mockito.mock(HttpServletRequest.class);
     private ControladorPrestacion controladorPrestacion= new ControladorPrestacion(servicioPrestacion,servicioUsuario,request);
 

@@ -1,7 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="input" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,11 +13,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link href="css/Login.css" rel="stylesheet">
-    <title>Perfil Usuario</title>
+    <title>Perfil Asistente</title>
 </head>
 
 <body class="fondo-login ">
-
 <header>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <div class="container-fluid">
@@ -43,10 +41,6 @@
         </div>
     </nav>
 </header>
-
-
-
-
 <div class="container-fluid  mt-5 rounded-3 ">
     <div class="row w-100 bg-light m-auto p-1 justify-content-md-center" style="max-width: 1250px;">
         <div class="col-12 px-1">
@@ -54,24 +48,16 @@
                 <ul class="nav nav-pills nav-pills-sm nav-light mb-2"> <!-- empieza botones-->
                     <li class="nav-item">
                         <a class="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder me-2 ${seccion.equals("perfil") ? "active" : ""}"
-                           href="perfilUsuario">Mi Perfil</a>
+                           href="perfilUsuario">Perfil de Asistente</a>
                     </li>
-                    <li class="nav-item">
+                    <%--<li class="nav-item">
                         <a class="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder me-2 ${seccion.equals("historial") ? "active" : ""}"
                            href="mostrar-historial">Mis Contrataciones</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder me-2 ${seccion.equals("historialDenuncias") ? "active" : ""}"
-                           href="mostrar-denuncias" href="#primary-tab-3">Mis Denuncias</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder me-2 ${seccion.equals("favoritos") ? "active" : ""}"
-                           href="mostrar-favoritos">Mis favoritos</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder"
-                           data-bs-toggle="tab" href="#primary-tab-4">Algo</a>
-                    </li>
+                           data-bs-toggle="tab" href="#primary-tab-3">Algo</a>
+                    </li>--%>
                 </ul><!-- Termina botones-->
                 <div class="tab-content">
                     <!-- Empieza primer boton-->
@@ -82,14 +68,50 @@
                             <div class="bg-danger col-12 col-md-6 d-flex bg-white align-content-center justify-content-center">
                                 <div class="d-flex align-items-center flex-column w-75  align-content-center justify-content-center flex-wrap text-center">
                                     <img src="imagenes/perfil.png" alt="Foto Perfil" class="" width=150 height=150/>
-                                    <h3 class="mt-3">${usuarioEnSession.nombre} ${usuarioEnSession.apellido}</h3>
-                                    <p class="text-muted m-0">${usuarioEnSession.email}</p>
+                                    <h3 class="mt-3">${asistente.nombre} ${asistente.apellido}</h3>
+                                    <p class="text-muted m-0">${asistente.email}</p>
                                     <p class="text-muted m-0">Argentino</p>
+
+                                    <c:if test="${usuarioLogueado}">
+                                        <c:if test="${esFavorito}">
+                                            <%--<form:form action="validar-login" method="POST" modelAttribute="datosLogin">
+                                                <h3 class="form-signin-heading">Taller Web I</h3>
+                                                <hr class="colorgraph"><br>
+
+                                                &lt;%&ndash;Elementos de entrada de datos, el elemento path debe indicar en que atributo del objeto usuario se guardan los datos ingresados&ndash;%&gt;
+                                                <form:input path="email" id="email" type="email" class="form-control" />
+                                                <form:input path="password" type="password" id="password" class="form-control"/>
+
+                                                <button class="btn btn-lg btn-primary btn-block" Type="Submit"/>Login</button>
+                                            </form:form>--%>
+
+
+                                            <form:form action="removerFavorito" method="post" modelAttribute="irAsistentePerfilRequest" cssClass="btn btn-danger mt-4">
+                                                <form:input path="asistenteId" id="asistenteId" type="text" value="${asistente.id}" cssStyle="display: none" />
+                                                <%--<input path="asistenteId" id="asistenteId" type="number" hidden value="${asistente.id}">--%>
+                                                <button type="submit" class="text-white btn btn-link text-decoration-none" style="padding: 0">Remover Favoritos</button>
+                                            </form:form>
+                                            <%--<div class="btn btn-danger mt-5">
+                                                <a href="removerFavorito?asistente-id=${asistente.id}" class="text-decoration-none text-white">Remover de favoritos</a>
+                                            </div>--%>
+                                        </c:if>
+                                        <c:if test="${esFavorito == false}">
+                                            <form:form action="adherirFavorito" method="post" modelAttribute="irAsistentePerfilRequest" cssClass="btn btn-danger mt-4">
+                                                <form:input path="asistenteId" id="asistenteId" type="text" value="${asistente.id}" cssStyle="display: none" />
+                                                <%--<input path="asistenteId" id="asistenteId" type="number" hidden value="${asistente.id}">--%>
+                                                <button type="submit" class="text-white btn btn-link text-decoration-none" style="padding: 0">Agregar a favoritos</button>
+                                            </form:form>
+
+                                            <%--<div class="btn btn-danger mt-5">
+                                                <a href="adherirFavorito?asistente-id=${asistente.id}" class="text-decoration-none text-white">Agregar a favoritos</a>
+                                            </div>--%>
+                                        </c:if>
+                                    </c:if>
                                 </div>
                             </div>
                             <!-- termina foto perfil-->
 
-                            <!-- empieza tabla-->
+                            <!-- empieza tabla -->
                             <div class="col-12 col-md-6 d-flex align-items-center bg-white ">
                                 <div class="w-100">
                                     <table class="table table-hover table-borderless mt-2">
@@ -98,26 +120,26 @@
                                             <th scope="row">
                                                 <spa class="text-muted fw-normal">Nombre</spa>
                                             </th>
-                                            <td class="user-avatar fw-bold">${usuarioEnSession.nombre}
-                                                ${usuarioEnSession.apellido}</td>
+                                            <td class="user-avatar fw-bold">${asistente.nombre}
+                                                ${asistente.apellido}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">
                                                 <spa class="text-muted fw-normal">Rol</spa>
                                             </th>
-                                            <td class="user-avatar fw-bold">${usuarioEnSession.rol.descripcion}</td>
+                                            <td class="user-avatar fw-bold">${asistente.rol.descripcion}</td>
                                         </tr>
                                         <tr class="table-primary">
                                             <th scope="row">
                                                 <spa class="text-muted fw-normal">Mail</spa>
                                             </th>
-                                            <td class="user-avatar fw-bold">${usuarioEnSession.email}</td>
+                                            <td class="user-avatar fw-bold">${asistente.email}</td>
                                         </tr>
                                         <tr class="">
                                             <th scope="row">
                                                 <spa class="text-muted fw-normal">Ciudad</spa>
                                             </th>
-                                            <td class="user-avatar fw-bold">${usuarioEnSession.provincia.nombre}
+                                            <td class="user-avatar fw-bold">${asistente.provincia.nombre}
                                             </td>
                                         </tr>
                                         <tr class="table-primary">
@@ -130,99 +152,13 @@
                                     </table>
                                 </div>
                             </div>
-                            <!--termina tabla-->
+                            <!-- termina tabla -->
 
                             <p>Promedio De Calificacion: ${promedio}</p>
-
-                            <!-- empieza suscripcion-->
-                            <div class="bg-white col-12 col-md-10 d-flex flex-column flex-md-row p-2 mb-2 mt-3 align-items-center justify-content-evenly">
-                                <c:choose>
-                                    <c:when test="${not empty usuarioEnSession.suscripcion.id}">
-                                        <c:choose>
-                                            <c:when test="${usuarioEnSession.suscripcion.descripcion=='suscripcion basica'}">
-                                                <div class=" d-flex w-25 align-content-center justify-content-center flex-wrap">
-                                                    <i class="fas fa-shield-alt  fa-6x "></i>
-                                                </div>
-                                            </c:when>
-                                            <c:otherwise>
-                                                <div class=" d-flex w-25 align-content-center justify-content-center flex-wrap">
-                                                    <i class="fas fa-khanda fa-6x "></i>
-                                                </div>
-                                            </c:otherwise>
-                                        </c:choose>
-
-                                        <div class=" d-flex flex-column ">
-                                            <h6 class="mb-3 text-sm">${usuarioEnSession.suscripcion.descripcion}</h6>
-                                            <span class="mb-2 text-xs">Fecha alta: <span
-                                                    class="text-dark font-weight-bold ms-sm-2">${usuarioEnSession.suscripcion.fechaAlta}</span></span>
-                                            <span class="mb-2 text-xs">Precio: <span
-                                                    class="text-dark ms-sm-2 font-weight-bold">$${usuarioEnSession.suscripcion.precio}</span></span>
-                                            <span class="text-xs">Servicios: <span
-                                                    class="text-dark ms-sm-2 font-weight-bold">
-                        <c:choose>
-                            <c:when test="${usuarioEnSession.suscripcion.descripcion=='suscripcion basica'}">
-                                <i class="fas fa-wrench mr-2"></i>
-                                <i class="fas fa-ambulance mr-2"></i>
-                                <i class="fas fa-truck-pickup mr-2"></i>
-                            </c:when>
-                            <c:otherwise>
-                                <i class="fas fa-wrench mr-2"></i>
-                                <i class="fas fa-ambulance mr-2"></i>
-                                <i class="fas fa-truck-pickup mr-2"></i>
-                                <i class="fas fa-balance-scale-left mr-2"></i>
-                                <i class="fas fa-people-arrows mr-2"></i>
-                                <i class="fas fa-helicopter mr-2"></i>
-                            </c:otherwise>
-                        </c:choose>
-                    </span></span>
-
-                                        </div>
-
-                                        <div class="text-end">
-                                            <form:form action="cancelarSuscripcion" method="POST">
-                                                <button type="submit"
-                                                        class="btn btn-link text-danger text-gradient px-3 mb-0">
-                                                    <i class="far fa-trash-alt me-2" aria-hidden="true"></i>Dar Baja
-                                                </button>
-                                            </form:form>
-                                            <c:choose>
-                                                <c:when test="${usuarioEnSession.suscripcion.descripcion=='suscripcion basica'}">
-                                                    <form:form action="modificarSuscripcionBasicaUsuario" method="POST">
-                                                        <button type="submit"
-                                                                class="btn btn-link text-success text-gradient px-3 mb-0">
-                                                            <i class="far fa-arrow-alt-circle-up"
-                                                               aria-hidden="true"></i>UpGrade
-                                                        </button>
-                                                    </form:form>
-                                                </c:when>
-                                                <c:otherwise>
-                                                    <form:form action="modificarSuscripcionPremiumUsuario"
-                                                               method="POST">
-                                                        <button type="submit"
-                                                                class="btn btn-link text-warning text-gradient px-3 mb-0">
-                                                            <i class="far fa-arrow-alt-circle-down"
-                                                               aria-hidden="true"></i>DownGrade
-                                                        </button>
-                                                    </form:form>
-                                                </c:otherwise>
-                                            </c:choose>
-                                        </div>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <div class="fondo-login col-12 text-center text-white align-items-center py-1 mt-2">
-                                            <p class="m-0">¡No tienes Suscripcion! Puede contratar uno <a
-                                                    class="text-white"
-                                                    href="suscripcion">aqui</a>
-                                            </p>
-                                        </div>
-                                    </c:otherwise>
-                                </c:choose>
-                            </div>
-                            <!--termina suscripcion-->
                         </div>
                     </div>
-                    <!-- Termina primer boton-->
-                    <!-- Empieza segundo boton-->
+                    <!-- Termina primer boton -->
+                    <!-- Empieza segundo boton -->
                     <div class="tab-pane ${seccion.equals("historial") ? "active" : ""}" id="primary-tab-2"
                          role="tabpanel">
                         <div class="row w-100  row w-100 h-100 m-auto justify-content-md-center">
@@ -246,7 +182,8 @@
                                 </div>
                                 <c:choose>
                                     <c:when test="${empty historial}">
-                                        <div class="d-flex justify-content-center align-items-center" style="width: 100%; height: 24em">
+                                        <div class="d-flex justify-content-center align-items-center"
+                                             style="width: 100%; height: 24em">
                                             <h4>Todavía no realizaste ninguna contratación</h4>
                                         </div>
                                     </c:when>
@@ -256,8 +193,8 @@
                                                 <p class="my-auto" style="width:20%;">#${prestacion.id}</p>
                                                 <p class="my-auto"
                                                    style="width:20%;">${prestacion.usuarioAsistente.especialidad.descripcion}</p>
-                                                <a class="my-auto" href="asistentePerfil?asistente-id=${prestacion.usuarioAsistente.id}"
-                                                   style="width:20%;">${prestacion.usuarioAsistente.nombre} ${prestacion.usuarioAsistente.apellido}</a>
+                                                <p class="my-auto"
+                                                   style="width:20%;">${prestacion.usuarioAsistente.nombre} ${prestacion.usuarioAsistente.apellido}</p>
                                                 <p class="my-auto" style="width:20%;">11/23/22</p>
                                                 <c:if test="${prestacion.estado=='activo'}">
                                                     <p class="ps-9 my-auto" style="width:20%;"><span
@@ -317,35 +254,42 @@
                                                 </c:if>
                                                 <c:if test="${prestacion.calificacionDadaPorElCliente==null and prestacion.estado=='activo'}">
 
-                                                   <%-- <form:form  class="" style="width:20%;" action="finalizarPrestacion" method="post" modelAttribute="prestacion">
+                                                    <%-- <form:form  class="" style="width:20%;" action="finalizarPrestacion" method="post" modelAttribute="prestacion">
 
-                                                        <form:input type="hidden" path="id" id="id" value="${prestacion.id}"/>
-                                                        <form:input type="hidden" path="estado" id="estado" value="${prestacion.estado}"/>
+                                                         <form:input type="hidden" path="id" id="id" value="${prestacion.id}"/>
+                                                         <form:input type="hidden" path="estado" id="estado" value="${prestacion.estado}"/>
 
-                                                    <button type="submit" class="my-auto py-1 px-3 finalizar font-weight-bold redondeadoEstado"
-                                                            style="width:20%;"> Finalizar
-                                                    </button>
+                                                     <button type="submit" class="my-auto py-1 px-3 finalizar font-weight-bold redondeadoEstado"
+                                                             style="width:20%;"> Finalizar
+                                                     </button>
 
-                                                    </form:form>--%>
-                                                        <a href="irADetallePrestacionFinalida?prestacion=${prestacion.id}" class="my-auto py-1 px-3 finalizar font-weight-bold redondeadoEstado"
-                                                                style="width:20%;"> Finalizar
-                                                        </a>
+                                                     </form:form>--%>
+                                                    <a href="irADetallePrestacionFinalida?prestacion=${prestacion.id}"
+                                                       class="my-auto py-1 px-3 finalizar font-weight-bold redondeadoEstado"
+                                                       style="width:20%;"> Finalizar
+                                                    </a>
                                                 </c:if>
 
                                                 <c:if test="${prestacion.calificacionDadaPorElCliente==null and prestacion.estado == 'finalizado'}">
-                                                    <a href="irADetallePrestacionFinalida?prestacion=${prestacion.id}" class="my-auto py-1 px-3 finalizar font-weight-bold redondeadoEstado"
-                                                       style="width:20%;"> Calificar
-                                                    </a>
+                                                    <button class="my-auto py-1 px-3 calificar font-weight-bold redondeadoEstado "
+                                                            data-bs-toggle="modal" data-bs-target="#exampleModal1"
+                                                            style="width:20%;"> Calificar
+                                                    </button>
                                                 </c:if>
 
                                                 <c:if test="${prestacion.calificacionDadaPorElCliente==null and prestacion.estado == 'cancelado'}">
 
-
-                                                    <a href="irADetallePrestacionFinalida?prestacion=${prestacion.id}" class="my-auto py-1 px-3 finalizar font-weight-bold redondeadoEstado"
-                                                       style="width:20%;"> Calificar
-                                                    </a>
+                                                    <form:form style="width:20%;"
+                                                               action="contratar-prestacion?asistente-id=${prestacion.usuarioAsistente.id}"
+                                                               method="get">
+                                                        <button class="my-auto py-1 px-3 calificar font-weight-bold redondeadoEstado w-100">
+                                                            Calificar
+                                                        </button>
+                                                    </form:form>
                                                 </c:if>
-                                                <button class="my-auto py-1 px-3 denunciar font-weight-bold redondeadoEstado" style="width:20%;"> Denunciar </button>
+                                                <button class="my-auto py-1 px-3 denunciar font-weight-bold redondeadoEstado"
+                                                        style="width:20%;"> Denunciar
+                                                </button>
                                             </div>
 
                                         </c:forEach>
@@ -355,93 +299,24 @@
                         </div>
                     </div>
                     <!-- Termina segundo boton-->
-                    <!-- Favoritos -->
-                    <div class="tab-pane ${seccion.equals("favoritos") ? "active" : ""}" id="primary-tab-4"
-                         role="tabpanel">
-                        <div class="row w-100  row w-100 h-100 m-auto justify-content-md-center">
-
-                            <div class="col-12 p-2 ">
-                                <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
-                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">Asistente</p>
-                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;"></p>
-                                </div>
-                                <c:choose>
-                                    <c:when test="${empty favoritos}">
-                                        <div class="d-flex justify-content-center align-items-center" style="width: 100%; height: 24em">
-                                            <h4>Todavía no tenés un asistentes favoritos</h4>
-                                        </div>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <c:forEach items="${favoritos}" var="favorito">
-                                            <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
-                                                <p class="my-auto"
-                                                   style="width:20%;">${favorito.asistente.fullName()}</p>
-
-                                                <form:form action="removerFavoritoUsuarioPerfil" method="post" modelAttribute="irAsistentePerfilRequest" cssClass="btn btn-danger mt-4">
-                                                    <form:input path="asistenteId" id="asistenteId" type="text" value="${favorito.asistente.id}" cssStyle="display: none" />
-                                                    <%--<input path="asistenteId" id="asistenteId" type="number" hidden value="${asistente.id}">--%>
-                                                    <button type="submit" class="text-white btn btn-link text-decoration-none" style="padding: 0">Remover Favoritos</button>
-                                                </form:form>
-                                            </div>
-
-                                        </c:forEach>
-                                    </c:otherwise>
-                                </c:choose>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Favoritos -->
                     <!-- Empieza tercer boton-->
-                    <div class="tab-pane ${seccion.equals("historialDenuncias") ? "active" : ""}" id="primary-tab-3"
-                         role="tabpanel">
-                        <div class="row w-100  row w-100 h-100 m-auto justify-content-md-center">
-                            <div class="col-12 p-2 ">
-                                <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
-                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">N°
-                                        Prestacion</p>
-                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">
-                                        Servicio</p>
-                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">
-                                        Usuario Denunciado</p>
-                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">
-                                        Motivo De la Denuncia</p>
-                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">
-                                        Detalles de la Denuncia</p>
-                                </div>
-                            </div>
-                            <c:forEach items="${listaDenunciasHechas}" var="denunciaHechas">
-                                <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
-                                    <p class="my-auto" style="width:20%;">N° ${denunciaHechas.prestacion.id}</p>
-                                    <p class="my-auto"
-                                       style="width:20%;">${denunciaHechas.usuarioDenunciado.especialidad.descripcion}</p>
-                                    <p class="my-auto"
-                                       style="width:20%;">${denunciaHechas.usuarioDenunciado.nombre} ${denunciaHechas.usuarioDenunciado.apellido}</p>
-                                    <p class="my-auto" style="width:20%;">${denunciaHechas.motivo}</p>
-                                    <button class="my-auto py-1 px-3 denunciar font-weight-bold redondeadoEstado" style="width:20%;">Ver Detalles </button>
-                                </div>
-                            </c:forEach>
-                        </div>
-                    </div>
-                    <!-- Termina tercer boton-->
-                    <!-- Empieza cuarto boton-->
-                    <div class="tab-pane" id="primary-tab-4" role="tabpanel">
+                    <div class="tab-pane" id="primary-tab-3" role="tabpanel">
                         <div class="row w-100 bg-info row w-100 h-100 m-auto justify-content-md-center px-2">
                             <div class="bg-white col-12 d-flex flex-column  p-2 mb-2 mt-2 align-items-center">
                                 <h4 class="text-muted"> Proximamente...</h4>
                                 <p class=" text-muted"><i class="fas fa-tools"></i> Estamos Trabajando para que quede
                                     bonito <i class="fas fa-tools"></i></p>
-
                             </div>
                         </div>
                     </div>
-                    <!-- Termina cuarto boton-->
+                    <!-- Termina tercer boton-->
                 </div>
             </div>
         </div>
+    </div>
 </div>
 
-</div>
-<!--<footer class="page-footer font-small color-light bg-dark text-light mt-4" style="width: 100vw;  bottom: 0">
+<footer class="page-footer font-small color-light bg-dark text-light">
 
     <div>
         <div class="container">
@@ -475,49 +350,61 @@
 
     </div>
 
-
     <div class="container text-center text-md-left mt-5">
 
 
         <div class="row mt-3">
 
-
-            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-
-                <h6 class="text-uppercase font-weight-bold">Acceso directo</h6>
-                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-                <p>
-                    <a href="#!">Login</a>
-                </p>
-                <p>
-                    <a href="#!">Registro</a>
-                </p>
-
-                <p>
-                    <a href="#!">Ayuda</a>
-                </p>
-
-            </div>
-
             <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
 
-                <h6 class="text-uppercase font-weight-bold">Contacto</h6>
                 <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
                 <p>
                     <i class="fas fa-home mr-3"></i> calle Siempre viva 742, Springfield</p>
+            </div>
+
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
                 <p>
                     <i class="fas fa-envelope mr-3"></i> info@asegurapp.com</p>
+            </div>
+
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
                 <p>
                     <i class="fas fa-phone mr-3"></i> +011 4444-4444 </p>
-
             </div>
 
         </div>
-        <div class="footer-copyright text-center py-3"> 2021 Copyright: AsegurAPP
+
+        <div
+                class="footer-copyright text-center py-3">© 2021 Copyright: AsegurAPP
+        </div>
+
+    </div>
+
+</footer>
+<c:if test="${not empty error}">
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div id="toast-error" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto">Error</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+               ${error}
+            </div>
         </div>
     </div>
-</footer>-->
 
+    <script>
+        window.onload = () => {
+            let element = document.querySelector('#toast-error')
+            let toast = new bootstrap.Toast(element)
+            toast.show()
+        }
+    </script>
+
+</c:if>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
         integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous">
@@ -530,6 +417,7 @@
 </script>
 <script src="js/popper.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
         crossorigin="anonymous"></script>
+
 </body>
 
 </html>

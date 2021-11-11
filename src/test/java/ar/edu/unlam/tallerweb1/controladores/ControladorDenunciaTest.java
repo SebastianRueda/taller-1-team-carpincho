@@ -7,6 +7,7 @@ import static org.mockito.Mockito.*;
 import ar.edu.unlam.tallerweb1.modelo.Denuncia;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioDenunciaL;
+import ar.edu.unlam.tallerweb1.servicios.ServicioFavoritos;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPrestacion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
 import org.junit.Test;
@@ -23,7 +24,8 @@ public class ControladorDenunciaTest {
     private HttpServletRequest request = mock(HttpServletRequest.class);
     private ServicioPrestacion servicioPrestacion = mock(ServicioPrestacion.class);
     private ServicioUsuario servicioUsuario = mock(ServicioUsuario.class);
-    private ControladorPerfil controladorPerfil= new ControladorPerfil(servicioPrestacion,servicioUsuario,servicioDenunciaL);
+    private ServicioFavoritos servicioFavoritos = mock(ServicioFavoritos.class);
+    private ControladorPerfil controladorPerfil= new ControladorPerfil(servicioPrestacion,servicioUsuario,servicioDenunciaL, servicioFavoritos);
     private HttpSession session = Mockito.mock(HttpSession.class);
 
     public void crearSession(Usuario usuario){

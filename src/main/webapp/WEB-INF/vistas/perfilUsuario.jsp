@@ -36,7 +36,13 @@
                         <a class="nav-link" href="perfilUsuario">Perfil</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="traerEspecialidades">Contratar</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="suscripcion">Suscripción</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cerrarSesion">Cerrar Sesion</a>
                     </li>
                 </ul>
             </div>
@@ -46,7 +52,7 @@
 
 
 
-
+<div class="container">
 <div class="container-fluid  mt-5 rounded-3 ">
     <div class="row w-100 bg-light m-auto p-1 justify-content-md-center" style="max-width: 1250px;">
         <div class="col-12 px-1">
@@ -63,6 +69,10 @@
                     <li class="nav-item">
                         <a class="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder me-2 ${seccion.equals("historialDenuncias") ? "active" : ""}"
                            href="mostrar-denuncias" href="#primary-tab-3">Mis Denuncias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder me-2 ${seccion.equals("favoritos") ? "active" : ""}"
+                           href="mostrar-favoritos">Mis Favoritos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder"
@@ -320,8 +330,8 @@
                                                 <p class="my-auto" style="width:20%;">#${prestacion.id}</p>
                                                 <p class="my-auto"
                                                    style="width:20%;">${prestacion.usuarioAsistente.especialidad.descripcion}</p>
-                                                <p class="my-auto"
-                                                   style="width:20%;">${prestacion.usuarioAsistente.nombre} ${prestacion.usuarioAsistente.apellido}</p>
+                                                <a class="my-auto" href="asistentePerfil?asistente-id=${prestacion.usuarioAsistente.id}"
+                                                   style="width:20%;">${prestacion.usuarioAsistente.nombre} ${prestacion.usuarioAsistente.apellido}</a>
                                                 <p class="my-auto" style="width:20%;">11/23/22</p>
                                                 <c:if test="${prestacion.estado=='activo'}">
                                                     <p class="ps-9 my-auto" style="width:20%;"><span
@@ -408,6 +418,42 @@
                         </div>
                     </div>
                     <!-- Termina segundo boton-->
+                    <!-- Favoritos -->
+                    <div class="tab-pane ${seccion.equals("favoritos") ? "active" : ""}" id="primary-tab-4"
+                         role="tabpanel">
+                        <div class="row w-100  row w-100 h-100 m-auto justify-content-md-center">
+
+                            <div class="col-12 p-2 ">
+                                <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
+                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">Asistente</p>
+                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;"></p>
+                                </div>
+                                <c:choose>
+                                    <c:when test="${empty favoritos}">
+                                        <div class="d-flex justify-content-center align-items-center" style="width: 100%; height: 24em">
+                                            <h4>Todavía no tenés asistentes favoritos</h4>
+                                        </div>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:forEach items="${favoritos}" var="favorito">
+                                            <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
+                                                <p class="my-auto"
+                                                   style="width:20%;">${favorito.asistente.fullName()}</p>
+
+                                                <form:form action="removerFavoritoUsuarioPerfil" method="post" modelAttribute="irAsistentePerfilRequest" cssClass="btn btn-danger mt-4">
+                                                    <form:input path="asistenteId" id="asistenteId" type="text" value="${favorito.asistente.id}" cssStyle="display: none" />
+                                                    <%--<input path="asistenteId" id="asistenteId" type="number" hidden value="${asistente.id}">--%>
+                                                    <button type="submit" class="text-white btn btn-link text-decoration-none" style="padding: 0">Remover Favoritos</button>
+                                                </form:form>
+                                            </div>
+
+                                        </c:forEach>
+                                    </c:otherwise>
+                                </c:choose>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Favoritos -->
                     <!-- Empieza tercer boton-->
                     <div class="tab-pane ${seccion.equals("historialDenuncias") ? "active" : ""}" id="primary-tab-3"
                          role="tabpanel">
@@ -447,7 +493,7 @@
                                 <h4 class="text-muted"> Proximamente...</h4>
                                 <p class=" text-muted"><i class="fas fa-tools"></i> Estamos Trabajando para que quede
                                     bonito <i class="fas fa-tools"></i></p>
-                            
+
                             </div>
                         </div>
                     </div>
@@ -456,13 +502,11 @@
             </div>
         </div>
 </div>
-
 </div>
-<!--<footer class="page-footer font-small color-light bg-dark text-light mt-4" style="width: 100vw;  bottom: 0">
-
+</div>
+<footer class="page-footer font-small color-light bg-dark text-light">
     <div>
         <div class="container">
-
             <div class="col-md-6 col-lg-7 text-center text-md-right">
 
                 <a class="fb-ic">
@@ -492,7 +536,6 @@
 
     </div>
 
-
     <div class="container text-center text-md-left mt-5">
 
 
@@ -517,7 +560,6 @@
             </div>
 
             <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-
                 <h6 class="text-uppercase font-weight-bold">Contacto</h6>
                 <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
                 <p>
@@ -526,14 +568,12 @@
                     <i class="fas fa-envelope mr-3"></i> info@asegurapp.com</p>
                 <p>
                     <i class="fas fa-phone mr-3"></i> +011 4444-4444 </p>
-
             </div>
-
         </div>
-        <div class="footer-copyright text-center py-3"> 2021 Copyright: AsegurAPP
-        </div>
+        <div class="footer-copyright text-center py-3">� 2021 Copyright: AsegurAPP</div>
     </div>
-</footer>-->
+
+</footer>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"

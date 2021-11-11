@@ -36,6 +36,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="suscripcion">Suscripción</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cerrarSesion">Cerrar Sesion</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -59,12 +62,15 @@
                     </form>	--%>
             <%-- </c:if> --%>
 
-
+                <div class="container">
+                    <a href="traerEspecialidades" style="color: white">Volver a la página anterior</a>
+                        <br>
+                        <br>
             <div class="col-12 ">
                 <div class="card card-table">
                     <div class="card-header">
 
-                        <div class="title">Lista de Usuarios</div>
+                        <div class="title text-primary text-center fw-bold"><i class="fas fa-users "></i> Lista de Usuarios</div>
                     </div>
                     <div class="card-body table-responsive">
                         <table class="table  table-hover">
@@ -118,6 +124,7 @@
         <br>
         <br>
     </div>
+</div>
 </div>
 
 

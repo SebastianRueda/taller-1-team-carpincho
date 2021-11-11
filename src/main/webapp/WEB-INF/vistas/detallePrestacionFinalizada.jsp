@@ -46,7 +46,7 @@
 </nav>
 
 <div class="w-100 container-fluid  mt-5  rounded-3 bg-light" style="max-width: 1024px;">
-    <div class="card card-body p-5 ">
+    <div class="card card-body p-5 mb-5">
         <div class="row">
             <div class="col text-end">
 

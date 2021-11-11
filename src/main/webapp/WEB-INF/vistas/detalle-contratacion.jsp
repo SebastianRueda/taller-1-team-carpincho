@@ -70,7 +70,7 @@
                             <h5 class="card-title">Estado</h5>
                             <P class="card-text">${prestacion.estado}</P>
 
-/*
+
                             <div class="card">
                                 <div class=" d-flex card-body align-items-center justify-content-center w-100 pt-4  m-0 ">
                                     <!-- Category -->
@@ -175,13 +175,6 @@
                                 </div>
                             </div>
                         </div>
-                                */
-                                <%--@elvariable id="prestacion" type="ar.edu.unlam.tallerweb1.modelo.Prestacion"--%>
-                            <form:form action="finalizarPrestacion" method="post" modelAttribute="prestacion">
-                                <form:hidden  path="id" id="id" value="${prestacion.id}"/>
-                                <form:hidden  path="estado" id="estado" value="${prestacion.estado}"/>
-                                <button type="submit" class="fondo-login rounded-3 btn btn-primary border-0 w-100 shadow-sm ">Finalizar Prestacion</button>
-                            </form:form>
 
                     </div>
                 </div>

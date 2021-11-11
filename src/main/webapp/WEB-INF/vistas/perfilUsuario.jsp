@@ -54,8 +54,8 @@
 
 <div class="container">
 <div class="container-fluid  mt-5 rounded-3 ">
-    <div class="row w-100 bg-light m-auto p-1 justify-content-md-center" style="max-width: 1250px;">
-        <div class="col-12 px-1">
+    <div class="row w-100 bg-light m-auto p-1 justify-content-md-center mb-5" style="max-width: 1250px;">
+        <div class="col-12 px-1 ">
             <div class="tab tab-primary">
                 <ul class="nav nav-pills nav-pills-sm nav-light mb-2"> <!-- empieza botones-->
                     <li class="nav-item">
@@ -504,7 +504,7 @@
 </div>
 </div>
 </div>
-<footer class="page-footer font-small color-light bg-dark text-light">
+<footer class="page-footer font-small color-light bg-dark text-light mt-5">
     <div>
         <div class="container">
             <div class="col-md-6 col-lg-7 text-center text-md-right">

@@ -36,7 +36,13 @@
                         <a class="nav-link" href="perfilUsuario">Perfil</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="traerEspecialidades">Contratar</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="suscripcion">Suscripción</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cerrarSesion">Cerrar Sesion</a>
                     </li>
                 </ul>
             </div>
@@ -46,7 +52,7 @@
 
 
 
-
+<div class="container">
 <div class="container-fluid  mt-5 rounded-3 ">
     <div class="row w-100 bg-light m-auto p-1 justify-content-md-center" style="max-width: 1250px;">
         <div class="col-12 px-1">
@@ -399,13 +405,11 @@
             </div>
         </div>
 </div>
-
 </div>
-<!--<footer class="page-footer font-small color-light bg-dark text-light mt-4" style="width: 100vw;  bottom: 0">
-
+</div>
+<footer class="page-footer font-small color-light bg-dark text-light">
     <div>
         <div class="container">
-
             <div class="col-md-6 col-lg-7 text-center text-md-right">
 
                 <a class="fb-ic">
@@ -435,7 +439,6 @@
 
     </div>
 
-
     <div class="container text-center text-md-left mt-5">
 
 
@@ -460,7 +463,6 @@
             </div>
 
             <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-
                 <h6 class="text-uppercase font-weight-bold">Contacto</h6>
                 <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
                 <p>
@@ -469,14 +471,12 @@
                     <i class="fas fa-envelope mr-3"></i> info@asegurapp.com</p>
                 <p>
                     <i class="fas fa-phone mr-3"></i> +011 4444-4444 </p>
-
             </div>
-
         </div>
-        <div class="footer-copyright text-center py-3"> 2021 Copyright: AsegurAPP
-        </div>
+        <div class="footer-copyright text-center py-3">� 2021 Copyright: AsegurAPP</div>
     </div>
-</footer>-->
+
+</footer>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"

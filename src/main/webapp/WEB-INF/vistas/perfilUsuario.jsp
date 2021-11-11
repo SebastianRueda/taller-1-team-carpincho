@@ -380,14 +380,13 @@
                                                                 class="fas fa-star text-warning"></i></p>
                                                 </c:if>
                                                 <c:if test="${prestacion.calificacionDadaPorElCliente==null and prestacion.estado=='activo'}">
-
-                                                        <a href="irADetallePrestacionFinalida?prestacion=${prestacion.id}" class="my-auto py-1 px-3 finalizar font-weight-bold redondeadoEstado"
-                                                                style="width:20%;"> Finalizar
-                                                        </a>
+                                                    <a href="irADetallePrestacionFinalida?prestacion=${prestacion.id}" class="my-auto py-1 px-3 finalizar font-weight-bold redondeadoEstado text-decoration-none text-center" style="width:20%;">
+                                                        Finalizar
+                                                    </a>
                                                 </c:if>
 
                                                 <c:if test="${prestacion.calificacionDadaPorElCliente==null and prestacion.estado == 'finalizado'}">
-                                                    <a href="irADetallePrestacionFinalida?prestacion=${prestacion.id}" class="my-auto py-1 px-3 finalizar font-weight-bold redondeadoEstado"
+                                                    <a href="irADetallePrestacionFinalida?prestacion=${prestacion.id}" class="my-auto py-1 px-3 finalizar font-weight-bold redondeadoEstado text-decoration-none text-center"
                                                        style="width:20%;"> Calificar
                                                     </a>
                                                 </c:if>
@@ -395,7 +394,7 @@
                                                 <c:if test="${prestacion.calificacionDadaPorElCliente==null and prestacion.estado == 'cancelado'}">
 
 
-                                                    <a href="irADetallePrestacionFinalida?prestacion=${prestacion.id}" class="my-auto py-1 px-3 finalizar font-weight-bold redondeadoEstado"
+                                                    <a href="irADetallePrestacionFinalida?prestacion=${prestacion.id}" class="my-auto py-1 px-3 finalizar font-weight-bold redondeadoEstado text-decoration-none text-center"
                                                        style="width:20%;"> Calificar
                                                     </a>
                                                 </c:if>

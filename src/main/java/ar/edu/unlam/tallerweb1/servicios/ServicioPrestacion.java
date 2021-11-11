@@ -24,4 +24,6 @@ public interface ServicioPrestacion {
     void ClienteCalificaPrestacion(Long idPrestacion, Integer calificacion) throws Exception;
 
     Float obtenerPromedioDeCalificicacionDeUnUsuario(Usuario usuario) throws Exception;
+
+    void cancelarPrestacionActiva(Prestacion prestacion) throws Exception;
 }

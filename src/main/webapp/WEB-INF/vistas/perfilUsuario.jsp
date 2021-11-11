@@ -197,6 +197,10 @@
                            href="mostrar-historial">Mis Contrataciones</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder me-2 ${seccion.equals("favoritos") ? "active" : ""}"
+                           href="mostrar-favoritos">Mis favoritos</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder"
                            data-bs-toggle="tab" href="#primary-tab-3">Algo</a>
                     </li>
@@ -498,6 +502,42 @@
                         </div>
                     </div>
                     <!-- Termina segundo boton-->
+                    <!-- Favoritos -->
+                    <div class="tab-pane ${seccion.equals("favoritos") ? "active" : ""}" id="primary-tab-4"
+                         role="tabpanel">
+                        <div class="row w-100  row w-100 h-100 m-auto justify-content-md-center">
+
+                            <div class="col-12 p-2 ">
+                                <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
+                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">Asistente</p>
+                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;"></p>
+                                </div>
+                                <c:choose>
+                                    <c:when test="${empty favoritos}">
+                                        <div class="d-flex justify-content-center align-items-center" style="width: 100%; height: 24em">
+                                            <h4>Todavía no tenés un asistentes favoritos</h4>
+                                        </div>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:forEach items="${favoritos}" var="favorito">
+                                            <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
+                                                <p class="my-auto"
+                                                   style="width:20%;">${favorito.asistente.fullName()}</p>
+
+                                                <form:form action="removerFavoritoUsuarioPerfil" method="post" modelAttribute="irAsistentePerfilRequest" cssClass="btn btn-danger mt-4">
+                                                    <form:input path="asistenteId" id="asistenteId" type="text" value="${favorito.asistente.id}" cssStyle="display: none" />
+                                                    <%--<input path="asistenteId" id="asistenteId" type="number" hidden value="${asistente.id}">--%>
+                                                    <button type="submit" class="text-white btn btn-link text-decoration-none" style="padding: 0">Remover Favoritos</button>
+                                                </form:form>
+                                            </div>
+
+                                        </c:forEach>
+                                    </c:otherwise>
+                                </c:choose>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Favoritos -->
                     <!-- Empieza tercer boton-->
                     <div class="tab-pane" id="primary-tab-3" role="tabpanel">
                         <div class="row w-100 bg-info row w-100 h-100 m-auto justify-content-md-center px-2">

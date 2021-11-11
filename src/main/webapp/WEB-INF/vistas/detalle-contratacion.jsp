@@ -70,12 +70,112 @@
                             <h5 class="card-title">Estado</h5>
                             <P class="card-text">${prestacion.estado}</P>
 
-                                <%--@elvariable id="prestacion" type="ar.edu.unlam.tallerweb1.modelo.Prestacion"--%>
-                            <form:form action="finalizarPrestacion" method="post" modelAttribute="prestacion">
-                                <form:hidden  path="id" id="id" value="${prestacion.id}"/>
-                                <form:hidden  path="estado" id="estado" value="${prestacion.estado}"/>
-                                <button type="submit" class="fondo-login rounded-3 btn btn-primary border-0 w-100 shadow-sm ">Finalizar Prestacion</button>
-                            </form:form>
+
+                            <div class="card">
+                                <div class=" d-flex card-body align-items-center justify-content-center w-100 pt-4  m-0 ">
+                                    <!-- Category -->
+                                    <div class="kanban-category d-flex ">
+                                        <c:if test="${prestacion.estado=='finalizado'}">
+
+                                            <!-- Item -->
+                                            <div class="kanban-item"><h4 class="text-uppercase">Califica el
+                                                Servicio</h4>
+                                                    <%--@elvariable id="prestacion" type="ar.edu.unlam.tallerweb1.modelo.Prestacion"--%>
+                                                <form:form action="clienteCalifica" method="post" modelAttribute="prestacion">
+
+                                                    <p class="clasificacion">
+                                                        <form:radiobutton path="calificacionDadaPorElCliente" id="radio1"  value="5"/>
+                                                        <label class="labelFormCalificar" for="radio1">★</label>
+
+                                                        <form:radiobutton path="calificacionDadaPorElCliente" id="radio2"
+                                                                          name="estrellas" value="4"/>
+                                                        <label class="labelFormCalificar" for="radio2">★</label>
+
+                                                        <form:radiobutton path="calificacionDadaPorElCliente" id="radio3"
+                                                                          name="estrellas" value="3"/>
+                                                        <label class="labelFormCalificar" for="radio3">★</label>
+
+                                                        <form:radiobutton path="calificacionDadaPorElCliente" id="radio4"
+                                                                          name="estrellas" value="2"/>
+                                                        <label class="labelFormCalificar" for="radio4">★</label>
+
+
+                                                        <form:radiobutton  path="calificacionDadaPorElCliente" id="radio5"
+                                                                           name="estrellas" value="1"/>
+                                                        <label class="labelFormCalificar" for="radio5">★</label>
+                                                    </p>
+
+                                                    <form:hidden path="id" id="id" value="${prestacion.id}"/>
+
+                                                    <button type="submit" class="btn btn-primary">Calificar Prestacion
+                                                    </button>
+                                                </form:form>
+                                            </div>
+                                        </c:if>
+
+                                        <c:if test="${prestacion.estado=='activo'}">
+                                            <div class="mr-4">
+                                                    <%--@elvariable id="prestacion" type="ar.edu.unlam.tallerweb1.modelo.Prestacion"--%>
+                                                <form:form action="finalizarPrestacion" method="post" modelAttribute="prestacion">
+                                                    <form:hidden  path="id" id="id" value="${prestacion.id}"/>
+                                                    <form:hidden  path="estado" id="estado" value="${prestacion.estado}"/>
+                                                    <button type="submit" class="btn btn-primary">Finalizar Prestacion</button>
+                                                </form:form>
+                                            </div>
+
+                                            <div class="mr-1">
+                                                    <%--@elvariable id="prestacion" type="ar.edu.unlam.tallerweb1.modelo.Prestacion"--%>
+                                                <form:form action="clienteCancelaPrestacion" method="post" modelAttribute="prestacion">
+                                                    <form:hidden  path="id" id="id" value="${prestacion.id}"/>
+                                                    <button type="submit" class="btn btn-danger ">Cancelar Prestacion</button>
+                                                </form:form>
+                                            </div>
+
+                                        </c:if>
+
+                                        <c:if test="${prestacion.estado=='cancelado'}">
+                                            <!-- Item -->
+                                            <div class="kanban-item"><h4 class="text-uppercase">Califica el
+                                                Servicio</h4>
+                                                    <%--@elvariable id="prestacion" type="ar.edu.unlam.tallerweb1.modelo.Prestacion"--%>
+                                                <form:form action="clienteCalifica" method="post" modelAttribute="prestacion">
+
+                                                    <p class="clasificacion">
+                                                        <form:radiobutton path="calificacionDadaPorElCliente" id="radio1"  value="5"/>
+                                                        <label class="labelFormCalificar" for="radio1">★</label>
+
+                                                        <form:radiobutton path="calificacionDadaPorElCliente" id="radio2"
+                                                                          name="estrellas" value="4"/>
+                                                        <label class="labelFormCalificar" for="radio2">★</label>
+
+                                                        <form:radiobutton path="calificacionDadaPorElCliente" id="radio3"
+                                                                          name="estrellas" value="3"/>
+                                                        <label class="labelFormCalificar" for="radio3">★</label>
+
+                                                        <form:radiobutton path="calificacionDadaPorElCliente" id="radio4"
+                                                                          name="estrellas" value="2"/>
+                                                        <label class="labelFormCalificar" for="radio4">★</label>
+
+
+                                                        <form:radiobutton  path="calificacionDadaPorElCliente" id="radio5"
+                                                                           name="estrellas" value="1"/>
+                                                        <label class="labelFormCalificar" for="radio5">★</label>
+                                                    </p>
+
+                                                    <form:hidden path="id" id="id" value="${prestacion.id}"/>
+
+                                                    <button type="submit" class="btn btn-primary">Calificar Prestacion
+                                                    </button>
+                                                </form:form>
+                                            </div>
+                                        </c:if>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 </div>

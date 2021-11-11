@@ -111,5 +111,15 @@ public class ServicioPrestacionImpl implements ServicioPrestacion {
         return promedio;
     }
 
+    @Override
+    public void cancelarPrestacionActiva(Prestacion prestacion) throws Exception {
+
+        if (prestacion.getEstado() == "finalizado" || prestacion.getEstado() == "cancelado" ){
+            throw new Exception();
+        }
+        prestacion.setEstado("cancelado");
+        prestacionDao.update(prestacion);
+    }
+
 
 }

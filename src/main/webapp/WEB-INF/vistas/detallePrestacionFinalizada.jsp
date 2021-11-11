@@ -46,7 +46,7 @@
 </nav>
 
 <div class="w-100 container-fluid  mt-5  rounded-3 bg-light" style="max-width: 1024px;">
-    <div class="card card-body p-5 ">
+    <div class="card card-body p-5 mb-5">
         <div class="row">
             <div class="col text-end">
 
@@ -183,9 +183,9 @@
                         <div class="col-md-6">
                             <!-- Card -->
                             <div class="card">
-                                <div class=" d-flex card-body align-items-center ">
+                                <div class=" d-flex card-body align-items-center justify-content-center w-100 pt-4  m-0 ">
                                     <!-- Category -->
-                                    <div class="kanban-category">
+                                    <div class="kanban-category d-flex ">
                                         <c:if test="${prestacion.estado=='finalizado'}">
 
                                             <!-- Item -->
@@ -225,17 +225,23 @@
                                         </c:if>
 
                                         <c:if test="${prestacion.estado=='activo'}">
-                                            <%--@elvariable id="prestacion" type="ar.edu.unlam.tallerweb1.modelo.Prestacion"--%>
-                                            <form:form action="finalizarPrestacion" method="post"
-                                                       modelAttribute="prestacion">
-                                                <form:hidden  path="id" id="id" value="${prestacion.id}"/>
-                                                <form:hidden  path="estado" id="estado"
-                                                            value="${prestacion.estado}"/>
-
-
-                                                <button type="submit" class="btn btn-primary">Finalizar Prestacion
-                                                </button>
+                                        <div class="mr-4">
+                                                <%--@elvariable id="prestacion" type="ar.edu.unlam.tallerweb1.modelo.Prestacion"--%>
+                                            <form:form action="finalizarPrestacion" method="post" modelAttribute="prestacion">
+                                            <form:hidden  path="id" id="id" value="${prestacion.id}"/>
+                                            <form:hidden  path="estado" id="estado" value="${prestacion.estado}"/>
+                                            <button type="submit" class="btn btn-primary">Finalizar Prestacion</button>
                                             </form:form>
+                                        </div>
+
+                                            <div class="mr-1">
+                                                    <%--@elvariable id="prestacion" type="ar.edu.unlam.tallerweb1.modelo.Prestacion"--%>
+                                                <form:form action="clienteCancelaPrestacion" method="post" modelAttribute="prestacion">
+                                                    <form:hidden  path="id" id="id" value="${prestacion.id}"/>
+                                                    <button type="submit" class="btn btn-danger ">Cancelar Prestacion</button>
+                                                </form:form>
+                                            </div>
+
                                         </c:if>
 
                                         <c:if test="${prestacion.estado=='cancelado'}">
@@ -279,7 +285,6 @@
 
                                 </div>
                             </div>
-
                         </div>
                         <div class="col-md-6">
 

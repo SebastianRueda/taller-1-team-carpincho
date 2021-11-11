@@ -51,9 +51,10 @@ public class ControladorSuscripcion {
         return new ModelAndView("suscripcion", modelo);
     }
 
-    @RequestMapping(path = "/contratar-suscripcion", method = RequestMethod.POST)
-    public ModelAndView contratarSuscripcion(@ModelAttribute("Suscripcion") Suscripcion suscripcionAContratar) {
-        Suscripcion suscripcion = servicioSuscripcion.buscarPorNombre(suscripcionAContratar.getDescripcion());
+    @RequestMapping(path = "/contratar-suscripcion-basica", method = RequestMethod.POST)
+    public ModelAndView contratarSuscripcion(@ModelAttribute("suscripcion") Suscripcion suscripcionAContratar) {
+        String suscripcionBasica = "suscripcion basica";
+        Suscripcion suscripcion = servicioSuscripcion.buscarPorNombre(suscripcionBasica);
         HttpSession misession= this.request.getSession(true);
         Usuario usuarioLogueado= (Usuario) misession.getAttribute("usuarioLogueado");
 
@@ -63,6 +64,22 @@ public class ControladorSuscripcion {
         ModelMap model = new ModelMap();
         return new ModelAndView("redirect:/perfilUsuario", model);
     }
+
+    @RequestMapping(path = "/contratar-suscripcion-premium", method = RequestMethod.POST)
+    public ModelAndView contratarSuscripcionPremium(@ModelAttribute("suscripcion") Suscripcion suscripcionAContratar) {
+        String suscripcionPremium = "suscripcion premium";
+        Suscripcion suscripcion = servicioSuscripcion.buscarPorNombre(suscripcionPremium);
+        HttpSession misession= this.request.getSession(true);
+        Usuario usuarioLogueado= (Usuario) misession.getAttribute("usuarioLogueado");
+
+        usuarioLogueado.setSuscripcion(suscripcion);
+        servicioUsuario.update(usuarioLogueado);
+
+        ModelMap model = new ModelMap();
+        return new ModelAndView("redirect:/perfilUsuario", model);
+    }
+
+
 
     @RequestMapping(method = RequestMethod.POST, path = "/cancelarSuscripcion")
     public ModelAndView cancelarSuscripcion(String email) {

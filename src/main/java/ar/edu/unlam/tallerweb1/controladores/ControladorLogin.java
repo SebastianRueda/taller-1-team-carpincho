@@ -103,10 +103,7 @@ public class ControladorLogin {
 		model.put("mensaje", "Debes Iniciar Sesion antes de realizar una suscripcion");
 		return new ModelAndView("home",model);
 	}
-//	HttpSession misession= request.getSession(true);
-//	misession.setAttribute("usuarioLogueado",usuarioBuscado);
-//
-//	return new ModelAndView("redirect:/traerEspecialidades");
+
 	
 	@RequestMapping(path = "/mensajeErrorSuscripcion", method = RequestMethod.GET)
 	public ModelAndView loguearsePrimeroAntesDeSuscribirte() {

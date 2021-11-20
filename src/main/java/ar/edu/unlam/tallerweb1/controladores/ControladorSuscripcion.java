@@ -3,6 +3,7 @@ package ar.edu.unlam.tallerweb1.controladores;
 import ar.edu.unlam.tallerweb1.modelo.Suscripcion;
 
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
+import ar.edu.unlam.tallerweb1.servicios.ServicioFactura;
 import ar.edu.unlam.tallerweb1.servicios.ServicioSuscripcion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,7 @@ public class ControladorSuscripcion {
     private HttpServletRequest request;
     private ServicioSuscripcion servicioSuscripcion;
     private ServicioUsuario servicioUsuario;
+    private ServicioFactura servicioFactura;
 
     private String emailDeLUsuarioDeLaSesion = "ecuevas@alumno.unlam.edu.ar";
 
@@ -29,10 +31,11 @@ public class ControladorSuscripcion {
     private Long idSuscripcionPremium=2l;
 
     @Autowired
-    public ControladorSuscripcion(HttpServletRequest request, ServicioSuscripcion servicioSuscripcion, ServicioUsuario servicioUsuario) {
+    public ControladorSuscripcion(HttpServletRequest request, ServicioSuscripcion servicioSuscripcion, ServicioUsuario servicioUsuario, ServicioFactura servicioFactura) {
         this.request = request;
         this.servicioSuscripcion = servicioSuscripcion;
         this.servicioUsuario = servicioUsuario;
+        this.servicioFactura=servicioFactura;
     }
 
 
@@ -60,7 +63,7 @@ public class ControladorSuscripcion {
 
         usuarioLogueado.setSuscripcion(suscripcion);
         servicioUsuario.update(usuarioLogueado);
-
+        servicioFactura.generarFactura(usuarioLogueado);
         ModelMap model = new ModelMap();
         return new ModelAndView("redirect:/perfilUsuario", model);
     }

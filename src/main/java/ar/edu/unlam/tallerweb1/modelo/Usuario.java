@@ -5,6 +5,8 @@ import javax.persistence.*;
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Provincia;
 
+import java.util.Objects;
+
 // Clase que modela el concepto de Usuario, la anotacion @Entity le avisa a hibernate que esta clase es persistible
 // el paquete ar.edu.unlam.tallerweb1.modelo esta indicado en el archivo hibernateCOntext.xml para que hibernate
 // busque entities en el
@@ -135,5 +137,18 @@ public class Usuario {
     
     public String fullName() {
 		return nombre + " " + apellido;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Usuario usuario = (Usuario) o;
+		return Objects.equals(id, usuario.id) && Objects.equals(nombre, usuario.nombre) && Objects.equals(apellido, usuario.apellido) && Objects.equals(email, usuario.email) && Objects.equals(password, usuario.password) && Objects.equals(especialidad, usuario.especialidad) && Objects.equals(provincia, usuario.provincia) && Objects.equals(rol, usuario.rol) && Objects.equals(activo, usuario.activo) && Objects.equals(cuenta, usuario.cuenta) && Objects.equals(suscripcion, usuario.suscripcion);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, nombre, apellido, email, password, especialidad, provincia, rol, activo, cuenta, suscripcion);
 	}
 }

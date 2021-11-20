@@ -3,6 +3,7 @@ package ar.edu.unlam.tallerweb1.controladores;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioLogin;
 import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
+import ar.edu.unlam.tallerweb1.utils.SessionUtils;
 import ar.edu.unlam.tallerweb1.utils.UsuarioCache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -59,13 +60,12 @@ public class ControladorLogin {
 		// hace una llamada a otro action a traves de la URL correspondiente a esta
 		usuarioBuscado = servicioLogin.consultarUsuario(datosLogin.getEmail(), datosLogin.getPassword());
 		if (usuarioBuscado != null) {
-			UsuarioCache.setUsuario(usuarioBuscado);
 			request.getSession().setAttribute("ROL", usuarioBuscado.getRol());
 
-			HttpSession misession= request.getSession(true);
-			misession.setAttribute("usuarioLogueado",usuarioBuscado);
+			SessionUtils.createSession(request, usuarioBuscado);
+			model.put("usuarioLogueado", usuarioBuscado);
 
-			return new ModelAndView("redirect:/traerEspecialidades");
+			return new ModelAndView("redirect:/traerEspecialidades", model);
 		} else {
 			// si el usuario no existe agrega un mensaje de error en el modelo.
 			model.put("error", "Usuario o clave incorrecta");
@@ -89,8 +89,7 @@ public class ControladorLogin {
 	@RequestMapping(path = "/cerrarSesion", method = RequestMethod.POST)
 	public ModelAndView cerrarSesion( HttpServletRequest request) {
 		usuarioBuscado=null;
-		HttpSession misession= request.getSession(true);
-		misession.setAttribute("usuarioLogueado",usuarioBuscado);
+		SessionUtils.closeSession(request);
 		ModelMap model = new ModelMap();
 		model.put("mensaje", "Debes Iniciar Sesion antes de realizar una suscripcion");
 		return new ModelAndView("home",model);

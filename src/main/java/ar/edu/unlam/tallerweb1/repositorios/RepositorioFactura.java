@@ -6,4 +6,6 @@ import ar.edu.unlam.tallerweb1.modelo.Suscripcion;
 public interface RepositorioFactura {
 
     void generarFactura(Factura factura);
+
+    Factura buscarFacturaPorId(Long id);
 }

@@ -73,13 +73,6 @@ public class ControladorLogin {
 		return new ModelAndView("login", model);
 	}
 
-//	@RequestMapping(path = "/home", method = RequestMethod.POST)
-//	public ModelAndView irAHome(@ModelAttribute("logueado")Boolean logueado, HttpServletRequest request) {
-//		ModelMap model = new ModelMap();
-//		
-//		return new ModelAndView("home");
-//	}
-	
 	@RequestMapping(path = "/home", method = RequestMethod.GET)
 	public ModelAndView irAHome() {
 		ModelMap model = new ModelMap();

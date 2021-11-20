@@ -10,7 +10,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -74,13 +73,6 @@ public class ControladorLogin {
 		return new ModelAndView("login", model);
 	}
 
-//	@RequestMapping(path = "/home", method = RequestMethod.POST)
-//	public ModelAndView irAHome(@ModelAttribute("logueado")Boolean logueado, HttpServletRequest request) {
-//		ModelMap model = new ModelMap();
-//		
-//		return new ModelAndView("home");
-//	}
-	
 	@RequestMapping(path = "/home", method = RequestMethod.GET)
 	public ModelAndView irAHome() {
 		ModelMap model = new ModelMap();

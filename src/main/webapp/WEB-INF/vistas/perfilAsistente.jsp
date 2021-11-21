@@ -74,13 +74,13 @@
 
                                     <c:if test="${usuarioLogueado}">
                                         <c:if test="${esFavorito}">
-                                            <form:form action="removerFavorito" method="post" modelAttribute="irAsistentePerfilRequest" cssClass="btn btn-danger mt-4">
+                                            <form:form action="removerFavorito" method="post" modelAttribute="agregarRemoverAsistenteFavoritoRequest" cssClass="btn btn-danger mt-4">
                                                 <form:input path="asistenteId" id="asistenteId" type="text" value="${asistente.id}" cssStyle="display: none" />
                                                 <button type="submit" class="text-white btn btn-link text-decoration-none" style="padding: 0">Remover Favoritos</button>
                                             </form:form>
                                         </c:if>
                                         <c:if test="${esFavorito == false}">
-                                            <form:form action="adherirFavorito" method="post" modelAttribute="irAsistentePerfilRequest" cssClass="btn btn-primary mt-4">
+                                            <form:form action="adherirFavorito" method="post" modelAttribute="agregarRemoverAsistenteFavoritoRequest" cssClass="btn btn-primary mt-4">
                                                 <form:input path="asistenteId" id="asistenteId" type="text" value="${asistente.id}" cssStyle="display: none" />
                                                 <button type="submit" class="text-white btn btn-link text-decoration-none" style="padding: 0">Agregar a favoritos</button>
                                             </form:form>

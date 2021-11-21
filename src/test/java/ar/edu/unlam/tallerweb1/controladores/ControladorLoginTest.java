@@ -82,7 +82,7 @@ public class ControladorLoginTest {
 		.thenReturn(this.usuario);
 
 		Mockito.when(httpServletRequest.getSession()).thenReturn(httpSession);
-		Mockito.when(httpServletRequest.getSession(true)).thenReturn(httpSession);
+		Mockito.when(httpServletRequest.getSession(Mockito.anyBoolean())).thenReturn(httpSession);
 	}
     
     private ModelAndView whenSeVerificaUsuario(DatosLogin datosParaLoguearse) {

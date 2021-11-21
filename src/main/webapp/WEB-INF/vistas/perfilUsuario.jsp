@@ -442,7 +442,7 @@
                                                 <p class="my-auto"
                                                    style="width:20%;">${favorito.asistente.fullName()}</p>
 
-                                                <form:form action="removerFavoritoUsuarioPerfil" method="post" modelAttribute="irAsistentePerfilRequest" cssClass="btn btn-danger mt-4">
+                                                <form:form action="removerFavoritoUsuarioPerfil" method="post" modelAttribute="agregarRemoverAsistenteFavoritoRequest" cssClass="btn btn-danger mt-4">
                                                     <form:input path="asistenteId" id="asistenteId" type="text" value="${favorito.asistente.id}" cssStyle="display: none" />
                                                     <%--<input path="asistenteId" id="asistenteId" type="number" hidden value="${asistente.id}">--%>
                                                     <button type="submit" class="text-white btn btn-link text-decoration-none" style="padding: 0">Remover Favoritos</button>
@@ -577,6 +577,28 @@
 
 </footer>
 
+<c:if test="${not empty error}">
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div id="toast-error" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto">Error</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                    ${error}
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.onload = () => {
+            let element = document.querySelector('#toast-error')
+            let toast = new bootstrap.Toast(element)
+            toast.show()
+        }
+    </script>
+
+</c:if>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
         integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous">

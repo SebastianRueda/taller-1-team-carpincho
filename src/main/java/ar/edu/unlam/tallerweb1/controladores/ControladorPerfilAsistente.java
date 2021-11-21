@@ -1,7 +1,7 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
-import ar.edu.unlam.tallerweb1.modelo.request.IrAsistentePerfilRequest;
+import ar.edu.unlam.tallerweb1.modelo.request.AgregarRemoverAsistenteFavoritoRequest;
 import ar.edu.unlam.tallerweb1.servicios.ServicioFavoritos;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPrestacion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
@@ -46,7 +46,7 @@ public class ControladorPerfilAsistente {
             model.put("esFavorito", servicioFavoritos.esFavorito(usuario.getId(), asistenteId));
         }
         model.put("seccion", "perfil");
-        model.put("irAsistentePerfilRequest", new IrAsistentePerfilRequest());
+        model.put("agregarRemoverAsistenteFavoritoRequest", new AgregarRemoverAsistenteFavoritoRequest());
 
         var promedio = -1f;
 
@@ -62,7 +62,7 @@ public class ControladorPerfilAsistente {
     }
 
     @RequestMapping(path = "/adherirFavorito", method = RequestMethod.POST)
-    public ModelAndView adherirAsistenteAFavoritos(HttpServletRequest request, @ModelAttribute("irAsistenPerfilRequest") IrAsistentePerfilRequest irAsistentePerfilRequest) {
+    public ModelAndView adherirAsistenteAFavoritos(HttpServletRequest request, @ModelAttribute("irAsistenPerfilRequest") AgregarRemoverAsistenteFavoritoRequest agregarRemoverAsistenteFavoritoRequest) {
         final var model = new ModelMap();
         final var usuario = (Usuario) request.getSession(true).getAttribute("usuarioLogueado");
 
@@ -71,7 +71,7 @@ public class ControladorPerfilAsistente {
             throw new IllegalArgumentException("Usuario no encontrado");
         }
 
-        final var asistente = servicioUsuario.usuarioFindById(irAsistentePerfilRequest.getAsistenteId());
+        final var asistente = servicioUsuario.usuarioFindById(agregarRemoverAsistenteFavoritoRequest.getAsistenteId());
 
         if (asistente == null) {
             // TODO: agregar una vista de error
@@ -86,13 +86,13 @@ public class ControladorPerfilAsistente {
             model.put("error", "No se pudo agregar a tus favoritos");
         }
         model.put("seccion", "perfil");
-        model.put("irAsistentePerfilRequest", new IrAsistentePerfilRequest());
+        model.put("agregarRemoverAsistenteFavoritoRequest", new AgregarRemoverAsistenteFavoritoRequest());
 
         return new ModelAndView("perfilAsistente", model);
     }
 
     @RequestMapping(path = "/removerFavorito", method = RequestMethod.POST)
-    public ModelAndView removerAsistenteAFavoritos(HttpServletRequest request, @ModelAttribute("irAsistenPerfilRequest") IrAsistentePerfilRequest irAsistentePerfilRequest) {
+    public ModelAndView removerAsistenteAFavoritos(HttpServletRequest request, @ModelAttribute("irAsistenPerfilRequest") AgregarRemoverAsistenteFavoritoRequest agregarRemoverAsistenteFavoritoRequest) {
         final var model = new ModelMap();
         final var usuario = (Usuario) request.getSession(true).getAttribute("usuarioLogueado");
 
@@ -101,7 +101,7 @@ public class ControladorPerfilAsistente {
             throw new IllegalArgumentException("Usuario no encontrado");
         }
 
-        final var asistente = servicioUsuario.usuarioFindById(irAsistentePerfilRequest.getAsistenteId());
+        final var asistente = servicioUsuario.usuarioFindById(agregarRemoverAsistenteFavoritoRequest.getAsistenteId());
 
         if (asistente == null) {
             // TODO: agregar una vista de error
@@ -111,14 +111,14 @@ public class ControladorPerfilAsistente {
         model.put("usuarioLogueado", true);
         model.put("asistente", asistente);
 
-        if (servicioFavoritos.removerAsistenteFavorito(usuario.getId(), irAsistentePerfilRequest.getAsistenteId())) {
+        if (servicioFavoritos.removerAsistenteFavorito(usuario.getId(), agregarRemoverAsistenteFavoritoRequest.getAsistenteId())) {
             model.put("esFavorito", false);
         } else {
             model.put("error", "No se pudo remover de la lista de tus favoritos");
         }
 
         model.put("seccion", "perfil");
-        model.put("irAsistentePerfilRequest", new IrAsistentePerfilRequest());
+        model.put("agregarRemoverAsistenteFavoritoRequest", new AgregarRemoverAsistenteFavoritoRequest());
 
         return new ModelAndView("perfilAsistente", model);
     }

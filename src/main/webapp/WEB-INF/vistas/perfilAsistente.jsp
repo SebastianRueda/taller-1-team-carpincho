@@ -50,8 +50,8 @@
     </nav>
 </header>
 <div class="container-fluid  mt-5 rounded-3 ">
-    <div class="row w-100 bg-light m-auto p-1 justify-content-md-center" style="max-width: 1250px;">
-        <div class="col-12 px-1">
+    <div class="row w-100 bg-light m-auto p-2 justify-content-md-center" style="max-width: 1250px;">
+        <div class="col-12">
             <div class="tab tab-primary">
                 <ul class="nav nav-pills nav-pills-sm nav-light mb-2"> <!-- empieza botones-->
                     <li class="nav-item">
@@ -66,7 +66,7 @@
                         <div class="row w-100 bg-light row w-100 h-100 m-auto justify-content-md-center">
                             <!--  empieza foto perfil-->
                             <div class="bg-danger col-12 col-md-6 d-flex bg-white align-content-center justify-content-center">
-                                <div class="d-flex align-items-center flex-column w-75  align-content-center justify-content-center flex-wrap text-center">
+                                <div class="d-flex align-items-center flex-column w-75  align-content-center justify-content-center flex-wrap text-center p-2">
                                     <img src="imagenes/perfil.png" alt="Foto Perfil" class="" width=150 height=150/>
                                     <h3 class="mt-3">${asistente.nombre} ${asistente.apellido}</h3>
                                     <p class="text-muted m-0">${asistente.email}</p>
@@ -110,18 +110,24 @@
                                         </tr>
                                         <tr class="table-primary">
                                             <th scope="row">
+                                                <spa class="text-muted fw-normal">Especialidad</spa>
+                                            </th>
+                                            <td class="user-avatar fw-bold">${asistente.especialidad.descripcion}</td>
+                                        </tr>
+                                        <tr class="">
+                                            <th scope="row">
                                                 <spa class="text-muted fw-normal">Mail</spa>
                                             </th>
                                             <td class="user-avatar fw-bold">${asistente.email}</td>
                                         </tr>
-                                        <tr class="">
+                                        <tr class="table-primary">
                                             <th scope="row">
                                                 <spa class="text-muted fw-normal">Ciudad</spa>
                                             </th>
                                             <td class="user-avatar fw-bold">${asistente.provincia.nombre}
                                             </td>
                                         </tr>
-                                        <tr class="table-primary">
+                                        <tr class="">
                                             <th scope="row">
                                                 <spa class="text-muted fw-normal">Fecha Alta</spa>
                                             </th>
@@ -155,7 +161,7 @@
     </div>
 </div>
 
-<footer class="page-footer font-small color-light bg-dark text-light">
+<footer class="page-footer font-small color-light bg-dark text-light fixed-bottom">
 
     <div>
         <div class="container">

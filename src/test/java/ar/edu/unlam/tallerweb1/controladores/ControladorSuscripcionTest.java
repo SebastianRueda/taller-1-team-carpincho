@@ -2,6 +2,7 @@ package ar.edu.unlam.tallerweb1.controladores;
 
 import ar.edu.unlam.tallerweb1.modelo.Suscripcion;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
+import ar.edu.unlam.tallerweb1.servicios.ServicioFactura;
 import ar.edu.unlam.tallerweb1.servicios.ServicioSuscripcion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
 import org.junit.Before;
@@ -26,13 +27,46 @@ public class ControladorSuscripcionTest {
     private ServicioSuscripcion servicioSuscripcion = mock(ServicioSuscripcion.class);
     private ServicioUsuario servicioUsuario = mock(ServicioUsuario.class);
     private HttpServletRequest request = mock(HttpServletRequest.class);
-    private ControladorSuscripcion controladorSuscripcion = new ControladorSuscripcion(request,servicioSuscripcion, servicioUsuario);
+    private ServicioFactura servicioFactura= mock(ServicioFactura.class);
+    private ControladorSuscripcion controladorSuscripcion = new ControladorSuscripcion(request,servicioSuscripcion, servicioUsuario,servicioFactura);
     private HttpSession session = Mockito.mock(HttpSession.class);
 
     public void crearSession(Usuario usuario){
 
         when(session.getAttribute(Mockito.any())).thenReturn(usuario);
         when(request.getSession(true)).thenReturn(session);
+    }
+
+
+    @Test
+    public void contratarSuscripcionTest(){
+        Suscripcion suscripcion =givenUsuarioConSuscripcion();
+      ModelAndView mav=  whenUsuarioContrataSuscripcionYSeGeneraUnaFactura(suscripcion);
+        thenContratacionDeSuscripcionYGeneracionDeFacturaExitosa(mav);
+    }
+
+    private void thenContratacionDeSuscripcionYGeneracionDeFacturaExitosa(ModelAndView mav) {
+        assertThat(mav.getViewName()).isEqualTo("redirect:/perfilUsuario");
+    }
+
+    private ModelAndView whenUsuarioContrataSuscripcionYSeGeneraUnaFactura(Suscripcion suscripcion) {
+        return    controladorSuscripcion.contratarSuscripcion(suscripcion);
+
+    }
+
+    private Suscripcion  givenUsuarioConSuscripcion() {
+        Usuario usuario = new Usuario();
+        Suscripcion suscripcionBasica = new Suscripcion();
+        usuario.setEmail(EMAIL);
+        usuario.setSuscripcion(suscripcionBasica);
+        crearSession(usuario);
+
+        Suscripcion suscripcion= new Suscripcion();
+        suscripcion.setId(1l);
+        suscripcion.setDescripcion(this.nombreSuscripcionBasica);
+        when(servicioSuscripcion.buscarPorNombre(this.nombreSuscripcionBasica)).thenReturn(suscripcion);
+
+        return suscripcion;
     }
 
     @Test

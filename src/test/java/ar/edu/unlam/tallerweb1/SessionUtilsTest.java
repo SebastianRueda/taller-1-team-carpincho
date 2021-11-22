@@ -33,7 +33,7 @@ public class SessionUtilsTest {
         usuario.setId(1L);
         usuario.setNombre("Noob Saibot");
 
-        Mockito.when(httpServletRequest.getSession(true)).thenReturn(httpSession);
+        Mockito.when(httpServletRequest.getSession(Mockito.anyBoolean())).thenReturn(httpSession);
         Mockito.when(httpServletRequest.getSession()).thenReturn(httpSession);
 
         SessionUtils.createSession(httpServletRequest, usuario);

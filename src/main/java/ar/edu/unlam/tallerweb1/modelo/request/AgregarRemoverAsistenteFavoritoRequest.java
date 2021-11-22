@@ -1,6 +1,6 @@
 package ar.edu.unlam.tallerweb1.modelo.request;
 
-public class IrAsistentePerfilRequest {
+public class AgregarRemoverAsistenteFavoritoRequest {
     private Long asistenteId;
 
     public Long getAsistenteId() {

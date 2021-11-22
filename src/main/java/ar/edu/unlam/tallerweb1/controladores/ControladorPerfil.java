@@ -2,12 +2,12 @@ package ar.edu.unlam.tallerweb1.controladores;
 
 import ar.edu.unlam.tallerweb1.modelo.Denuncia;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
-import ar.edu.unlam.tallerweb1.servicios.ServicioDenuncia;
+import ar.edu.unlam.tallerweb1.modelo.request.AgregarRemoverAsistenteFavoritoRequest;
 import ar.edu.unlam.tallerweb1.servicios.ServicioDenunciaL;
-import ar.edu.unlam.tallerweb1.modelo.request.IrAsistentePerfilRequest;
 import ar.edu.unlam.tallerweb1.servicios.ServicioFavoritos;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPrestacion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
+import ar.edu.unlam.tallerweb1.utils.SessionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -57,7 +57,7 @@ public class ControladorPerfil {
         Usuario usuario = servicioUsuario.usuarioFindById(usuarioLogueado.getId());
         modelo.put("usuarioEnSession",usuario);
         modelo.put("seccion", "perfil");
-        modelo.put("irAsistentePerfilRequest", new IrAsistentePerfilRequest());
+        modelo.put("irAsistentePerfilRequest", new AgregarRemoverAsistenteFavoritoRequest());
 
         return new ModelAndView("perfilUsuario", modelo);
     }
@@ -118,55 +118,52 @@ public class ControladorPerfil {
 
     @RequestMapping(value = "mostrar-favoritos", method = RequestMethod.GET)
     public ModelAndView mostrarFavoritos(HttpServletRequest request) {
-        HttpSession misession = request.getSession(true);
-        Usuario usuarioLogueado= (Usuario) misession.getAttribute("usuarioLogueado");
+        Usuario usuarioLogueado = SessionUtils.getCurrentUserSession(request);
+        ModelMap map = new ModelMap();
 
         if (usuarioLogueado == null){
-            return new ModelAndView("redirect:/");
+            map.put("datosLogin", new DatosLogin());
+            map.put("mensaje", "Para poder acceder al perfil necesitas estar logueado");
+            return new ModelAndView("login", map);
         }
 
-        var favoritos = servicioFavoritos.listaDeAsistentesFavotitosDe(usuarioLogueado.getId());
-
-        ModelMap map = new ModelMap();
-        map.put("favoritos", favoritos);
-        map.put("seccion", "favoritos");
-        map.put("irAsistentePerfilRequest", new IrAsistentePerfilRequest());
+        setupAsistentesFavoritos(map, usuarioLogueado);
 
         return new ModelAndView("perfilUsuario", map);
     }
 
     @RequestMapping(path = "/removerFavoritoUsuarioPerfil", method = RequestMethod.POST)
-    public ModelAndView removerAsistenteAFavoritosUsuarioPerfil(HttpServletRequest request, @ModelAttribute("irAsistenPerfilRequest") IrAsistentePerfilRequest irAsistentePerfilRequest) {
+    public ModelAndView removerAsistenteAFavoritosUsuarioPerfil(HttpServletRequest request, @ModelAttribute("irAsistenPerfilRequest") AgregarRemoverAsistenteFavoritoRequest agregarRemoverAsistenteFavoritoRequest) {
         final var model = new ModelMap();
-        final var usuario = (Usuario) request.getSession(true).getAttribute("usuarioLogueado");
+        final var usuario = SessionUtils.getCurrentUserSession(request);
 
         if (usuario == null) {
-            // TODO: agregar una vista de error
-            throw new IllegalArgumentException("Usuario no encontrado");
+            model.put("error", "Para poder acceder al perfil necesitas estar logeado");
+            return new ModelAndView("login", model);
         }
 
-        final var asistente = servicioUsuario.usuarioFindById(irAsistentePerfilRequest.getAsistenteId());
+        final var asistente = servicioUsuario.usuarioFindById(agregarRemoverAsistenteFavoritoRequest.getAsistenteId());
 
         if (asistente == null) {
-            // TODO: agregar una vista de error
-            throw new IllegalArgumentException("Usuario no encontrado");
-        }
-
-        model.put("usuarioLogueado", true);
-        model.put("asistente", asistente);
-
-        if (servicioFavoritos.removerAsistenteFavorito(usuario.getId(), irAsistentePerfilRequest.getAsistenteId())) {
-            model.put("esFavorito", false);
+            model.put("error", "Algo salió mal");
         } else {
-            model.put("error", "No se pudo remover de la lista de tus favoritos");
+            model.put("usuarioLogueado", true);
+
+            if (!servicioFavoritos.removerAsistenteFavorito(usuario.getId(), agregarRemoverAsistenteFavoritoRequest.getAsistenteId())) {
+                model.put("error", "No se pudo remover de la lista de tus favoritos");
+            }
+
+            setupAsistentesFavoritos(model, usuario);
         }
 
-        final var favoritos = servicioFavoritos.listaDeAsistentesFavotitosDe(usuario.getId());
+        return new ModelAndView("perfilUsuario", model);
+    }
+
+    private void setupAsistentesFavoritos(ModelMap model, Usuario cliente) {
+        final var favoritos = servicioFavoritos.listaDeAsistentesFavotitosDe(cliente.getId());
 
         model.put("favoritos", favoritos);
         model.put("seccion", "favoritos");
-        model.put("irAsistentePerfilRequest", new IrAsistentePerfilRequest());
-
-        return new ModelAndView("perfilUsuario", model);
+        model.put("agregarRemoverAsistenteFavoritoRequest", new AgregarRemoverAsistenteFavoritoRequest());
     }
 }

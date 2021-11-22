@@ -79,7 +79,7 @@ public class ControladorLoginTest {
 		Assertions.assertThat(mav.getViewName()).isEqualTo("redirect:/traerEspecialidades");
 		Assertions.assertThat(mav.getModel().get("usuarioLogueado")).isNotNull();
 		Assertions.assertThat(mav.getModel().get("usuarioLogueado")).isInstanceOf(Usuario.class);
-		//Assertions.assertThat(mav.getModel().get("usuarioLogueado")).hasFieldOrProperty("rol").isNotNull();
+		Assertions.assertThat(mav.getModel().get("usuarioLogueado")).hasFieldOrProperty("rol").isNotNull();
 		Assertions.assertThat(mav.getModel().get("usuarioLogueado")).hasFieldOrPropertyWithValue("email", "eric@gmail.com");
 		Assertions.assertThat(mav.getModel().get("usuarioLogueado")).hasFieldOrPropertyWithValue("password", "1234");
 	}

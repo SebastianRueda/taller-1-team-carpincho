@@ -1,9 +1,6 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
-import ar.edu.unlam.tallerweb1.modelo.Especialidad;
-import ar.edu.unlam.tallerweb1.modelo.Prestacion;
-import ar.edu.unlam.tallerweb1.modelo.Rol;
-import ar.edu.unlam.tallerweb1.modelo.Usuario;
+import ar.edu.unlam.tallerweb1.modelo.*;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioPrestacion;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -98,10 +95,10 @@ public class ServicioPrestacionTest {
     }
 
     @Test
-    public void listaElHistorialDePrestacionesDeUnUsuario() {
-        givenUsuarioConPrestaciones(CLIENTE);
+    public void listaElHistorialDePrestacionesDeUnUsuarioOrdenadoPorEstadoActivoFinalizadoCancelado() {
+        givenUsuarioConUnaPrestacionPorEstado(CLIENTE);
         var prestaciones = whenBuscoLasPrestacionesDelUsuario(CLIENTE);
-        thenComprueboQueLaListaNoEstaVacia(prestaciones);
+        thenComprueboQueLaListaEstaOrdenadaPorActivaFinalizadaCancelada(prestaciones);
     }
 
     @Test
@@ -324,9 +321,20 @@ public class ServicioPrestacionTest {
         Assertions.assertThat(servicioContratar.prestacionFindById(prestacion.getId()));
     }
 
-    private void givenUsuarioConPrestaciones(Long id) {
+    private void givenUsuarioConUnaPrestacionPorEstado(Long id) {
         final var prestaciones = new ArrayList<Prestacion>();
-        prestaciones.add(new Prestacion());
+
+        final var cancelada = new Prestacion();
+        cancelada.setEstado(PrestacionEstado.CANCELADA.getEstado());
+        prestaciones.add(cancelada);
+
+        final var activa = new Prestacion();
+        activa.setEstado(PrestacionEstado.ACTIVO.getEstado());
+        prestaciones.add(activa);
+
+        final var finalizado = new Prestacion();
+        finalizado.setEstado(PrestacionEstado.FINALIZADO.getEstado());
+        prestaciones.add(finalizado);
 
         Mockito.when(repositorioPrestacion.listarPrestacionesContratadasPorCliente(id)).thenReturn(prestaciones);
     }
@@ -335,8 +343,11 @@ public class ServicioPrestacionTest {
         return servicioPrestacion.listarPrestacionesContratadasPorCliente(id);
     }
 
-    private void thenComprueboQueLaListaNoEstaVacia(List<Prestacion> prestaciones) {
+    private void thenComprueboQueLaListaEstaOrdenadaPorActivaFinalizadaCancelada(List<Prestacion> prestaciones) {
         Assertions.assertThat(prestaciones).isNotEmpty();
+        Assertions.assertThat(prestaciones.get(0).getEstado()).isEqualToIgnoringCase(PrestacionEstado.ACTIVO.getEstado());
+        Assertions.assertThat(prestaciones.get(1).getEstado()).isEqualToIgnoringCase(PrestacionEstado.FINALIZADO.getEstado());
+        Assertions.assertThat(prestaciones.get(2).getEstado()).isEqualToIgnoringCase(PrestacionEstado.CANCELADA.getEstado());
     }
 
 }

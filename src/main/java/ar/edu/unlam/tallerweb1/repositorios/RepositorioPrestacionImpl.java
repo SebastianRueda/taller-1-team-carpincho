@@ -2,15 +2,11 @@ package ar.edu.unlam.tallerweb1.repositorios;
 
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Prestacion;
-import ar.edu.unlam.tallerweb1.modelo.Suscripcion;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import javax.transaction.Transactional;
-import java.util.Comparator;
 import java.util.List;
 
 @Repository("repositorioPrestacion")
@@ -70,12 +66,6 @@ public class RepositorioPrestacionImpl implements RepositorioPrestacion{
                 .add(Restrictions.eq("usuarioSolicitante.id", id))
                 .list();
 
-        prestaciones.sort((o1, o2) -> {
-            var p1 = (Prestacion) o1;
-            var p2 = (Prestacion) o2;
-            return  p1.getEstado().compareTo(p2.getEstado());
-        });
-
         return prestaciones;
     }
 
@@ -94,5 +84,4 @@ public class RepositorioPrestacionImpl implements RepositorioPrestacion{
                 .add(Restrictions.eq("usuarioSolicitante.id",idUsuario))
                 .list();
     }
-
 }

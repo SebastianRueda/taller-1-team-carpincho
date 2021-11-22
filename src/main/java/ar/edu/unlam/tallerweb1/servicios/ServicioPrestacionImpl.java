@@ -2,6 +2,7 @@ package ar.edu.unlam.tallerweb1.servicios;
 
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Prestacion;
+import ar.edu.unlam.tallerweb1.modelo.PrestacionEstado;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioPrestacion;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioUsuario;
@@ -9,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service("servicioPrestacion")
@@ -73,7 +73,16 @@ public class ServicioPrestacionImpl implements ServicioPrestacion {
 
     @Override
     public List<Prestacion> listarPrestacionesContratadasPorCliente(Long id) {
-        return prestacionDao.listarPrestacionesContratadasPorCliente(id);
+        var prestaciones = prestacionDao.listarPrestacionesContratadasPorCliente(id);
+
+        prestaciones.sort((p1, p2) -> {
+            var estado1 = PrestacionEstado.getPrioridadPorEstado(p1.getEstado());
+            var estado2 = PrestacionEstado.getPrioridadPorEstado(p2.getEstado());
+
+            return estado1.compareTo(estado2);
+        });
+
+        return prestaciones;
     }
 
     @Override

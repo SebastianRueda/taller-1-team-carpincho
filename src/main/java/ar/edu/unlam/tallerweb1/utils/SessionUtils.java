@@ -8,7 +8,7 @@ public class SessionUtils {
     public static String USER_LOGGED = "usuarioLogueado";
 
     public static void createSession(HttpServletRequest httpServletRequest, Usuario usuario) {
-        var session = httpServletRequest.getSession(true);
+        var session = httpServletRequest.getSession(usuario.getActivo());
         session.setAttribute(USER_LOGGED, usuario);
     }
 

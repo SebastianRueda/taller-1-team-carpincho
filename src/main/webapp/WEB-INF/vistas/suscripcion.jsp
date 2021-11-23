@@ -125,7 +125,14 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="mb-5 mt-5 text-center">
-                                            <h2> Usuario </h2>
+                                             Por $100 mensuales estas por  contratar nuestra suscripción Basica que incluye:
+                                            <br>
+                                            <p>Servicio de Grúa</p>
+                                            <p>Servicio Médico</p>
+                                            <p>Servicio Policial</p>
+
+                                            <small>Si preferis contar con todos nuestros servicios, podes optar por nuestra Suscripcíón Premium.</small>
+
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -160,7 +167,17 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="mb-5 mt-5 text-center">
-                                            <h2> Usuario </h2>
+                                            <div class="mb-5 mt-5 text-center">
+                                                Por $300 mensuales estas por  contratar nuestra suscripción Premium que incluye:
+                                                <br>
+                                                <p>Servicio de Grúa</p>
+                                                <p>Servicio Médico</p>
+                                                <p>Servicio Policial</p>
+                                                <p>Servicio Mecánico</p>
+                                                <p>Chofer</p>
+                                                <p>Repuestos Livianos</p>
+                                                <p>Asistencia Legal</p>
+                                            </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">

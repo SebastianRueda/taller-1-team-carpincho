@@ -415,7 +415,7 @@
                                                        style="width:20%;"> Calificar
                                                     </a>
                                                 </c:if>
-                                                <button class="my-auto py-1 px-3 denunciar font-weight-bold redondeadoEstado" style="width:20%;"> Denunciar </button>
+                                                <a href="denunciarAsistente" class="my-auto py-1 px-3 denunciar font-weight-bold redondeadoEstado" style="width:20%;"   >Denunciar</a>
                                             </div>
 
                                         </c:forEach>

@@ -24,7 +24,6 @@ public class Prestacion {
 	private Integer calificacionDadaPorElCliente= null;
 	private Integer calificacionDadaPorUsuarioAsistente= null;
 
-
 	public Integer getCalificacionDadaPorUsuarioAsistente() {
 		return calificacionDadaPorUsuarioAsistente;
 	}

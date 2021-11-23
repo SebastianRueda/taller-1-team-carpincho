@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.repositorios;
 
+import ar.edu.unlam.tallerweb1.modelo.EstadoFactura;
 import ar.edu.unlam.tallerweb1.modelo.Factura;
 import ar.edu.unlam.tallerweb1.modelo.Suscripcion;
 import org.hibernate.SessionFactory;
@@ -23,6 +24,13 @@ public class RepositorioFacturaImpl implements RepositorioFactura{
         sessionFactory.getCurrentSession().save(factura);
 
     }
+
+    @Override
+    public EstadoFactura buscarEstadoFacturaPorId(Long idEstadoFactura) {
+        return (EstadoFactura) sessionFactory.getCurrentSession().createCriteria(EstadoFactura.class)
+                .add(Restrictions.eq("id", idEstadoFactura)).uniqueResult();
+    }
+
 
     @Override
     public Factura buscarFacturaPorId(Long id) {

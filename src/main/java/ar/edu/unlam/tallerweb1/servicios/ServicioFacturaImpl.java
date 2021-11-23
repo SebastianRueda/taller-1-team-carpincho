@@ -28,8 +28,8 @@ public class ServicioFacturaImpl implements ServicioFactura{
 
     @Override
     public void generarFactura(Usuario usuario) {
-        EstadoFactura estadoFactura =new EstadoFactura();
-        estadoFactura.setEstado("pagado");
+
+        EstadoFactura estadoFactura = repositorioFactura.buscarEstadoFacturaPorId(1l);
 
         Factura factura = new Factura();
         factura.setSuscripcion(usuario.getSuscripcion());
@@ -42,5 +42,10 @@ public class ServicioFacturaImpl implements ServicioFactura{
         Date fechaActual = Date.valueOf(localDate);
         factura.setFecha(fechaActual);
         repositorioFactura.generarFactura(factura);
+    }
+
+    @Override
+    public Factura buscarFacturaPorId(Long idFactura) {
+        return repositorioFactura.buscarFacturaPorId(idFactura);
     }
 }

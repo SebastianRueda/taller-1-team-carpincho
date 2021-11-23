@@ -1,5 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
@@ -192,11 +193,22 @@ ${saludo}
                                 <div class=" d-flex card-body align-items-center justify-content-center w-100 pt-4  m-0 ">
                                     <!-- Category -->
                                     <div class="kanban-category d-flex ">
-                                        <form:form action="contratar-suscripcion-basica" method="post" modelAttribute="suscripcion">
+                                        <%--@elvariable id="suscripcion" type="ar.edu.unlam.tallerweb1.modelo.Suscripcion"
+                                        <form:form action="contratar-suscripcion-basica" method="POST" modelAttribute="suscripcion">
                                             <form:hidden path="id" value="${suscripcion.id}"></form:hidden>
                                             <button type="submit" class="btn btn-primary">Pagar
                                             </button>
-                                        </form:form>
+                                        </form:form>--%>
+                                        <c:if test="${suscripcion.id == 1}">
+                                            <form action="../contratar-suscripcion-basica" method="post" modelAttribute="suscripcion">
+                                                <button type="submit" class="btn btn-primary">Pagar</button>
+                                            </form>
+                                        </c:if>
+                                        <c:if test="${suscripcion.id== 2}">
+                                        <form action="../contratar-suscripcion-premium" method="post" modelAttribute="suscripcion">
+                                           <button type="submit" class="btn btn-primary">Pagar</button>
+                                         </form>
+                                        </c:if>
                                     </div>
                                 </div>
                             </div>

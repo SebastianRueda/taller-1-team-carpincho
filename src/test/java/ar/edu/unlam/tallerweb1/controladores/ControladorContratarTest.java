@@ -1,31 +1,52 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
+import ar.edu.unlam.tallerweb1.HttpSessionFake;
 import ar.edu.unlam.tallerweb1.modelo.Prestacion;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPrestacion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
+import ar.edu.unlam.tallerweb1.utils.SessionUtils;
 import org.junit.Assert;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.mockito.Matchers;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
 public class ControladorContratarTest {
-    ServicioPrestacion servicioPrestacion = Mockito.mock(ServicioPrestacion.class);
-    ServicioUsuario servicioUsuario = Mockito.mock(ServicioUsuario.class);
-    ControladorContratar controladorContratar = new ControladorContratar(servicioPrestacion, servicioUsuario);
+    private ServicioPrestacion servicioPrestacion = Mockito.mock(ServicioPrestacion.class);
+    private ServicioUsuario servicioUsuario = Mockito.mock(ServicioUsuario.class);
+    private ControladorContratar controladorContratar = new ControladorContratar(servicioPrestacion, servicioUsuario);
     private Long idPrestacion=1l;
     private Long idPrestacionFinalizada=20l;
 
+    private static Usuario cliente;
+    private static HttpServletRequest httpServletRequest = Mockito.mock(HttpServletRequest.class);
+    private static HttpSession httpSession = Mockito.mock(HttpSession.class);
+
+    @BeforeClass
+    public static void initSession() {
+        cliente = new Usuario();
+        cliente.setId(1L);
+
+        Mockito.when(httpServletRequest.getSession(Mockito.anyBoolean())).thenReturn(httpSession);
+        Mockito.when(httpSession.getAttribute(SessionUtils.USER_LOGGED)).thenReturn(cliente);
+    }
 
     @Test
     public void crearPrestacionTest() {
-        final var asistente = givenElAsistenteExiste();
+        final var asistente = givenElAsistenteExiste(cliente);
         final var mov = whenSeCreaUnaPrestacionCon(asistente);
-        thenLaPrestacionSeCreoExitosamanteYMeRedireccionaAlDetalle(mov);
+        thenLaPrestacionSeCreoExitosamanteYMeRedireccionaAlDetalle(mov, cliente, asistente);
     }
 
     @Test
@@ -84,19 +105,25 @@ public class ControladorContratarTest {
     }
 
 
-    private Usuario givenElAsistenteExiste() {
+    private Usuario givenElAsistenteExiste(Usuario cliente) {
         var asistente = new Usuario();
+        asistente.setId(2L);
         Mockito.when(servicioUsuario.usuarioFindById(Matchers.any())).thenReturn(asistente);
+
         return asistente;
     }
 
     private ModelAndView whenSeCreaUnaPrestacionCon(Usuario asistente) {
-        return controladorContratar.contratarPrestacion(asistente.getId());
+        return controladorContratar.contratarPrestacion(asistente.getId(), httpServletRequest);
     }
 
-    private void thenLaPrestacionSeCreoExitosamanteYMeRedireccionaAlDetalle(ModelAndView detalle) {
+    private void thenLaPrestacionSeCreoExitosamanteYMeRedireccionaAlDetalle(ModelAndView detalle, Usuario cliente, Usuario asistente) {
         Assert.assertEquals(detalle.getViewName(), "detalle-contratacion");
-        Assert.assertNotNull(detalle.getModel().get("prestacion"));
+        var prestacion = detalle.getModel().get("prestacion");
+        Assert.assertNotNull(prestacion);
+        Assert.assertTrue(prestacion instanceof Prestacion);
+        Assert.assertEquals(((Prestacion) prestacion).getUsuarioSolicitante(), cliente);
+        Assert.assertEquals(((Prestacion) prestacion).getUsuarioAsistente(), asistente);
     }
 
     private Usuario givenNoSeEncontroAlAsistente() {

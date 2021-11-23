@@ -3,10 +3,9 @@ package ar.edu.unlam.tallerweb1.controladores;
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Prestacion;
 import ar.edu.unlam.tallerweb1.modelo.PrestacionEstado;
-import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPrestacion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
-import ar.edu.unlam.tallerweb1.utils.UsuarioCache;
+import ar.edu.unlam.tallerweb1.utils.SessionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -45,7 +43,12 @@ public class ControladorContratar {
     }
 
     @RequestMapping(path = "/contratar-prestacion", method = RequestMethod.GET)
-    public ModelAndView contratarPrestacion(@RequestParam(value = "asistente-id") Long id) {
+    public ModelAndView contratarPrestacion(@RequestParam(value = "asistente-id") Long id, HttpServletRequest httpServletRequest) {
+        var usuarioLogueado = SessionUtils.getCurrentUserSession(httpServletRequest);
+        if (usuarioLogueado == null){
+            return new ModelAndView("redirect:/");
+        }
+
         var asistente = servicioUsuario.usuarioFindById(id);
         var model = new ModelMap();
 
@@ -57,7 +60,7 @@ public class ControladorContratar {
             prestacion.setEspecialidad(asistente.getEspecialidad());
             prestacion.setUsuarioAsistente(asistente);
 
-            var cliente = UsuarioCache.getUsuario();
+            var cliente = usuarioLogueado;
             prestacion.setUsuarioSolicitante(cliente);
             servicioPrestacion.save(prestacion);
 

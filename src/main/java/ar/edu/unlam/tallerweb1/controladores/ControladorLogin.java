@@ -4,7 +4,6 @@ import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioLogin;
 import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
 import ar.edu.unlam.tallerweb1.utils.SessionUtils;
-import ar.edu.unlam.tallerweb1.utils.UsuarioCache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 @Controller
 public class ControladorLogin {

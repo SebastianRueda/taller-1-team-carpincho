@@ -37,7 +37,10 @@ public class SessionUtils {
             return;
         }
 
-        var session = httpServletRequest.getSession();
-        session.invalidate();
+        var session = httpServletRequest.getSession(false);
+
+        if (session != null) {
+            session.invalidate();
+        }
     }
 }

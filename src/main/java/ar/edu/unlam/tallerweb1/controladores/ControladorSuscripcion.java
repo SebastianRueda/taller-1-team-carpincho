@@ -61,11 +61,14 @@ public class ControladorSuscripcion {
         HttpSession misession= this.request.getSession(true);
         Usuario usuarioLogueado= (Usuario) misession.getAttribute("usuarioLogueado");
 
+        String ruta= "redirect:/irAFactura/" +suscripcion.getId();
+
         usuarioLogueado.setSuscripcion(suscripcion);
         servicioUsuario.update(usuarioLogueado);
         servicioFactura.generarFactura(usuarioLogueado);
+
         ModelMap model = new ModelMap();
-        return new ModelAndView("redirect:/perfilUsuario", model);
+        return new ModelAndView(ruta, model);
     }
 
     @RequestMapping(path = "/contratar-suscripcion-premium", method = RequestMethod.POST)

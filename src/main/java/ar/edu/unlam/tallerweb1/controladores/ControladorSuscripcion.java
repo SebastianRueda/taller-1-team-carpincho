@@ -62,7 +62,7 @@ public class ControladorSuscripcion {
         HttpSession misession= this.request.getSession(true);
         Usuario usuarioLogueado= (Usuario) misession.getAttribute("usuarioLogueado");
 
-        String ruta= "redirect:/irAFactura/" +suscripcion.getId();
+        String ruta= "redirect:/perfilUsuario";
 
         usuarioLogueado.setSuscripcion(suscripcion);
         servicioUsuario.update(usuarioLogueado);
@@ -79,7 +79,7 @@ public class ControladorSuscripcion {
         HttpSession misession= this.request.getSession(true);
         Usuario usuarioLogueado= (Usuario) misession.getAttribute("usuarioLogueado");
 
-        String ruta= "redirect:/irAFactura/" +suscripcion.getId();
+        String ruta= "redirect:/perfilUsuario";
 
         usuarioLogueado.setSuscripcion(suscripcion);
         servicioUsuario.update(usuarioLogueado);

@@ -10,9 +10,63 @@
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link href="css/Login.css" rel="stylesheet">
-	<title>Busqueda Prestadores</title>
+		
+		<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=true"></script>
+        <script type="text/javascript">
+            function mostrar_mapa(centinela){
+                //Ubicacion inicial del mapa.
+                var ubicacion = new google.maps.LatLng(-34.666991893913085, -58.56839056121045); //Latitud y Longitud
+                //Parametros Iniciales
+                var opciones={zoom:14, //acercamiento
+                    center: ubicacion,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP //Las posibles opciones son ROADMAP/SATELLITE/HYBRID/TERRA                    
+                };
+            
+                //Creacion del mapa
+                var map = new google.maps.Map(document.getElementById("mapa"),opciones);
+                
+                
+              //recuperar ubicacion donde hago click
+                var iw = new google.maps.InfoWindow(
+                            {content: 'verifique su ubicacion', 
+                             position: ubicacion});
+                iw.open(map);
+                // configurar evento click sobre el mapa
+                map.addListener('click', function(mapsMouseEvent) {                 
+                  iw.close();
+                  iw = new google.maps.InfoWindow({position: mapsMouseEvent.latLng});
+                  iw.setContent(mapsMouseEvent.latLng.toString());
+                  iw.open(map);
+                });
+                
+
+                if (centinela==1){
+                    //Colocar una marca sobre el Mapa
+                    mi_ubicacion = new google.maps.Marker({
+                       position: new google.maps.LatLng(position),//PosiciÃ³n de la marca
+                       icon: 'ubicacion.png', //Imagen que aparecerÃ¡ en la marca, debe estar en el server
+                       map: map, //Mapa donde estarÃ¡ la marca
+                       title: 'Confirmar mi ubicacion' //TÃ­tulo all hacer un mouseover
+                    });
+
+                    //Mostrar InformaciÃ³n al hacer click en la marca
+                    var infowindow = new google.maps.InfoWindow({
+                        content: 'establecer ubicacion'
+                    });
+
+                    google.maps.event.addListener(mi_ubicacion, 'click',function(){
+                        //Calling the open method of the InfoWindow
+                       infowindow.open(map, mi_ubicacion);
+                    });
+                };
+            }  
+            
+            
+        </script>       
+		<title>Busqueda Prestadores</title>
 	</head>
-	<body class=" h-100">
+	
+	<body onload="mostrar_mapa(0)" class=" h-100">
 
 	<header>
 		<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -77,21 +131,6 @@
 					</form>
 				</div>
 
-				<!--
-				<form action="usuarioEspecialidadElegida" >
-					<label for="listaEspecialistas">Seleccione Servicio</label>
-					<select name="usuarioEspecialidades">
-						<c:forEach items="${especialidades}" var="especialidad">
-							<option value="${especialidad.id}">${especialidad.descripcion}</option>
-						</c:forEach>
-					</select>
-					<br>
-					<br>
-					<button class="btn btn-primary btn-lg" Type="Submit">Confirmar</button>
-				</form>
-				-->
-
-
 				<div class="card border-primary col-md-3 col-lg-3 mb-3" style="margin: 2.7em">
 					<form action="usuarioProvinciaElegida" >
 						<div class="card-header text-center fw-bold"><label for="usuariosPorProvincia">Provincias</label>
@@ -114,20 +153,6 @@
 						</div>
 					</form>
 				</div>
-
-				<!--
-				<form action="usuarioProvinciaElegida" >
-					<label for="usuariosPorProvincia">Seleccione Provincia</label>
-					<select name="usuarioProvincia">
-						<c:forEach items="${provincias}" var="provincia">
-							<option value="${provincia.id}">${provincia.nombre}</option>
-						</c:forEach>
-					</select>
-					<br>
-					<br>
-					<button class="btn btn-primary btn-lg" Type="Submit">Confirmar</button>
-				</form>
-				-->
 
 
 				<div class="card border-primary col-md-3 col-lg-3 mb-3" style="margin: 2.7em">
@@ -158,34 +183,16 @@
 					</form>
 				</div>
 
-
-				<!--
-				<form action="especialidadElegida" >
-					<label for="listaEspecialidadDesplegable">Seleccione Servicio</label>
-
-					<select name="listaEspecialidadDesplegable">
-						<c:forEach items="${especialidades}" var="especialidad">
-							<option value="${especialidad.id}">${especialidad.descripcion}</option>
-						</c:forEach>
-					</select>
-
-					<label for="listaProvinciaDesplegable">Seleccione Provincia</label>
-
-					<select name="listaProvinciaDesplegable">
-						<c:forEach items="${provincias}" var="provincia">
-							<option value="${provincia.id}">${provincia.nombre}</option>
-						</c:forEach>
-					</select>
-
-					<br>
-					<br>
-					<button class="btn btn-primary btn-lg" Type="Submit">Confirmar</button>
-
-				</form>
-				-->
 				</div>
 			</div>
-			</div>
+			<h3 style="text-align: center">Establecer mi ubicacion real : </h1>
+			<div class="container">
+				<div id="mapa" style="width: 600px; height: 280px; border: 3px groove #006600;"></div>
+		            <input type="button" value="Mi ubicación" onclick="mostrar_mapa(1)"/>
+		            <input type="button" value="Limpiar ubicación" onclick="mostrar_mapa(0)"/>
+				</div>
+			</div>	
+				
 		</div>
 	</div>
 

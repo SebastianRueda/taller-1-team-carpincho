@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
+import ar.edu.unlam.tallerweb1.modelo.EstadoFactura;
 import ar.edu.unlam.tallerweb1.modelo.Factura;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 
@@ -27,10 +28,13 @@ public class ServicioFacturaImpl implements ServicioFactura{
 
     @Override
     public void generarFactura(Usuario usuario) {
+        EstadoFactura estadoFactura =new EstadoFactura();
+        estadoFactura.setEstado("pagado");
 
         Factura factura = new Factura();
         factura.setSuscripcion(usuario.getSuscripcion());
         factura.setUsuarioQuePaga(usuario);
+        factura.setEstadoFactura(estadoFactura);
 
         long ctm=System.currentTimeMillis();
         Date d= new Date(ctm);

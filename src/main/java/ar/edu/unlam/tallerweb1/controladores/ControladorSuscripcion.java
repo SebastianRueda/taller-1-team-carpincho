@@ -12,6 +12,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -55,7 +56,7 @@ public class ControladorSuscripcion {
     }
 
     @RequestMapping(path = "/contratar-suscripcion-basica", method = RequestMethod.POST)
-    public ModelAndView contratarSuscripcion(@ModelAttribute("suscripcion") Suscripcion suscripcionAContratar) {
+    public ModelAndView contratarSuscripcion(@ModelAttribute ("suscripcion")Suscripcion suscripcionBasicas) {
         String suscripcionBasica = "suscripcion basica";
         Suscripcion suscripcion = servicioSuscripcion.buscarPorNombre(suscripcionBasica);
         HttpSession misession= this.request.getSession(true);
@@ -78,11 +79,14 @@ public class ControladorSuscripcion {
         HttpSession misession= this.request.getSession(true);
         Usuario usuarioLogueado= (Usuario) misession.getAttribute("usuarioLogueado");
 
+        String ruta= "redirect:/irAFactura/" +suscripcion.getId();
+
         usuarioLogueado.setSuscripcion(suscripcion);
         servicioUsuario.update(usuarioLogueado);
+        servicioFactura.generarFactura(usuarioLogueado);
 
         ModelMap model = new ModelMap();
-        return new ModelAndView("redirect:/perfilUsuario", model);
+        return new ModelAndView(ruta, model);
     }
 
 

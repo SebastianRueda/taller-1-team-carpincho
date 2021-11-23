@@ -283,6 +283,11 @@
 
                                                 </c:otherwise>
                                             </c:choose>
+                                            <button type="button" class="btn btn-primary text-white text-gradient px-3 mb-0 " >
+                                                <a href="irDetalleAFactura">Ver Factura </a>
+
+
+                                            </button>
                                         </div>
                                     </c:when>
                                     <c:otherwise>

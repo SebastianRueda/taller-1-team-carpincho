@@ -3,7 +3,6 @@ package ar.edu.unlam.tallerweb1.controladores;
 import ar.edu.unlam.tallerweb1.HttpSessionFake;
 import ar.edu.unlam.tallerweb1.modelo.Rol;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
-import ar.edu.unlam.tallerweb1.repositorios.RepositorioUsuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioLogin;
 import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
 import org.assertj.core.api.Assertions;
@@ -12,9 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.springframework.web.servlet.ModelAndView;
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -26,7 +23,6 @@ public class ControladorLoginTest {
     private ServicioLogin servicioLogin=mock(ServicioLogin.class);
     private HttpServletRequest httpServletRequest = Mockito.mock(HttpServletRequest.class);
 	private HttpSession httpSession = new HttpSessionFake();
-    private RepositorioUsuario repositorioUsuario=mock(RepositorioUsuario.class);
     private ServicioUsuario servicioUsuario=mock(ServicioUsuario.class);
     private ControladorLogin controladorLogin=new ControladorLogin(servicioLogin,servicioUsuario) ;
 	
@@ -55,12 +51,6 @@ public class ControladorLoginTest {
     	thenUsuarioIngresaAhome(mav);
     }
 
-	@Test
-	public void contraseniaIncorrectaTest() {
-		DatosLogin datosLogin = givenDatosDeLoginErroneos();
-		ModelAndView modelAndView = whenSeVerificaUsuario(datosLogin);
-		thenVerificoQueElModeloContengaUnError(modelAndView);
-	}
 
 	private void givenDatosLogin() {
 		datosParaLoguearse.setEmail("eric@gmail.com");
@@ -88,23 +78,29 @@ public class ControladorLoginTest {
 		Assertions.assertThat(!mav.isEmpty());
 		Assertions.assertThat(mav.getViewName()).isEqualTo("redirect:/traerEspecialidades");
 		Assertions.assertThat(mav.getModel().get("usuarioLogueado")).isNotNull();
+		Assertions.assertThat(mav.getModel().get("usuarioLogueado")).isInstanceOf(Usuario.class);
+		Assertions.assertThat(mav.getModel().get("usuarioLogueado")).hasFieldOrProperty("rol").isNotNull();
 		Assertions.assertThat(mav.getModel().get("usuarioLogueado")).hasFieldOrPropertyWithValue("email", "eric@gmail.com");
 		Assertions.assertThat(mav.getModel().get("usuarioLogueado")).hasFieldOrPropertyWithValue("password", "1234");
 	}
+	
+	@Test
+	public void contraseniaIncorrectaTest() {
+		givenDatosDeLoginErroneos();
+		ModelAndView modelAndView = whenSeVerificaUsuario(datosParaLoguearse);
+		thenVerificoQueElModeloContengaUnError(modelAndView);
+	}
 
-	private DatosLogin givenDatosDeLoginErroneos() {
+	private void givenDatosDeLoginErroneos() {
 		datosParaLoguearse.setEmail("eric@gmail.com");
 		datosParaLoguearse.setPassword("4321");
 
 		Mockito.when(servicioLogin.consultarUsuario(datosParaLoguearse.getEmail(), datosParaLoguearse.getPassword()))
 				.thenReturn(null);
-
-		return datosParaLoguearse;
 	}
 
 	private void thenVerificoQueElModeloContengaUnError(ModelAndView mav) {
 		Assert.assertNotNull(mav);
-
 		var model = mav.getModel();
 		var error = model.get("error");
 		Assert.assertNotNull(error);

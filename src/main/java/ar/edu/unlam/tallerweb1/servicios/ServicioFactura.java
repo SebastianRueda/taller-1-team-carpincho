@@ -7,4 +7,6 @@ public interface ServicioFactura{
 
     void generarFactura(Usuario usuario);
     Factura buscarFacturaPorId(Long idFactura);
+
+    Factura buscarUltimaFacturaPorUsuario(Usuario usuario);
 }

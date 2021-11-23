@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
+import ar.edu.unlam.tallerweb1.modelo.Factura;
 import ar.edu.unlam.tallerweb1.modelo.Suscripcion;
 
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
@@ -55,6 +56,30 @@ public class ControladorFactura {
         return new ModelAndView("factura", model);
 
     }
+
+    @RequestMapping(path ="/irDetalleAFactura", method = RequestMethod.GET)
+    public ModelAndView irADetalleFactura(HttpServletRequest request ) {
+
+        ModelMap model = new ModelMap();
+        String saludo = "Aloha";
+        HttpSession misession= request.getSession(true);
+        Usuario usuarioLogueado= (Usuario) misession.getAttribute("usuarioLogueado");
+
+        Suscripcion suscripcion = servicioSuscripcion.buscarSuscripcionPorId(usuarioLogueado.getSuscripcion().getId());
+         Factura factura=  servicioFactura.buscarUltimaFacturaPorUsuario(usuarioLogueado);
+
+         model.put("factura", factura);
+
+        model.put("saludo", saludo);
+        model.put("suscripcion", suscripcion);
+        model.put("usuarioLogueado", usuarioLogueado);
+
+
+        return new ModelAndView("DetalleFactura", model);
+
+    }
+
+
 
 
 }

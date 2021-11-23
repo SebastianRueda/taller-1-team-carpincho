@@ -11,9 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Date;
 import java.time.LocalDate;
-
-import static java.time.LocalDate.*;
-
+import java.util.List;
 
 
 @Service("servicioFactura")
@@ -47,5 +45,16 @@ public class ServicioFacturaImpl implements ServicioFactura{
     @Override
     public Factura buscarFacturaPorId(Long idFactura) {
         return repositorioFactura.buscarFacturaPorId(idFactura);
+    }
+
+    @Override
+    public Factura buscarUltimaFacturaPorUsuario(Usuario usuario) {
+        List<Factura> facturas =repositorioFactura.buscarUltimaFacturaPorUsuario(usuario);
+        Factura factura = new Factura();
+        factura= facturas.get(0);
+
+
+        return factura;
+
     }
 }

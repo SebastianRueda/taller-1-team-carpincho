@@ -283,6 +283,11 @@
 
                                                 </c:otherwise>
                                             </c:choose>
+                                            <button type="button" class="btn btn-primary text-white text-gradient px-3 mb-0 " >
+                                                <a href="irDetalleAFactura">Ver Factura </a>
+
+
+                                            </button>
                                         </div>
                                     </c:when>
                                     <c:otherwise>
@@ -410,7 +415,7 @@
                                                        style="width:20%;"> Calificar
                                                     </a>
                                                 </c:if>
-                                                <button class="my-auto py-1 px-3 denunciar font-weight-bold redondeadoEstado" style="width:20%;"> Denunciar </button>
+                                                <a href="denunciarAsistente" class="my-auto py-1 px-3 denunciar font-weight-bold redondeadoEstado" style="width:20%;"   >Denunciar</a>
                                             </div>
 
                                         </c:forEach>
@@ -482,7 +487,9 @@
                                     <p class="my-auto"
                                        style="width:20%;">${denunciaHechas.usuarioDenunciado.nombre} ${denunciaHechas.usuarioDenunciado.apellido}</p>
                                     <p class="my-auto" style="width:20%;">${denunciaHechas.motivo}</p>
-                                    <button class="my-auto py-1 px-3 denunciar font-weight-bold redondeadoEstado" style="width:20%;">Ver Detalles </button>
+
+                                    <a href="detalleDenunciaRealizada" class="my-auto py-1 px-3 denunciar font-weight-bold redondeadoEstado" style="width:20%;">Ver Detalles</a>
+
                                 </div>
                             </c:forEach>
                         </div>

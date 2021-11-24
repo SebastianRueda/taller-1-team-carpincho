@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
+import ar.edu.unlam.tallerweb1.modelo.EstadoFactura;
 import ar.edu.unlam.tallerweb1.modelo.Factura;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 
@@ -10,9 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Date;
 import java.time.LocalDate;
-
-import static java.time.LocalDate.*;
-
+import java.util.List;
 
 
 @Service("servicioFactura")
@@ -28,9 +27,12 @@ public class ServicioFacturaImpl implements ServicioFactura{
     @Override
     public void generarFactura(Usuario usuario) {
 
+        EstadoFactura estadoFactura = repositorioFactura.buscarEstadoFacturaPorId(1l);
+
         Factura factura = new Factura();
         factura.setSuscripcion(usuario.getSuscripcion());
         factura.setUsuarioQuePaga(usuario);
+        factura.setEstadoFactura(estadoFactura);
 
         long ctm=System.currentTimeMillis();
         Date d= new Date(ctm);
@@ -38,5 +40,21 @@ public class ServicioFacturaImpl implements ServicioFactura{
         Date fechaActual = Date.valueOf(localDate);
         factura.setFecha(fechaActual);
         repositorioFactura.generarFactura(factura);
+    }
+
+    @Override
+    public Factura buscarFacturaPorId(Long idFactura) {
+        return repositorioFactura.buscarFacturaPorId(idFactura);
+    }
+
+    @Override
+    public Factura buscarUltimaFacturaPorUsuario(Usuario usuario) {
+        List<Factura> facturas =repositorioFactura.buscarUltimaFacturaPorUsuario(usuario);
+        Factura factura = new Factura();
+        factura= facturas.get(0);
+
+
+        return factura;
+
     }
 }

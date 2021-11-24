@@ -46,7 +46,8 @@ public class ControladorSuscripcionTest {
     }
 
     private void thenContratacionDeSuscripcionYGeneracionDeFacturaExitosa(ModelAndView mav) {
-        assertThat(mav.getViewName()).isEqualTo("redirect:/perfilUsuario");
+        String ruta = "redirect:/perfilUsuario";
+        assertThat(mav.getViewName()).isEqualTo(ruta);
     }
 
     private ModelAndView whenUsuarioContrataSuscripcionYSeGeneraUnaFactura(Suscripcion suscripcion) {

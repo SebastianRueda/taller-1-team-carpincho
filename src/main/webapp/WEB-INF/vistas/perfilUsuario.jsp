@@ -415,7 +415,7 @@
                                                        style="width:20%;"> Calificar
                                                     </a>
                                                 </c:if>
-                                                <a href="denunciarAsistente" class="my-auto py-1 px-3 denunciar font-weight-bold redondeadoEstado" style="width:20%;"   >Denunciar</a>
+                                                <a href="denunciarAsistente?prestacion-id=${prestacion.id}" class="my-auto py-1 px-3 denunciar font-weight-bold redondeadoEstado" style="width:20%;"   >Denunciar</a>
                                             </div>
 
                                         </c:forEach>
@@ -481,12 +481,12 @@
                             </div>
                             <c:forEach items="${listaDenunciasHechas}" var="denunciaHechas">
                                 <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
-                                    <p class="my-auto" style="width:20%;">N° ${denunciaHechas.prestacion.id}</p>
+                                    <p class="my-auto" style="width:20%;">N° ${denunciaHechas.id}</p>
                                     <p class="my-auto"
                                        style="width:20%;">${denunciaHechas.usuarioDenunciado.especialidad.descripcion}</p>
                                     <p class="my-auto"
                                        style="width:20%;">${denunciaHechas.usuarioDenunciado.nombre} ${denunciaHechas.usuarioDenunciado.apellido}</p>
-                                    <p class="my-auto" style="width:20%;">${denunciaHechas.motivo}</p>
+                                    <p class="my-auto" style="width:20%;">${denunciaHechas.motivoDenuncia.descripcion}</p>
                                     <button class="my-auto py-1 px-3 denunciar font-weight-bold redondeadoEstado" style="width:20%;">Ver Detalles </button>
                                 </div>
                             </c:forEach>

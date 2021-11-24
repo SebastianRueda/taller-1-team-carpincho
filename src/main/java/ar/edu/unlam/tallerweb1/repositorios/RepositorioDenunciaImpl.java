@@ -1,10 +1,9 @@
 package ar.edu.unlam.tallerweb1.repositorios;
 
+import ar.edu.unlam.tallerweb1.modelo.Denuncia;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import ar.edu.unlam.tallerweb1.modelo.HistorialDenuncia;
 import ar.edu.unlam.tallerweb1.modelo.MotivoDenuncia;
-import ar.edu.unlam.tallerweb1.modelo.Prestacion;
 
 import java.util.List;
 
@@ -28,10 +27,10 @@ public class RepositorioDenunciaImpl implements RepositorioDenuncia {
 	}
 
 	@Override
-	public List<HistorialDenuncia> listarDenunciasPorCliente(Long id) {
+	public List<Denuncia> listarDenunciasPorCliente(Long id) {
 		final Session session = sessionFactory.getCurrentSession();
 
-        List denuncias = session.createCriteria(HistorialDenuncia.class)
+        List denuncias = session.createCriteria(Denuncia.class)
                 .add(Restrictions.eq("usuarioSolicitante.id", id))
                 .list();
 
@@ -48,7 +47,7 @@ public class RepositorioDenunciaImpl implements RepositorioDenuncia {
 	}
 
 	@Override
-	public void guardar(HistorialDenuncia historialDenuncia) {
+	public void guardar(Denuncia historialDenuncia) {
 		sessionFactory.getCurrentSession().save(historialDenuncia);
 	}
 }

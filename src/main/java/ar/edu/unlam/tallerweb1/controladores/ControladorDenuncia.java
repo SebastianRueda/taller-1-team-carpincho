@@ -74,10 +74,10 @@ public class ControladorDenuncia {
 
 	@RequestMapping(path = "/denunciaRealizada", method = RequestMethod.POST)
 	public ModelAndView denunciaRealizada(HttpServletRequest request, @ModelAttribute("denunciaRealizada") DenunciaRequest denunciaRequest) {
-		var historialDenuncia = new HistorialDenuncia();
+		var historialDenuncia = new Denuncia();
 
-		historialDenuncia.setUsuarioSolicitante(servicioUsuario.usuarioFindById(denunciaRequest.getClienteId()));
-		historialDenuncia.setAsistente(servicioUsuario.usuarioFindById(denunciaRequest.getAsistenteId()));
+		historialDenuncia.setUsuarioDenunciante(servicioUsuario.usuarioFindById(denunciaRequest.getClienteId()));
+		historialDenuncia.setUsuarioDenunciado(servicioUsuario.usuarioFindById(denunciaRequest.getAsistenteId()));
 		historialDenuncia.setComentario(denunciaRequest.getComentario());
 		historialDenuncia.setMotivoDenuncia(servicioDenuncia.buscarPorId(denunciaRequest.getMotivoId()));
 

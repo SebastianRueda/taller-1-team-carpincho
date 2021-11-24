@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
+import java.net.http.HttpClient;
 import java.util.List;
 
 
@@ -83,9 +84,17 @@ public class ControladorDenuncia {
 
 		servicioDenuncia.guardar(historialDenuncia);
 
-		return new ModelAndView("redirect: mostrar-denuncias");
+		return new ModelAndView("mostrar-denuncias");
 	}
+
+	@RequestMapping(path="detalleDenunciaRealizada",method = RequestMethod.GET)
+	public ModelAndView IrDetalleDenunciaRealizada(){
+		return new ModelAndView("detalleDenunciaRealizada");
+	}
+
+
 }
+
 	 
 	  
 	/*

@@ -487,7 +487,9 @@
                                     <p class="my-auto"
                                        style="width:20%;">${denunciaHechas.usuarioDenunciado.nombre} ${denunciaHechas.usuarioDenunciado.apellido}</p>
                                     <p class="my-auto" style="width:20%;">${denunciaHechas.motivo}</p>
-                                    <button class="my-auto py-1 px-3 denunciar font-weight-bold redondeadoEstado" style="width:20%;">Ver Detalles </button>
+
+                                    <a href="detalleDenunciaRealizada" class="my-auto py-1 px-3 denunciar font-weight-bold redondeadoEstado" style="width:20%;">Ver Detalles</a>
+
                                 </div>
                             </c:forEach>
                         </div>

@@ -36,9 +36,6 @@ public class Usuario {
 	@OneToOne(cascade = CascadeType.ALL)
 	private Suscripcion suscripcion;
 
-	
-	
-	
 	public Usuario() {
 		super();
 	}

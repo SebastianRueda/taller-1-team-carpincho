@@ -8,14 +8,15 @@ public class Denuncia {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String descripcion;
+    private String comentario;
     @OneToOne
     private Prestacion prestacion;
     @OneToOne
     private Usuario usuarioDenunciante;
     @OneToOne
     private Usuario usuarioDenunciado;
-    private String motivo;
+    @OneToOne
+    private MotivoDenuncia motivoDenuncia;
 
     public Prestacion getPrestacion() {
         return prestacion;
@@ -41,12 +42,12 @@ public class Denuncia {
         this.usuarioDenunciado = usuarioDenunciado;
     }
 
-    public String getMotivo() {
-        return motivo;
+    public MotivoDenuncia getMotivoDenuncia() {
+        return motivoDenuncia;
     }
 
-    public void setMotivo(String motivo) {
-        this.motivo = motivo;
+    public void setMotivoDenuncia(MotivoDenuncia motivoDenuncia) {
+        this.motivoDenuncia = motivoDenuncia;
     }
 
     public Long getId() {
@@ -55,11 +56,12 @@ public class Denuncia {
     public void setId(Long id) {
         this.id = id;
     }
-    public String getDescripcion() {
-        return descripcion;
-    }
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+
+    public String getComentario() {
+        return comentario;
     }
 
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
+    }
 }

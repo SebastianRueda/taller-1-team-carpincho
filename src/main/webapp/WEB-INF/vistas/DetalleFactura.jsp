@@ -194,7 +194,11 @@ ${saludo}
                                 <div class=" d-flex card-body align-items-center justify-content-center w-100 pt-4  m-0 ">
                                     <!-- Category -->
                                     <div class="kanban-category d-flex ">
-                                        <button type="submit" class="btn btn-primary">Imprimir</button>
+                                        <%--@elvariable id="factura" type="ar.edu.unlam.tallerweb1.modelo.Factura"--%>
+                                        <form:form action="generate/pdf.htm" method="get" modelAttribute="factura">
+                                            <form:hidden  path="id" id="id" value="${factura.id}"/>
+                                            <button type="submit" class="btn btn-primary">Imprimir</button>
+                                        </form:form>
                                     </div>
                                 </div>
                             </div>

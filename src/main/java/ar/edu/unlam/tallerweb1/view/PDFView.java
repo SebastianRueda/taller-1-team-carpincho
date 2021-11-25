@@ -30,22 +30,19 @@ public class PDFView extends AbstractPdfView {
 
 
         Factura factura = (Factura) model.get("command");
-        String titulo= "Factura del cliente "+ factura.getUsuarioQuePaga().getApellido() + factura.getUsuarioQuePaga().getApellido();
+        String titulo= "Factura del cliente: "+factura.getUsuarioQuePaga().fullName();
 
         Paragraph header = new Paragraph(new Chunk(titulo, FontFactory.getFont(FontFactory.HELVETICA, 30)));
-       // Paragraph fecha = new Paragraph(new Chunk(" Fecha Facturacion: " + factura.getFecha(),FontFactory.getFont(FontFactory.HELVETICA, 20)));
-
-        Paragraph by = new Paragraph(new Chunk(" Tipo Suscripcion: " + factura.getSuscripcion().getDescripcion() ,FontFactory.getFont(FontFactory.HELVETICA, 20)));
+        Paragraph fecha = new Paragraph(new Chunk(" Fecha Facturacion: " + factura.getFecha(),FontFactory.getFont(FontFactory.HELVETICA, 20)));
         Paragraph suscripcion = new Paragraph(new Chunk(" Tipo Suscripcion: " + factura.getSuscripcion().getDescripcion() ,FontFactory.getFont(FontFactory.HELVETICA, 20)));
-       // Paragraph precio  = new Paragraph(new Chunk(" Tipo Suscripcion: " + factura.getSuscripcion().getPrecio() ,FontFactory.getFont(FontFactory.HELVETICA, 20)));
-        Paragraph estadoFactura = new Paragraph(new Chunk(" Tipo Suscripcion: " + factura.getEstadoFactura().getEstado() ,FontFactory.getFont(FontFactory.HELVETICA, 20)));
+        Paragraph precio  = new Paragraph(new Chunk(" Precio: $" + factura.getSuscripcion().getPrecio() +"/Mes",FontFactory.getFont(FontFactory.HELVETICA, 20)));
+        Paragraph estadoFactura = new Paragraph(new Chunk(" Estado de la Factura: " + factura.getEstadoFactura().getEstado() ,FontFactory.getFont(FontFactory.HELVETICA, 20)));
 
         document.add(header);
-        document.add(by);
         document.add(suscripcion);
-     //   document.add(precio);
+        document.add(precio);
         document.add(estadoFactura);
-        //document.add(fecha);
+        document.add(fecha);
 
     }
 }

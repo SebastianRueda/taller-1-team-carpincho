@@ -17,11 +17,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.sql.Date;
+import java.time.LocalDate;
 
 
 @Controller
 public class PdfController {
-
+/*
     private HttpServletRequest request;
     private ServicioFactura servicioFactura;
     private ServicioSuscripcion servicioSuscripcion;
@@ -33,7 +35,7 @@ public class PdfController {
         this.servicioUsuario = servicioUsuario;
         this.servicioFactura=servicioFactura;
 
-    }
+    }*/
 
     @RequestMapping(value = "/generate/pdf.htm", method = RequestMethod.GET)
     ModelAndView generatePdf(
@@ -47,6 +49,7 @@ public class PdfController {
 
         Usuario usuario =new Usuario();
         usuario.setNombre("Rolo");
+        usuario.setApellido("Jota");
 
         EstadoFactura estadoFactura = new EstadoFactura();
         estadoFactura.setEstado("pago");
@@ -57,6 +60,12 @@ public class PdfController {
         factura.setSuscripcion(suscripcion);
         factura.setId(2l);
         factura.setEstadoFactura(estadoFactura);
+
+        long ctm=System.currentTimeMillis();
+        Date d= new Date(ctm);
+        LocalDate localDate = d.toLocalDate();
+        Date fechaActual = Date.valueOf(localDate);
+        factura.setFecha(fechaActual);
 
 //        Factura factura = servicioFactura.buscarFacturaPorId(facturaGenerada.getId());
 

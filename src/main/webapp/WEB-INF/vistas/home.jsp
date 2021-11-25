@@ -135,7 +135,7 @@
                             <div class="text-center text-decoration-none text-dark fw-bold">
                             <h3 >Suscripcion Básica</h3>
                                 <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                <button type="button" class="btn btn-dark " data-toggle="modal" data-target="#myModal">
                                     Contratar Suscripción Básica
                                 </button>
 
@@ -168,13 +168,13 @@
                             </div>
 
 
-                            <div class="card border-primary  col-md-3 col-lg-3 mb-3" style="margin: 2.7em">
-                                <div class="card-header text-primary text-center fw-bold">
+                            <div class="card border-dark  col-md-3 col-lg-3 mb-3" style="margin: 2.7em">
+                                <div class="card-header text-dark text-center fw-bold">
                                     <i class="fas fa-truck-pickup"></i> Servicio de Grúa</div>
                                 <div class="card-body text-dark">
                                     <img class="card-img-top h-100" src="imagenes/grua.jpg" alt="Card image cap">
                                 </div>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalGrua">
+                                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModalGrua">
                                     + Info
                                 </button>
                                 <br>
@@ -202,13 +202,13 @@
                                 </div>
                             </div>
 
-                            <div class="card border-primary  col-md-3 col-lg-3 mb-3" style="margin: 2.7em">
-                                <div class="card-header text-primary text-center fw-bold">
+                            <div class="card border-dark  col-md-3 col-lg-3 mb-3" style="margin: 2.7em">
+                                <div class="card-header text-dark text-center fw-bold">
                                     <i class="fab fa-old-republic"></i></i> Asistencia Policial</div>
                                 <div class="card-body text-dark">
                                     <img class="card-img-top h-100" src="imagenes/patrullero.jpg" alt="Card image cap">
                                 </div>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalpatrullero">
+                                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModalpatrullero">
                                     + Info
                                 </button>
                                 <br>
@@ -236,13 +236,13 @@
                                 </div>
 
                             </div>
-                            <div class="card border-primary  col-md-3 col-lg-3 mb-3" style="margin: 2.7em">
-                                <div class="card-header text-primary text-center fw-bold">
+                            <div class="card border-dark  col-md-3 col-lg-3 mb-3" style="margin: 2.7em">
+                                <div class="card-header text-dark text-center fw-bold">
                                     <i class="fas fa-ambulance"></i></i> Servicio Medico</div>
                                 <div class="card-body text-dark">
                                     <img class="card-img-top h-100" src="imagenes/ambulancia.jpg" alt="Card image cap">
                                 </div>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalMedico">
+                                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModalMedico">
                                     + Info
                                 </button>
                                 <br>
@@ -275,7 +275,7 @@
 
                             <div class="text-center text-decoration-none text-dark fw-bold">
                                 <h3>Suscripción Premium</h3>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                <button type="button" class="btn btn-dark " data-toggle="modal" data-target="#myModal">
                                     Contratar Suscripción Premium
                                 </button>
                             </div>
@@ -285,14 +285,14 @@
                             <br>
                             <br>
 
-                            <div class="card border-success  col-md-6 col-lg-3 mb-3" style="max-width: 18rem; ">
-                                <div class="card-header text-success text-center fw-bold">
+                            <div class="card border-dark  col-md-6 col-lg-3 mb-3" style="max-width: 18rem; ">
+                                <div class="card-header text-dark text-center fw-bold">
                                     <i class="fas fa-wrench"></i> Servicio Mecanico
                                 </div>
                                 <div class="card-body text-dark">
                                     <img class="card-img-top h-100" src="imagenes/mecanico.jpg" alt="Card image cap">
                                 </div>
-                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModalMecanico">
+                                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModalMecanico">
                                     + Info
                                 </button>
                                 <br>
@@ -323,14 +323,14 @@
 
                             </div>
 
-                            <div class="card border-success  col-md-6 col-lg-3 mb-3" style="max-width: 18rem; ">
-                                <div class="card-header text-success text-center fw-bold">
+                            <div class="card border-dark  col-md-6 col-lg-3 mb-3" style="max-width: 18rem; ">
+                                <div class="card-header text-dark text-center fw-bold">
                                     <i class="fas fa-tools"></i> Chofer
                                 </div>
                                 <div class="card-body text-dark">
                                     <img class="card-img-top h-100" src="imagenes/chofer.jpg" alt="Card image cap">
                                 </div>
-                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModalChofer">
+                                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModalChofer">
                                     + Info
                                 </button>
                                 <br>
@@ -358,14 +358,14 @@
 
                             </div>
 
-                            <div class="card border-success  col-md-6 col-lg-3 mb-3" style="max-width: 18rem; ">
-                                <div class="card-header text-success text-center fw-bold">
+                            <div class="card border-dark  col-md-6 col-lg-3 mb-3" style="max-width: 18rem; ">
+                                <div class="card-header text-dark text-center fw-bold">
                                     <i class="fas fa-cogs"></i> Repuestos Livianos
                                 </div>
                                 <div class="card-body text-dark">
                                     <img class="card-img-top h-100" src="imagenes/repuestos.jpg" alt="Card image cap">
                                 </div>
-                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModalRepuestos">
+                                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModalRepuestos">
                                     + Info
                                 </button>
                                 <br>
@@ -394,14 +394,14 @@
 
                             </div>
 
-                            <div class="card border-success  col-md-6 col-lg-3 mb-3" style="max-width: 18rem; ">
-                                <div class="card-header text-success text-center fw-bold">
+                            <div class="card border-dark  col-md-6 col-lg-3 mb-3" style="max-width: 18rem; ">
+                                <div class="card-header text-dark text-center fw-bold">
                                     <i class="fas fa-balance-scale"></i> Asistencia Legal
                                 </div>
                                 <div class="card-body text-dark">
                                     <img class="card-img-top h-100" src="imagenes/legales.png" alt="Card image cap">
                                 </div>
-                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModalLegal">
+                                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModalLegal">
                                     + Info
                                 </button>
                                 <br>

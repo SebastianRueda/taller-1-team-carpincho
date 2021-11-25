@@ -38,18 +38,13 @@ insert into rol (descripcion)
 values('prestador'),
       ('cliente final');
       
-insert into motivodenuncia (id ,descripcion)
-values (1,'El Asistente nunca se presentó.'),
-       (2,'El Asistente me agredió verbalmente.'),
-       (3,'El Asistente me agredió físicamente'),
-       (4,'El Asistente me cobró un extra'),
-       (5,'El Asistente no se correspondía con el registrado en la App'),
-       (6,'Otro motivo...');       
- 
-insert into historialdenuncia (id ,comentario)
-values (1, 'El Asistente me agredió físicamente'),
-       (2, 'El Asistente me agredió físicamente'),
-       (3, 'El Asistente nunca se presentó.');
+insert into motivodenuncia (descripcion)
+values ('El Asistente nunca se presentó.'),
+       ('El Asistente me agredió verbalmente.'),
+       ('El Asistente me agredió físicamente'),
+       ('El Asistente me cobró un extra'),
+       ('El Asistente no se correspondía con el registrado en la App'),
+       ('Otro motivo...');       
        
 insert into suscripcion (descripcion,precio,activo)
 values ('suscripcion basica',100.0,true),

@@ -1,3 +1,4 @@
+
 use db;
 insert into especialidad (descripcion)
 values ('grua'),
@@ -73,10 +74,6 @@ insert into estadoFactura (estado)
 values('pagado'),
       ('impago');
 
-/*insert into denuncia (descripcion ,motivo,prestacion_id,usuarioDenunciante_id, usuarioDenunciado_id)
-values ('hola','sarasa',1,2,1),
-       ('hola2','sarasa',2,2,1),
-       ('hola3','sarasa',3,2,1);*/
 
 
 

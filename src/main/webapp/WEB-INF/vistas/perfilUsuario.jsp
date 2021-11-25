@@ -479,22 +479,31 @@
                                         Detalles de la Denuncia</p>
                                 </div>
                             </div>
-                            <c:forEach items="${listaDenunciasHechas}" var="denunciaHechas">
-                                <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
-                                    <p class="my-auto" style="width:20%;">N° ${denunciaHechas.id}</p>
-                                    <p class="my-auto"
-                                       style="width:20%;">${denunciaHechas.usuarioDenunciado.especialidad.descripcion}</p>
-                                    <p class="my-auto"
-                                       style="width:20%;">${denunciaHechas.usuarioDenunciado.nombre} ${denunciaHechas.usuarioDenunciado.apellido}</p>
-                                    <p class="my-auto" style="width:20%;">${denunciaHechas.motivoDenuncia.descripcion}</p>
+                            <c:choose>
+                                <c:when test="${empty listaDenunciasHechas}">
+                                    <div class="d-flex justify-content-center align-items-center" style="width: 100%; height: 24em">
+                                        <h4>No tenés ninguna denuncia realiazada</h4>
+                                    </div>
+                                </c:when>
+                                <c:otherwise>
+                                    <c:forEach items="${listaDenunciasHechas}" var="denunciaHechas">
+                                        <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
+                                            <p class="my-auto" style="width:20%;">N° ${denunciaHechas.id}</p>
+                                            <p class="my-auto"
+                                               style="width:20%;">${denunciaHechas.usuarioDenunciado.especialidad.descripcion}</p>
+                                            <p class="my-auto"
+                                               style="width:20%;">${denunciaHechas.usuarioDenunciado.nombre} ${denunciaHechas.usuarioDenunciado.apellido}</p>
+                                            <p class="my-auto" style="width:20%;">${denunciaHechas.motivoDenuncia.descripcion}</p>
 
-                                    <form:form action="detalleDenunciaRealizada" method="post" modelAttribute="denunciaDetalleRequest" cssClass="btn btn-danger mt-4">
-                                        <form:input path="denunciaId" id="denunciaId" type="text" value="${denunciaHechas.id}" cssStyle="display: none" />
-                                        <button type="submit" class="text-white btn btn-link text-decoration-none" style="padding: 0">Ver Detalles</button>
-                                    </form:form>
+                                            <form:form action="detalleDenunciaRealizada" method="post" modelAttribute="denunciaDetalleRequest" cssClass="btn btn-danger mt-4">
+                                                <form:input path="denunciaId" id="denunciaId" type="text" value="${denunciaHechas.id}" cssStyle="display: none" />
+                                                <button type="submit" class="text-white btn btn-link text-decoration-none" style="padding: 0">Ver Detalles</button>
+                                            </form:form>
 
-                                </div>
-                            </c:forEach>
+                                        </div>
+                                    </c:forEach>
+                                </c:otherwise>
+                            </c:choose>
                         </div>
                     </div>
                     <!-- Termina tercer boton-->

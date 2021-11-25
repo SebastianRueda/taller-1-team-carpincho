@@ -70,7 +70,7 @@
         </div>
     </nav>
 </header>
-<a href="generate/pdf.htm">Generate Pdf</a>
+
 <div class="w-100">
     <div class="fondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-centerfondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-center">
         <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-10 col-md-offset-3 col-sm-8 col-sm-offset-2">

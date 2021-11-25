@@ -90,25 +90,14 @@
                     </h4>
                     <div class="mt-5">
                         <c:if test="${status.first}">
-                            <%--@elvariable id="suscripcion" type="ar.edu.unlam.tallerweb1.modelo.Suscripcion"
-                            <form action="contratar-suscripcion-basica" method="post" modelAttribute="suscripcion">
-                                <input id="descripcion" value="${suscripcion.descripcion}" path="descripcion"/>
-                                <button type="submit" class="btn btn-primary">Contratar Suscripcion basica</button>
-                            </form>--%>
                             <button type="button" class="fondo-login rounded-3 btn btn-primary border-0 w-100 shadow-sm mt-0" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                 Suscribirme
                             </button>
                         </c:if>
                         <c:if test="${status.last}">
-
                             <button type="submit" class="fondo-login rounded-3 btn btn-primary border-0 w-100 shadow-sm mt-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                 Suscribirme
                             </button>
-                            <%--@elvariable id="suscripcion" type="ar.edu.unlam.tallerweb1.modelo.Suscripcion"
-                            <form:form action="contratar-suscripcion-premium" method="post" modelAttribute="suscripcion">
-                                <form:hidden path="" id="descripcion" value="${suscripcion.descripcion}"/>
-                                <button type="submit" class="btn btn-primary">Contratar Suscripcion</button>
-                            </form:form>--%>
                         </c:if>
                     </div>
 
@@ -139,13 +128,6 @@
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar
                                         </button>
                                         <a href="irAFactura/${suscripcion.id}" class="btn btn-primary">Contratar Suscripcion basica</a>
-                                            <%--  <form action="contratar-suscripcion-basica" method="post" modelAttribute="suscripcion">
-                                                  <button type="submit" class="btn btn-primary">Contratar Suscripcion basica</button>
-                                              </form>
-                                                   <form:form action="contratar-suscripcion" method="post" modelAttribute="suscripcion">
-                                                       <form:hidden path="descripcion" id="descripcion" value="${suscripcion.descripcion}"/>
-                                                       <button type="submit" class="btn btn-primary">Contratar Suscripcion</button>
-                                                   </form:form>--%>
                                     </div>
                                 </div>
                             </div>
@@ -183,9 +165,7 @@
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                                             Cancelar
                                         </button>
-                                        <form action="contratar-suscripcion-premium" method="post" modelAttribute="suscripcion">
-                                            <button type="submit" class="btn btn-primary">Contratar Suscripcion Premium</button>
-                                        </form>
+                                        <a href="irAFactura/${suscripcion.id}" class="btn btn-primary">Contratar Suscripcion Premium</a>
                                     </div>
                                 </div>
                             </div>

@@ -468,7 +468,7 @@
                             <div class="col-12 p-2 ">
                                 <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
                                     <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">N°
-                                        Prestacion</p>
+                                        Denuncia</p>
                                     <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">
                                         Servicio</p>
                                     <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">

@@ -37,7 +37,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="suscripcion">Suscripción</a>
+                    <a class="nav-link" href="mostrar-denuncias">Mis denuncias</a>
                 </li>
                 <form:form action="cerrarSesion" method="POST">
                     <button>
@@ -54,31 +54,25 @@
     <div class="card card-body p-5 mb-5">
         <div class="row">
             <div class="col text-end">
-
                 <div class="badge bg-danger">
                     <a>Generar PDF</a>
                 </div>
-
             </div>
         </div>
 
         <div class="row">
             <div class="col text-center">
-
                 <h2 class="mb-2">
                     Detalle de denuncia realizada
                 </h2>
-
-
             </div>
         </div>
 
         <div class="row">
             <div class="col-12 col-md-6">
-                <h6 class="text-uppercase text-muted">
-                    Usuario Solicitante<span class="badge bg-danger-soft">Danger</span>
+                <h6 class="text-uppercase text-muted ">
+                    Datos Personales<span class="badge bg-danger-soft">Danger</span>
                 </h6>
-
                 <p class="text-muted mb-4">
                     <strong class="text-body"> ${usuarioLogueado.nombre} ${usuarioLogueado.apellido}</strong>
                     <br>
@@ -94,23 +88,16 @@
 
             <h5 class="card-title">Denuncia Realizada</h5>
 
-            <p class="card-text">Usuario Denunciante: ${denuncia.usuarioDenunciante.nombre} ${denuncia.usuarioDenunciante.apellido}</p><br>
-            <p class="card-text">Usuario Denunciado:${denuncia.usuarioDenunciado.nombre} ${denuncia.usuarioDenunciado.apellido}</p><br>
-            <p class="card-text">Prestación: ${denuncia.prestacion.especialidad.descripcion}</p><br>
-            <p class="card-text">Motivo:${denuncia.motivoDenuncia.descripcion}</p><br>
-            <p class="card-text">Denuncia:${denuncia.comentario}</p><br>
-
+            <p class="card-text ">Usuario Solicitante: ${denuncia.usuarioDenunciante.nombre} ${denuncia.usuarioDenunciante.apellido}</p>
+            <p class="card-text ">Usuario Asistente: ${denuncia.usuarioDenunciado.nombre} ${denuncia.usuarioDenunciado.apellido}</p>
+            <p class="card-text ">Prestación: ${denuncia.prestacion.especialidad.descripcion}</p>
+            <p class="card-text ">Motivo: ${denuncia.motivoDenuncia.descripcion}</p>
+            <p class="card-text ">Denuncia: ${denuncia.comentario}</p>
         </div>
+        <br>
 
         <div class="row">
             <div class="col-12">
-
-                <!-- Title -->
-                <h2 class="text-capitalize" style="text-align: center">
-                    Generar PDF
-                </h2>
-
-                <!-- Text -->
                 <div class="container-fluid kanban-container">
                     <div class="row">
                         <div class="col-md-12">
@@ -125,11 +112,11 @@
                             </div>
                         </div>
 
-                    </div> <!-- / .row -->
+                    </div>
                 </div>
 
             </div>
-        </div> <!-- / .row -->
+        </div>
     </div>
 </div>
 

@@ -53,7 +53,10 @@ values ('suscripcion basica',100.0,true),
 
 
 insert into usuario (nombre, apellido, email, password, especialidad_id, provincia_id, rol_id, activo)
-values ('eric','cuevas','ecuevas@alumno.unlam.edu.ar','root',1,1,1, true);
+values ('eric','cuevas','ecuevas@alumno.unlam.edu.ar','root',1,1,1, true),
+		('Cristian','Ramirez','CRamirez@gmail.com','root',3,3,2, true),
+	   ('Juan Peréz','Gonzalez','jpg@edu.ar','root',2,2,1, true);
+
 
 insert into usuario (nombre, apellido, email, password, provincia_id, rol_id, activo)
 values('lalo','landa','llanda@alumno.unlam.edu.ar','root',1,2, true);

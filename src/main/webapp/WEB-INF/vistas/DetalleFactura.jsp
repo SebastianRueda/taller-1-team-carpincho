@@ -162,7 +162,58 @@ ${saludo}
                             <td class="px-0 text-end">
                                 Incluido
                             </td>
+
                         </tr>
+                        <c:if test="${suscripcion.descripcion == 'suscripcion premium'}">
+                            <tr>
+                                <td class="px-0">
+                                    Asistencia Legal
+                                </td>
+                                <td class="px-0">
+                                    0
+                                </td>
+                                <td class="px-0 text-end">
+                                    Incluido
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td class="px-0">
+                                    Repuestos Livianos
+                                </td>
+                                <td class="px-0">
+                                    0
+                                </td>
+                                <td class="px-0 text-end">
+                                    Incluido
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td class="px-0">
+                                    Chofer
+                                </td>
+                                <td class="px-0">
+                                    0
+                                </td>
+                                <td class="px-0 text-end">
+                                    Incluido
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td class="px-0">
+                                    Servicio Mecanico
+                                </td>
+                                <td class="px-0">
+                                    0
+                                </td>
+                                <td class="px-0 text-end">
+                                    Incluido
+                                </td>
+
+                            </tr>
+                        </c:if>
                         <tr>
                             <td class="px-0 border-top border-top-2">
                                 <strong>Costo Total</strong>
@@ -195,7 +246,7 @@ ${saludo}
                                     <!-- Category -->
                                     <div class="kanban-category d-flex ">
                                         <%--@elvariable id="factura" type="ar.edu.unlam.tallerweb1.modelo.Factura"--%>
-                                        <form:form action="generate/pdf.htm" method="get" modelAttribute="factura">
+                                        <form:form action="generate/pdf.pdf" method="get" modelAttribute="factura">
                                             <form:hidden  path="id" id="id" value="${factura.id}"/>
                                             <button type="submit" class="btn btn-primary">Imprimir</button>
                                         </form:form>

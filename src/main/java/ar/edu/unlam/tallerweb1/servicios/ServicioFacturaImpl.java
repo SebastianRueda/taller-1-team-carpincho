@@ -50,10 +50,8 @@ public class ServicioFacturaImpl implements ServicioFactura{
     @Override
     public Factura buscarUltimaFacturaPorUsuario(Usuario usuario) {
         List<Factura> facturas =repositorioFactura.buscarUltimaFacturaPorUsuario(usuario);
-        Factura factura = new Factura();
-        factura= facturas.get(0);
 
-
+        Factura factura= facturas.get(0);
         return factura;
 
     }

@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.function.Consumer;
 
 @Controller
 public class ControladorContratar {
@@ -45,16 +46,30 @@ public class ControladorContratar {
     @RequestMapping(path = "/contratar-prestacion", method = RequestMethod.GET)
     public ModelAndView contratarPrestacion(@RequestParam(value = "asistente-id") Long id, HttpServletRequest httpServletRequest) {
         var usuarioLogueado = SessionUtils.getCurrentUserSession(httpServletRequest);
-        if (usuarioLogueado == null){
+        /*if (usuarioLogueado == null){
             return new ModelAndView("redirect:/");
-        }
+        }*/
+
+        var model = new ModelMap();
 
         var asistente = servicioUsuario.usuarioFindById(id);
-        var model = new ModelMap();
+
+        var prestaciones = servicioPrestacion.getAll();
 
         if (asistente == null) {
             model.put("error", "No se pudo encontrar los datos del asistente para completar la operacion");
         } else {
+            for (Prestacion prestacion : prestaciones) {
+                if (prestacion.getUsuarioSolicitante().getId().equals(usuarioLogueado.getId())
+                        && prestacion.getUsuarioAsistente().getId().equals(asistente.getId())
+                        && prestacion.getEstado().equals(PrestacionEstado.ACTIVO.getEstado())) {
+
+                    model.put("error", "Ya tenés una prestación");
+
+                    return new ModelAndView("excepcionFiltro", model);
+                }
+            }
+
             Prestacion prestacion = new Prestacion();
             prestacion.setEstado(PrestacionEstado.ACTIVO.getEstado());
             prestacion.setEspecialidad(asistente.getEspecialidad());
@@ -64,8 +79,8 @@ public class ControladorContratar {
             prestacion.setUsuarioSolicitante(cliente);
             servicioPrestacion.save(prestacion);
 
-            prestacion.getId();
             model.put("prestacion", prestacion);
+
             model.put("datosCalificacion", new DatosCalificacion());
         }
 

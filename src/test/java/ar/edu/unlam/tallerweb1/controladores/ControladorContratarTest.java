@@ -2,10 +2,12 @@ package ar.edu.unlam.tallerweb1.controladores;
 
 import ar.edu.unlam.tallerweb1.HttpSessionFake;
 import ar.edu.unlam.tallerweb1.modelo.Prestacion;
+import ar.edu.unlam.tallerweb1.modelo.PrestacionEstado;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPrestacion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
 import ar.edu.unlam.tallerweb1.utils.SessionUtils;
+import org.assertj.core.api.Assertions;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -17,6 +19,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
+import java.util.ArrayList;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -73,6 +77,16 @@ public class ControladorContratarTest {
         ModelAndView mav = whenFinalizaUnaPrestacionQueYaEstaFinalizada(prestacionFinalizada);
         thenPrestacionDaErrorAlFinalizar(mav);
     }*/
+
+    @Test
+    public void clienteIntentaContratarAUnMismoAsistenteYaConUnaContratacionEnCurso() {
+        final var asistente = new Usuario();
+        asistente.setId(103L);
+
+        givenClienteYaContratoAlAsistenteA(cliente, asistente);
+        final var mav = whenClienteIntentaContratarAlAsistenteA(asistente, httpServletRequest);
+        thenClienteNoPudoContratarAlAsistenteA(mav);
+    }
 
     private void thenPrestacionDaErrorAlFinalizar(ModelAndView mav) {
         assertThat(mav.getViewName()).isEqualTo("perfilUsuario");
@@ -137,5 +151,29 @@ public class ControladorContratarTest {
     private void thenNoSePudoCrearLaPrestacion(ModelAndView view) {
         Assert.assertEquals(view.getViewName(), "detalle-contratacion");
         Assert.assertEquals(view.getModel().get("error"), "No se pudo encontrar los datos del asistente para completar la operacion");
+    }
+
+    private void givenClienteYaContratoAlAsistenteA(Usuario cliente, Usuario asistente) {
+        final var prestacion = new Prestacion();
+        prestacion.setUsuarioSolicitante(cliente);
+        prestacion.setUsuarioAsistente(asistente);
+        prestacion.setEstado(PrestacionEstado.ACTIVO.getEstado());
+
+        final var prestaciones = new ArrayList<Prestacion>();
+        prestaciones.add(prestacion);
+
+        Mockito.when(servicioUsuario.usuarioFindById(asistente.getId())).thenReturn(asistente);
+        Mockito.when(servicioPrestacion.getAll()).thenReturn(prestaciones);
+    }
+
+    private ModelAndView whenClienteIntentaContratarAlAsistenteA(Usuario asistente, HttpServletRequest httpServletRequest) {
+        return controladorContratar.contratarPrestacion(asistente.getId(), httpServletRequest);
+    }
+
+    private void thenClienteNoPudoContratarAlAsistenteA(ModelAndView mav) {
+        Assertions.assertThat(mav).isNotNull();
+        final var model = mav.getModel();
+        Assertions.assertThat(model).isNotNull();
+        Assertions.assertThat(model.get("error")).isNotNull();
     }
 }

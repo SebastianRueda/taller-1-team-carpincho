@@ -96,9 +96,9 @@
 
             <p class="card-text">Usuario Denunciante: ${denuncia.usuarioDenunciante.nombre} ${denuncia.usuarioDenunciante.apellido}</p><br>
             <p class="card-text">Usuario Denunciado:${denuncia.usuarioDenunciado.nombre} ${denuncia.usuarioDenunciado.apellido}</p><br>
-            <p class="card-text">Prestación: ${denuncia.prestacion.descripcion}</p><br>
-            <p class="card-text">Motivo:${denuncia.motivo}</p><br>
-            <p class="card-text">Denuncia:${denuncia.descripcion}</p><br>
+            <p class="card-text">Prestación: ${denuncia.prestacion.especialidad.descripcion}</p><br>
+            <p class="card-text">Motivo:${denuncia.motivoDenuncia.descripcion}</p><br>
+            <p class="card-text">Denuncia:${denuncia.comentario}</p><br>
 
         </div>
 

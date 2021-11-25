@@ -415,7 +415,7 @@
                                                        style="width:20%;"> Calificar
                                                     </a>
                                                 </c:if>
-                                                <a href="denunciarAsistente" class="my-auto py-1 px-3 denunciar font-weight-bold redondeadoEstado" style="width:20%;"   >Denunciar</a>
+                                                <a href="denunciarAsistente?prestacion-id=${prestacion.id}" class="my-auto py-1 px-3 denunciar font-weight-bold redondeadoEstado" style="width:20%;"   >Denunciar</a>
                                             </div>
 
                                         </c:forEach>
@@ -481,14 +481,17 @@
                             </div>
                             <c:forEach items="${listaDenunciasHechas}" var="denunciaHechas">
                                 <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
-                                    <p class="my-auto" style="width:20%;">N° ${denunciaHechas.prestacion.id}</p>
+                                    <p class="my-auto" style="width:20%;">N° ${denunciaHechas.id}</p>
                                     <p class="my-auto"
                                        style="width:20%;">${denunciaHechas.usuarioDenunciado.especialidad.descripcion}</p>
                                     <p class="my-auto"
                                        style="width:20%;">${denunciaHechas.usuarioDenunciado.nombre} ${denunciaHechas.usuarioDenunciado.apellido}</p>
-                                    <p class="my-auto" style="width:20%;">${denunciaHechas.motivo}</p>
+                                    <p class="my-auto" style="width:20%;">${denunciaHechas.motivoDenuncia.descripcion}</p>
 
-                                    <a href="detalleDenunciaRealizada" class="my-auto py-1 px-3 denunciar font-weight-bold redondeadoEstado" style="width:20%;">Ver Detalles</a>
+                                    <form:form action="detalleDenunciaRealizada" method="post" modelAttribute="denunciaDetalleRequest" cssClass="btn btn-danger mt-4">
+                                        <form:input path="denunciaId" id="denunciaId" type="text" value="${denunciaHechas.id}" cssStyle="display: none" />
+                                        <button type="submit" class="text-white btn btn-link text-decoration-none" style="padding: 0">Ver Detalles</button>
+                                    </form:form>
 
                                 </div>
                             </c:forEach>

@@ -3,13 +3,11 @@ package ar.edu.unlam.tallerweb1.servicios;
 import java.util.List;
 
 
-
+import ar.edu.unlam.tallerweb1.modelo.Denuncia;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ar.edu.unlam.tallerweb1.modelo.HistorialDenuncia;
 import ar.edu.unlam.tallerweb1.modelo.MotivoDenuncia;
-import ar.edu.unlam.tallerweb1.modelo.Prestacion;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioDenuncia;
 
 
@@ -32,17 +30,22 @@ public class ServicioDenunciaImp implements ServicioDenuncia {
 	}
 	
 	@Override
-    public List<HistorialDenuncia> listarDenunciasPorCliente(Long id) {
+    public List<Denuncia> listarDenunciasPorCliente(Long id) {
         return denunciaDao.listarDenunciasPorCliente(id);
     }
 
 	@Override
-	public MotivoDenuncia buscarPorId(Long id) {
-		return denunciaDao.buscarPorId(id);
+	public MotivoDenuncia buscarMotivoPorId(Long id) {
+		return denunciaDao.buscarMotivoPorId(id);
 	}
 
 	@Override
-	public void guardar(HistorialDenuncia historialDenuncia) {
+	public void guardar(Denuncia historialDenuncia) {
 		denunciaDao.guardar(historialDenuncia);
+	}
+
+	@Override
+	public Denuncia buscarDenunciaPorId(Long id) {
+		return denunciaDao.buscarDenunciaPorId(id);
 	}
 }

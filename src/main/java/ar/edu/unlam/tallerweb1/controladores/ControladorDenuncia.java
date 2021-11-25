@@ -1,6 +1,5 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
-import java.net.http.HttpClient;
 import java.util.List;
 
 
@@ -9,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import ar.edu.unlam.tallerweb1.modelo.*;
+import ar.edu.unlam.tallerweb1.modelo.request.DenunciaDetalleRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -56,6 +56,7 @@ public class ControladorDenuncia {
 		var prestaciones = servicioPrestacion.listarPrestacionesContratadasPorCliente(usuarioLogueado.getId());
 		Usuario usuario = servicioUsuario.usuarioFindById(usuarioLogueado.getId());
 
+		modelo.put("prestacionId", id);
 		modelo.put("usuarioEnSession", usuario);
 		modelo.put("listaPrestaciones", prestaciones);
 		List<Especialidad> lista =
@@ -75,21 +76,32 @@ public class ControladorDenuncia {
 
 	@RequestMapping(path = "/denunciaRealizada", method = RequestMethod.POST)
 	public ModelAndView denunciaRealizada(HttpServletRequest request, @ModelAttribute("denunciaRealizada") DenunciaRequest denunciaRequest) {
-		var historialDenuncia = new HistorialDenuncia();
+		var historialDenuncia = new Denuncia();
 
-		historialDenuncia.setUsuarioSolicitante(servicioUsuario.usuarioFindById(denunciaRequest.getClienteId()));
-		historialDenuncia.setAsistente(servicioUsuario.usuarioFindById(denunciaRequest.getAsistenteId()));
+		historialDenuncia.setPrestacion(servicioPrestacion.buscarPrestacionPorId(denunciaRequest.getPrestacionId()));
+		historialDenuncia.setUsuarioDenunciante(servicioUsuario.usuarioFindById(denunciaRequest.getClienteId()));
+		historialDenuncia.setUsuarioDenunciado(servicioUsuario.usuarioFindById(denunciaRequest.getAsistenteId()));
 		historialDenuncia.setComentario(denunciaRequest.getComentario());
-		historialDenuncia.setMotivoDenuncia(servicioDenuncia.buscarPorId(denunciaRequest.getMotivoId()));
+		historialDenuncia.setMotivoDenuncia(servicioDenuncia.buscarMotivoPorId(denunciaRequest.getMotivoId()));
 
 		servicioDenuncia.guardar(historialDenuncia);
 
-		return new ModelAndView("mostrar-denuncias");
+		return new ModelAndView("redirect: mostrar-denuncias");
 	}
 
-	@RequestMapping(path="detalleDenunciaRealizada",method = RequestMethod.GET)
-	public ModelAndView IrDetalleDenunciaRealizada(){
-		return new ModelAndView("detalleDenunciaRealizada");
+	@RequestMapping(path="detalleDenunciaRealizada",method = RequestMethod.POST)
+	public ModelAndView IrDetalleDenunciaRealizada(HttpServletRequest request, @ModelAttribute("denunciaDetalleRequest") DenunciaDetalleRequest denunciaDetalleRequest){
+		var denuncia = servicioDenuncia.buscarDenunciaPorId(denunciaDetalleRequest.getDenunciaId());
+
+		var model = new ModelMap();
+
+		if (denuncia != null) {
+			model.put("denuncia", denuncia);
+		} else {
+			model.put("error", "No se pudo encontrar la denuncia");
+		}
+
+		return new ModelAndView("detalleDenunciaRealizada", model);
 	}
 
 

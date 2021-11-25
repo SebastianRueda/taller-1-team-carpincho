@@ -45,6 +45,7 @@
 		<h1>Bienvenido A SegurAPP</h1>
 
 			<form:form action="denunciaRealizada" method="post" modelAttribute="denunciaRequest">
+				<form:input path="prestacionId" name="prestacionId" value="${prestacionId}" cssStyle="display: none" />
 				<label for="listaPrestaciones">Estás denunciando a:</label>
 				${asistente.nombre} ${asistente.apellido}
 

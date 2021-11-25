@@ -10,6 +10,7 @@
     <!--Configuracion para indicarle al MVC de spring como resolver las vistas-->
     <bean id="viewResolver"
         class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+
         <property name="viewClass"
             value="org.springframework.web.servlet.view.JstlView" />
         <!--Con esto antepone /WEB-INF/vistas al nombre de vista recibido-->
@@ -18,6 +19,16 @@
         <property name="suffix" value=".jsp" />
         <!--De esta manera al devolver home como nombre de vista, resuelve /WEB-INF/vistas/home.jsp-->
     </bean>
+
+    <bean id="viewResolverpdf"
+          class="org.springframework.web.servlet.view.ResourceBundleViewResolver">
+        <property name="order" value="1"></property>
+        <property name="basename" value="views"></property>
+    </bean>
+
+
+
+
 
     <!--Excluye de las URL validas para Spring MVC los recursos estaticos de la aplicacion Web: estilos, java script y fuentes-->
     <!--Si se agregaran, por ejemplo, imagenes, es; es necesario agregar ese path aca-->

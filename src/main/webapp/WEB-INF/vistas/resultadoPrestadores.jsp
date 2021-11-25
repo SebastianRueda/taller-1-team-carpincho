@@ -98,7 +98,7 @@
                                         <td class="actions">
                                             <button type="button" value="contratar"
                                                     id="button-contratar" <%--onclick="contratar(${usuario.id})"--%>
-                                                    class="btn btn-primary fondo-gradiente-uno fondo-gradiente-1 border-0 bg-success">
+                                                    class="btn btn-primary fondo-gradiente-uno fondo-gradiente-1 border-0 bg-dark">
                                                 <a class="text-white text-decoration-none"
                                                    href="<c:url value='/contratar-prestacion?asistente-id=${usuario.id}' />">Contratar</a>
                                             </button>

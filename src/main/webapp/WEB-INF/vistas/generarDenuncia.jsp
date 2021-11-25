@@ -13,71 +13,82 @@
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link href="css/Login.css" rel="stylesheet">
+
 	<title>Generar Denuncia</title>
 	</head>
+
 	<body class=" h-100">
-	
-	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+
+	<header>
+		<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
 			<div class="container-fluid">
-				<a class="navbar-brand" href="login">AsegurApp</a>
+				<a class="navbar-brand" href="home">AsegurApp</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="navbarNav">
 					<ul class="navbar-nav">
-						
 						<li class="nav-item">
-							<a class="nav-link" aria-current="page" href="traerEspecialidades">Contratar</a>
+							<a class="nav-link" aria-current="page" href="home">Home</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="traerEspecialidades">Contratar</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="perfilUsuario">Perfil</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link active" href="denunciarAsistente">Nueva Denuncia</a>
+							<a class="nav-link" href="suscripcion">Suscripción</a>
 						</li>
+						<form:form action="cerrarSesion" method="POST">
+							<button>
+								cerrarSesion
+							</button>
+						</form:form>
 					</ul>
 				</div>
 			</div>
 		</nav>
-	<div class=" h-100 w-100">
-		<div class="fondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-centerfondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-center">
-			<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-10 col-md-offset-3 col-sm-8 col-sm-offset-2">
-		<h1>Bienvenido A SegurAPP</h1>
+	</header>
 
-			<form:form action="denunciaRealizada" method="post" modelAttribute="denunciaRequest">
+	<div class=" h-100 w-100">
+		<div class="fondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-center">
+			<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+				<div class="card-body bg-white mb-3">
+				<h1 class="card-text text-center fw-bold">Realizar denuncia</h1><br>
+
+				<form:form action="denunciaRealizada" method="post" modelAttribute="denunciaRequest">
 				<form:input path="prestacionId" name="prestacionId" value="${prestacionId}" cssStyle="display: none" />
-				<label for="listaPrestaciones">Estás denunciando a:</label>
+				<label class="card-text  fw-bold" for="listaPrestaciones">Estás denunciando a:</label>
 				${asistente.nombre} ${asistente.apellido}
 
 				<form:input path="clienteId" name="clienteId" value="${usuarioEnSession.id}" cssStyle="display: none" />
 				<form:input path="asistenteId" name="asistenteId" value="${asistente.id}" cssStyle="display: none"/>
-
 					<br>
-					<label for="listaEspecialidadDesplegable">Seleccione motivo:</label>
+					<br>
+					<br>
+					<label class="card-text fw-bold" for="listaEspecialidadDesplegable">Seleccione motivo:</label>
 					<form:select path="motivoId" name="motivoDenuncia">
 						<c:forEach items="${motivoDenuncias}" var="motivoDenuncias">
+
 							<option value="${motivoDenuncias.id}">${motivoDenuncias.descripcion}</option>
 						</c:forEach>
 					</form:select>
-
-					<label>Comentario: </label>
+					<br>
+					<br>
+					<label style="font-weight: bold" >Comentanos lo ocurrido </label>
+					<br>
+					<br>
 					<form:textarea path="comentario" name="comentario" rows="4" cols="50" />
+					<br>
+					<button class=" btn btn-dark border-0 " Type="submit" >Confirmar</button>
 
-					<button class="btn btn-lg btn-primary btn-block" Type="Submit">Confirmar</button>
-			</form:form>
-
-				<%--<form:form action="clienteCalifica" method="post" modelAttribute="datosCalificacion">
-					<form:input type="text" path="prestacionId" value="${prestacion.id}" name="prestacionId" />
-					<div class="form-check form-check-inline">
-						<form:input path="calificacion" id="calificacionDadaPorElCliente" type="number" class="form-control" />
-						<button type="submit" class="btn btn-primary">Calificar</button>
-					</div>
-				</form:form>--%>
+					</form:form>
 
 			</div>
 		</div>
 	</div>
-
+	</div>
 
 	<footer class="page-footer font-small color-light bg-dark text-light">
 
@@ -153,6 +164,16 @@
 		</div>
 
 	</footer>
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+	<script src="js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+
 
 	</body>
 </html>

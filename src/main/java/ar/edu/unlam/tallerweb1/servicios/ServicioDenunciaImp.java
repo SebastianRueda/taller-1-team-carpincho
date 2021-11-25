@@ -35,12 +35,17 @@ public class ServicioDenunciaImp implements ServicioDenuncia {
     }
 
 	@Override
-	public MotivoDenuncia buscarPorId(Long id) {
-		return denunciaDao.buscarPorId(id);
+	public MotivoDenuncia buscarMotivoPorId(Long id) {
+		return denunciaDao.buscarMotivoPorId(id);
 	}
 
 	@Override
 	public void guardar(Denuncia historialDenuncia) {
 		denunciaDao.guardar(historialDenuncia);
+	}
+
+	@Override
+	public Denuncia buscarDenunciaPorId(Long id) {
+		return denunciaDao.buscarDenunciaPorId(id);
 	}
 }

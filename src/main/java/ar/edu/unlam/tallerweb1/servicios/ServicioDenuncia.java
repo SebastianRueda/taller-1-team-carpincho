@@ -11,7 +11,9 @@ public interface ServicioDenuncia {
 
 	List<Denuncia> listarDenunciasPorCliente(Long id);
 
-	MotivoDenuncia buscarPorId(Long id);
+	MotivoDenuncia buscarMotivoPorId(Long id);
 
 	void guardar(Denuncia historialDenuncia);
+
+	Denuncia buscarDenunciaPorId(Long id);
 }

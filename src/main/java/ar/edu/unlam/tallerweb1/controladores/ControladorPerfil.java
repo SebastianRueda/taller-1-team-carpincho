@@ -3,6 +3,7 @@ package ar.edu.unlam.tallerweb1.controladores;
 import ar.edu.unlam.tallerweb1.modelo.Denuncia;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.modelo.request.AgregarRemoverAsistenteFavoritoRequest;
+import ar.edu.unlam.tallerweb1.modelo.request.DenunciaDetalleRequest;
 import ar.edu.unlam.tallerweb1.servicios.ServicioDenunciaL;
 import ar.edu.unlam.tallerweb1.servicios.ServicioFavoritos;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPrestacion;
@@ -108,6 +109,7 @@ public class ControladorPerfil {
             model.put("listaDenunciasHechas", listaDenunciasHechas);
             model.put("historialDenuncias", "todas las denuncias que hiciste perri");
             model.put("seccion", "historialDenuncias");
+            model.put("denunciaDetalleRequest", new DenunciaDetalleRequest());
             return new ModelAndView("perfilUsuario", model);
         } catch (Exception e) {
             model.put("sinUsuario", "Logueate perri");

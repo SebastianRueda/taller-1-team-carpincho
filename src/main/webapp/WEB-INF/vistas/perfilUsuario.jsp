@@ -488,7 +488,10 @@
                                        style="width:20%;">${denunciaHechas.usuarioDenunciado.nombre} ${denunciaHechas.usuarioDenunciado.apellido}</p>
                                     <p class="my-auto" style="width:20%;">${denunciaHechas.motivoDenuncia.descripcion}</p>
 
-                                    <a href="detalleDenunciaRealizada" class="my-auto py-1 px-3 denunciar font-weight-bold redondeadoEstado" style="width:20%;">Ver Detalles</a>
+                                    <form:form action="detalleDenunciaRealizada" method="post" modelAttribute="denunciaDetalleRequest" cssClass="btn btn-danger mt-4">
+                                        <form:input path="denunciaId" id="denunciaId" type="text" value="${denunciaHechas.id}" cssStyle="display: none" />
+                                        <button type="submit" class="text-white btn btn-link text-decoration-none" style="padding: 0">Ver Detalles</button>
+                                    </form:form>
 
                                 </div>
                             </c:forEach>

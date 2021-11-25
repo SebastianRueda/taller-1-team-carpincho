@@ -1,6 +1,7 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
 public class DenunciaRequest {
+    Long prestacionId;
     Long clienteId;
     Long asistenteId;
     String comentario;
@@ -36,5 +37,13 @@ public class DenunciaRequest {
 
     public void setMotivoId(Long motivoId) {
         this.motivoId = motivoId;
+    }
+
+    public void setPrestacionId(Long prestacionId) {
+        this.prestacionId = prestacionId;
+    }
+
+    public Long getPrestacionId() {
+        return prestacionId;
     }
 }

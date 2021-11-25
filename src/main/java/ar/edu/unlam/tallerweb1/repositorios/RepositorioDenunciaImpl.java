@@ -38,7 +38,7 @@ public class RepositorioDenunciaImpl implements RepositorioDenuncia {
 	}
 
 	@Override
-	public MotivoDenuncia buscarPorId(Long id) {
+	public MotivoDenuncia buscarMotivoPorId(Long id) {
 		final var session = sessionFactory.getCurrentSession();
 
 		return (MotivoDenuncia) session.createCriteria(MotivoDenuncia.class)
@@ -49,5 +49,19 @@ public class RepositorioDenunciaImpl implements RepositorioDenuncia {
 	@Override
 	public void guardar(Denuncia historialDenuncia) {
 		sessionFactory.getCurrentSession().save(historialDenuncia);
+	}
+
+	@Override
+	public Denuncia buscarDenunciaPorId(Long id) {
+		var list = sessionFactory.getCurrentSession()
+				.createQuery("FROM Denuncia WHERE id = :id")
+				.setParameter("id", id)
+				.list();
+
+		if (!list.isEmpty()) {
+			return (Denuncia) list.get(0);
+		} else {
+			return null;
+		}
 	}
 }

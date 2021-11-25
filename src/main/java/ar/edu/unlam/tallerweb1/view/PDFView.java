@@ -5,6 +5,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import ar.edu.unlam.tallerweb1.modelo.Factura;
 import com.lowagie.text.Document;
 import com.lowagie.text.FontFactory;
 import com.lowagie.text.Paragraph;
@@ -27,13 +28,24 @@ public class PDFView extends AbstractPdfView {
                                     Document document, PdfWriter writer, HttpServletRequest req,
                                     HttpServletResponse resp) throws Exception {
 
-        Usuario usuario = (Usuario) model.get("command");
 
-        Paragraph header = new Paragraph(new Chunk("Generate Pdf USing Spring Mvc", FontFactory.getFont(FontFactory.HELVETICA, 30)));
-        Paragraph by = new Paragraph(new Chunk("Author " + usuario.getApellido() + " " +usuario.getApellido(),FontFactory.getFont(FontFactory.HELVETICA, 20)));
+        Factura factura = (Factura) model.get("command");
+        String titulo= "Factura del cliente "+ factura.getUsuarioQuePaga().getApellido() + factura.getUsuarioQuePaga().getApellido();
+
+        Paragraph header = new Paragraph(new Chunk(titulo, FontFactory.getFont(FontFactory.HELVETICA, 30)));
+       // Paragraph fecha = new Paragraph(new Chunk(" Fecha Facturacion: " + factura.getFecha(),FontFactory.getFont(FontFactory.HELVETICA, 20)));
+
+        Paragraph by = new Paragraph(new Chunk(" Tipo Suscripcion: " + factura.getSuscripcion().getDescripcion() ,FontFactory.getFont(FontFactory.HELVETICA, 20)));
+        Paragraph suscripcion = new Paragraph(new Chunk(" Tipo Suscripcion: " + factura.getSuscripcion().getDescripcion() ,FontFactory.getFont(FontFactory.HELVETICA, 20)));
+       // Paragraph precio  = new Paragraph(new Chunk(" Tipo Suscripcion: " + factura.getSuscripcion().getPrecio() ,FontFactory.getFont(FontFactory.HELVETICA, 20)));
+        Paragraph estadoFactura = new Paragraph(new Chunk(" Tipo Suscripcion: " + factura.getEstadoFactura().getEstado() ,FontFactory.getFont(FontFactory.HELVETICA, 20)));
 
         document.add(header);
         document.add(by);
+        document.add(suscripcion);
+     //   document.add(precio);
+        document.add(estadoFactura);
+        //document.add(fecha);
 
     }
 }

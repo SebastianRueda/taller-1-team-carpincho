@@ -71,6 +71,10 @@ VALUES ('1', 1,3,'hola', 'finalizado', '11111', '1', '2'),
        ('5', null,5,'hola', 'finalizado', '55555', '1', '2'),
        ('6', null,2,'hola', 'cancelado', '66666', '1', '2');
 
+insert into estadoFactura (estado)
+values('pagado'),
+      ('impago');
+
 /*insert into denuncia (descripcion ,motivo,prestacion_id,usuarioDenunciante_id, usuarioDenunciado_id)
 values ('hola','sarasa',1,2,1),
        ('hola2','sarasa',2,2,1),

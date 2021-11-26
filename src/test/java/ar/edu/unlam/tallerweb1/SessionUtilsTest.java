@@ -20,13 +20,7 @@ public class SessionUtilsTest {
         thenCompruboQueElUsuarioEnSessionSeaCorrecto(dado, obtenido);
     }
 
-    @Test
-    public void cerrarSesionTest() {
-        givenUsuarioGuardadoEnSession();
-        whenCierroLaSesion();
-        Usuario obtenito = SessionUtils.getCurrentUserSession(httpServletRequest);
-        thenComprueboQueLaSesionSeHayaCerrado(obtenito);
-    }
+    
 
     private Usuario givenUsuarioGuardadoEnSession() {
         var usuario = new Usuario();
@@ -47,6 +41,14 @@ public class SessionUtilsTest {
 
     private void thenCompruboQueElUsuarioEnSessionSeaCorrecto(Usuario dado, Usuario obtenido) {
         Assert.assertEquals(dado, obtenido);
+    }
+    
+    @Test
+    public void cerrarSesionTest() {
+        givenUsuarioGuardadoEnSession();
+        whenCierroLaSesion();
+        Usuario obtenito = SessionUtils.getCurrentUserSession(httpServletRequest);
+        thenComprueboQueLaSesionSeHayaCerrado(obtenito);
     }
 
     private void whenCierroLaSesion() {

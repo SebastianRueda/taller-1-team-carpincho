@@ -113,12 +113,4 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario {
 				.add(Restrictions.eq("provinciaBuscada.id",idProvincia))
 				.list();
 	}
-
-
-
-
-//	@Override
-//	public Usuario buscarUsuarioPorMail(String rol) {
-//		return null;
-//	}
 }

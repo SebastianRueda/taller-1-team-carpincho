@@ -11,7 +11,7 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link href="css/Login.css" rel="stylesheet">
 		
-		<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=true"></script>
+		<script src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyAiq3xISXSZYgkd9GDAOdajy4NK2d3L7dY"></script>
         <script type="text/javascript">
             function mostrar_mapa(centinela){
                 //Ubicacion inicial del mapa.
@@ -25,40 +25,17 @@
                 //Creacion del mapa
                 var map = new google.maps.Map(document.getElementById("mapa"),opciones);
                 
-                
-              //recuperar ubicacion donde hago click
-                var iw = new google.maps.InfoWindow(
-                            {content: 'verifique su ubicacion', 
-                             position: ubicacion});
-                iw.open(map);
-                // configurar evento click sobre el mapa
-                map.addListener('click', function(mapsMouseEvent) {                 
-                  iw.close();
-                  iw = new google.maps.InfoWindow({position: mapsMouseEvent.latLng});
-                  iw.setContent(mapsMouseEvent.latLng.toString());
-                  iw.open(map);
+             // creates a draggable marker to the given coords
+                var vMarker = new google.maps.Marker({
+                    position: new google.maps.LatLng(-34.666991893913085, -58.56839056121045),
+                    draggable: true
                 });
-                
+             // centers the map on markers coords
+                map.setCenter(vMarker.position);
 
-                if (centinela==1){
-                    //Colocar una marca sobre el Mapa
-                    mi_ubicacion = new google.maps.Marker({
-                       position: new google.maps.LatLng(position),//PosiciÃ³n de la marca
-                       icon: 'ubicacion.png', //Imagen que aparecerÃ¡ en la marca, debe estar en el server
-                       map: map, //Mapa donde estarÃ¡ la marca
-                       title: 'Confirmar mi ubicacion' //TÃ­tulo all hacer un mouseover
-                    });
-
-                    //Mostrar InformaciÃ³n al hacer click en la marca
-                    var infowindow = new google.maps.InfoWindow({
-                        content: 'establecer ubicacion'
-                    });
-
-                    google.maps.event.addListener(mi_ubicacion, 'click',function(){
-                        //Calling the open method of the InfoWindow
-                       infowindow.open(map, mi_ubicacion);
-                    });
-                };
+                // adds the marker on the map
+                vMarker.setMap(map);
+              
             }  
 
         </script>       

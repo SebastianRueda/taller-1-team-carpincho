@@ -13,7 +13,7 @@
 		
 		<script src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyAiq3xISXSZYgkd9GDAOdajy4NK2d3L7dY"></script>
         <script type="text/javascript">
-            function mostrar_mapa(centinela){
+            function mostrar_mapa(){
                 //Ubicacion inicial del mapa.
                 var ubicacion = new google.maps.LatLng(-34.666991893913085, -58.56839056121045); //Latitud y Longitud
                 //Parametros Iniciales
@@ -35,9 +35,17 @@
 
                 // adds the marker on the map
                 vMarker.setMap(map);
-              
-            }  
+             	// adds a listener to the marker
+                // gets the coords when drag event ends
+                // then updates the input with the new coords
+                google.maps.event.addListener(vMarker, 'dragend', function (evt) {
+                    $("#latitudinput").val(evt.latLng.lat().toFixed(6));
+                    $("#longitudinput").val(evt.latLng.lng().toFixed(6));
 
+                    map.panTo(evt.latLng);
+                }); 
+            }  
+            
         </script>       
 		<title>Busqueda Prestadores</title>
 	</head>
@@ -95,8 +103,7 @@
 					</div>
 				</div>
 				<br>
-				<br>
-				<br>
+				
 			<div class="container">
 				<div class="row">
 				<div class="card border-primary col-md-3 col-lg-3 mb-3" style="margin: 2.7em">

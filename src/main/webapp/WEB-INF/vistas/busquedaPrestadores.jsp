@@ -105,7 +105,21 @@
 			<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-10 col-md-offset-3 col-sm-8 col-sm-offset-2">
 
 		<h1 style="text-align: center">Bienvenido a AsegurAPP</h1>
-
+		<h3 style="text-align: center">Establecer mi ubicacion real <i class="fas fa-arrow-circle-down"></i></h3><br>
+		<div class="container">
+					<div class="row">
+						<div class="col-12 " style="margin-left: 15em;margin-right: 15em">
+							<div id="mapa" style="width: 600px; height: 280px; border: 3px groove #006600;"></div><br>
+							<div style="margin-left: 12em; margin-right: 15em">
+		            		<input class="btn btn-dark btn-sm" type="button" value="Mi ubicación" onclick="mostrar_mapa(1)"/>
+		            		<input class="btn btn-dark btn-sm"  type="button" value="Limpiar ubicación" onclick="mostrar_mapa(0)"/>
+							</div>
+						</div>
+					</div>
+				</div>
+				<br>
+				<br>
+				<br>
 			<div class="container">
 				<div class="row">
 				<div class="card border-primary col-md-3 col-lg-3 mb-3" style="margin: 2.7em">
@@ -183,23 +197,7 @@
 				</div>
 				</div>
 				</div>
-
-				<h3 style="text-align: center">Establecer mi ubicacion real <i class="fas fa-arrow-circle-down"></i></h3><br>
-
-				<div class="container">
-					<div class="row">
-						<div class="col-12 " style="margin-left: 15em;margin-right: 15em">
-							<div id="mapa" style="width: 600px; height: 280px; border: 3px groove #006600;"></div><br>
-							<div style="margin-left: 12em; margin-right: 15em">
-		            		<input class="btn btn-dark btn-sm" type="button" value="Mi ubicación" onclick="mostrar_mapa(1)"/>
-		            		<input class="btn btn-dark btn-sm"  type="button" value="Limpiar ubicación" onclick="mostrar_mapa(0)"/>
-							</div>
-						</div>
-					</div>
-				</div>
-				<br>
-				<br>
-				<br>
+				
 			</div>
 		</div>
 	</div>

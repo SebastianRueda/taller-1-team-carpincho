@@ -132,7 +132,7 @@
 
             <section class="services">
                 <div class="container">
-                        <div class="row">
+
                             <div class="text-center text-decoration-none text-dark fw-bold">
                             <h3 >Suscripcion Básica</h3>
                                 <!-- Button trigger modal -->
@@ -165,11 +165,10 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
 
-
-                            <div class="card border-dark  col-md-3 col-lg-3 mb-3" style="margin: 2.7em">
+                            <div class="row" style="margin-left: 0.05em;margin-top: 3em;margin-bottom: 3em">
+                            <div class="card border-dark  col-md-4 col-lg-4 mb-4"  >
                                 <div class="card-header text-dark text-center fw-bold">
                                     <i class="fas fa-truck-pickup"></i> Servicio de Grúa</div>
                                 <div class="card-body text-dark">
@@ -203,7 +202,7 @@
                                 </div>
                             </div>
 
-                            <div class="card border-dark  col-md-3 col-lg-3 mb-3" style="margin: 2.7em">
+                            <div class="card border-dark  col-md-4 col-lg-4 mb-4" >
                                 <div class="card-header text-dark text-center fw-bold">
                                     <i class="fab fa-old-republic"></i></i> Asistencia Policial</div>
                                 <div class="card-body text-dark">
@@ -237,7 +236,7 @@
                                 </div>
 
                             </div>
-                            <div class="card border-dark  col-md-3 col-lg-3 mb-3" style="margin: 2.7em">
+                            <div class="card border-dark  col-md-4 col-lg-4 mb-4">
                                 <div class="card-header text-dark text-center fw-bold">
                                     <i class="fas fa-ambulance"></i></i> Servicio Medico</div>
                                 <div class="card-body text-dark">
@@ -272,7 +271,7 @@
                                 </div>
 
                             </div>
-
+                            </div>
 
                             <div class="text-center text-decoration-none text-dark fw-bold">
                                 <h3>Suscripción Premium</h3>
@@ -285,8 +284,8 @@
                             <br>
                             <br>
                             <br>
-
-                            <div class="card border-dark  col-md-6 col-lg-3 mb-3" style="max-width: 18rem; ">
+                        <div class="row" style="margin-left: 0.05em;margin-top: 3em;margin-bottom: 3em">
+                            <div class="card border-dark  col-md-3 col-lg-3 mb-3" >
                                 <div class="card-header text-dark text-center fw-bold">
                                     <i class="fas fa-wrench"></i> Servicio Mecanico
                                 </div>
@@ -302,7 +301,7 @@
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title text-success fw-bold" id="exampleModalLabelMecanico">Servicio Mecanico</h5>
+                                                <h5 class="modal-title text-primary fw-bold" id="exampleModalLabelMecanico">Servicio Mecanico</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -313,7 +312,7 @@
                                                 <p class="card-text"><small class="text-muted">Servicio incluido en la Suscripción Premium</small></p>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+                                                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
 
                                             </div>
                                         </div>
@@ -324,7 +323,7 @@
 
                             </div>
 
-                            <div class="card border-dark  col-md-6 col-lg-3 mb-3" style="max-width: 18rem; ">
+                            <div class="card border-dark  col-md-3 col-lg-3 mb-3" >
                                 <div class="card-header text-dark text-center fw-bold">
                                     <i class="fas fa-tools"></i> Chofer
                                 </div>
@@ -339,7 +338,7 @@
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title text-success fw-bold" id="exampleModalLabelChofer">Chofer</h5>
+                                                <h5 class="modal-title text-primary fw-bold" id="exampleModalLabelChofer">Chofer</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -350,7 +349,7 @@
                                                 <p class="card-text"><small class="text-muted">Servicio incluido en la Suscripción Premium</small></p>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+                                                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
 
                                             </div>
                                         </div>
@@ -359,7 +358,7 @@
 
                             </div>
 
-                            <div class="card border-dark  col-md-6 col-lg-3 mb-3" style="max-width: 18rem; ">
+                            <div class="card border-dark  col-md-3 col-lg-3 mb-3" >
                                 <div class="card-header text-dark text-center fw-bold">
                                     <i class="fas fa-cogs"></i> Repuestos Livianos
                                 </div>
@@ -374,7 +373,7 @@
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title text-success fw-bold" id="exampleModalLabelRepuestos">Repuestos Livianos</h5>
+                                                <h5 class="modal-title text-primary fw-bold" id="exampleModalLabelRepuestos">Repuestos Livianos</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -385,7 +384,7 @@
                                                 <p class="card-text"><small class="text-muted">Servicio incluido en la Suscripción Premium</small></p>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+                                                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
 
                                             </div>
                                         </div>
@@ -395,7 +394,7 @@
 
                             </div>
 
-                            <div class="card border-dark  col-md-6 col-lg-3 mb-3" style="max-width: 18rem; ">
+                            <div class="card border-dark  col-md-3 col-lg-3 mb-3" >
                                 <div class="card-header text-dark text-center fw-bold">
                                     <i class="fas fa-balance-scale"></i> Asistencia Legal
                                 </div>
@@ -411,7 +410,7 @@
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title text-success fw-bold" id="exampleModalLabelLegal">Asistencia Legal</h5>
+                                                <h5 class="modal-title text-primary fw-bold" id="exampleModalLabelLegal">Asistencia Legal</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -422,16 +421,13 @@
                                                 <p class="card-text"><small class="text-muted">Servicio incluido en la Suscripción Premium</small></p>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+                                                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
 
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
-
                             </div>
-
                         </div>
                 </div>
             </section>

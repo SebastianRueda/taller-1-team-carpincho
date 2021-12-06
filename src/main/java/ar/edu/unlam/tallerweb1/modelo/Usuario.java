@@ -35,6 +35,7 @@ public class Usuario {
 	private Cuenta cuenta;
 	@OneToOne(cascade = CascadeType.ALL)
 	private Suscripcion suscripcion;
+	private String imagen;
 
 	public Usuario() {
 		super();
@@ -136,16 +137,24 @@ public class Usuario {
 		return nombre + " " + apellido;
 	}
 
+	public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		Usuario usuario = (Usuario) o;
-		return Objects.equals(id, usuario.id) && Objects.equals(nombre, usuario.nombre) && Objects.equals(apellido, usuario.apellido) && Objects.equals(email, usuario.email) && Objects.equals(password, usuario.password) && Objects.equals(especialidad, usuario.especialidad) && Objects.equals(provincia, usuario.provincia) && Objects.equals(rol, usuario.rol) && Objects.equals(activo, usuario.activo) && Objects.equals(cuenta, usuario.cuenta) && Objects.equals(suscripcion, usuario.suscripcion);
+		return Objects.equals(id, usuario.id) && Objects.equals(nombre, usuario.nombre) && Objects.equals(apellido, usuario.apellido) && Objects.equals(email, usuario.email) && Objects.equals(password, usuario.password) && Objects.equals(especialidad, usuario.especialidad) && Objects.equals(provincia, usuario.provincia) && Objects.equals(rol, usuario.rol) && Objects.equals(activo, usuario.activo) && Objects.equals(cuenta, usuario.cuenta) && Objects.equals(suscripcion, usuario.suscripcion) && Objects.equals(imagen, usuario.imagen);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, nombre, apellido, email, password, especialidad, provincia, rol, activo, cuenta, suscripcion);
+		return Objects.hash(id, nombre, apellido, email, password, especialidad, provincia, rol, activo, cuenta, suscripcion, imagen);
 	}
 }

@@ -116,14 +116,16 @@ public class ControladorFiltros {
 		return new ModelAndView("resultadoPrestadores",modelo);
 	}
 	
-	@RequestMapping(path = "/establecerUbicacion", method = RequestMethod.POST)
+	@RequestMapping(path = "/establecerUbicacion", method = RequestMethod.GET)
     public ModelAndView establecerUbicacion(
-    		HttpServletRequest request, @ModelAttribute("ubicacion") Ubicacion ubicacion) {
+    		HttpServletRequest request,@RequestParam(value = "latitud") Double latitud,@RequestParam(value = "longitud") Double longitud) {
         var usuarioLogueado = SessionUtils.getCurrentUserSession(request);
-        usuarioLogueado.setUbicacion(ubicacion);
+        usuarioLogueado.setLatitud(latitud);
+        usuarioLogueado.setLongitud(longitud);
         SessionUtils.createSession(request, usuarioLogueado);
         return new ModelAndView("redirect:/traerEspecialidades");
     
 	}    
+	
 	
 }

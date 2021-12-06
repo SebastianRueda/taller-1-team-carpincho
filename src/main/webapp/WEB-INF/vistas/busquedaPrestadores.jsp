@@ -98,7 +98,7 @@
 						<div class="col-12 " style="margin-left: 15em;margin-right: 15em">
 							<div id="mapa" style="width: 600px; height: 280px; border: 3px groove #006600;"></div><br>
 							<div style="margin-left: 12em; margin-right: 15em">
-		            		<form action="establecerUbicacion" method="POST" modelAttribute="ubicacion">
+		            		<form action="establecerUbicacion" method="GET">
 		            			<div class="form-group">
                 					<!--<label for="latitudinput">Latitud</label>-->
                 					<input type="hidden" required="" path="latitud" name="latitud" id="latitudinput" class="form-control"/>

@@ -24,8 +24,11 @@ public class Usuario {
 	private String apellido;
 	private String email;
 	private String password;
-	@OneToOne
-	private Ubicacion ubicacion;
+	private Double latitud;
+    private Double longitud;
+	
+	
+    
 	@OneToOne
 	private Especialidad especialidad;
 	@OneToOne
@@ -137,6 +140,19 @@ public class Usuario {
     public String fullName() {
 		return nombre + " " + apellido;
 	}
+    
+    public Double getLatitud() {
+		return latitud;
+	}
+	public void setLatitud(Double latitud) {
+		this.latitud = latitud;
+	}
+	public Double getLongitud() {
+		return longitud;
+	}
+	public void setLongitud(Double longitud) {
+		this.longitud = longitud;
+	}
 
 	@Override
 	public boolean equals(Object o) {
@@ -148,16 +164,10 @@ public class Usuario {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, nombre, apellido, email, password, especialidad, provincia, rol, activo, cuenta, suscripcion,ubicacion);
+		return Objects.hash(id, nombre, apellido, email, password, especialidad, provincia, rol, activo, cuenta, suscripcion,latitud ,longitud);
 	}
 
-	public Ubicacion getUbicacion() {
-		return ubicacion;
-	}
-
-	public void setUbicacion(Ubicacion ubicacion) {
-		this.ubicacion = ubicacion;
-	}
+	
 	
 	
 }

@@ -38,6 +38,8 @@
              	// adds a listener to the marker
                 // gets the coords when drag event ends
                 // then updates the input with the new coords
+                //recuperar ubicacion donde hago click
+              
                 google.maps.event.addListener(vMarker, 'dragend', function (evt) {
                     $("#latitudinput").val(evt.latLng.lat().toFixed(6));
                     $("#longitudinput").val(evt.latLng.lng().toFixed(6));
@@ -96,8 +98,18 @@
 						<div class="col-12 " style="margin-left: 15em;margin-right: 15em">
 							<div id="mapa" style="width: 600px; height: 280px; border: 3px groove #006600;"></div><br>
 							<div style="margin-left: 12em; margin-right: 15em">
-		            		<input class="btn btn-dark btn-sm" type="button" value="Mi ubicación" onclick="mostrar_mapa(1)"/>
-		            		<input class="btn btn-dark btn-sm"  type="button" value="Limpiar ubicación" onclick="mostrar_mapa(0)"/>
+		            		<form action="establecerUbicacion" method="POST" modelAttribute="ubicacion">
+		            			<div class="form-group">
+                					<!--<label for="latitudinput">Latitud</label>-->
+                					<input type="hidden" required="" path="latitud" name="latitud" id="latitudinput" class="form-control"/>
+            					</div>
+					            <div class="form-group">
+					                <!--<label for="longitudinput">Longitud</label>-->
+					                <input type="hidden" required="" path="longitud" name="longitud" id="longitudinput" class="form-control" />
+					            </div>
+		            			<input class="btn btn-dark btn-sm" type="submit" value="Mi ubicación"/>
+		            			<input class="btn btn-dark btn-sm"  type="button" value="Limpiar ubicación" onclick="mostrar_mapa(0)"/>
+							</form>
 							</div>
 						</div>
 					</div>

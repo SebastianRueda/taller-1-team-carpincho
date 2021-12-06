@@ -25,6 +25,8 @@ public class Usuario {
 	private String email;
 	private String password;
 	@OneToOne
+	private Ubicacion ubicacion;
+	@OneToOne
 	private Especialidad especialidad;
 	@OneToOne
 	private Provincia provincia;
@@ -146,6 +148,16 @@ public class Usuario {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, nombre, apellido, email, password, especialidad, provincia, rol, activo, cuenta, suscripcion);
+		return Objects.hash(id, nombre, apellido, email, password, especialidad, provincia, rol, activo, cuenta, suscripcion,ubicacion);
 	}
+
+	public Ubicacion getUbicacion() {
+		return ubicacion;
+	}
+
+	public void setUbicacion(Ubicacion ubicacion) {
+		this.ubicacion = ubicacion;
+	}
+	
+	
 }

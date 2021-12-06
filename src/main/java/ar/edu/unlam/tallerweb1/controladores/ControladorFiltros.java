@@ -6,13 +6,17 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Provincia;
+import ar.edu.unlam.tallerweb1.modelo.Ubicacion;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioFiltro;
+import ar.edu.unlam.tallerweb1.utils.SessionUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -111,5 +115,15 @@ public class ControladorFiltros {
 		}
 		return new ModelAndView("resultadoPrestadores",modelo);
 	}
+	
+	@RequestMapping(path = "/establecerUbicacion", method = RequestMethod.POST)
+    public ModelAndView establecerUbicacion(
+    		HttpServletRequest request, @ModelAttribute("ubicacion") Ubicacion ubicacion) {
+        var usuarioLogueado = SessionUtils.getCurrentUserSession(request);
+        usuarioLogueado.setUbicacion(ubicacion);
+        SessionUtils.createSession(request, usuarioLogueado);
+        return new ModelAndView("redirect:/traerEspecialidades");
+    
+	}    
 	
 }

@@ -5,6 +5,9 @@ import javax.persistence.*;
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Provincia;
 
+
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Objects;
 
 // Clase que modela el concepto de Usuario, la anotacion @Entity le avisa a hibernate que esta clase es persistible
@@ -24,6 +27,9 @@ public class Usuario {
 	private String apellido;
 	private String email;
 	private String password;
+	private Date fechaAltaSuscripcion;
+	private Date fechaBajaSuscripcion;
+	private Long cantidadDediasVencimientoSuscripcion;
 	@OneToOne
 	private Especialidad especialidad;
 	@OneToOne
@@ -47,6 +53,7 @@ public class Usuario {
 		this.especialidad = especialidad;
 		this.provincia = provincia;
 	}
+
 
 	public Suscripcion getSuscripcion() {
 		return suscripcion;
@@ -134,6 +141,30 @@ public class Usuario {
     
     public String fullName() {
 		return nombre + " " + apellido;
+	}
+
+	public Long getCantidadDediasVencimientoSuscripcion() {
+		return cantidadDediasVencimientoSuscripcion;
+	}
+
+	public void setCantidadDediasVencimientoSuscripcion(Long cantidadDediasVencimientoSuscripcion) {
+		this.cantidadDediasVencimientoSuscripcion = cantidadDediasVencimientoSuscripcion;
+	}
+
+	public Date getFechaAltaSuscripcion() {
+		return fechaAltaSuscripcion;
+	}
+
+	public void setFechaAltaSuscripcion(Date fechaAltaSuscripcion) {
+		this.fechaAltaSuscripcion = fechaAltaSuscripcion;
+	}
+
+	public Date getFechaBajaSuscripcion() {
+		return fechaBajaSuscripcion;
+	}
+
+	public void setFechaBajaSuscripcion(Date fechaBajaSuscripcion) {
+		this.fechaBajaSuscripcion = fechaBajaSuscripcion;
 	}
 
 	@Override

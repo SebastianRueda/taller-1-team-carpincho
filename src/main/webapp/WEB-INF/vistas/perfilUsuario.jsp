@@ -130,9 +130,15 @@
                                         </tr>
                                         <tr class="table-primary">
                                             <th scope="row">
-                                                <spa class="text-muted fw-normal">Fecha Alta</spa>
+                                                <spa class="text-muted fw-normal">Fecha Alta Suscripcion</spa>
                                             </th>
-                                            <td class="user-avatar fw-bold">12/07/2020</td>
+                                            <td class="user-avatar fw-bold">${usuarioEnSession.fechaAltaSuscripcion}</td>
+                                        </tr>
+                                        <tr class="">
+                                            <th scope="row">
+                                                <spa class="text-muted fw-normal">Dias restantes de Suscripcion</spa>
+                                            </th>
+                                            <td class="user-avatar fw-bold">${usuarioEnSession.cantidadDediasVencimientoSuscripcion}</td>
                                         </tr>
                                         </tbody>
                                     </table>

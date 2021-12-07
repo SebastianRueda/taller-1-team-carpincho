@@ -30,6 +30,8 @@ public class Usuario {
 	private Date fechaAltaSuscripcion;
 	private Date fechaBajaSuscripcion;
 	private Long cantidadDediasVencimientoSuscripcion;
+	private Boolean estadoSuscripcion;
+
 	@OneToOne
 	private Especialidad especialidad;
 	@OneToOne
@@ -165,6 +167,14 @@ public class Usuario {
 
 	public void setFechaBajaSuscripcion(Date fechaBajaSuscripcion) {
 		this.fechaBajaSuscripcion = fechaBajaSuscripcion;
+	}
+
+	public Boolean getEstadoSuscripcion() {
+		return estadoSuscripcion;
+	}
+
+	public void setEstadoSuscripcion(Boolean estadoSuscripcion) {
+		this.estadoSuscripcion = estadoSuscripcion;
 	}
 
 	@Override

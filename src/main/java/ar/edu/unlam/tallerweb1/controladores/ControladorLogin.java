@@ -65,7 +65,6 @@ public class ControladorLogin {
 
 			if(usuarioBuscado.getSuscripcion() != null){
 				servicioSuscripcion.verificarSuscripcionActiva(usuarioBuscado);
-
 			}
 
 			SessionUtils.createSession(request, usuarioBuscado);

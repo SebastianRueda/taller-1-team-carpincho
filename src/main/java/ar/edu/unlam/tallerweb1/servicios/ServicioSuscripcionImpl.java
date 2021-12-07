@@ -50,7 +50,7 @@ public class ServicioSuscripcionImpl implements ServicioSuscripcion {
         if (usuario.getSuscripcion() == null) {
             throw new Exception();
         } else {
-            usuario.setSuscripcion(null);
+            usuario.setEstadoSuscripcion(false);
             repositorioUsuario.modificar(usuario);
         }
 
@@ -95,6 +95,7 @@ public class ServicioSuscripcionImpl implements ServicioSuscripcion {
        usuarioLogueado.setCantidadDediasVencimientoSuscripcion(diasFaltantesDeSuscripcion);
 
        if(diasFaltantesDeSuscripcion <= 0 ){
+           usuarioLogueado.setEstadoSuscripcion(false);
            usuarioLogueado.setSuscripcion(null);
            usuarioLogueado.setCantidadDediasVencimientoSuscripcion(0l);
        }

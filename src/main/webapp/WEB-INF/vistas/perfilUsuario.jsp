@@ -137,9 +137,19 @@
                                         </tr>
                                         <tr class="">
                                             <th scope="row">
-                                                <spa class="text-muted fw-normal">Dias restantes de Suscripcion</spa>
+                                                <spa class="text-muted fw-normal">Estado de Suscripcion</spa>
                                             </th>
-                                            <td class="user-avatar fw-bold">${usuarioEnSession.cantidadDediasVencimientoSuscripcion}</td>
+                                            <td class="user-avatar fw-bold">
+                                                <c:if test="${usuarioEnSession.estadoSuscripcion==true}">
+                                                    activo
+                                                    (${usuarioEnSession.cantidadDediasVencimientoSuscripcion} dias restantes)
+                                                </c:if>
+                                                <c:if test="${usuarioEnSession.estadoSuscripcion==false}">
+                                                    inactivo
+                                                    (${usuarioEnSession.cantidadDediasVencimientoSuscripcion} dias restantes)
+                                                </c:if>
+
+                                            </td>
                                         </tr>
                                         <tr class="table-primary">
                                             <th scope="row">
@@ -298,8 +308,6 @@
                                             </c:choose>
                                             <button type="button" class="btn btn-primary text-white text-gradient px-3 mb-0 " >
                                                 <a class="text-white" href="irDetalleAFactura">Ver Factura </a>
-
-
                                             </button>
                                         </div>
                                     </c:when>

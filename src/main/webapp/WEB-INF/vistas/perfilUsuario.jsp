@@ -93,6 +93,7 @@
                                     <h3 class="mt-3">${usuarioEnSession.nombre} ${usuarioEnSession.apellido}</h3>
                                     <p class="text-muted m-0">${usuarioEnSession.email}</p>
                                     <p class="text-muted m-0">Argentino</p>
+                                    <p class="text-muted m-0">Promedio De Calificacion: ${promedio}</p>
                                 </div>
                             </div>
                             <!-- termina foto perfil-->
@@ -140,13 +141,19 @@
                                             </th>
                                             <td class="user-avatar fw-bold">${usuarioEnSession.cantidadDediasVencimientoSuscripcion}</td>
                                         </tr>
+                                        <tr class="table-primary">
+                                            <th scope="row">
+                                                <spa class="text-muted fw-normal">Fecha Baja Suscripcion</spa>
+                                            </th>
+                                            <td class="user-avatar fw-bold">${usuarioEnSession.fechaBajaSuscripcion}</td>
+                                        </tr>
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                             <!--termina tabla-->
 
-                            <p>Promedio De Calificacion: ${promedio}</p>
+
 
                             <!-- empieza suscripcion-->
                             <div class="bg-white col-12 col-md-10 d-flex flex-column flex-md-row p-2 mb-2 mt-3 align-items-center justify-content-evenly">

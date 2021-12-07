@@ -18,19 +18,32 @@ public class MetodosFecha {
 
     public Long obtenerDiasRestantesEntreDosFechas(){
         Date fechaActual = this.obtenerFechaActual();
-
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(fechaActual); // Configuramos la fecha que se recibe
-        calendar.add(Calendar.DAY_OF_YEAR, 30);  // numero de días a añadir, o restar en caso de días<0
-
-        Date segundaFecha = calendar.getTime(); // Devuelve el objeto Date con los nuevos días añadidos
-
+        Date segundaFecha = this.obtenerFechaDeVencimiento(); // Devuelve el objeto Date con los nuevos días añadidos
         long milisec = segundaFecha.getTime() - fechaActual.getTime();
         long days = milisec/1000/60/60/24;
 
         return days;
     }
 
+
+    public Long verificarDiasRestantesDeSuscripcionActiva(Date fechaActual, Date fechaVencimiento){
+
+        long milisec = fechaVencimiento.getTime() - fechaActual.getTime();
+        long days = milisec/1000/60/60/24;
+
+        return days;
+    }
+
+    public Date obtenerFechaDeVencimiento(){
+        Date fechaActual = this.obtenerFechaActual();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(fechaActual); // Configuramos la fecha que se recibe
+        calendar.add(Calendar.DAY_OF_YEAR, 30);  // numero de días a añadir, o restar en caso de días<0
+
+        Date segundaFecha = calendar.getTime(); // Devuelve el objeto Date con los nuevos días añadidos
+
+        return segundaFecha;
+    }
 
 
 }

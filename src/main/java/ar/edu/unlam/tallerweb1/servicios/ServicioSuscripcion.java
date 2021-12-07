@@ -20,4 +20,6 @@ public interface ServicioSuscripcion {
     void upGradeSuscripcionBasicaAPremium(Usuario usuarioEnSession, Suscripcion suscripcionPremium) throws Exception;
 
     void downGradeSuscripcionBasicaAPremium(Usuario usuarioEnSession, Suscripcion suscripcionBasica) throws Exception;
+
+    void verificarSuscripcionActiva(Usuario usuarioLogueado);
 }

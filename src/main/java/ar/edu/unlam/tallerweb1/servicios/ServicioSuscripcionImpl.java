@@ -4,10 +4,12 @@ import ar.edu.unlam.tallerweb1.modelo.Suscripcion;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioSuscripcion;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioUsuario;
+import ar.edu.unlam.tallerweb1.utils.MetodosFecha;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 @Service("servicioSuscripcion")
@@ -82,6 +84,23 @@ public class ServicioSuscripcionImpl implements ServicioSuscripcion {
         usuarioEnSession.setSuscripcion(suscripcionBasica);
         repositorioUsuario.modificar(usuarioEnSession);
     }
+
+    @Override
+    public void verificarSuscripcionActiva(Usuario usuarioLogueado) {
+        MetodosFecha metodosFecha =new MetodosFecha();
+       Date fechaVencimiento = usuarioLogueado.getFechaBajaSuscripcion();
+       Date fechaActual = metodosFecha.obtenerFechaActual();
+
+       Long diasFaltantesDeSuscripcion = metodosFecha.verificarDiasRestantesDeSuscripcionActiva(fechaActual,fechaVencimiento);
+       usuarioLogueado.setCantidadDediasVencimientoSuscripcion(diasFaltantesDeSuscripcion);
+
+       if(diasFaltantesDeSuscripcion <= 0 ){
+           usuarioLogueado.setSuscripcion(null);
+           usuarioLogueado.setCantidadDediasVencimientoSuscripcion(0l);
+       }
+        repositorioUsuario.modificar(usuarioLogueado);
+    }
+
 
 
 }

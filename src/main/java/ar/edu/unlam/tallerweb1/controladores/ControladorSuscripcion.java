@@ -66,10 +66,10 @@ public class ControladorSuscripcion {
         String ruta= "redirect:/perfilUsuario";
 
         usuarioLogueado.setSuscripcion(suscripcion);
-        //String hola = new MetodosFecha().obtenerFechaActual();
-        //usuarioLogueado.setLoquesea(hola);
+
         usuarioLogueado.setFechaAltaSuscripcion(new MetodosFecha().obtenerFechaActual());
         usuarioLogueado.setCantidadDediasVencimientoSuscripcion(new MetodosFecha().obtenerDiasRestantesEntreDosFechas());
+        usuarioLogueado.setFechaBajaSuscripcion(new MetodosFecha().obtenerFechaDeVencimiento());
 
         servicioUsuario.update(usuarioLogueado);
         servicioFactura.generarFactura(usuarioLogueado);
@@ -87,6 +87,10 @@ public class ControladorSuscripcion {
         Usuario usuarioLogueado= (Usuario) misession.getAttribute("usuarioLogueado");
 
         String ruta= "redirect:/perfilUsuario";
+
+        usuarioLogueado.setFechaAltaSuscripcion(new MetodosFecha().obtenerFechaActual());
+        usuarioLogueado.setCantidadDediasVencimientoSuscripcion(new MetodosFecha().obtenerDiasRestantesEntreDosFechas());
+        usuarioLogueado.setFechaBajaSuscripcion(new MetodosFecha().obtenerFechaDeVencimiento());
 
         usuarioLogueado.setSuscripcion(suscripcion);
         servicioUsuario.update(usuarioLogueado);
@@ -113,6 +117,8 @@ public class ControladorSuscripcion {
             modelo.put("msgCancelacionErronia", "No tienes una Suscripcion");
             return new ModelAndView("redirect:/perfilUsuario", modelo);
         }
+
+
 
         Usuario usuarioActualizadoSinSuscripcion = servicioUsuario.buscarUsuarioPorMail(usuarioLogueado.getEmail());
         modelo.put("usuarioEnSession",usuarioActualizadoSinSuscripcion);

@@ -17,7 +17,7 @@
     <title>Perfil Usuario</title>
 </head>
 
-<body class="fondo-login ">
+<body class="fondo-login" >
 
 <header>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -54,9 +54,9 @@
 
 
 
-<div class="container">
-<div class="container-fluid  mt-5 rounded-3 ">
-    <div class="row w-100 bg-light m-auto p-1 justify-content-md-center mb-5" style="max-width: 1250px;">
+<div class=" h-100 w-100" >
+<div  class="fondo-login container-fluid mt-5 px-2 h-100 w-100 d-flex justify-content-centerfondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-center">
+    <div class="row h-100 w-100 bg-light m-auto p-1 justify-content-md-center mb-5" style="max-width: 1250px;">
         <div class="col-12 px-1 ">
             <div class="tab tab-primary">
                 <ul class="nav nav-pills nav-pills-sm nav-light mb-2"> <!-- empieza botones-->
@@ -70,7 +70,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder me-2 ${seccion.equals("historialDenuncias") ? "active" : ""}"
-                           href="mostrar-denuncias" href="#primary-tab-3">Mis Denuncias</a>
+                           href="mostrar-denuncias" >Mis Denuncias</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder me-2 ${seccion.equals("favoritos") ? "active" : ""}"
@@ -197,19 +197,21 @@
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <h5 class="modal-title"
-                                                                    id="exampleModalLabel">¡Estas a punto de quedarte suscripcion!</h5>
+                                                                    id="exampleModalLabel">Cancelar Suscripción</h5>
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
                                                                 <div class="mb-5 mt-5 text-center">
-                                                                    <h2> Usuario </h2>
+                                                                    <div class="modal-body ">
+                                                                        <p>Estas por Cancelar tu suscripción, ¿Queres continuar?</p>
+                                                                    </div>
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                                                                         Cancelar
                                                                     </button>
 
-                                                                    <button type="submit" class="btn btn-primary">Exiliarse de Suscripciones</button>
+                                                                    <button type="submit" class="btn btn-primary">Cancelar Suscripción</button>
 
                                                                 </div>
                                                             </div>
@@ -228,19 +230,21 @@
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
                                                                         <h5 class="modal-title"
-                                                                            id="exampleModalLabel">¿Queres ser parte de la noblesa?</h5>
+                                                                            id="exampleModalLabel">Upgradear suscripción</h5>
                                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                     </div>
                                                                     <div class="modal-body">
                                                                         <div class="mb-5 mt-5 text-center">
-                                                                            <h2> Usuario </h2>
+                                                                            <div class="modal-body ">
+                                                                                <p>Estas por modificar las condiciones de tu suscripción Basica, ¿Queres continuar?</p>
+                                                                            </div>
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                                                                                 Cancelar
                                                                             </button>
 
-                                                                            <button type="submit" class="btn btn-primary">Ascender de pebleyo a la nobleza</button>
+                                                                            <button type="submit" class="btn btn-primary">Upgradear Suscripción</button>
 
                                                                         </div>
                                                                     </div>
@@ -261,19 +265,21 @@
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
                                                                         <h5 class="modal-title"
-                                                                            id="exampleModalLabel">¿No te da el cuero para la suscripcion Premium?</h5>
+                                                                            id="exampleModalLabel">DownGrade</h5>
                                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                     </div>
                                                                     <div class="modal-body">
                                                                         <div class="mb-5 mt-5 text-center">
-                                                                            <h2> Usuario </h2>
+                                                                            <div class="modal-body ">
+                                                                                <p>¿No contas con los recursos para la suscripcion Premium?</p>
+                                                                            </div>
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                                                                                 Cancelar
                                                                             </button>
                                                                                 <form:form action="modificarSuscripcionPremiumUsuario" method="POST">
-                                                                                <button type="submit" class="btn btn-primary">Rebajarse a Suscripcion Basica</button>
+                                                                                <button type="submit" class="btn btn-primary">Bajar a Suscripcion Basica</button>
                                                                                 </form:form>
                                                                         </div>
                                                                     </div>
@@ -292,7 +298,7 @@
                                     </c:when>
                                     <c:otherwise>
                                         <div class="fondo-login col-12 text-center text-white align-items-center py-1 mt-2">
-                                            <p class="m-0">¡No tienes Suscripcion! Puede contratar uno
+                                            <p class="m-0">¡No tiene Suscripcion! Puede contratar una
                                                 <a class="text-white" href="suscripcion">aqui</a>
                                             </p>
                                         </div>
@@ -306,7 +312,7 @@
                     <!-- Empieza segundo boton-->
                     <div class="tab-pane ${seccion.equals("historial") ? "active" : ""}" id="primary-tab-2"
                          role="tabpanel">
-                        <div class="row w-100  row w-100 h-100 m-auto justify-content-md-center">
+                        <div class="row w-100 h-100 m-auto justify-content-md-center">
 
                             <div class="col-12 p-2 ">
                                 <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
@@ -323,7 +329,7 @@
                                     <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">
                                         Calificacion</p>
                                     <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">
-                                        ¿La pasaste mal Perri?</p>
+                                        ¿Tuviste algun inconveniente?</p>
                                 </div>
                                 <c:choose>
                                     <c:when test="${empty historial}">
@@ -428,12 +434,14 @@
                     <!-- Favoritos -->
                     <div class="tab-pane ${seccion.equals("favoritos") ? "active" : ""}" id="primary-tab-4"
                          role="tabpanel">
-                        <div class="row w-100  row w-100 h-100 m-auto justify-content-md-center">
+                        <div class="row w-100 h-100 m-auto justify-content-md-center">
 
                             <div class="col-12 p-2 ">
                                 <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
                                     <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">Asistente</p>
-                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;"></p>
+                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">Servicio</p>
+                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">Mail</p>
+                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">Remover</p>
                                 </div>
                                 <c:choose>
                                     <c:when test="${empty favoritos}">
@@ -444,8 +452,9 @@
                                     <c:otherwise>
                                         <c:forEach items="${favoritos}" var="favorito">
                                             <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
-                                                <p class="my-auto"
-                                                   style="width:20%;">${favorito.asistente.fullName()}</p>
+                                                <p class="my-auto" style="width:20%;">${favorito.asistente.fullName()}</p>
+                                                <p class="my-auto" style="width:20%;">${favorito.asistente.especialidad.descripcion}</p>
+                                                <p class="my-auto" style="width:20%;">${favorito.asistente.email}</p>
 
                                                 <form:form action="removerFavoritoUsuarioPerfil" method="post" modelAttribute="agregarRemoverAsistenteFavoritoRequest" cssClass="btn btn-danger mt-4">
                                                     <form:input path="asistenteId" id="asistenteId" type="text" value="${favorito.asistente.id}" cssStyle="display: none" />
@@ -464,7 +473,7 @@
                     <!-- Empieza tercer boton-->
                     <div class="tab-pane ${seccion.equals("historialDenuncias") ? "active" : ""}" id="primary-tab-3"
                          role="tabpanel">
-                        <div class="row w-100  row w-100 h-100 m-auto justify-content-md-center">
+                        <div class="row w-100 h-100 m-auto justify-content-md-center">
                             <div class="col-12 p-2 ">
                                 <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
                                     <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">N°
@@ -482,7 +491,7 @@
                             <c:choose>
                                 <c:when test="${empty listaDenunciasHechas}">
                                     <div class="d-flex justify-content-center align-items-center" style="width: 100%; height: 24em">
-                                        <h4>No tenés ninguna denuncia realiazada</h4>
+                                        <h4>No tenés ninguna denuncia realizada</h4>
                                     </div>
                                 </c:when>
                                 <c:otherwise>
@@ -509,7 +518,7 @@
                     <!-- Termina tercer boton-->
                     <!-- Empieza cuarto boton-->
                     <div class="tab-pane" id="primary-tab-4" role="tabpanel">
-                        <div class="row w-100 bg-info row w-100 h-100 m-auto justify-content-md-center px-2">
+                        <div class="row h-100 w-100 bg-info row w-100 h-100 m-auto justify-content-md-center px-2">
                             <div class="bg-white col-12 d-flex flex-column  p-2 mb-2 mt-2 align-items-center">
                                 <h4 class="text-muted"> Proximamente...</h4>
                                 <p class=" text-muted"><i class="fas fa-tools"></i> Estamos Trabajando para que quede
@@ -525,6 +534,7 @@
 </div>
 </div>
 </div>
+
 <footer class="page-footer font-small color-light bg-dark text-light mt-5">
     <div>
         <div class="container">
@@ -591,7 +601,8 @@
                     <i class="fas fa-phone mr-3"></i> +011 4444-4444 </p>
             </div>
         </div>
-        <div class="footer-copyright text-center py-3">� 2021 Copyright: AsegurAPP</div>
+        <div class="footer-copyright text-center py-3">� 2021 Copyright: AsegurAPP
+        </div>
     </div>
 
 </footer>

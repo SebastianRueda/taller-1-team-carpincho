@@ -15,7 +15,9 @@
     <link href="css/Login.css" rel="stylesheet">
     <title>Facturas</title>
 </head>
+
 <body class="fondo-login">
+<header>
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="home">AsegurApp</a>
@@ -47,27 +49,21 @@
         </div>
     </div>
 </nav>
-
-${saludo}
+</header>
 
 <div class="w-100 container-fluid  mt-5  rounded-3 bg-light" style="max-width: 1024px;">
     <div class="card card-body p-5 mb-5">
         <div class="row">
-            <div class="col text-end">
+            <div class="col text-center">
 
-                <!-- Badge -->
-                <div class="badge bg-danger">
-                    Overdue
-                </div>
+                <img src="imagenes/logo.png" alt="..." class="img-fluid mb-4" style="max-width: 2.5rem;">
+                <strong>AsegurAPP</strong>
 
             </div>
         </div> <!-- / .row -->
 
         <div class="row">
             <div class="col text-center">
-
-                <!-- Logo -->
-                <img src="assets/img/logo.svg" alt="..." class="img-fluid mb-4" style="max-width: 2.5rem;">
 
                 <!-- Title -->
                 <h2 class="mb-2">
@@ -231,7 +227,7 @@ ${saludo}
 
                 <!-- Title -->
                 <h2 class="text-uppercase">
-                    Soltá la tarasca Perri
+                    Confirmar contratación
                 </h2>
 
                 <!-- Text -->
@@ -273,8 +269,10 @@ ${saludo}
 </div>
 
 <footer class="page-footer font-small color-light bg-dark text-light">
+
     <div>
         <div class="container">
+
             <div class="col-md-6 col-lg-7 text-center text-md-right">
 
                 <a class="fb-ic">
@@ -304,6 +302,7 @@ ${saludo}
 
     </div>
 
+
     <div class="container text-center text-md-left mt-5">
 
 
@@ -315,10 +314,10 @@ ${saludo}
                 <h6 class="text-uppercase font-weight-bold">Acceso directo</h6>
                 <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
                 <p>
-                    <a href="#!">Login</a>
+                    <a href="login">Login</a>
                 </p>
                 <p>
-                    <a href="#!">Registro</a>
+                    <a href="ir-a-registrarme">Registro</a>
                 </p>
 
                 <p>
@@ -328,6 +327,7 @@ ${saludo}
             </div>
 
             <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
                 <h6 class="text-uppercase font-weight-bold">Contacto</h6>
                 <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
                 <p>
@@ -336,11 +336,13 @@ ${saludo}
                     <i class="fas fa-envelope mr-3"></i> info@asegurapp.com</p>
                 <p>
                     <i class="fas fa-phone mr-3"></i> +011 4444-4444 </p>
-            </div>
-        </div>
-        <div class="footer-copyright text-center py-3">� 2021 Copyright: AsegurAPP</div>
-    </div>
 
+            </div>
+
+        </div>
+        <div class="footer-copyright text-center py-3"> 2021 Copyright: AsegurAPP
+        </div>
+    </div>
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

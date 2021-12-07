@@ -81,7 +81,7 @@
     <div>
         <div class="container">
 
-            <div class="col-md-6 col-lg-7 text-center text-md-right">
+            <div class="col-md-12 col-lg-12 text-center text-md-right">
 
                 <a class="fb-ic">
                     <i class="fab fa-facebook-f white-text mr-4"> </i>
@@ -109,7 +109,6 @@
         </div>
 
     </div>
-    </div>
 
 
     <div class="container text-center text-md-left mt-5">
@@ -123,10 +122,10 @@
                 <h6 class="text-uppercase font-weight-bold">Acceso directo</h6>
                 <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
                 <p>
-                    <a href="#!">Login</a>
+                    <a href="login">Login</a>
                 </p>
                 <p>
-                    <a href="#!">Registro</a>
+                    <a href="ir-a-registrarme">Registro</a>
                 </p>
 
                 <p>
@@ -149,11 +148,11 @@
             </div>
 
         </div>
-        <div class="footer-copyright text-center py-3">© 2021 Copyright: AsegurAPP
+        <div class="footer-copyright text-center py-3"> 2021 Copyright: AsegurAPP
         </div>
     </div>
-
 </footer>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" ></script>
 <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>

@@ -251,10 +251,10 @@
 					<h6 class="text-uppercase font-weight-bold">Acceso directo</h6>
 					<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
 					<p>
-						<a href="#!">Login</a>
+						<a href="login">Login</a>
 					</p>
 					<p>
-						<a href="#!">Registro</a>
+						<a href="ir-a-registrarme">Registro</a>
 					</p>
 
 					<p>

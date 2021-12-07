@@ -13,7 +13,7 @@ public class SessionUtils {
             return;
         }
 
-        var session = httpServletRequest.getSession(true);
+        var session = httpServletRequest.getSession(usuario.activo());
         session.setAttribute(USER_LOGGED, usuario);
     }
 

@@ -93,6 +93,7 @@
                                     <h3 class="mt-3">${usuarioEnSession.nombre} ${usuarioEnSession.apellido}</h3>
                                     <p class="text-muted m-0">${usuarioEnSession.email}</p>
                                     <p class="text-muted m-0">Argentino</p>
+                                    <p class="text-muted m-0">Promedio De Calificacion: ${promedio}</p>
                                 </div>
                             </div>
                             <!-- termina foto perfil-->
@@ -107,13 +108,13 @@
                                                 <spa class="text-muted fw-normal">Nombre</spa>
                                             </th>
                                             <td class="user-avatar fw-bold">${usuarioEnSession.nombre}
-                                                ${usuarioEnSession.apellido}</td>
+                                                </td>
                                         </tr>
                                         <tr>
                                             <th scope="row">
-                                                <spa class="text-muted fw-normal">Rol</spa>
+                                                <spa class="text-muted fw-normal">Apellido</spa>
                                             </th>
-                                            <td class="user-avatar fw-bold">${usuarioEnSession.rol.descripcion}</td>
+                                            <td class="user-avatar fw-bold">${usuarioEnSession.apellido}</td>
                                         </tr>
                                         <tr class="table-primary">
                                             <th scope="row">
@@ -130,9 +131,31 @@
                                         </tr>
                                         <tr class="table-primary">
                                             <th scope="row">
-                                                <spa class="text-muted fw-normal">Fecha Alta</spa>
+                                                <spa class="text-muted fw-normal">Fecha Alta Suscripcion</spa>
                                             </th>
-                                            <td class="user-avatar fw-bold">12/07/2020</td>
+                                            <td class="user-avatar fw-bold">${usuarioEnSession.fechaAltaSuscripcion}</td>
+                                        </tr>
+                                        <tr class="">
+                                            <th scope="row">
+                                                <spa class="text-muted fw-normal">Estado de Suscripcion</spa>
+                                            </th>
+                                            <td class="user-avatar fw-bold">
+                                                <c:if test="${usuarioEnSession.estadoSuscripcion==true}">
+                                                    activo
+                                                    (${usuarioEnSession.cantidadDediasVencimientoSuscripcion} dias restantes)
+                                                </c:if>
+                                                <c:if test="${usuarioEnSession.estadoSuscripcion==false}">
+                                                    inactivo
+                                                    (${usuarioEnSession.cantidadDediasVencimientoSuscripcion} dias restantes)
+                                                </c:if>
+
+                                            </td>
+                                        </tr>
+                                        <tr class="table-primary">
+                                            <th scope="row">
+                                                <spa class="text-muted fw-normal">Fecha Baja Suscripcion</spa>
+                                            </th>
+                                            <td class="user-avatar fw-bold">${usuarioEnSession.fechaBajaSuscripcion}</td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -140,7 +163,7 @@
                             </div>
                             <!--termina tabla-->
 
-                            <p>Promedio De Calificacion: ${promedio}</p>
+
 
                             <!-- empieza suscripcion-->
                             <div class="bg-white col-12 col-md-10 d-flex flex-column flex-md-row p-2 mb-2 mt-3 align-items-center justify-content-evenly">
@@ -186,37 +209,56 @@
 
                                         </div>
 
-                                        <div class="text-end">
-                                            <form:form action="cancelarSuscripcion" method="POST">
-                                                <button type="button" class="btn btn-link text-danger text-gradient px-3 mb-0 " data-bs-toggle="modal" data-bs-target="#exampleModalDarBaja">
-                                                    <i class="far fa-trash-alt me-2" aria-hidden="true"></i>Dar Baja
-                                                </button>
+                                        <div class="text-center d-flex flex-column justify-content-center align-content-center">
+                                            <c:if test="${usuarioEnSession.estadoSuscripcion == false }">
+                                                <!--   <div class="m-auto">
+                                                    <p>Cancelaste la suscripcion,<br> puede aprovechar los servicios hasta <br> ${usuarioEnSession.fechaBajaSuscripcion} </p>
+                                                    <p class="m-0">Volve a contratar una suscripcion
+                                                        <a class="text-white" href="suscripcion">aqui</a>
+                                                    </p>
+                                                </div>-->
+                                                <div style="max-width: 200px">
+                                                    <p>Cancelaste la suscripcion,<br> puede aprovechar los servicios hasta <br> ${usuarioEnSession.fechaBajaSuscripcion} </p>
+                                                </div>
 
-                                                <div class="modal fade" id="exampleModalDarBaja" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title"
-                                                                    id="exampleModalLabel">Cancelar Suscripción</h5>
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <div class="mb-5 mt-5 text-center">
-                                                                    <div class="modal-body ">
-                                                                        <p>Estas por Cancelar tu suscripción, ¿Queres continuar?</p>
-                                                                    </div>
+                                                <div class="fondo-login col-12 text-center text-white align-items-center py-1 mt-2" style="max-width: 200px">
+                                                    <p class="m-0"> Puede volver a contratar uno
+                                                        <a class="text-white" href="suscripcion">aqui                       </a>
+                                                    </p>
+                                                </div>
+                                            </c:if>
+                                            <c:if test="${usuarioEnSession.estadoSuscripcion == true }">
+                                                <!-- CANCELAR-->
+                                                <form:form action="cancelarSuscripcion" method="POST">
+                                                    <button type="button" class="btn btn-link text-danger text-gradient px-3 mb-0 " data-bs-toggle="modal" data-bs-target="#exampleModalDarBaja">
+                                                        <i class="far fa-trash-alt me-2" aria-hidden="true"></i>Dar Baja
+                                                    </button>
+
+                                                    <div class="modal fade" id="exampleModalDarBaja" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title"
+                                                                        id="exampleModalLabel">¡Estas a punto de quedarte sin suscripcion!</h5>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                                                        Cancelar
-                                                                    </button>
-
+                                                                <div class="modal-body">
+                                                                    <div class="mb-5 mt-5 text-center">
+                                                                        <h2> Usuario </h2>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                                            Cancelar
+                                                                        </button>
                                                                     <button type="submit" class="btn btn-primary">Cancelar Suscripción</button>
 
+
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
+
                                                 </div>
                                             </form:form>
                                             <c:choose>
@@ -246,16 +288,16 @@
 
                                                                             <button type="submit" class="btn btn-primary">Upgradear Suscripción</button>
 
+
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
 
-                                                    </form:form>
-                                                </c:when>
-                                                <c:otherwise>
-
+                                                        </form:form>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <!-- PREMIUM A BASICA-->
                                                         <button type="button" class="btn btn-link text-warning text-gradient px-3 mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal222">
                                                             <i class="far fa-arrow-alt-circle-down" aria-hidden="true"></i>DownGrade
                                                         </button>
@@ -278,22 +320,24 @@
                                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                                                                                 Cancelar
                                                                             </button>
+
                                                                                 <form:form action="modificarSuscripcionPremiumUsuario" method="POST">
                                                                                 <button type="submit" class="btn btn-primary">Bajar a Suscripcion Basica</button>
                                                                                 </form:form>
+
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
 
-                                                </c:otherwise>
-                                            </c:choose>
-                                            <button type="button" class="btn btn-primary text-white text-gradient px-3 mb-0 " >
-                                                <a class="text-white" href="irDetalleAFactura">Ver Factura </a>
+                                                    </c:otherwise>
+                                                </c:choose>
+                                                <button type="button" class="btn btn-primary text-white text-gradient px-3 mb-0 " >
+                                                    <a class="text-white" href="irDetalleAFactura">Ver Factura </a>
+                                                </button>
+                                            </c:if>
 
-
-                                            </button>
                                         </div>
                                     </c:when>
                                     <c:otherwise>

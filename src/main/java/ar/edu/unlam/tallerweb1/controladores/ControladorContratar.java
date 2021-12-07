@@ -46,9 +46,7 @@ public class ControladorContratar {
     @RequestMapping(path = "/contratar-prestacion", method = RequestMethod.GET)
     public ModelAndView contratarPrestacion(@RequestParam(value = "asistente-id") Long id, HttpServletRequest httpServletRequest) {
         var usuarioLogueado = SessionUtils.getCurrentUserSession(httpServletRequest);
-        /*if (usuarioLogueado == null){
-            return new ModelAndView("redirect:/");
-        }*/
+      
 
         var model = new ModelMap();
 
@@ -64,7 +62,7 @@ public class ControladorContratar {
                         && prestacion.getUsuarioAsistente().getId().equals(asistente.getId())
                         && prestacion.getEstado().equals(PrestacionEstado.ACTIVO.getEstado())) {
 
-                    model.put("error", "Ya tenés una prestación");
+                    model.put("error", "Ya tenes una prestacionn");
 
                     return new ModelAndView("excepcionFiltro", model);
                 }

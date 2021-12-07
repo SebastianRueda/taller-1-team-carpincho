@@ -49,22 +49,9 @@
 <div class=" h-100 w-100">
     <div class="fondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-centerfondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-centerfondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-center">
         <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-10 col-md-offset-3 col-sm-8 col-sm-offset-2">
-            <%-- <c:if test="${empty resultadoUsuarios}">
-                    <form action="contratar-prestacion" method="GET">
-                        <label for="asistente-id">Seleccione Especialista</label>
-                        <select name="asistente-id" id="asistente-id">
 
-                            <c:forEach items="${resultadoUsuarios}" var="usuario">
-                                <option value="${usuario.id}">${usuario.nombre} &nbsp ${usuario.especialidad.descripcion} &nbsp ${usuario.email} </option>
-                            </c:forEach>
-                        </select>
-
-                        <button class="btn btn-lg btn-primary btn-block" Type="Submit">Contratar</button>
-                    </form>	--%>
-            <%-- </c:if> --%>
-
-                <div class="container">
-                    <a href="traerEspecialidades" style="color: white">Volver a la página anterior</a>
+          <div class="container">
+            <a href="traerEspecialidades" style="color: white">Volver a la página anterior</a>
                         <br>
                         <br>
             <div class="col-12 ">

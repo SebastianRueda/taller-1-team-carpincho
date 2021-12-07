@@ -1,8 +1,7 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
-import ar.edu.unlam.tallerweb1.servicios.ServicioDenunciaL;
-import ar.edu.unlam.tallerweb1.servicios.ServicioFavoritos;
+import ar.edu.unlam.tallerweb1.servicios.*;
 import org.junit.Test;
 import java.util.List;
 import org.junit.Assert;
@@ -11,16 +10,14 @@ import org.mockito.Mockito;
 import org.assertj.core.api.Assertions;
 import ar.edu.unlam.tallerweb1.modelo.Prestacion;
 import org.springframework.web.servlet.ModelAndView;
-import ar.edu.unlam.tallerweb1.servicios.ServicioPrestacion;
-import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
+
 import static org.assertj.core.api.Assertions.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Matchers.anyLong;
-import static org.mockito.Mockito.doThrow;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 
 public class ControladorPrestacionTest {
@@ -28,7 +25,8 @@ public class ControladorPrestacionTest {
     private ServicioUsuario servicioUsuario = Mockito.mock(ServicioUsuario.class);
     private ServicioDenunciaL servicioDenunciaL = Mockito.mock(ServicioDenunciaL.class);
     private ServicioFavoritos servicioFavoritos = Mockito.mock(ServicioFavoritos.class);
-    private ControladorPerfil controlador = new ControladorPerfil(servicioPrestacion, servicioUsuario,servicioDenunciaL, servicioFavoritos);
+    private ServicioSuscripcion servicioSuscripcion = mock(ServicioSuscripcion.class);
+    private ControladorPerfil controlador = new ControladorPerfil(servicioPrestacion, servicioUsuario,servicioDenunciaL, servicioFavoritos,servicioSuscripcion);
     private HttpServletRequest request = Mockito.mock(HttpServletRequest.class);
     private ControladorPrestacion controladorPrestacion= new ControladorPrestacion(servicioPrestacion,servicioUsuario,request);
 

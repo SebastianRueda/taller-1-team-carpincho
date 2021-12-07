@@ -86,7 +86,7 @@ public class ControladorFiltros {
 
 
 	@RequestMapping("/traerEspecialidades")
-	public ModelAndView listaEspecialidadesDesplegable() {
+	public ModelAndView listaEspecialidadesDesplegable(HttpServletRequest httpServletRequest) {
 		ModelMap modelo = new ModelMap();
 		List<Especialidad> lista = servicioFiltro.traerEspecialidad();
 		modelo.put("especialidades", lista);

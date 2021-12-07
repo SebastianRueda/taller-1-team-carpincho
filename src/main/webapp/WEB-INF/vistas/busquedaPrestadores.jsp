@@ -10,48 +10,84 @@
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link href="css/Login.css" rel="stylesheet">
-		
-		<script src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyAiq3xISXSZYgkd9GDAOdajy4NK2d3L7dY"></script>
-        <script type="text/javascript">
-            function mostrar_mapa(){
-                //Ubicacion inicial del mapa.
-                var ubicacion = new google.maps.LatLng(-34.666991893913085, -58.56839056121045); //Latitud y Longitud
-                //Parametros Iniciales
-                var opciones={zoom:14, //acercamiento
-                    center: ubicacion,
-                    mapTypeId: google.maps.MapTypeId.ROADMAP //Las posibles opciones son ROADMAP/SATELLITE/HYBRID/TERRA                    
-                };
-            
-                //Creacion del mapa
-                var map = new google.maps.Map(document.getElementById("mapa"),opciones);
-                
-             // creates a draggable marker to the given coords
-                var vMarker = new google.maps.Marker({
-                    position: new google.maps.LatLng(-34.666991893913085, -58.56839056121045),
-                    draggable: true
-                });
-             // centers the map on markers coords
-                map.setCenter(vMarker.position);
-
-                // adds the marker on the map
-                vMarker.setMap(map);
-             	// adds a listener to the marker
-                // gets the coords when drag event ends
-                // then updates the input with the new coords
-                //recuperar ubicacion donde hago click
-              
-                google.maps.event.addListener(vMarker, 'dragend', function (evt) {
-                    $("#latitudinput").val(evt.latLng.lat().toFixed(6));
-                    $("#longitudinput").val(evt.latLng.lng().toFixed(6));
-
-                    map.panTo(evt.latLng);
-                }); 
-            }  
-            
-        </script>       
 		<title>Busqueda Prestadores</title>
+
+		<script src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyAiq3xISXSZYgkd9GDAOdajy4NK2d3L7dY"></script>
+		<script type="text/javascript">
+			function mostrar_mapa(){
+				//Ubicacion inicial del mapa.
+				let latitud = sessionStorage.getItem('latitud');
+
+				if (latitud != null) {
+					latitud = parseFloat(latitud);
+				} else {
+					latitud = -34.666991893913085
+				}
+
+				let longitud = sessionStorage.getItem('longitud');
+
+				if (longitud != null) {
+					longitud = parseFloat(longitud);
+				} else {
+					longitud = -58.56839056121045
+				}
+
+				console.log("current latitud: " + latitud)
+				console.log("current longitud: " + longitud)
+
+				let ubicacion = new google.maps.LatLng(latitud, longitud); //Latitud y Longitud
+
+				//Parametros Iniciales
+				var opciones={zoom:14, //acercamiento
+					center: ubicacion,
+					mapTypeId: google.maps.MapTypeId.ROADMAP //Las posibles opciones son ROADMAP/SATELLITE/HYBRID/TERRA
+				};
+
+				//Creacion del mapa
+				var map = new google.maps.Map(document.getElementById("mapa"),opciones);
+
+				// creates a draggable marker to the given coords
+				var vMarker = new google.maps.Marker({
+					position: new google.maps.LatLng(latitud, longitud),
+					draggable: true
+				});
+				// centers the map on markers coords
+				map.setCenter(vMarker.position);
+
+				// adds the marker on the map
+				vMarker.setMap(map);
+				// adds a listener to the marker
+				// gets the coords when drag event ends
+				// then updates the input with the new coords
+				//recuperar ubicacion donde hago click
+
+				google.maps.event.addListener(vMarker, 'dragend', function (evt) {
+					document.querySelector("#latitudinput").value = evt.latLng.lat().toFixed(6);
+					document.querySelector("#longitudinput").value = evt.latLng.lng().toFixed(6);
+
+					console.log("latitud: " + evt.latLng.lat().toFixed(6))
+					console.log("longitud: " + evt.latLng.lng().toFixed(6))
+
+					map.panTo(evt.latLng);
+				});
+			}
+
+			window.onload = () => {
+				mostrar_mapa()
+
+				document.querySelector('#form-ubicacion').addEventListener('submit', (e) => {
+					const latitud = document.querySelector('#latitudinput').value;
+					sessionStorage.setItem('latitud', latitud);
+
+					const longitud = document.querySelector('#longitudinput').value;
+					sessionStorage.setItem('longitud', longitud);
+				})
+			}
+
+		</script>
+
 	</head>
-	<body onload="mostrar_mapa(0)" >
+	<body>
 
 	<header>
 		<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -98,7 +134,7 @@
 						<div class="col-12 " style="margin-left: 15em;margin-right: 15em">
 							<div id="mapa" style="width: 600px; height: 280px; border: 3px groove #006600;"></div><br>
 							<div style="margin-left: 12em; margin-right: 15em">
-		            		<form action="establecerUbicacion" method="GET">
+		            		<form id="form-ubicacion" action="establecerUbicacion" method="GET">
 		            			<div class="form-group">
                 					<!--<label for="latitudinput">Latitud</label>-->
                 					<input type="hidden" required="" path="latitud" name="latitud" id="latitudinput" class="form-control"/>
@@ -107,7 +143,7 @@
 					                <!--<label for="longitudinput">Longitud</label>-->
 					                <input type="hidden" required="" path="longitud" name="longitud" id="longitudinput" class="form-control" />
 					            </div>
-		            			<input class="btn btn-dark btn-sm" type="submit" value="Mi ubicación"/>
+		            			<input id="input-submit-ubicacion" class="btn btn-dark btn-sm" type="submit" value="Mi ubicación"/>
 		            			<input class="btn btn-dark btn-sm"  type="button" value="Limpiar ubicación" onclick="mostrar_mapa(0)"/>
 							</form>
 							</div>
@@ -231,8 +267,6 @@
 			</div>
 
 		</div>
-		</div>
-
 
 		<div class="container text-center text-md-left mt-5">
 
@@ -276,7 +310,9 @@
 		</div>
 
 	</footer>
+
 	</body>
+
 </html>
 
 

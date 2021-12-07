@@ -227,7 +227,7 @@
                                                 </div>
 
                                                 <div class="fondo-login col-12 text-center text-white align-items-center py-1 mt-2" style="max-width: 200px">
-                                                    <p class="m-0"> Puede volver a contratar uno
+                                                    <p class="m-0"> Puede volver a contratar una nueva suscripcion desde
                                                         <a class="text-white" href="suscripcion">aqui                       </a>
                                                     </p>
                                                 </div>
@@ -244,12 +244,14 @@
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
                                                                     <h5 class="modal-title"
-                                                                        id="exampleModalLabel">¡Estas a punto de quedarte sin suscripcion!</h5>
+                                                                        id="exampleModalLabel" style="text-align: center">Cancelar Suscripción</h5>
                                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
                                                                     <div class="mb-5 mt-5 text-center">
-                                                                        <h2> Usuario </h2>
+                                                                        <div class="modal-body ">
+                                                                            <p>Estas por cancelar tu suscripción, ¿Queres continuar?</p>
+                                                                        </div>
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
@@ -277,7 +279,7 @@
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
                                                                         <h5 class="modal-title"
-                                                                            id="exampleModalLabel">Upgradear suscripción</h5>
+                                                                            id="exampleModalLabel" style="text-align: center">Upgradear suscripción</h5>
                                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                     </div>
                                                                     <div class="modal-body">
@@ -312,7 +314,7 @@
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
                                                                         <h5 class="modal-title"
-                                                                            id="exampleModalLabel">DownGrade</h5>
+                                                                            id="exampleModalLabel" style="text-align: center">DownGrade</h5>
                                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                     </div>
                                                                     <div class="modal-body">

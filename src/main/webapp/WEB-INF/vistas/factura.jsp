@@ -274,7 +274,6 @@
 </div>
 
 <footer class="page-footer font-small color-light bg-dark text-light">
-
     <div>
         <div class="container">
 

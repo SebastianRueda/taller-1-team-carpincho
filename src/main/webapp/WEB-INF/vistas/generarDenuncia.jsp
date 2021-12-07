@@ -18,7 +18,6 @@
 	</head>
 
 	<body class=" h-100">
-
 	<header>
 		<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
 			<div class="container-fluid">
@@ -60,8 +59,9 @@
 		<div class="fondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-center">
 			<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 				<div class="card-body bg-white mb-3">
-				<h1 class="card-text text-center fw-bold">Realizar denuncia</h1><br>
-
+					<div class="text-center text-decoration-none text-dark fw-bold">
+						<h3>Realizar denuncia</h3><br>
+					</div>
 				<form:form action="denunciaRealizada" method="post" modelAttribute="denunciaRequest">
 				<form:input path="prestacionId" name="prestacionId" value="${prestacionId}" cssStyle="display: none" />
 				<label class="card-text  fw-bold" for="listaPrestaciones">Estás denunciando a:</label>
@@ -71,6 +71,7 @@
 				<form:input path="asistenteId" name="asistenteId" value="${asistente.id}" cssStyle="display: none"/>
 					<br>
 					<br>
+					<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 700px">
 					<br>
 					<label class="card-text fw-bold" for="listaEspecialidadDesplegable">Seleccione motivo:</label>
 					<form:select path="motivoId" name="motivoDenuncia">
@@ -81,15 +82,18 @@
 					</form:select>
 					<br>
 					<br>
-					<label style="font-weight: bold" >Comentanos lo ocurrido </label>
+					<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 700px">
 					<br>
 					<br>
+					<label style="font-weight: bold">Comentanos lo ocurrido </label>
+					<br>
+					<br>
+					<div style="align-content: center">
 					<form:textarea path="comentario" name="comentario" rows="4" cols="50" />
+					</div>
 					<br>
-					<button class=" btn btn-dark border-0 " Type="submit" >Confirmar</button>
-
+					<button class=" btn btn-dark border-0 " Type="submit"  >Confirmar</button>
 					</form:form>
-
 			</div>
 		</div>
 	</div>

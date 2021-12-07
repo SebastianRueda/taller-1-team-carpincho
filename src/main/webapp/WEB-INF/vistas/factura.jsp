@@ -40,6 +40,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="suscripcion">Suscripción</a>
                 </li>
+                &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+						&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+						&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+						&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+						&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
                 <form:form action="cerrarSesion" method="POST">
                     <button>
                         cerrarSesion
@@ -275,23 +280,23 @@
 
             <div class="col-md-6 col-lg-7 text-center text-md-right">
 
-                <a class="fb-ic">
+                <a class="fb-ic" href="https://www.facebook.com"/>
                     <i class="fab fa-facebook-f white-text mr-4"> </i>
                 </a>
 
-                <a class="tw-ic">
+                <a class="tw-ic" href="https://twitter.com"/>
                     <i class="fab fa-twitter white-text mr-4"> </i>
                 </a>
 
-                <a class="gplus-ic">
+                <a class="gplus-ic" href="https://www.google.com.ar"/>
                     <i class="fab fa-google-plus-g white-text mr-4"> </i>
                 </a>
 
-                <a class="li-ic">
-                    <i class="fab fa-linkedin-in white-text mr-4"> </i>
+                <a class="li-ic" href="https://www.linkedin.com"/>
+                    <i class="fab fa-linkedin-in white-text mr-4"  > </i>
                 </a>
 
-                <a class="ins-ic">
+                <a class="ins-ic"  href="https://www.instagram.com"/>
                     <i class="fab fa-instagram white-text"> </i>
                 </a>
 
@@ -301,6 +306,8 @@
         </div>
 
     </div>
+    </div>
+
 
 
     <div class="container text-center text-md-left mt-5">
@@ -321,7 +328,7 @@
                 </p>
 
                 <p>
-                    <a href="#!">Ayuda</a>
+                    <a href="home">Ayuda</a>
                 </p>
 
             </div>
@@ -340,7 +347,9 @@
             </div>
 
         </div>
-        <div class="footer-copyright text-center py-3"> 2021 Copyright: AsegurAPP
+
+        <div class="footer-copyright text-center py-3">� 2021 Copyright: AsegurAPP
+
         </div>
     </div>
 </footer>

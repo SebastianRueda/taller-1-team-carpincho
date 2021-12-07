@@ -91,8 +91,8 @@
                                             </button>
                                         </td>
                                         <td class="actions">
-                                            <button type="button" value="perfil" class="btn btn-primary  border-0">
-                                                Perfil
+                                            <button  type="button"  value="perfil" id="button-perfil" class="btn btn-primary  border-0">
+                                                <a class="text-white text-decoration-none" href="<c:url value='/asistentePerfil?asistente-id=${usuario.id}'/>">Perfil</a>
                                             </button>
                                         </td>
                                     </tr>

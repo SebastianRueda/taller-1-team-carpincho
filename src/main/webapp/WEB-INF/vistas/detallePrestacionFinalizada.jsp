@@ -50,22 +50,13 @@
 
 <div class="w-100 container-fluid  mt-5  rounded-3 bg-light" style="max-width: 1024px;">
     <div class="card card-body p-5 mb-5">
-        <div class="row">
-            <div class="col text-end">
-
-                <!-- Badge -->
-                <div class="badge bg-danger">
-                    Overdue
-                </div>
-
-            </div>
-        </div> <!-- / .row -->
 
         <div class="row">
             <div class="col text-center">
 
                 <!-- Logo -->
-                <img src="assets/img/logo.svg" alt="..." class="img-fluid mb-4" style="max-width: 2.5rem;">
+                <img src="imagenes/logo.png" alt="..." class="img-fluid mb-4" style="max-width: 2.5rem;">
+                <strong>AsegurAPP</strong>
 
                 <!-- Title -->
                 <h2 class="mb-2">
@@ -125,20 +116,20 @@
                         <thead>
                         <tr>
                             <th class="px-0 bg-transparent border-top-0">
-                                <span class="h6">Description</span>
+                                <span class="h6">Descripción</span>
                             </th>
                             <th class="px-0 bg-transparent border-top-0">
-                                <span class="h6">Hours</span>
+                                <span class="h6">Horas</span>
                             </th>
                             <th class="px-0 bg-transparent border-top-0 text-end">
-                                <span class="h6">Cost</span>
+                                <span class="h6">Costo</span>
                             </th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
                             <td class="px-0">
-                                Custom theme development
+                                Servicios prestados
                             </td>
                             <td class="px-0">
                                 125
@@ -149,7 +140,7 @@
                         </tr>
                         <tr>
                             <td class="px-0">
-                                Logo design
+                                Gastos administrativos
                             </td>
                             <td class="px-0">
                                 15
@@ -160,7 +151,7 @@
                         </tr>
                         <tr>
                             <td class="px-0 border-top border-top-2">
-                                <strong>Total amount due</strong>
+                                <strong>Total </strong>
                             </td>
                             <td colspan="2" class="px-0 text-end border-top border-top-2">
                                     <span class="h3">
@@ -177,7 +168,7 @@
 
                 <!-- Title -->
                 <h2 class="text-uppercase">
-                   ¿Deseas hacer algo Perri?
+                   ¿Deseas hacer algo ?
                 </h2>
 
                 <!-- Text -->

@@ -6,6 +6,7 @@ import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioFactura;
 import ar.edu.unlam.tallerweb1.servicios.ServicioSuscripcion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
+import ar.edu.unlam.tallerweb1.utils.MetodosFecha;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -65,10 +66,16 @@ public class ControladorSuscripcion {
         String ruta= "redirect:/perfilUsuario";
 
         usuarioLogueado.setSuscripcion(suscripcion);
+        usuarioLogueado.setEstadoSuscripcion(true);
+        usuarioLogueado.setFechaAltaSuscripcion(new MetodosFecha().obtenerFechaActual());
+        usuarioLogueado.setCantidadDediasVencimientoSuscripcion(new MetodosFecha().obtenerDiasRestantesEntreDosFechas());
+        usuarioLogueado.setFechaBajaSuscripcion(new MetodosFecha().obtenerFechaDeVencimiento());
+
         servicioUsuario.update(usuarioLogueado);
         servicioFactura.generarFactura(usuarioLogueado);
 
         ModelMap model = new ModelMap();
+        //model.put("hola",hola);
         return new ModelAndView(ruta, model);
     }
 
@@ -81,6 +88,10 @@ public class ControladorSuscripcion {
 
         String ruta= "redirect:/perfilUsuario";
 
+        usuarioLogueado.setFechaAltaSuscripcion(new MetodosFecha().obtenerFechaActual());
+        usuarioLogueado.setCantidadDediasVencimientoSuscripcion(new MetodosFecha().obtenerDiasRestantesEntreDosFechas());
+        usuarioLogueado.setFechaBajaSuscripcion(new MetodosFecha().obtenerFechaDeVencimiento());
+        usuarioLogueado.setEstadoSuscripcion(true);
         usuarioLogueado.setSuscripcion(suscripcion);
         servicioUsuario.update(usuarioLogueado);
         servicioFactura.generarFactura(usuarioLogueado);

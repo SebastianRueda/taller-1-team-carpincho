@@ -2,6 +2,7 @@ package ar.edu.unlam.tallerweb1.controladores;
 
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioLogin;
+import ar.edu.unlam.tallerweb1.servicios.ServicioSuscripcion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
 import ar.edu.unlam.tallerweb1.utils.SessionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,13 +24,15 @@ public class ControladorLogin {
 	// applicationContext.xml
 	private ServicioLogin servicioLogin;
 	private ServicioUsuario servicioUsuario;
+	private ServicioSuscripcion servicioSuscripcion;
 	HttpServletRequest request;
 	Usuario usuarioBuscado;
 
 	@Autowired
-	public ControladorLogin(ServicioLogin servicioLogin,ServicioUsuario servicioUsuario){
+	public ControladorLogin(ServicioLogin servicioLogin,ServicioUsuario servicioUsuario,ServicioSuscripcion servicioSuscripcion){
 		this.servicioLogin = servicioLogin;
 		this.servicioUsuario = servicioUsuario;
+		this.servicioSuscripcion = servicioSuscripcion;
 	}
 
 	// Este metodo escucha la URL localhost:8080/NOMBRE_APP/login si la misma es invocada por metodo http GET
@@ -59,6 +62,10 @@ public class ControladorLogin {
 		if (usuarioBuscado != null) {
 			// TODO: validar porque está acá
 			request.getSession().setAttribute("ROL", usuarioBuscado.getRol());
+
+			if(usuarioBuscado.getSuscripcion() != null){
+				servicioSuscripcion.verificarSuscripcionActiva(usuarioBuscado);
+			}
 
 			SessionUtils.createSession(request, usuarioBuscado);
 			model.put("usuarioLogueado", usuarioBuscado);

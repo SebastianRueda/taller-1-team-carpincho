@@ -4,10 +4,7 @@ import ar.edu.unlam.tallerweb1.modelo.Denuncia;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.modelo.request.AgregarRemoverAsistenteFavoritoRequest;
 import ar.edu.unlam.tallerweb1.modelo.request.DenunciaDetalleRequest;
-import ar.edu.unlam.tallerweb1.servicios.ServicioDenunciaL;
-import ar.edu.unlam.tallerweb1.servicios.ServicioFavoritos;
-import ar.edu.unlam.tallerweb1.servicios.ServicioPrestacion;
-import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
+import ar.edu.unlam.tallerweb1.servicios.*;
 import ar.edu.unlam.tallerweb1.utils.SessionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,13 +24,15 @@ public class ControladorPerfil {
     private ServicioUsuario servicioUsuario;
 	private ServicioDenunciaL servicioDenunciaL;
     private ServicioFavoritos servicioFavoritos;
+    private ServicioSuscripcion servicioSuscripcion;
 
     @Autowired
-    public ControladorPerfil(ServicioPrestacion servicioPrestacion, ServicioUsuario servicioUsuario, ServicioDenunciaL servicioDenunciaL, ServicioFavoritos servicioFavoritos) {
+    public ControladorPerfil(ServicioPrestacion servicioPrestacion, ServicioUsuario servicioUsuario, ServicioDenunciaL servicioDenunciaL, ServicioFavoritos servicioFavoritos,ServicioSuscripcion servicioSuscripcion) {
         this.servicioPrestacion = servicioPrestacion;
         this.servicioUsuario = servicioUsuario;
         this.servicioFavoritos = servicioFavoritos;
         this.servicioDenunciaL = servicioDenunciaL;
+        this.servicioSuscripcion =servicioSuscripcion;
     }
 
     @RequestMapping(path = "/perfilUsuario", method = RequestMethod.GET)
@@ -55,7 +54,12 @@ public class ControladorPerfil {
             e.printStackTrace();
         }
 
+
         Usuario usuario = servicioUsuario.usuarioFindById(usuarioLogueado.getId());
+        if(usuario.getSuscripcion() != null){
+            servicioSuscripcion.verificarSuscripcionActiva(usuario);
+        }
+
         modelo.put("usuarioEnSession",usuario);
         modelo.put("seccion", "perfil");
         modelo.put("irAsistentePerfilRequest", new AgregarRemoverAsistenteFavoritoRequest());

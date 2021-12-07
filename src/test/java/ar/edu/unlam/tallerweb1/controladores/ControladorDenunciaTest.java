@@ -6,10 +6,7 @@ import static org.mockito.Mockito.*;
 
 import ar.edu.unlam.tallerweb1.modelo.Denuncia;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
-import ar.edu.unlam.tallerweb1.servicios.ServicioDenunciaL;
-import ar.edu.unlam.tallerweb1.servicios.ServicioFavoritos;
-import ar.edu.unlam.tallerweb1.servicios.ServicioPrestacion;
-import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
+import ar.edu.unlam.tallerweb1.servicios.*;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,7 +22,8 @@ public class ControladorDenunciaTest {
     private ServicioPrestacion servicioPrestacion = mock(ServicioPrestacion.class);
     private ServicioUsuario servicioUsuario = mock(ServicioUsuario.class);
     private ServicioFavoritos servicioFavoritos = mock(ServicioFavoritos.class);
-    private ControladorPerfil controladorPerfil= new ControladorPerfil(servicioPrestacion,servicioUsuario,servicioDenunciaL, servicioFavoritos);
+    private ServicioSuscripcion servicioSuscripcion = mock(ServicioSuscripcion.class);
+    private ControladorPerfil controladorPerfil= new ControladorPerfil(servicioPrestacion,servicioUsuario,servicioDenunciaL, servicioFavoritos,servicioSuscripcion);
     private HttpSession session = Mockito.mock(HttpSession.class);
 
     public void crearSession(Usuario usuario){

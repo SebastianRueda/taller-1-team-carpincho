@@ -4,6 +4,7 @@ import ar.edu.unlam.tallerweb1.HttpSessionFake;
 import ar.edu.unlam.tallerweb1.modelo.Rol;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioLogin;
+import ar.edu.unlam.tallerweb1.servicios.ServicioSuscripcion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
 import org.assertj.core.api.Assertions;
 import org.junit.Assert;
@@ -21,10 +22,11 @@ public class ControladorLoginTest {
     private Usuario usuario;
     private Rol rol;
     private ServicioLogin servicioLogin=mock(ServicioLogin.class);
+	private ServicioSuscripcion servicioSuscripcion=mock(ServicioSuscripcion.class);
     private HttpServletRequest httpServletRequest = Mockito.mock(HttpServletRequest.class);
 	private HttpSession httpSession = new HttpSessionFake();
     private ServicioUsuario servicioUsuario=mock(ServicioUsuario.class);
-    private ControladorLogin controladorLogin=new ControladorLogin(servicioLogin,servicioUsuario) ;
+    private ControladorLogin controladorLogin=new ControladorLogin(servicioLogin,servicioUsuario,servicioSuscripcion) ;
 	
     
     @Before

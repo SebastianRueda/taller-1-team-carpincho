@@ -3,10 +3,7 @@ package ar.edu.unlam.tallerweb1.controladores;
 import ar.edu.unlam.tallerweb1.modelo.Favorito;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.modelo.request.AgregarRemoverAsistenteFavoritoRequest;
-import ar.edu.unlam.tallerweb1.servicios.ServicioDenunciaL;
-import ar.edu.unlam.tallerweb1.servicios.ServicioFavoritos;
-import ar.edu.unlam.tallerweb1.servicios.ServicioPrestacion;
-import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
+import ar.edu.unlam.tallerweb1.servicios.*;
 import ar.edu.unlam.tallerweb1.utils.SessionUtils;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -19,13 +16,16 @@ import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.mockito.Mockito.mock;
+
 public class ControlladorPerfilTest {
     private ServicioPrestacion servicioPrestacion = Mockito.mock(ServicioPrestacion.class);
     private ServicioUsuario servicioUsuario = Mockito.mock(ServicioUsuario.class);
     private ServicioDenunciaL servicioDenuncia = Mockito.mock(ServicioDenunciaL.class);
     private ServicioFavoritos servicioFavoritos = Mockito.mock(ServicioFavoritos.class);
+    private ServicioSuscripcion servicioSuscripcion = mock(ServicioSuscripcion.class);
     private ControladorPerfil controladorPerfil = new ControladorPerfil(servicioPrestacion, servicioUsuario,
-            servicioDenuncia, servicioFavoritos);
+            servicioDenuncia, servicioFavoritos,servicioSuscripcion);
 
     private static HttpServletRequest httpServletRequest = Mockito.mock(HttpServletRequest.class);
     private static HttpSession httpSession = Mockito.mock(HttpSession.class);

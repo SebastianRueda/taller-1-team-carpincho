@@ -442,87 +442,6 @@
     </div>
 </div>
 
-
-                            <!--
-                            <div class="card border-primary  col-md-3 col-lg-3 mb-3" style="margin: 2.7em">
-                                <div class="card-header text-primary fw-bold">
-                                    <i class="fab fa-old-republic"></i></i>Servicio de Grúa</div>
-                                <div class="card-body text-dark">
-                                    <p class="card-text">Servicio de Auxilio de Grúas plancha para autos-Camionetas
-                                        4x4-Combis y Autoelevadores las 24 Hs todo el año.</p>
-                                </div>
-                            </div>
-
-                            <div class="card border-primary  col-md-3 col-lg-3 mb-3" style="margin: 2.7em">
-                                <div class="card-header text-primary fw-bold">
-                                    <i class="fab fa-old-republic"></i></i>Asistencia Policial</div>
-                                <div class="card-body text-dark">
-                                    <p class="card-text">Asistencia Policíal en caso de emergencia</p>
-                                </div>
-                            </div>
-
-                            <div class="card border-primary  col-md-3 col-lg-3 mb-3" style="margin: 2.7em">
-                                <div class="card-header text-primary fw-bold">
-                                    <i class="fas fa-ambulance"></i>Servicio Medico</div>
-                                <div class="card-body text-dark">
-                                    <p class="card-text">Te ofrecemos un cuerpo médico que puede atenderte
-                                        rápidamente de forma presencial</p>
-                                </div>
-                            </div>
-
-                            <div class="text-center text-decoration-none text-dark fw-bold">
-                            <h3>Suscripción Premium</h3>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                                    Contratar Suscripción Premium
-                                </button>
-                            </div>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-                                <div class="card border-success  col-md-6 col-lg-3 mb-3" style="max-width: 18rem; ">
-                                    <div class="card-header text-success fw-bold">
-                                        <i class="fas fa-wrench"></i>Servicio Mecanico
-                                    </div>
-                                    <div class="card-body text-dark">
-                                        <p class="card-text">Encontra el profesional que se ajuste a las necesidades de tu vehiculo.</p>
-                                    </div>
-                                </div>
-
-                                <div class="card border-success  col-md-6 col-lg-3 mb-3" style="max-width: 18rem; ">
-                                    <div class="card-header text-success fw-bold">
-                                        <i class="fas fa-tools"></i>Chofer</div>
-                                    <div class="card-body text-dark">
-                                        <p class="card-text">Contrate un chófer privado para su comodidad, seguridad y en tiempo record ... calidad de servicio a prueba de una larga lista de clientes satisfechos.</p>
-                                    </div>
-                                </div>
-
-                                <div class="card border-success  col-md-6 col-lg-3 mb-3" style="max-width: 18rem; ">
-                                    <div class="card-header text-success fw-bold">
-                                        <i class="fas fa-cogs"></i>Repuestos Livianos</div>
-                                    <div class="card-body text-dark">
-                                        <p class="card-text">Nuestros socios cuentan con una flota de auxilio mecánico en todo el país para ayudarlo en todo tipo de incidentes</p>
-                                    </div>
-                                </div>
-
-                                <div class="card border-success  col-md-6 col-lg-3 mb-3" style="max-width: 18rem; ">
-                                    <div class="card-header text-success fw-bold">
-                                        <i class="fas fa-balance-scale"></i>Asistencia Legal</div>
-                                    <div class="card-body text-dark">
-                                        <p class="card-text">Asistencia legal en el momento ante un litigio.</p>
-                                    </div>
-                                </div>
-
-                        </div>
-                </div>
-            </section>
-            <br>
-            <br>
-        </div>
-    </div>
-</div>
--->
-
 <footer class="page-footer font-small color-light bg-dark text-light">
 
     <div>
@@ -530,23 +449,23 @@
 
             <div class="col-md-6 col-lg-7 text-center text-md-right">
 
-                <a class="fb-ic">
+                <a class="fb-ic" href="https://www.facebook.com"/>
                     <i class="fab fa-facebook-f white-text mr-4"> </i>
                 </a>
 
-                <a class="tw-ic">
+                <a class="tw-ic" href="https://twitter.com"/>
                     <i class="fab fa-twitter white-text mr-4"> </i>
                 </a>
 
-                <a class="gplus-ic">
+                <a class="gplus-ic" href="https://www.google.com.ar"/>
                     <i class="fab fa-google-plus-g white-text mr-4"> </i>
                 </a>
 
-                <a class="li-ic">
-                    <i class="fab fa-linkedin-in white-text mr-4"> </i>
+                <a class="li-ic" href="https://www.linkedin.com"/>
+                    <i class="fab fa-linkedin-in white-text mr-4"  > </i>
                 </a>
 
-                <a class="ins-ic">
+                <a class="ins-ic"  href="https://www.instagram.com"/>
                     <i class="fab fa-instagram white-text"> </i>
                 </a>
 
@@ -555,6 +474,7 @@
 
         </div>
 
+    </div>
     </div>
 
 
@@ -569,14 +489,14 @@
                 <h6 class="text-uppercase font-weight-bold">Acceso directo</h6>
                 <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
                 <p>
-                    <a href="#!">Login</a>
+                    <a href="login">Login</a>
                 </p>
                 <p>
-                    <a href="#!">Registro</a>
+                    <a href="ir-a-registrarme">Registro</a>
                 </p>
 
                 <p>
-                    <a href="#!">Ayuda</a>
+                    <a href="home">Ayuda</a>
                 </p>
 
             </div>
@@ -595,9 +515,10 @@
             </div>
 
         </div>
-        <div class="footer-copyright text-center py-3"> 2021 Copyright: AsegurAPP
+        <div class="footer-copyright text-center py-3">� 2021 Copyright: AsegurAPP
         </div>
     </div>
+
 </footer>
 
 

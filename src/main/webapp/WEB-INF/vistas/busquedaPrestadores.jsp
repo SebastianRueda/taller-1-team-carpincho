@@ -240,80 +240,82 @@
 
 	<footer class="page-footer font-small color-light bg-dark text-light">
 
-		<div>
-			<div class="container">
+    <div>
+        <div class="container">
 
-				<div class="col-md-6 col-lg-7 text-center text-md-right">
+            <div class="col-md-6 col-lg-7 text-center text-md-right">
 
-					<a class="fb-ic">
-						<i class="fab fa-facebook-f white-text mr-4"> </i>
-					</a>
+                <a class="fb-ic" href="https://www.facebook.com"/>
+                    <i class="fab fa-facebook-f white-text mr-4"> </i>
+                </a>
 
-					<a class="tw-ic">
-						<i class="fab fa-twitter white-text mr-4"> </i>
-					</a>
+                <a class="tw-ic" href="https://twitter.com"/>
+                    <i class="fab fa-twitter white-text mr-4"> </i>
+                </a>
 
-					<a class="gplus-ic">
-						<i class="fab fa-google-plus-g white-text mr-4"> </i>
-					</a>
+                <a class="gplus-ic" href="https://www.google.com.ar"/>
+                    <i class="fab fa-google-plus-g white-text mr-4"> </i>
+                </a>
 
-					<a class="li-ic">
-						<i class="fab fa-linkedin-in white-text mr-4"> </i>
-					</a>
+                <a class="li-ic" href="https://www.linkedin.com"/>
+                    <i class="fab fa-linkedin-in white-text mr-4"  > </i>
+                </a>
 
-					<a class="ins-ic">
-						<i class="fab fa-instagram white-text"> </i>
-					</a>
+                <a class="ins-ic"  href="https://www.instagram.com"/>
+                    <i class="fab fa-instagram white-text"> </i>
+                </a>
 
-				</div>
-
-
-			</div>
-
-		</div>
-
-		<div class="container text-center text-md-left mt-5">
+            </div>
 
 
-			<div class="row mt-3">
+        </div>
+
+    </div>
+    </div>
 
 
-				<div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+    <div class="container text-center text-md-left mt-5">
 
-					<h6 class="text-uppercase font-weight-bold">Acceso directo</h6>
-					<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-					<p>
-						<a href="#!">Login</a>
-					</p>
-					<p>
-						<a href="#!">Registro</a>
-					</p>
 
-					<p>
-						<a href="#!">Ayuda</a>
-					</p>
+        <div class="row mt-3">
 
-				</div>
 
-				<div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
 
-					<h6 class="text-uppercase font-weight-bold">Contacto</h6>
-					<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-					<p>
-						<i class="fas fa-home mr-3"></i> calle Siempre viva 742, Springfield</p>
-					<p>
-						<i class="fas fa-envelope mr-3"></i> info@asegurapp.com</p>
-					<p>
-						<i class="fas fa-phone mr-3"></i> +011 4444-4444 </p>
+                <h6 class="text-uppercase font-weight-bold">Acceso directo</h6>
+                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                <p>
+                    <a href="login">Login</a>
+                </p>
+                <p>
+                    <a href="ir-a-registrarme">Registro</a>
+                </p>
 
-				</div>
+                <p>
+                    <a href="home">Ayuda</a>
+                </p>
 
-			</div>
-			<div class="footer-copyright text-center py-3">� 2021 Copyright: AsegurAPP
-			</div>
-		</div>
+            </div>
 
-	</footer>
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+                <h6 class="text-uppercase font-weight-bold">Contacto</h6>
+                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                <p>
+                    <i class="fas fa-home mr-3"></i> calle Siempre viva 742, Springfield</p>
+                <p>
+                    <i class="fas fa-envelope mr-3"></i> info@asegurapp.com</p>
+                <p>
+                    <i class="fas fa-phone mr-3"></i> +011 4444-4444 </p>
+
+            </div>
+
+        </div>
+        <div class="footer-copyright text-center py-3">� 2021 Copyright: AsegurAPP
+        </div>
+    </div>
+
+</footer>
 
 	</body>
 

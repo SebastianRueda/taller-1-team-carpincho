@@ -16,7 +16,7 @@
     <title>Perfil Asistente</title>
 </head>
 
-<body class="fondo-login ">
+<body class="fondo-login" >
 <header>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <div class="container-fluid">
@@ -54,9 +54,11 @@
         </div>
     </nav>
 </header>
-<div class="container-fluid  mt-5 rounded-3 ">
-    <div class="row w-100 bg-light m-auto p-2 justify-content-md-center" style="max-width: 1250px;">
-        <div class="col-12">
+
+<div class=" h-100 w-100" >
+<div class="fondo-login container-fluid mt-5 px-2 h-100 w-100 d-flex justify-content-centerfondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-center">
+    <div class="row h-100 w-100 bg-light m-auto p-1 justify-content-md-center" style="max-width: 1250px;">
+        <div class="col-12 px-1">
             <div class="tab tab-primary">
                 <ul class="nav nav-pills nav-pills-sm nav-light mb-2"> <!-- empieza botones-->
                     <li class="nav-item">
@@ -68,7 +70,7 @@
                     <!-- Empieza primer boton-->
                     <div class="tab-pane ${seccion.equals("perfil") ? "active" : ""}" id="primary-tab-1"
                          role="tabpanel">
-                        <div class="row w-100 bg-light row w-100 h-100 m-auto justify-content-md-center">
+                        <div class=" row w-100 h-100 m-auto justify-content-md-center">
                             <!--  empieza foto perfil-->
                             <div class="bg-danger col-12 col-md-6 d-flex bg-white align-content-center justify-content-center">
                                 <div class="d-flex align-items-center flex-column w-75  align-content-center justify-content-center flex-wrap text-center p-2">
@@ -165,12 +167,11 @@
         </div>
     </div>
 </div>
+</div>
 
-<footer class="page-footer font-small color-light bg-dark text-light">
-
+<footer class="page-footer font-small color-light bg-dark text-light fixed-bottom">
     <div>
         <div class="container">
-
             <div class="col-md-6 col-lg-7 text-center text-md-right">
 
                 <a class="fb-ic" href="https://www.facebook.com"/>
@@ -192,21 +193,14 @@
                 <a class="ins-ic"  href="https://www.instagram.com"/>
                     <i class="fab fa-instagram white-text"> </i>
                 </a>
-
             </div>
-
-
         </div>
-
     </div>
     </div>
 
 
     <div class="container text-center text-md-left mt-5">
-
-
         <div class="row mt-3">
-
 
             <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
 
@@ -224,7 +218,6 @@
                 </p>
 
             </div>
-
             <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
 
                 <h6 class="text-uppercase font-weight-bold">Contacto</h6>
@@ -237,13 +230,15 @@
                     <i class="fas fa-phone mr-3"></i> +011 4444-4444 </p>
 
             </div>
-
         </div>
-        <div class="footer-copyright text-center py-3">� 2021 Copyright: AsegurAPP
+
+        <div
+                class="footer-copyright text-center py-3">© 2021 Copyright: AsegurAPP
         </div>
     </div>
-
 </footer>
+
+
 <c:if test="${not empty error}">
     <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
         <div id="toast-error" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
@@ -278,7 +273,5 @@
 </script>
 <script src="js/popper.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
         crossorigin="anonymous"></script>
-
 </body>
-
 </html>

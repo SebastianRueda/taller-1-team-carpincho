@@ -70,7 +70,7 @@
                     </div>
 
                     <div class="mb-3 mt-5">
-                        <h4>
+                        <h4 style="text-align: center">
                             Servicios disponibles
                         </h4>
                         <div class="fs-3">
@@ -78,6 +78,7 @@
                                 <i class="fas fa-wrench mr-4"></i>
                                 <i class="fas fa-ambulance mr-4"></i>
                                 <i class="fas fa-truck-pickup mr-4"></i>
+
                             </c:if>
                             <c:if test="${status.last}">
                                 <i class="fas fa-wrench mr-4"></i>
@@ -89,7 +90,7 @@
                             </c:if>
                         </div>
                     </div>
-                    <h4 class="mb-3 mt-5">
+                    <h4 class="mb-3 mt-5" style="text-align: center">
                         Precio : $${suscripcion.precio}/mes
                     </h4>
                     <div class="mt-5">

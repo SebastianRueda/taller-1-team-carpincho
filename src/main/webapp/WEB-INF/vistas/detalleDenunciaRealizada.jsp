@@ -57,16 +57,13 @@
 
 <div class="w-100 container-fluid  mt-5  rounded-3 bg-light" style="max-width: 1024px;">
     <div class="card card-body p-5 mb-5">
-        <div class="row">
-            <div class="col text-end">
-                <div class="badge bg-danger">
-                    <a>Generar PDF</a>
-                </div>
-            </div>
-        </div>
 
         <div class="row">
             <div class="col text-center">
+                <!-- Logo -->
+                <img src="imagenes/logo.png" alt="..." class="img-fluid mb-4" style="max-width: 2.5rem;">
+                <strong>AsegurAPP</strong>
+
                 <h2 class="mb-2">
                     Detalle de denuncia realizada
                 </h2>
@@ -119,7 +116,6 @@
 
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -205,7 +201,6 @@
     </div>
 
 </footer>
-
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>

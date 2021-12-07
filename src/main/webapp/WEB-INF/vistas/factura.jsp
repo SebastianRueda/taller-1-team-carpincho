@@ -15,7 +15,9 @@
     <link href="css/Login.css" rel="stylesheet">
     <title>Facturas</title>
 </head>
+
 <body class="fondo-login">
+<header>
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="home">AsegurApp</a>
@@ -52,27 +54,21 @@
         </div>
     </div>
 </nav>
-
-${saludo}
+</header>
 
 <div class="w-100 container-fluid  mt-5  rounded-3 bg-light" style="max-width: 1024px;">
     <div class="card card-body p-5 mb-5">
         <div class="row">
-            <div class="col text-end">
+            <div class="col text-center">
 
-                <!-- Badge -->
-                <div class="badge bg-danger">
-                    Overdue
-                </div>
+                <img src="imagenes/logo.png" alt="..." class="img-fluid mb-4" style="max-width: 2.5rem;">
+                <strong>AsegurAPP</strong>
 
             </div>
         </div> <!-- / .row -->
 
         <div class="row">
             <div class="col text-center">
-
-                <!-- Logo -->
-                <img src="assets/img/logo.svg" alt="..." class="img-fluid mb-4" style="max-width: 2.5rem;">
 
                 <!-- Title -->
                 <h2 class="mb-2">
@@ -236,7 +232,7 @@ ${saludo}
 
                 <!-- Title -->
                 <h2 class="text-uppercase">
-                    Soltá la tarasca Perri
+                    Confirmar contratación
                 </h2>
 
                 <!-- Text -->
@@ -313,6 +309,7 @@ ${saludo}
     </div>
 
 
+
     <div class="container text-center text-md-left mt-5">
 
 
@@ -350,10 +347,11 @@ ${saludo}
             </div>
 
         </div>
+
         <div class="footer-copyright text-center py-3">� 2021 Copyright: AsegurAPP
+
         </div>
     </div>
-
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

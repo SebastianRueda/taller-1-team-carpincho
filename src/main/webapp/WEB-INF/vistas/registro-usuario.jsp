@@ -81,7 +81,7 @@
     <div>
         <div class="container">
 
-            <div class="col-md-6 col-lg-7 text-center text-md-right">
+            <div class="col-md-12 col-lg-12 text-center text-md-right">
 
                 <a class="fb-ic" href="https://www.facebook.com"/>
                     <i class="fab fa-facebook-f white-text mr-4"> </i>
@@ -108,7 +108,6 @@
 
         </div>
 
-    </div>
     </div>
 
 
@@ -150,10 +149,10 @@
 
         </div>
         <div class="footer-copyright text-center py-3">� 2021 Copyright: AsegurAPP
-        </div>
-    </div>
 
+    </div>
 </footer>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" ></script>
 <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>

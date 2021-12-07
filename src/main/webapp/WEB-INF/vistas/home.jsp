@@ -14,7 +14,7 @@
 
     <title>AsegurAPP</title>
 </head>
-<body>
+<body class="fondo-login" >
 
 <header>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">

@@ -27,6 +27,11 @@ public class Usuario {
 	private String apellido;
 	private String email;
 	private String password;
+	private Double latitud;
+    private Double longitud;
+	
+	
+    
 	private Date fechaAltaSuscripcion;
 	private Date fechaBajaSuscripcion;
 	private Long cantidadDediasVencimientoSuscripcion;
@@ -144,6 +149,19 @@ public class Usuario {
     public String fullName() {
 		return nombre + " " + apellido;
 	}
+    
+    public Double getLatitud() {
+		return latitud;
+	}
+	public void setLatitud(Double latitud) {
+		this.latitud = latitud;
+	}
+	public Double getLongitud() {
+		return longitud;
+	}
+	public void setLongitud(Double longitud) {
+		this.longitud = longitud;
+	}
 
 	public Long getCantidadDediasVencimientoSuscripcion() {
 		return cantidadDediasVencimientoSuscripcion;
@@ -187,6 +205,10 @@ public class Usuario {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, nombre, apellido, email, password, especialidad, provincia, rol, activo, cuenta, suscripcion);
+		return Objects.hash(id, nombre, apellido, email, password, especialidad, provincia, rol, activo, cuenta, suscripcion,latitud ,longitud);
 	}
+
+	
+	
+	
 }

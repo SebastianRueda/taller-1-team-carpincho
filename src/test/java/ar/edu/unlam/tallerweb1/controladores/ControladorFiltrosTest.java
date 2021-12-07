@@ -71,7 +71,7 @@ public class ControladorFiltrosTest {
 		}
 		
 		private ModelAndView whenEspecialidadesEsperadas() {
-			return  controladorFiltros.listaEspecialidadesDesplegable();
+			return  controladorFiltros.listaEspecialidadesDesplegable(null);
 		}
 		
 		private void thenTraerEspecialidadesEsperadas(ModelAndView especialidades) {
@@ -109,7 +109,7 @@ public class ControladorFiltrosTest {
 		}
 
 		private ModelAndView whenTraerLaListaDeProvinciasYEspecialidadesEsperadas() {
-			return controladorFiltros.listaEspecialidadesDesplegable();
+			return controladorFiltros.listaEspecialidadesDesplegable(null);
 		}
 
 		private void thenTraerLaListaDeProvinciasYEspecialidadesEsperadas(ModelAndView mav, int cantEspecilidades, int cantProvincias) {

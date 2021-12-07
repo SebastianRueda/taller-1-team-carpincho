@@ -6,13 +6,17 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Provincia;
+import ar.edu.unlam.tallerweb1.modelo.Ubicacion;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioFiltro;
+import ar.edu.unlam.tallerweb1.utils.SessionUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -82,7 +86,7 @@ public class ControladorFiltros {
 
 
 	@RequestMapping("/traerEspecialidades")
-	public ModelAndView listaEspecialidadesDesplegable() {
+	public ModelAndView listaEspecialidadesDesplegable(HttpServletRequest httpServletRequest) {
 		ModelMap modelo = new ModelMap();
 		List<Especialidad> lista = servicioFiltro.traerEspecialidad();
 		modelo.put("especialidades", lista);
@@ -111,5 +115,17 @@ public class ControladorFiltros {
 		}
 		return new ModelAndView("resultadoPrestadores",modelo);
 	}
+	
+	@RequestMapping(path = "/establecerUbicacion", method = RequestMethod.GET)
+    public ModelAndView establecerUbicacion(
+    		HttpServletRequest request,@RequestParam(value = "latitud") Double latitud,@RequestParam(value = "longitud") Double longitud) {
+        var usuarioLogueado = SessionUtils.getCurrentUserSession(request);
+        usuarioLogueado.setLatitud(latitud);
+        usuarioLogueado.setLongitud(longitud);
+        SessionUtils.createSession(request, usuarioLogueado);
+        return new ModelAndView("redirect:/traerEspecialidades");
+    
+	}    
+	
 	
 }

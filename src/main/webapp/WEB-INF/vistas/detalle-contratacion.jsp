@@ -36,16 +36,17 @@
 						<li class="nav-item">
 							<a class="nav-link" href="suscripcion">Suscripción</a>
 						</li>
-						&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-						&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-						&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-						&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-						&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-                   		<form:form action="cerrarSesion" method="POST">              
-                       		<button>
-                           		cerrarSesion
-                       		</button>
-               			</form:form>
+                        &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                        &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                        &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                        &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                        &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                        &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                        <form:form action="cerrarSesion" method="POST">
+                            <button class="btn-primary border-white rounded-3">
+                                cerrarSesion
+                            </button>
+                        </form:form>
 					</ul>
 				</div>
 			</div>
@@ -60,20 +61,22 @@
                 <h4 class="text-white mt-5">${error}</h4>
             </c:when>
             <c:when test="${empty error}">
-                <div class="container">
-                <div id="loginbox"  class="mainbox col-md-12 ">
-                    <div class="card-body bg-light mb-3" style="margin-right: 16rem; margin-left: 26rem; max-width: 18rem">
+                <div class="container" style="display: flex; aling-items: center;justify-content: center ">
+                <div id="loginbox"  class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2" >
+                    <div class="card-body bg-light mb-3">
                         <h1 style="text-align: center">Detalle de contratación</h1>
 
-
-
                             <h5 class="card-title">Cliente</h5>
+                            <hr class="deep-purple accent-2 mb-2 mt-0 d-inline-block mx-auto" style="width: 600px">
                             <P class="card-text">${prestacion.usuarioSolicitante.email}</P>
                             <h5 class="card-title">Asistente</h5>
+                            <hr class="deep-purple accent-2 mb-2 mt-0 d-inline-block mx-auto" style="width: 600px">
                             <P class="card-text">${prestacion.usuarioAsistente.email}</P>
                             <h5 class="card-title">Especialidad</h5>
+                            <hr class="deep-purple accent-2 mb-2 mt-0 d-inline-block mx-auto" style="width: 600px">
                             <P class="card-text">${prestacion.especialidad.descripcion}</P>
                             <h5 class="card-title">Estado</h5>
+                            <hr class="deep-purple accent-2 mb-2 mt-0 d-inline-block mx-auto" style="width: 600px">
                             <P class="card-text">${prestacion.estado}</P>
 
 
@@ -191,7 +194,8 @@
     </div>
 
 </div>
-    <footer class="page-footer font-small color-light bg-dark text-light">
+
+<footer class="page-footer font-small color-light bg-dark text-light">
 
     <div>
         <div class="container">
@@ -199,23 +203,23 @@
             <div class="col-md-6 col-lg-7 text-center text-md-right">
 
                 <a class="fb-ic" href="https://www.facebook.com"/>
-                    <i class="fab fa-facebook-f white-text mr-4"> </i>
+                <i class="fab fa-facebook-f white-text mr-4"> </i>
                 </a>
 
                 <a class="tw-ic" href="https://twitter.com"/>
-                    <i class="fab fa-twitter white-text mr-4"> </i>
+                <i class="fab fa-twitter white-text mr-4"> </i>
                 </a>
 
                 <a class="gplus-ic" href="https://www.google.com.ar"/>
-                    <i class="fab fa-google-plus-g white-text mr-4"> </i>
+                <i class="fab fa-google-plus-g white-text mr-4"> </i>
                 </a>
 
                 <a class="li-ic" href="https://www.linkedin.com"/>
-                    <i class="fab fa-linkedin-in white-text mr-4"  > </i>
+                <i class="fab fa-linkedin-in white-text mr-4"  > </i>
                 </a>
 
                 <a class="ins-ic"  href="https://www.instagram.com"/>
-                    <i class="fab fa-instagram white-text"> </i>
+                <i class="fab fa-instagram white-text"> </i>
                 </a>
 
             </div>

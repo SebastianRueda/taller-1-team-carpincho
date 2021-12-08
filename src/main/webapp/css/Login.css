@@ -23,6 +23,13 @@ body{
     background: linear-gradient(to right, #26D0CE, #1A2980); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+.boton-oscuro{
+    background: rgb(23, 32, 42);
+    background: linear-gradient(142deg, rgba(66, 73, 73,1) 0%, rgba(121, 125, 127,1) 35%, rgba(97, 106, 107,1) 100%);
+    background: #202326;  /* fallback for old browsers */
+    background: linear-gradient(to right, #545b62, #1b1e21);
+}
+
 .video-login{
  width: 100%;
  height: 100%;
@@ -108,3 +115,14 @@ input[type="radio"]:checked ~ label {
     
 }
 
+.ir-arriba {
+    display:none;
+    padding:20px;
+    background:#024959;
+    font-size:20px;
+    color:#fff;
+    cursor:pointer;
+    position: fixed;
+    bottom:20px;
+    right:20px;
+}

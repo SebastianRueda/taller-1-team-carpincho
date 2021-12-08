@@ -147,23 +147,23 @@ ${msg}
             <div class="col-md-6 col-lg-7 text-center text-md-right">
 
                 <a class="fb-ic" href="https://www.facebook.com"/>
-                    <i class="fab fa-facebook-f white-text mr-4"> </i>
+                <i class="fab fa-facebook-f white-text mr-4"> </i>
                 </a>
 
                 <a class="tw-ic" href="https://twitter.com"/>
-                    <i class="fab fa-twitter white-text mr-4"> </i>
+                <i class="fab fa-twitter white-text mr-4"> </i>
                 </a>
 
                 <a class="gplus-ic" href="https://www.google.com.ar"/>
-                    <i class="fab fa-google-plus-g white-text mr-4"> </i>
+                <i class="fab fa-google-plus-g white-text mr-4"> </i>
                 </a>
 
                 <a class="li-ic" href="https://www.linkedin.com"/>
-                    <i class="fab fa-linkedin-in white-text mr-4"  > </i>
+                <i class="fab fa-linkedin-in white-text mr-4"  > </i>
                 </a>
 
                 <a class="ins-ic"  href="https://www.instagram.com"/>
-                    <i class="fab fa-instagram white-text"> </i>
+                <i class="fab fa-instagram white-text"> </i>
                 </a>
 
             </div>

@@ -29,7 +29,7 @@ public class ControladorEditarUsuario {
     }
 
     @RequestMapping(path = "/ir-a-editar-usuario", method = RequestMethod.GET)
-    private ModelAndView irAEditarUsuario(HttpServletRequest httpServletRequest) {
+    public ModelAndView irAEditarUsuario(HttpServletRequest httpServletRequest) {
         Usuario usuario = SessionUtils.getCurrentUserSession(httpServletRequest);
         if (usuario == null) {
             return new ModelAndView("redirect:/");
@@ -40,13 +40,13 @@ public class ControladorEditarUsuario {
         model.put("usuario", usuario);
 
         final var provincias = servicioProvincia.traerProvincia();
-        model.put("provicincias", provincias);
+        model.put("provincias", provincias);
 
         return new ModelAndView("editarUsuario", model);
     }
 
     @RequestMapping(path = "/editar-usuario", method = RequestMethod.POST)
-    private ModelAndView editarUsuario(HttpServletRequest httpServletRequest,
+    public ModelAndView editarUsuario(HttpServletRequest httpServletRequest,
                                        @ModelAttribute("request") EditarUsuarioRequest request) {
         Usuario current = SessionUtils.getCurrentUserSession(httpServletRequest);
         if (current == null) {

@@ -73,7 +73,7 @@
                         <c:if test="${usuario.provincia == null}">
                             <option value="-1" selected>Seleccione una provincia</option>
                         </c:if>
-                        <c:forEach items="${provicincias}" var="provincia">
+                        <c:forEach items="${provincias}" var="provincia">
                             <c:if test="${provincia.id != usuario.provincia.id}">
                                 <option value="${provincia.id}">${provincia.nombre}</option>
                             </c:if>

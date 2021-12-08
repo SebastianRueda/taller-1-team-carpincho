@@ -17,7 +17,7 @@
     <title>Perfil Usuario</title>
 </head>
 
-<body class="fondo-login" >
+<body class="fondo-login">
 
 <header>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -59,150 +59,145 @@
 </header>
 
 
-
-<div class=" h-100 w-100" >
-<div  class="fondo-login container-fluid mt-5 px-2 h-100 w-100 d-flex justify-content-centerfondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-center">
-    <div class="row h-100 w-100 bg-light m-auto p-1 justify-content-md-center mb-5" style="max-width: 1250px;">
-        <div class="col-12 px-1 ">
-            <div class="tab tab-primary">
-                <ul class="nav nav-pills nav-pills-sm nav-light mb-2"> <!-- empieza botones-->
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder me-2 ${seccion.equals("perfil") ? "active" : ""}"
-                           href="perfilUsuario">Mi Perfil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder me-2 ${seccion.equals("historial") ? "active" : ""}"
-                           href="mostrar-historial">Mis Contrataciones</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder me-2 ${seccion.equals("historialDenuncias") ? "active" : ""}"
-                           href="mostrar-denuncias" >Mis Denuncias</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder me-2 ${seccion.equals("favoritos") ? "active" : ""}"
-                           href="mostrar-favoritos">Mis Favoritos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder"
-                           data-bs-toggle="tab" href="#primary-tab-4">Algo</a>
-                    </li>
-                </ul><!-- Termina botones-->
-                <div class="tab-content">
-                    <!-- Empieza primer boton-->
-                    <div class="tab-pane ${seccion.equals("perfil") ? "active" : ""}" id="primary-tab-1"
-                         role="tabpanel">
-                        <div class="row w-100 bg-light row w-100 h-100 m-auto justify-content-md-center">
-                            <!--  empieza foto perfil-->
-                            <div class="bg-danger col-12 col-md-6 d-flex bg-white align-content-center justify-content-center">
-                                <div class="d-flex align-items-center flex-column w-75  align-content-center justify-content-center flex-wrap text-center">
-                                    <img src="imagenes/perfil.png" alt="Foto Perfil" class="" width=150 height=150/>
-                                    <h3 class="mt-3">${usuarioEnSession.nombre} ${usuarioEnSession.apellido}</h3>
-                                    <p class="text-muted m-0">${usuarioEnSession.email}</p>
-                                    <p class="text-muted m-0">Argentino</p>
-                                    <p class="text-muted m-0">Promedio De Calificacion: ${promedio}</p>
+<div class=" h-100 w-100">
+    <div class="fondo-login container-fluid mt-5 px-2 h-100 w-100 d-flex justify-content-centerfondo-login container-fluid px-2 h-100 w-100 d-flex justify-content-center">
+        <div class="row h-100 w-100 bg-light m-auto p-1 justify-content-md-center mb-5" style="max-width: 1250px;">
+            <div class="col-12 px-1 ">
+                <div class="tab tab-primary">
+                    <ul class="nav nav-pills nav-pills-sm nav-light mb-2"> <!-- empieza botones-->
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder me-2 ${seccion.equals("perfil") ? "active" : ""}"
+                               href="perfilUsuario">Mi Perfil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder me-2 ${seccion.equals("historial") ? "active" : ""}"
+                               href="mostrar-historial">Mis Contrataciones</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder me-2 ${seccion.equals("historialDenuncias") ? "active" : ""}"
+                               href="mostrar-denuncias">Mis Denuncias</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder me-2 ${seccion.equals("favoritos") ? "active" : ""}"
+                               href="mostrar-favoritos">Mis Favoritos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder"
+                               data-bs-toggle="tab" href="#primary-tab-4">Algo</a>
+                        </li>
+                    </ul><!-- Termina botones-->
+                    <div class="tab-content">
+                        <!-- Empieza primer boton-->
+                        <div class="tab-pane ${seccion.equals("perfil") ? "active" : ""}" id="primary-tab-1"
+                             role="tabpanel">
+                            <div class="row w-100 bg-light row w-100 h-100 m-auto justify-content-md-center">
+                                <!--  empieza foto perfil-->
+                                <div class="bg-danger col-12 col-md-6 d-flex bg-white align-content-center justify-content-center">
+                                    <div class="d-flex align-items-center flex-column w-75  align-content-center justify-content-center flex-wrap text-center">
+                                        <img src="imagenes/perfil.png" alt="Foto Perfil" class="" width=150 height=150/>
+                                        <h3 class="mt-3">${usuarioEnSession.nombre} ${usuarioEnSession.apellido}</h3>
+                                        <p class="text-muted m-0">${usuarioEnSession.email}</p>
+                                        <p class="text-muted m-0">Argentino</p>
+                                        <p class="text-muted m-0">Promedio De Calificacion: ${promedio}</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <!-- termina foto perfil-->
+                                <!-- termina foto perfil-->
 
-                            <!-- empieza tabla-->
-                            <div class="col-12 col-md-6 d-flex align-items-center bg-white ">
-                                <div class="w-100">
-                                    <table class="table table-hover table-borderless mt-2">
-                                        <tbody>
-                                        <tr class="table-primary">
-                                            <th scope="row">
-                                                <spa class="text-muted fw-normal">Nombre</spa>
-                                            </th>
-                                            <td class="user-avatar fw-bold">${usuarioEnSession.nombre}
+                                <!-- empieza tabla-->
+                                <div class="col-12 col-md-6 d-flex align-items-center bg-white ">
+                                    <div class="w-100">
+                                        <table class="table table-hover table-borderless mt-2">
+                                            <tbody>
+                                            <tr class="table-primary">
+                                                <th scope="row">
+                                                    <spa class="text-muted fw-normal">Nombre</spa>
+                                                </th>
+                                                <td class="user-avatar fw-bold">${usuarioEnSession.nombre}
                                                 </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">
-                                                <spa class="text-muted fw-normal">Apellido</spa>
-                                            </th>
-                                            <td class="user-avatar fw-bold">${usuarioEnSession.apellido}</td>
-                                        </tr>
-                                        <tr class="table-primary">
-                                            <th scope="row">
-                                                <spa class="text-muted fw-normal">Mail</spa>
-                                            </th>
-                                            <td class="user-avatar fw-bold">${usuarioEnSession.email}</td>
-                                        </tr>
-                                        <tr class="">
-                                            <th scope="row">
-                                                <spa class="text-muted fw-normal">Ciudad</spa>
-                                            </th>
-                                            <td class="user-avatar fw-bold">${usuarioEnSession.provincia.nombre}
-                                            </td>
-                                        </tr>
-                                        <tr class="table-primary">
-                                            <th scope="row">
-                                                <spa class="text-muted fw-normal">Fecha Alta Suscripcion</spa>
-                                            </th>
-                                            <td class="user-avatar fw-bold">${usuarioEnSession.fechaAltaSuscripcion}</td>
-                                        </tr>
-                                        <tr class="">
-                                            <th scope="row">
-                                                <spa class="text-muted fw-normal">Estado de Suscripcion</spa>
-                                            </th>
-                                            <td class="user-avatar fw-bold">
-                                                <c:if test="${usuarioEnSession.estadoSuscripcion==true}">
-                                                    activo
-                                                    (${usuarioEnSession.cantidadDediasVencimientoSuscripcion} dias restantes)
-                                                </c:if>
-                                                <c:if test="${usuarioEnSession.estadoSuscripcion==false}">
-                                                    inactivo
-                                                    (${usuarioEnSession.cantidadDediasVencimientoSuscripcion} dias restantes)
-                                                </c:if>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    <spa class="text-muted fw-normal">Apellido</spa>
+                                                </th>
+                                                <td class="user-avatar fw-bold">${usuarioEnSession.apellido}</td>
+                                            </tr>
+                                            <tr class="table-primary">
+                                                <th scope="row">
+                                                    <spa class="text-muted fw-normal">Mail</spa>
+                                                </th>
+                                                <td class="user-avatar fw-bold">${usuarioEnSession.email}</td>
+                                            </tr>
+                                            <tr class="">
+                                                <th scope="row">
+                                                    <spa class="text-muted fw-normal">Ciudad</spa>
+                                                </th>
+                                                <td class="user-avatar fw-bold">${usuarioEnSession.provincia.nombre}
+                                                </td>
+                                            </tr>
+                                            <tr class="table-primary">
+                                                <th scope="row">
+                                                    <spa class="text-muted fw-normal">Fecha Alta Suscripcion</spa>
+                                                </th>
+                                                <td class="user-avatar fw-bold">${usuarioEnSession.fechaAltaSuscripcion}</td>
+                                            </tr>
+                                            <tr class="">
+                                                <th scope="row">
+                                                    <spa class="text-muted fw-normal">Estado de Suscripcion</spa>
+                                                </th>
+                                                <td class="user-avatar fw-bold">
+                                                    <c:if test="${usuarioEnSession.estadoSuscripcion==true}">
+                                                        activo
+                                                        (${usuarioEnSession.cantidadDediasVencimientoSuscripcion} dias restantes)
+                                                    </c:if>
+                                                    <c:if test="${usuarioEnSession.estadoSuscripcion==false}">
+                                                        inactivo
+                                                        (${usuarioEnSession.cantidadDediasVencimientoSuscripcion} dias restantes)
+                                                    </c:if>
 
-                                            </td>
-                                        </tr>
-                                        <tr class="table-primary">
-                                            <th scope="row">
-                                                <spa class="text-muted fw-normal">Fecha Baja Suscripcion</spa>
-                                            </th>
-                                            <td class="user-avatar fw-bold">${usuarioEnSession.fechaBajaSuscripcion}</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr class="table-primary">
+                                                <th scope="row">
+                                                    <spa class="text-muted fw-normal">Fecha Baja Suscripcion</spa>
+                                                </th>
+                                                <td class="user-avatar fw-bold">${usuarioEnSession.fechaBajaSuscripcion}</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
-                            </div>
-                            <!--termina tabla-->
+                                <!--termina tabla-->
 
 
+                                <!-- empieza suscripcion-->
+                                <div class="bg-white col-12 col-md-10 d-flex flex-column flex-md-row p-2 mb-2 mt-3 align-items-center justify-content-evenly">
+                                    <c:choose>
+                                        <c:when test="${not empty usuarioEnSession.suscripcion.id}">
+                                            <c:choose>
+                                                <c:when test="${usuarioEnSession.suscripcion.descripcion=='suscripcion basica'}">
+                                                    <div class=" d-flex w-25 align-content-center justify-content-center flex-wrap">
+                                                        <i class="fas fa-shield-alt  fa-6x "></i>
+                                                    </div>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <div class=" d-flex w-25 align-content-center justify-content-center flex-wrap">
+                                                        <i class="fas fa-khanda fa-6x "></i>
+                                                    </div>
+                                                </c:otherwise>
+                                            </c:choose>
 
-                            <!-- empieza suscripcion-->
-                            <div class="bg-white col-12 col-md-10 d-flex flex-column flex-md-row p-2 mb-2 mt-3 align-items-center justify-content-evenly">
-                                <c:choose>
-                                    <c:when test="${not empty usuarioEnSession.suscripcion.id}">
-                                        <c:choose>
-                                            <c:when test="${usuarioEnSession.suscripcion.descripcion=='suscripcion basica'}">
-                                                <div class=" d-flex w-25 align-content-center justify-content-center flex-wrap">
-                                                    <i class="fas fa-shield-alt  fa-6x "></i>
-                                                </div>
-                                            </c:when>
-                                            <c:otherwise>
-                                                <div class=" d-flex w-25 align-content-center justify-content-center flex-wrap">
-                                                    <i class="fas fa-khanda fa-6x "></i>
-                                                </div>
-                                            </c:otherwise>
-                                        </c:choose>
-
-                                        <div class=" d-flex flex-column ">
-                                            <h6 class="mb-3 text-sm">${usuarioEnSession.suscripcion.descripcion}</h6>
-                                            <span class="mb-2 text-xs">Fecha alta: <span
-                                                    class="text-dark font-weight-bold ms-sm-2">${usuarioEnSession.suscripcion.fechaAlta}</span></span>
-                                            <span class="mb-2 text-xs">Precio: <span
-                                                    class="text-dark ms-sm-2 font-weight-bold">$${usuarioEnSession.suscripcion.precio}</span></span>
-                                            <span class="text-xs">Servicios: <span
-                                                    class="text-dark ms-sm-2 font-weight-bold">
-                        <c:choose>
-                            <c:when test="${usuarioEnSession.suscripcion.descripcion=='suscripcion basica'}">
-                                <i class="fas fa-wrench mr-2"></i>
-                                <i class="fas fa-ambulance mr-2"></i>
-                                <i class="fas fa-truck-pickup mr-2"></i>
-                            </c:when>
-                            <c:otherwise>
+                                            <div class=" d-flex flex-column ">
+                                                <h6 class="mb-3 text-sm">${usuarioEnSession.suscripcion.descripcion}</h6>
+                                                <span class="mb-2 text-xs">Fecha alta: <span class="text-dark font-weight-bold ms-sm-2">${usuarioEnSession.suscripcion.fechaAlta}</span></span>
+                                                <span class="mb-2 text-xs">Precio: <span class="text-dark ms-sm-2 font-weight-bold">$${usuarioEnSession.suscripcion.precio}</span></span>
+                                                <span class="text-xs">Servicios: <span class="text-dark ms-sm-2 font-weight-bold">
+                                               <c:choose>
+                                                  <c:when test="${usuarioEnSession.suscripcion.descripcion=='suscripcion basica'}">
+                                                         <i class="fas fa-wrench mr-2"></i>
+                                                      <i class="fas fa-ambulance mr-2"></i>
+                                                        <i class="fas fa-truck-pickup mr-2"></i>
+                                                 </c:when>
+                                                <c:otherwise>
                                 <i class="fas fa-wrench mr-2"></i>
                                 <i class="fas fa-ambulance mr-2"></i>
                                 <i class="fas fa-truck-pickup mr-2"></i>
@@ -210,42 +205,48 @@
                                 <i class="fas fa-people-arrows mr-2"></i>
                                 <i class="fas fa-helicopter mr-2"></i>
                             </c:otherwise>
-                        </c:choose>
-                    </span></span>
+                                                </c:choose>
+                                            </span></span>
 
-                                        </div>
+                                            </div>
 
-                                        <div class="text-center d-flex flex-column justify-content-center align-content-center">
+                                            <div class="text-center d-flex flex-column justify-content-center align-content-center">
                                             <c:if test="${usuarioEnSession.estadoSuscripcion == false }">
-                                                <!--   <div class="m-auto">
-                                                    <p>Cancelaste la suscripcion,<br> puede aprovechar los servicios hasta <br> ${usuarioEnSession.fechaBajaSuscripcion} </p>
-                                                    <p class="m-0">Volve a contratar una suscripcion
-                                                        <a class="text-white" href="suscripcion">aqui</a>
-                                                    </p>
+                                                <!-- <div class="m-auto">
+                                                <p>Cancelaste la suscripcion,<br> puede aprovechar los servicios hasta <br> ${usuarioEnSession.fechaBajaSuscripcion} </p>
+                                                <p class="m-0">Volve a contratar una suscripcion
+                                                <a class="text-white" href="suscripcion">aqui</a>
+                                                </p>
                                                 </div>-->
                                                 <div style="max-width: 200px">
-                                                    <p>Cancelaste la suscripcion,<br> puede aprovechar los servicios hasta <br> ${usuarioEnSession.fechaBajaSuscripcion} </p>
+                                                    <p>Cancelaste la suscripcion,<br> puede aprovechar los servicios
+                                                        hasta <br> ${usuarioEnSession.fechaBajaSuscripcion} </p>
                                                 </div>
 
-                                                <div class="fondo-login col-12 text-center text-white align-items-center py-1 mt-2" style="max-width: 200px">
+                                                <div class="fondo-login col-12 text-center text-white align-items-center py-1 mt-2"
+                                                     style="max-width: 200px">
                                                     <p class="m-0"> Puede volver a contratar una nueva suscripcion desde
-                                                        <a class="text-white" href="suscripcion">aqui                       </a>
+                                                        <a class="text-white" href="suscripcion">aqui </a>
                                                     </p>
                                                 </div>
                                             </c:if>
+
                                             <c:if test="${usuarioEnSession.estadoSuscripcion == true }">
                                                 <!-- CANCELAR-->
                                                 <form:form action="cancelarSuscripcion" method="POST">
-                                                    <button type="button" class="btn btn-link text-danger text-gradient px-3 mb-0 " data-bs-toggle="modal" data-bs-target="#exampleModalDarBaja">
+                                                    <button type="button"
+                                                            class="btn btn-link text-danger text-gradient px-3 mb-0 "
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#exampleModalDarBaja">
                                                         <i class="far fa-trash-alt me-2" aria-hidden="true"></i>Dar Baja
                                                     </button>
 
-                                                    <div class="modal fade" id="exampleModalDarBaja" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal fade" id="exampleModalDarBaja" tabindex="-1"
+                                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h5 class="modal-title"
-                                                                        id="exampleModalLabel" style="text-align: center">Cancelar Suscripción</h5>
+                                                                    <h5 class="modal-title" id="exampleModalLabel" style="text-align: center">Cancelar Suscripción</h5>
                                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
@@ -258,45 +259,57 @@
                                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                                                                             Cancelar
                                                                         </button>
-                                                                    <button type="submit" class="btn btn-primary">Cancelar Suscripción</button>
-
-
+                                                                        <button type="submit" class="btn btn-primary">Cancelar Suscripción
+                                                                        </button>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
 
-                                                </div>
-                                            </form:form>
-                                            <c:choose>
-                                                <c:when test="${usuarioEnSession.suscripcion.descripcion=='suscripcion basica'}">
-                                                    <form:form action="modificarSuscripcionBasicaUsuario" method="POST">
-                                                        <button type="button" class="btn btn-link text-success text-gradient px-3 mb-0 " data-bs-toggle="modal" data-bs-target="#exampleModalUpGrade">
-                                                            <i class="far fa-arrow-alt-circle-up" aria-hidden="true"></i>UpGrade
-                                                        </button>
-                                                        <div class="modal fade" id="exampleModalUpGrade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    </div>
+                                                </form:form>
+                                                <c:choose>
+                                                    <c:when test="${usuarioEnSession.suscripcion.descripcion=='suscripcion basica'}">
+                                                        <form:form action="modificarSuscripcionBasicaUsuario" method="POST">
+                                                            <button type="button"
+                                                                    class="btn btn-link text-success text-gradient px-3 mb-0 "
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#exampleModalUpGrade">
+                                                                <i class="far fa-arrow-alt-circle-up"
+                                                                   aria-hidden="true"></i>UpGrade
+                                                            </button>
+                                                            <div class="modal fade" id="exampleModalUpGrade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
-                                                                        <h5 class="modal-title"
-                                                                            id="exampleModalLabel" style="text-align: center">Upgradear suscripción</h5>
-                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                        <h5 class="modal-title" id="exampleModalLabel"
+                                                                            style="text-align: center">Upgradear
+                                                                            suscripción</h5>
+                                                                        <button type="button" class="btn-close"
+                                                                                data-bs-dismiss="modal"
+                                                                                aria-label="Close">
+
+                                                                        </button>
                                                                     </div>
                                                                     <div class="modal-body">
                                                                         <div class="mb-5 mt-5 text-center">
                                                                             <div class="modal-body ">
-                                                                                <p>Estas por modificar las condiciones de tu suscripción Basica, ¿Queres continuar?</p>
+                                                                                <p>Estas por modificar las condiciones
+                                                                                    de tu suscripción Basica, ¿Queres
+                                                                                    continuar?</p>
                                                                             </div>
                                                                         </div>
                                                                         <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                                                                Cancelar
+                                                                            <button type="button"
+                                                                                    class="btn btn-secondary"
+                                                                                    data-bs-dismiss="modal">Cancelar
                                                                             </button>
 
-                                                                            <button type="submit" class="btn btn-primary">Upgradear Suscripción</button>
-
-
+                                                                            <button type="submit"
+                                                                                    class="btn btn-primary">Upgradear
+                                                                                Suscripción
+                                                                            </button>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -306,32 +319,43 @@
                                                     </c:when>
                                                     <c:otherwise>
                                                         <!-- PREMIUM A BASICA-->
-                                                        <button type="button" class="btn btn-link text-warning text-gradient px-3 mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal222">
-                                                            <i class="far fa-arrow-alt-circle-down" aria-hidden="true"></i>DownGrade
+                                                        <button type="button"
+                                                                class="btn btn-link text-warning text-gradient px-3 mb-0"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#exampleModal222">
+                                                            <i class="far fa-arrow-alt-circle-down"
+                                                               aria-hidden="true"></i>DownGrade
                                                         </button>
 
-                                                        <div class="modal fade" id="exampleModal222" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal fade" id="exampleModal222" tabindex="-1"
+                                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
-                                                                        <h5 class="modal-title"
-                                                                            id="exampleModalLabel" style="text-align: center">DownGrade</h5>
+                                                                        <h5 class="modal-title" id="exampleModalLabel" style="text-align: center">DownGrade</h5>
                                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                     </div>
                                                                     <div class="modal-body">
                                                                         <div class="mb-5 mt-5 text-center">
                                                                             <div class="modal-body ">
-                                                                                <p>¿No contas con los recursos para la suscripcion Premium?</p>
+                                                                                <p>¿No contas con los recursos para la
+                                                                                    suscripcion Premium?</p>
                                                                             </div>
                                                                         </div>
                                                                         <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                                                                Cancelar
+                                                                            <button type="button"
+                                                                                    class="btn btn-secondary"
+                                                                                    data-bs-dismiss="modal"> Cancelar
                                                                             </button>
 
-                                                                                <form:form action="modificarSuscripcionPremiumUsuario" method="POST">
-                                                                                <button type="submit" class="btn btn-primary">Bajar a Suscripcion Basica</button>
-                                                                                </form:form>
+                                                                            <form:form
+                                                                                    action="modificarSuscripcionPremiumUsuario"
+                                                                                    method="POST">
+                                                                                <button type="submit"
+                                                                                        class="btn btn-primary">Bajar a
+                                                                                    Suscripcion Basica
+                                                                                </button>
+                                                                            </form:form>
 
                                                                         </div>
                                                                     </div>
@@ -341,250 +365,296 @@
 
                                                     </c:otherwise>
                                                 </c:choose>
-                                                <button type="button" class="btn btn-primary text-white text-gradient px-3 mb-0 " >
+                                                <button type="button"
+                                                        class="btn btn-primary text-white text-gradient px-3 mb-0 ">
                                                     <a class="text-white" href="irDetalleAFactura">Ver Factura </a>
                                                 </button>
+
                                             </c:if>
-
-                                        </div>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <div class="fondo-login col-12 text-center text-white align-items-center py-1 mt-2">
-                                            <p class="m-0">¡No tiene Suscripcion! Puede contratar una
-                                                <a class="text-white" href="suscripcion">aqui</a>
-                                            </p>
-                                        </div>
-                                    </c:otherwise>
-                                </c:choose>
-                            </div>
-                            <!--termina suscripcion-->
-                        </div>
-                    </div>
-                    <!-- Termina primer boton-->
-                    <!-- Empieza segundo boton-->
-                    <div class="tab-pane ${seccion.equals("historial") ? "active" : ""}" id="primary-tab-2"
-                         role="tabpanel">
-                        <div class="row w-100 h-100 m-auto justify-content-md-center">
-
-                            <div class="col-12 p-2 ">
-                                <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
-                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">N°
-                                        Factura</p>
-                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">
-                                        Categoria</p>
-                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">
-                                        Asisitente</p>
-                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">
-                                        Fecha</p>
-                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">
-                                        Estado</p>
-                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">
-                                        Calificacion</p>
-                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">
-                                        ¿Tuviste algun inconveniente?</p>
-                                </div>
-                                <c:choose>
-                                    <c:when test="${empty historial}">
-                                        <div class="d-flex justify-content-center align-items-center" style="width: 100%; height: 24em">
-                                            <h4>Todavía no realizaste ninguna contratación</h4>
-                                        </div>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <c:forEach items="${historial}" var="prestacion">
-                                            <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
-                                                <p class="my-auto" style="width:20%;">#${prestacion.id}</p>
-                                                <p class="my-auto"
-                                                   style="width:20%;">${prestacion.usuarioAsistente.especialidad.descripcion}</p>
-                                                <a class="my-auto" href="asistentePerfil?asistente-id=${prestacion.usuarioAsistente.id}"
-                                                   style="width:20%;">${prestacion.usuarioAsistente.nombre} ${prestacion.usuarioAsistente.apellido}</a>
-                                                <p class="my-auto" style="width:20%;">11/23/22</p>
-                                                <c:if test="${prestacion.estado=='activo'}">
-                                                    <p class="ps-9 my-auto" style="width:20%;"><span
-                                                            class="py-1 px-3 estadoFinalizado font-weight-bold redondeadoEstado">Activo</span>
-                                                    </p>
-                                                </c:if>
-                                                <c:if test="${prestacion.estado=='finalizado'}">
-                                                    <p class="ps-9 my-auto" style="width:20%;"><span
-                                                            class="py-1 px-3 estadoActivo font-weight-bold redondeadoEstado">Finalizado</span>
-                                                    </p>
-                                                </c:if>
-                                                <c:if test="${prestacion.estado=='cancelado'}">
-                                                    <p class="ps-9 my-auto" style="width:20%;"><span
-                                                            class="py-1 px-3 estadoCancelado font-weight-bold redondeadoEstado">Cancelado</span>
-                                                    </p>
-                                                </c:if>
-
-                                                <c:if test="${prestacion.calificacionDadaPorElCliente==1}">
-                                                    <p class="my-auto" style="width:20%;"><i
-                                                            class="fas fa-star text-warning"></i>
-                                                        <i class="fas fa-star text-muted"></i><i
-                                                                class="fas fa-star text-muted"></i>
-                                                        <i class="fas fa-star text-muted"></i><i
-                                                                class="fas fa-star text-muted"></i></p>
-                                                </c:if>
-                                                <c:if test="${prestacion.calificacionDadaPorElCliente==2}">
-                                                    <p class="my-auto" style="width:20%;"><i
-                                                            class="fas fa-star text-warning"></i>
-                                                        <i class="fas fa-star text-warning"></i><i
-                                                                class="fas fa-star text-muted"></i>
-                                                        <i class="fas fa-star text-muted"></i><i
-                                                                class="fas fa-star text-muted"></i></p>
-                                                </c:if>
-                                                <c:if test="${prestacion.calificacionDadaPorElCliente==3}">
-                                                    <p class="my-auto" style="width:20%;"><i
-                                                            class="fas fa-star text-warning"></i>
-                                                        <i class="fas fa-star text-warning"></i><i
-                                                                class="fas fa-star text-warning"></i>
-                                                        <i class="fas fa-star text-muted"></i><i
-                                                                class="fas fa-star text-muted"></i></p>
-                                                </c:if>
-                                                <c:if test="${prestacion.calificacionDadaPorElCliente==4}">
-                                                    <p class="my-auto" style="width:20%;"><i
-                                                            class="fas fa-star text-warning"></i>
-                                                        <i class="fas fa-star text-warning"></i><i
-                                                                class="fas fa-star text-warning"></i>
-                                                        <i class="fas fa-star text-warning"></i><i
-                                                                class="fas fa-star text-muted"></i></p>
-                                                </c:if>
-                                                <c:if test="${prestacion.calificacionDadaPorElCliente==5}">
-                                                    <p class="my-auto" style="width:20%;"><i
-                                                            class="fas fa-star text-warning"></i>
-                                                        <i class="fas fa-star text-warning"></i><i
-                                                                class="fas fa-star text-warning"></i>
-                                                        <i class="fas fa-star text-warning"></i><i
-                                                                class="fas fa-star text-warning"></i></p>
-                                                </c:if>
-                                                <c:if test="${prestacion.calificacionDadaPorElCliente==null and prestacion.estado=='activo'}">
-                                                    <a href="irADetallePrestacionFinalida?prestacion=${prestacion.id}" class="my-auto py-1 px-3 finalizar font-weight-bold redondeadoEstado text-decoration-none text-center" style="width:20%;">
-                                                        Finalizar
-                                                    </a>
-                                                </c:if>
-
-                                                <c:if test="${prestacion.calificacionDadaPorElCliente==null and prestacion.estado == 'finalizado'}">
-                                                    <a href="irADetallePrestacionFinalida?prestacion=${prestacion.id}" class="my-auto py-1 px-3 finalizar font-weight-bold redondeadoEstado text-decoration-none text-center"
-                                                       style="width:20%;"> Calificar
-                                                    </a>
-                                                </c:if>
-
-                                                <c:if test="${prestacion.calificacionDadaPorElCliente==null and prestacion.estado == 'cancelado'}">
-
-
-                                                    <a href="irADetallePrestacionFinalida?prestacion=${prestacion.id}" class="my-auto py-1 px-3 finalizar font-weight-bold redondeadoEstado text-decoration-none text-center"
-                                                       style="width:20%;"> Calificar
-                                                    </a>
-                                                </c:if>
-                                                <a href="denunciarAsistente?prestacion-id=${prestacion.id}" class="my-auto py-1 px-3 denunciar font-weight-bold redondeadoEstado" style="width:20%;"   >Denunciar</a>
                                             </div>
 
-                                        </c:forEach>
-                                    </c:otherwise>
-                                </c:choose>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Termina segundo boton-->
-                    <!-- Favoritos -->
-                    <div class="tab-pane ${seccion.equals("favoritos") ? "active" : ""}" id="primary-tab-4"
-                         role="tabpanel">
-                        <div class="row w-100 h-100 m-auto justify-content-md-center">
-
-                            <div class="col-12 p-2 ">
-                                <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
-                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">Asistente</p>
-                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">Servicio</p>
-                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">Mail</p>
-                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">Remover</p>
-                                </div>
-                                <c:choose>
-                                    <c:when test="${empty favoritos}">
-                                        <div class="d-flex justify-content-center align-items-center" style="width: 100%; height: 24em">
-                                            <h4>Todavía no tenés asistentes favoritos</h4>
-                                        </div>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <c:forEach items="${favoritos}" var="favorito">
-                                            <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
-                                                <p class="my-auto" style="width:20%;">${favorito.asistente.fullName()}</p>
-                                                <p class="my-auto" style="width:20%;">${favorito.asistente.especialidad.descripcion}</p>
-                                                <p class="my-auto" style="width:20%;">${favorito.asistente.email}</p>
-
-                                                <form:form action="removerFavoritoUsuarioPerfil" method="post" modelAttribute="agregarRemoverAsistenteFavoritoRequest" cssClass="btn btn-danger mt-4">
-                                                    <form:input path="asistenteId" id="asistenteId" type="text" value="${favorito.asistente.id}" cssStyle="display: none" />
-                                                    <%--<input path="asistenteId" id="asistenteId" type="number" hidden value="${asistente.id}">--%>
-                                                    <button type="submit" class="text-white btn btn-link text-decoration-none" style="padding: 0">Remover Favoritos</button>
-                                                </form:form>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <div class="fondo-login col-12 text-center text-white align-items-center py-1 mt-2">
+                                                <p class="m-0">¡No tiene Suscripcion! Puede contratar una
+                                                    <a class="text-white" href="suscripcion">aqui</a>
+                                                </p>
                                             </div>
-
-                                        </c:forEach>
-                                    </c:otherwise>
-                                </c:choose>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </div>
+                                <!--termina suscripcion-->
                             </div>
                         </div>
-                    </div>
-                    <!-- Favoritos -->
-                    <!-- Empieza tercer boton-->
-                    <div class="tab-pane ${seccion.equals("historialDenuncias") ? "active" : ""}" id="primary-tab-3"
-                         role="tabpanel">
-                        <div class="row w-100 h-100 m-auto justify-content-md-center">
-                            <div class="col-12 p-2 ">
-                                <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
-                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">N°
-                                        Denuncia</p>
-                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">
-                                        Servicio</p>
-                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">
-                                        Usuario Denunciado</p>
-                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">
-                                        Motivo De la Denuncia</p>
-                                    <p class="text-uppercase text-muted font-weight-bold my-auto" style="width:20%;">
-                                        Detalles de la Denuncia</p>
-                                </div>
-                            </div>
-                            <c:choose>
-                                <c:when test="${empty listaDenunciasHechas}">
-                                    <div class="d-flex justify-content-center align-items-center" style="width: 100%; height: 24em">
-                                        <h4>No tenés ninguna denuncia realizada</h4>
+                        <!-- Termina primer boton-->
+                        <!-- Empieza segundo boton-->
+                        <div class="tab-pane ${seccion.equals("historial") ? "active" : ""}" id="primary-tab-2"
+                             role="tabpanel">
+                            <div class="row w-100 h-100 m-auto justify-content-md-center">
+
+                                <div class="col-12 p-2 ">
+                                    <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
+                                        <p class="text-uppercase text-muted font-weight-bold my-auto"
+                                           style="width:20%;">N°
+                                            Factura</p>
+                                        <p class="text-uppercase text-muted font-weight-bold my-auto"
+                                           style="width:20%;">
+                                            Categoria</p>
+                                        <p class="text-uppercase text-muted font-weight-bold my-auto"
+                                           style="width:20%;">
+                                            Asisitente</p>
+                                        <p class="text-uppercase text-muted font-weight-bold my-auto"
+                                           style="width:20%;">
+                                            Fecha</p>
+                                        <p class="text-uppercase text-muted font-weight-bold my-auto"
+                                           style="width:20%;">
+                                            Estado</p>
+                                        <p class="text-uppercase text-muted font-weight-bold my-auto"
+                                           style="width:20%;">
+                                            Calificacion</p>
+                                        <p class="text-uppercase text-muted font-weight-bold my-auto"
+                                           style="width:20%;">
+                                            ¿Tuviste algun inconveniente?</p>
                                     </div>
-                                </c:when>
-                                <c:otherwise>
-                                    <c:forEach items="${listaDenunciasHechas}" var="denunciaHechas">
-                                        <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
-                                            <p class="my-auto" style="width:20%;">N° ${denunciaHechas.id}</p>
-                                            <p class="my-auto"
-                                               style="width:20%;">${denunciaHechas.usuarioDenunciado.especialidad.descripcion}</p>
-                                            <p class="my-auto"
-                                               style="width:20%;">${denunciaHechas.usuarioDenunciado.nombre} ${denunciaHechas.usuarioDenunciado.apellido}</p>
-                                            <p class="my-auto" style="width:20%;">${denunciaHechas.motivoDenuncia.descripcion}</p>
+                                    <c:choose>
+                                        <c:when test="${empty historial}">
+                                            <div class="d-flex justify-content-center align-items-center"
+                                                 style="width: 100%; height: 24em">
+                                                <h4>Todavía no realizaste ninguna contratación</h4>
+                                            </div>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <c:forEach items="${historial}" var="prestacion">
+                                                <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
+                                                    <p class="my-auto" style="width:20%;">#${prestacion.id}</p>
+                                                    <p class="my-auto"
+                                                       style="width:20%;">${prestacion.usuarioAsistente.especialidad.descripcion}</p>
+                                                    <a class="my-auto"
+                                                       href="asistentePerfil?asistente-id=${prestacion.usuarioAsistente.id}"
+                                                       style="width:20%;">${prestacion.usuarioAsistente.nombre} ${prestacion.usuarioAsistente.apellido}</a>
+                                                    <p class="my-auto" style="width:20%;">11/23/22</p>
+                                                    <c:if test="${prestacion.estado=='activo'}">
+                                                        <p class="ps-9 my-auto" style="width:20%;"><span
+                                                                class="py-1 px-3 estadoFinalizado font-weight-bold redondeadoEstado">Activo</span>
+                                                        </p>
+                                                    </c:if>
+                                                    <c:if test="${prestacion.estado=='finalizado'}">
+                                                        <p class="ps-9 my-auto" style="width:20%;"><span
+                                                                class="py-1 px-3 estadoActivo font-weight-bold redondeadoEstado">Finalizado</span>
+                                                        </p>
+                                                    </c:if>
+                                                    <c:if test="${prestacion.estado=='cancelado'}">
+                                                        <p class="ps-9 my-auto" style="width:20%;"><span
+                                                                class="py-1 px-3 estadoCancelado font-weight-bold redondeadoEstado">Cancelado</span>
+                                                        </p>
+                                                    </c:if>
 
-                                            <form:form action="detalleDenunciaRealizada" method="post" modelAttribute="denunciaDetalleRequest" cssClass="btn btn-danger mt-4">
-                                                <form:input path="denunciaId" id="denunciaId" type="text" value="${denunciaHechas.id}" cssStyle="display: none" />
-                                                <button type="submit" class="text-white btn btn-link text-decoration-none" style="padding: 0">Ver Detalles</button>
-                                            </form:form>
+                                                    <c:if test="${prestacion.calificacionDadaPorElCliente==1}">
+                                                        <p class="my-auto" style="width:20%;"><i
+                                                                class="fas fa-star text-warning"></i>
+                                                            <i class="fas fa-star text-muted"></i><i
+                                                                    class="fas fa-star text-muted"></i>
+                                                            <i class="fas fa-star text-muted"></i><i
+                                                                    class="fas fa-star text-muted"></i></p>
+                                                    </c:if>
+                                                    <c:if test="${prestacion.calificacionDadaPorElCliente==2}">
+                                                        <p class="my-auto" style="width:20%;"><i
+                                                                class="fas fa-star text-warning"></i>
+                                                            <i class="fas fa-star text-warning"></i><i
+                                                                    class="fas fa-star text-muted"></i>
+                                                            <i class="fas fa-star text-muted"></i><i
+                                                                    class="fas fa-star text-muted"></i></p>
+                                                    </c:if>
+                                                    <c:if test="${prestacion.calificacionDadaPorElCliente==3}">
+                                                        <p class="my-auto" style="width:20%;"><i
+                                                                class="fas fa-star text-warning"></i>
+                                                            <i class="fas fa-star text-warning"></i><i
+                                                                    class="fas fa-star text-warning"></i>
+                                                            <i class="fas fa-star text-muted"></i><i
+                                                                    class="fas fa-star text-muted"></i></p>
+                                                    </c:if>
+                                                    <c:if test="${prestacion.calificacionDadaPorElCliente==4}">
+                                                        <p class="my-auto" style="width:20%;"><i
+                                                                class="fas fa-star text-warning"></i>
+                                                            <i class="fas fa-star text-warning"></i><i
+                                                                    class="fas fa-star text-warning"></i>
+                                                            <i class="fas fa-star text-warning"></i><i
+                                                                    class="fas fa-star text-muted"></i></p>
+                                                    </c:if>
+                                                    <c:if test="${prestacion.calificacionDadaPorElCliente==5}">
+                                                        <p class="my-auto" style="width:20%;"><i
+                                                                class="fas fa-star text-warning"></i>
+                                                            <i class="fas fa-star text-warning"></i><i
+                                                                    class="fas fa-star text-warning"></i>
+                                                            <i class="fas fa-star text-warning"></i><i
+                                                                    class="fas fa-star text-warning"></i></p>
+                                                    </c:if>
+                                                    <c:if test="${prestacion.calificacionDadaPorElCliente==null and prestacion.estado=='activo'}">
+                                                        <a href="irADetallePrestacionFinalida?prestacion=${prestacion.id}"
+                                                           class="my-auto py-1 px-3 finalizar font-weight-bold redondeadoEstado text-decoration-none text-center"
+                                                           style="width:20%;">
+                                                            Finalizar
+                                                        </a>
+                                                    </c:if>
 
-                                        </div>
-                                    </c:forEach>
-                                </c:otherwise>
-                            </c:choose>
-                        </div>
-                    </div>
-                    <!-- Termina tercer boton-->
-                    <!-- Empieza cuarto boton-->
-                    <div class="tab-pane" id="primary-tab-4" role="tabpanel">
-                        <div class="row h-100 w-100 bg-info row w-100 h-100 m-auto justify-content-md-center px-2">
-                            <div class="bg-white col-12 d-flex flex-column  p-2 mb-2 mt-2 align-items-center">
-                                <h4 class="text-muted"> Proximamente...</h4>
-                                <p class=" text-muted"><i class="fas fa-tools"></i> Estamos Trabajando para que quede
-                                    bonito <i class="fas fa-tools"></i></p>
+                                                    <c:if test="${prestacion.calificacionDadaPorElCliente==null and prestacion.estado == 'finalizado'}">
+                                                        <a href="irADetallePrestacionFinalida?prestacion=${prestacion.id}"
+                                                           class="my-auto py-1 px-3 finalizar font-weight-bold redondeadoEstado text-decoration-none text-center"
+                                                           style="width:20%;"> Calificar
+                                                        </a>
+                                                    </c:if>
 
+                                                    <c:if test="${prestacion.calificacionDadaPorElCliente==null and prestacion.estado == 'cancelado'}">
+
+
+                                                        <a href="irADetallePrestacionFinalida?prestacion=${prestacion.id}"
+                                                           class="my-auto py-1 px-3 finalizar font-weight-bold redondeadoEstado text-decoration-none text-center"
+                                                           style="width:20%;"> Calificar
+                                                        </a>
+                                                    </c:if>
+                                                    <a href="denunciarAsistente?prestacion-id=${prestacion.id}"
+                                                       class="my-auto py-1 px-3 denunciar font-weight-bold redondeadoEstado"
+                                                       style="width:20%;">Denunciar</a>
+                                                </div>
+
+                                            </c:forEach>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </div>
                             </div>
                         </div>
+                        <!-- Termina segundo boton-->
+                        <!-- Favoritos -->
+                        <div class="tab-pane ${seccion.equals("favoritos") ? "active" : ""}" id="primary-tab-4"
+                             role="tabpanel">
+                            <div class="row w-100 h-100 m-auto justify-content-md-center">
+
+                                <div class="col-12 p-2 ">
+                                    <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
+                                        <p class="text-uppercase text-muted font-weight-bold my-auto"
+                                           style="width:20%;">Asistente</p>
+                                        <p class="text-uppercase text-muted font-weight-bold my-auto"
+                                           style="width:20%;">Servicio</p>
+                                        <p class="text-uppercase text-muted font-weight-bold my-auto"
+                                           style="width:20%;">Mail</p>
+                                        <p class="text-uppercase text-muted font-weight-bold my-auto"
+                                           style="width:20%;">Remover</p>
+                                    </div>
+                                    <c:choose>
+                                        <c:when test="${empty favoritos}">
+                                            <div class="d-flex justify-content-center align-items-center"
+                                                 style="width: 100%; height: 24em">
+                                                <h4>Todavía no tenés asistentes favoritos</h4>
+                                            </div>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <c:forEach items="${favoritos}" var="favorito">
+                                                <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
+                                                    <p class="my-auto"
+                                                       style="width:20%;">${favorito.asistente.fullName()}</p>
+                                                    <p class="my-auto"
+                                                       style="width:20%;">${favorito.asistente.especialidad.descripcion}</p>
+                                                    <p class="my-auto"
+                                                       style="width:20%;">${favorito.asistente.email}</p>
+
+                                                    <form:form action="removerFavoritoUsuarioPerfil" method="post"
+                                                               modelAttribute="agregarRemoverAsistenteFavoritoRequest"
+                                                               cssClass="btn btn-danger mt-4">
+                                                        <form:input path="asistenteId" id="asistenteId" type="text"
+                                                                    value="${favorito.asistente.id}"
+                                                                    cssStyle="display: none"/>
+                                                        <%--<input path="asistenteId" id="asistenteId" type="number" hidden value="${asistente.id}">--%>
+                                                        <button type="submit"
+                                                                class="text-white btn btn-link text-decoration-none"
+                                                                style="padding: 0">Remover Favoritos
+                                                        </button>
+                                                    </form:form>
+                                                </div>
+
+                                            </c:forEach>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Favoritos -->
+                        <!-- Empieza tercer boton-->
+                        <div class="tab-pane ${seccion.equals("historialDenuncias") ? "active" : ""}" id="primary-tab-3"
+                             role="tabpanel">
+                            <div class="row w-100 h-100 m-auto justify-content-md-center">
+                                <div class="col-12 p-2 ">
+                                    <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
+                                        <p class="text-uppercase text-muted font-weight-bold my-auto"
+                                           style="width:20%;">N°
+                                            Denuncia</p>
+                                        <p class="text-uppercase text-muted font-weight-bold my-auto"
+                                           style="width:20%;">
+                                            Servicio</p>
+                                        <p class="text-uppercase text-muted font-weight-bold my-auto"
+                                           style="width:20%;">
+                                            Usuario Denunciado</p>
+                                        <p class="text-uppercase text-muted font-weight-bold my-auto"
+                                           style="width:20%;">
+                                            Motivo De la Denuncia</p>
+                                        <p class="text-uppercase text-muted font-weight-bold my-auto"
+                                           style="width:20%;">
+                                            Detalles de la Denuncia</p>
+                                    </div>
+                                </div>
+                                <c:choose>
+                                    <c:when test="${empty listaDenunciasHechas}">
+                                        <div class="d-flex justify-content-center align-items-center"
+                                             style="width: 100%; height: 24em">
+                                            <h4>No tenés ninguna denuncia realizada</h4>
+                                        </div>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:forEach items="${listaDenunciasHechas}" var="denunciaHechas">
+                                            <div class="w-100 sombra d-flex rounded-3 p-2 bg-white mt-3 justify-content-around">
+                                                <p class="my-auto" style="width:20%;">N° ${denunciaHechas.id}</p>
+                                                <p class="my-auto"
+                                                   style="width:20%;">${denunciaHechas.usuarioDenunciado.especialidad.descripcion}</p>
+                                                <p class="my-auto"
+                                                   style="width:20%;">${denunciaHechas.usuarioDenunciado.nombre} ${denunciaHechas.usuarioDenunciado.apellido}</p>
+                                                <p class="my-auto"
+                                                   style="width:20%;">${denunciaHechas.motivoDenuncia.descripcion}</p>
+
+                                                <form:form action="detalleDenunciaRealizada" method="post"
+                                                           modelAttribute="denunciaDetalleRequest"
+                                                           cssClass="btn btn-danger mt-4">
+                                                    <form:input path="denunciaId" id="denunciaId" type="text"
+                                                                value="${denunciaHechas.id}" cssStyle="display: none"/>
+                                                    <button type="submit"
+                                                            class="text-white btn btn-link text-decoration-none"
+                                                            style="padding: 0">Ver Detalles
+                                                    </button>
+                                                </form:form>
+
+                                            </div>
+                                        </c:forEach>
+                                    </c:otherwise>
+                                </c:choose>
+                            </div>
+                        </div>
+                        <!-- Termina tercer boton-->
+                        <!-- Empieza cuarto boton-->
+                        <div class="tab-pane" id="primary-tab-4" role="tabpanel">
+                            <div class="row h-100 w-100 bg-info row w-100 h-100 m-auto justify-content-md-center px-2">
+                                <div class="bg-white col-12 d-flex flex-column  p-2 mb-2 mt-2 align-items-center">
+                                    <h4 class="text-muted"> Proximamente...</h4>
+                                    <p class=" text-muted"><i class="fas fa-tools"></i> Estamos Trabajando para que
+                                        quede
+                                        bonito <i class="fas fa-tools"></i></p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Termina cuarto boton-->
                     </div>
-                    <!-- Termina cuarto boton-->
                 </div>
             </div>
         </div>
-</div>
-</div>
+    </div>
 </div>
 
 <footer class="page-footer font-small color-light bg-dark text-light">
@@ -607,10 +677,10 @@
                 </a>
 
                 <a class="li-ic" href="https://www.linkedin.com"/>
-                <i class="fab fa-linkedin-in white-text mr-4"  > </i>
+                <i class="fab fa-linkedin-in white-text mr-4"> </i>
                 </a>
 
-                <a class="ins-ic"  href="https://www.instagram.com"/>
+                <a class="ins-ic" href="https://www.instagram.com"/>
                 <i class="fab fa-instagram white-text"> </i>
                 </a>
 

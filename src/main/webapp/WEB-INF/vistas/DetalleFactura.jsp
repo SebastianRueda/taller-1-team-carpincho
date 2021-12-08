@@ -11,9 +11,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link href="css/Login.css" rel="stylesheet">
-    <title>Facturas</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Factura servicio contratado</title>
 </head>
 <body class="fondo-login">
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -54,7 +54,6 @@
     </div>
 </nav>
 
-
 <div class="w-100 container-fluid  mt-5  rounded-3 bg-light" style="max-width: 1024px;">
     <div class="card card-body p-5 mb-5">
         <div class="row">
@@ -72,13 +71,13 @@
 
                 <!-- Title -->
                 <h2 class="mb-2">
-                    Servicio de Suscripcion
+                    Servicio de Suscripción
                 </h2>
 
                 <!-- Text -->
                 <p class="text-muted mb-6">
                     Fecha Actual: ${factura.fecha}
-                    sdas:${factura.id}
+                    N° de Factura:${factura.id}
                 </p>
 
             </div>
@@ -232,16 +231,11 @@
                 <hr class="my-3">
 
 
-                <!-- Title -->
-                <h2 class="text-uppercase">
-                    Imprimir comprobante de Transacción
-                </h2>
-
+                <div class="container" style="display: flex; aling-items: center;justify-content: center ">
+                <h2 class="text-uppercase">Imprimir comprobante de Transacción</h2>
+                </div>
                 <!-- Text -->
-                <div class="container-fluid kanban-container">
-                    <div class="row">
-                        <div class="col-md-9">
-                            <!-- Card -->
+                <div class="container" style="display: flex; aling-items: center;justify-content: center ">
                             <div class="card">
                                 <div class=" d-flex card-body align-items-center justify-content-center w-100 pt-4  m-0 ">
                                     <!-- Category -->
@@ -254,11 +248,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                    </div> <!-- / .row -->
                 </div>
-
+                    <!-- / .row -->
             </div>
         </div> <!-- / .row -->
     </div>

@@ -1,3 +1,4 @@
+
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -89,10 +90,19 @@
                             <!--  empieza foto perfil-->
                             <div class="bg-danger col-12 col-md-6 d-flex bg-white align-content-center justify-content-center">
                                 <div class="d-flex align-items-center flex-column w-75  align-content-center justify-content-center flex-wrap text-center">
-                                    <img src="imagenes/perfil.png" alt="Foto Perfil" class="" width=150 height=150/>
+                                    <c:if test="${usuarioEnSession.imagen != null && usuarioEnSession.imagen.length() > 0}">
+                                        <img src="${usuarioEnSession.imagen}" alt="Foto Perfil" class="" width=150 height=150/>
+                                    </c:if>
+                                    <c:if test="${usuarioEnSession.imagen == null || usuarioEnSession.imagen.length() == 0}">
+                                        <img src="imagenes/perfil.png" alt="Foto Perfil" class="" width=150 height=150/>
+                                    </c:if>
                                     <h3 class="mt-3">${usuarioEnSession.nombre} ${usuarioEnSession.apellido}</h3>
                                     <p class="text-muted m-0">${usuarioEnSession.email}</p>
                                     <p class="text-muted m-0">Argentino</p>
+
+                                    <div class="btn btn-primary mt-3 px-4 py-2">
+                                        <a href="ir-a-editar-usuario" class="text-white text-decoration-none">Editar</a>
+                                    </div>
                                 </div>
                             </div>
                             <!-- termina foto perfil-->

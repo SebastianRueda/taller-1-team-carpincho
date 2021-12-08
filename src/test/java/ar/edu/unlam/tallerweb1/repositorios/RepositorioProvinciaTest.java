@@ -66,7 +66,7 @@ public class RepositorioProvinciaTest extends SpringTest{
 	}
 	
 	private Provincia whenBuscoLaPresatacionQueGuarde(Provincia provincia) {
-		return repositorioProvincias.buscarProvinciaPorId(provincia);
+		return repositorioProvincias.buscarProvinciaPorId(provincia.getId());
 	}
 	
 	private void thenComparoQueSeanLasMismasLaPrestacionGuardadaConLaObtenida(Provincia guardada, Provincia obtenida) {
@@ -106,7 +106,7 @@ public class RepositorioProvinciaTest extends SpringTest{
     }
 
     private void thenCompruboQueSeHayaEliminadoLaProvincia(Provincia provincia) {
-        var p = repositorioProvincias.buscarProvinciaPorId(provincia);
+        var p = repositorioProvincias.buscarProvinciaPorId(provincia.getId());
         Assert.assertNull(p);
     }
 

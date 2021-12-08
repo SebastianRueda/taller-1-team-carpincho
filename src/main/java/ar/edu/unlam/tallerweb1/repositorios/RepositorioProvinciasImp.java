@@ -55,9 +55,9 @@ public class RepositorioProvinciasImp implements RepositorioProvincias{
     }
 
 	@Override
-	public Provincia buscarProvinciaPorId(Provincia provinciaExistente) {
+	public Provincia buscarProvinciaPorId(Long provinciaId) {
 		return (Provincia) sessionFactory.getCurrentSession().createCriteria(Provincia.class)
-				.add(Restrictions.eq("id", provinciaExistente.getId())).uniqueResult();
+				.add(Restrictions.eq("id", provinciaId)).uniqueResult();
 	}
 
 	private Session getSession() {

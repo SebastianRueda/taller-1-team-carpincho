@@ -1,13 +1,10 @@
 package ar.edu.unlam.tallerweb1.modelo.request;
 
-import ar.edu.unlam.tallerweb1.modelo.*;
-
 public class EditarUsuarioRequest {
     private String nombre;
     private String apellido;
     private String email;
-    private String password;
-    private Provincia provincia;
+    private Long provinciaId;
     private String imagen;
 
     public String getNombre() {
@@ -34,20 +31,12 @@ public class EditarUsuarioRequest {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public void setProvinciaId(Long provinciaId) {
+        this.provinciaId = provinciaId;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Provincia getProvincia() {
-        return provincia;
-    }
-
-    public void setProvincia(Provincia provincia) {
-        this.provincia = provincia;
+    public Long getProvinciaId() {
+        return provinciaId;
     }
 
     public void setImagen(String imagen) {

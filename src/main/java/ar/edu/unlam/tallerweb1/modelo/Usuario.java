@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Provincia;
+import org.hibernate.annotations.Type;
 
 import java.util.Objects;
 
@@ -35,6 +36,7 @@ public class Usuario {
 	private Cuenta cuenta;
 	@OneToOne(cascade = CascadeType.ALL)
 	private Suscripcion suscripcion;
+	@Lob
 	private String imagen;
 
 	public Usuario() {

@@ -41,12 +41,13 @@
                     <a class="nav-link" href="suscripcion">Suscripción</a>
                 </li>
                 &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-						&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-						&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-						&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-						&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
                 <form:form action="cerrarSesion" method="POST">
-                    <button>
+                    <button class="btn-primary border-white rounded-3">
                         cerrarSesion
                     </button>
                 </form:form>
@@ -273,30 +274,32 @@
     </div>
 </div>
 
+
 <footer class="page-footer font-small color-light bg-dark text-light">
+
     <div>
         <div class="container">
 
             <div class="col-md-6 col-lg-7 text-center text-md-right">
 
                 <a class="fb-ic" href="https://www.facebook.com"/>
-                    <i class="fab fa-facebook-f white-text mr-4"> </i>
+                <i class="fab fa-facebook-f white-text mr-4"> </i>
                 </a>
 
                 <a class="tw-ic" href="https://twitter.com"/>
-                    <i class="fab fa-twitter white-text mr-4"> </i>
+                <i class="fab fa-twitter white-text mr-4"> </i>
                 </a>
 
                 <a class="gplus-ic" href="https://www.google.com.ar"/>
-                    <i class="fab fa-google-plus-g white-text mr-4"> </i>
+                <i class="fab fa-google-plus-g white-text mr-4"> </i>
                 </a>
 
                 <a class="li-ic" href="https://www.linkedin.com"/>
-                    <i class="fab fa-linkedin-in white-text mr-4"  > </i>
+                <i class="fab fa-linkedin-in white-text mr-4"  > </i>
                 </a>
 
                 <a class="ins-ic"  href="https://www.instagram.com"/>
-                    <i class="fab fa-instagram white-text"> </i>
+                <i class="fab fa-instagram white-text"> </i>
                 </a>
 
             </div>
@@ -306,7 +309,6 @@
 
     </div>
     </div>
-
 
 
     <div class="container text-center text-md-left mt-5">
@@ -346,11 +348,10 @@
             </div>
 
         </div>
-
         <div class="footer-copyright text-center py-3">� 2021 Copyright: AsegurAPP
-
         </div>
     </div>
+
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

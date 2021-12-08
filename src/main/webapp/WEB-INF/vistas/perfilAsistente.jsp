@@ -40,15 +40,16 @@
                         <a class="nav-link" href="suscripcion">Suscripción</a>
                     </li>
                     &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-						&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-						&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-						&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-						&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-                    <form:form action="cerrarSesion" method="POST">              
-               			<button>
-                   			cerrarSesion
-               			</button>
-           			</form:form>
+                    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <form:form action="cerrarSesion" method="POST">
+                        <button class="btn-primary border-white rounded-3">
+                            cerrarSesion
+                        </button>
+                    </form:form>
                 </ul>
             </div>
         </div>
@@ -63,7 +64,7 @@
                 <ul class="nav nav-pills nav-pills-sm nav-light mb-2"> <!-- empieza botones-->
                     <li class="nav-item">
                         <a class="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder me-2 ${seccion.equals("perfil") ? "active" : ""}"
-                           href="perfilUsuario">Perfil de Asistente</a>
+                           href="perfilUsuario">Perfil</a>
                     </li>
                 </ul><!-- Termina botones-->
                 <div class="tab-content">
@@ -165,42 +166,55 @@
                 </div>
             </div>
         </div>
+
     </div>
 </div>
 </div>
+<br>
+<br>
+<br>
 
-<footer class="page-footer font-small color-light bg-dark text-light fixed-bottom">
+<footer class="page-footer font-small color-light bg-dark text-light">
+
     <div>
         <div class="container">
+
             <div class="col-md-6 col-lg-7 text-center text-md-right">
 
                 <a class="fb-ic" href="https://www.facebook.com"/>
-                    <i class="fab fa-facebook-f white-text mr-4"> </i>
+                <i class="fab fa-facebook-f white-text mr-4"> </i>
                 </a>
 
                 <a class="tw-ic" href="https://twitter.com"/>
-                    <i class="fab fa-twitter white-text mr-4"> </i>
+                <i class="fab fa-twitter white-text mr-4"> </i>
                 </a>
 
                 <a class="gplus-ic" href="https://www.google.com.ar"/>
-                    <i class="fab fa-google-plus-g white-text mr-4"> </i>
+                <i class="fab fa-google-plus-g white-text mr-4"> </i>
                 </a>
 
                 <a class="li-ic" href="https://www.linkedin.com"/>
-                    <i class="fab fa-linkedin-in white-text mr-4"  > </i>
+                <i class="fab fa-linkedin-in white-text mr-4"  > </i>
                 </a>
 
                 <a class="ins-ic"  href="https://www.instagram.com"/>
-                    <i class="fab fa-instagram white-text"> </i>
+                <i class="fab fa-instagram white-text"> </i>
                 </a>
+
             </div>
+
+
         </div>
+
     </div>
     </div>
 
 
     <div class="container text-center text-md-left mt-5">
+
+
         <div class="row mt-3">
+
 
             <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
 
@@ -218,6 +232,7 @@
                 </p>
 
             </div>
+
             <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
 
                 <h6 class="text-uppercase font-weight-bold">Contacto</h6>
@@ -230,12 +245,12 @@
                     <i class="fas fa-phone mr-3"></i> +011 4444-4444 </p>
 
             </div>
-        </div>
 
-        <div
-                class="footer-copyright text-center py-3">© 2021 Copyright: AsegurAPP
+        </div>
+        <div class="footer-copyright text-center py-3">� 2021 Copyright: AsegurAPP
         </div>
     </div>
+
 </footer>
 
 

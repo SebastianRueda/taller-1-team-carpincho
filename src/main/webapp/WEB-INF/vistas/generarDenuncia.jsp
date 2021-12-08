@@ -1,18 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
-	<meta charset="ISO-8859-1">
-
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
 			  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link href="css/Login.css" rel="stylesheet">
+		<script src="js/arriba.js"></script>
 
 	<title>Generar Denuncia</title>
 	</head>
@@ -44,8 +45,9 @@
 						&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
 						&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
 						&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+						&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
 						<form:form action="cerrarSesion" method="POST">
-							<button>
+							<button class="btn-primary border-white rounded-3">
 								cerrarSesion
 							</button>
 						</form:form>
@@ -85,98 +87,107 @@
 					<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 700px">
 					<br>
 					<br>
-					<label style="font-weight: bold">Comentanos lo ocurrido </label>
+					&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+					&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+					&nbsp &nbsp
+					<label style="font-weight: bold">Comentario </label>
 					<br>
 					<br>
-					<div style="align-content: center">
-					<form:textarea path="comentario" name="comentario" rows="4" cols="50" />
+					<div >
+						&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+					<form:textarea path="comentario" name="comentario" rows="4" cols="50" placeholder="Ingrese su denuncia" onkeyup="countChars(this);" />
+						<p style="text-align: center;font-weight: bold " id="charNum" >250 CARACTERES DISPONIBLES</p>
 					</div>
 					<br>
-					<button class=" btn btn-dark border-0 " Type="submit"  >Confirmar</button>
+					&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+					&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+					&nbsp &nbsp
+					<button class=" btn btn-dark border-0 " Type="submit" >Confirmar</button>
 					</form:form>
 			</div>
 		</div>
 	</div>
 	</div>
 
-<footer class="page-footer font-small color-light bg-dark text-light">
 
-    <div>
-        <div class="container">
+	<footer class="page-footer font-small color-light bg-dark text-light">
 
-            <div class="col-md-6 col-lg-7 text-center text-md-right">
+		<div>
+			<div class="container">
 
-                <a class="fb-ic" href="https://www.facebook.com"/>
-                    <i class="fab fa-facebook-f white-text mr-4"> </i>
-                </a>
+				<div class="col-md-6 col-lg-7 text-center text-md-right">
 
-                <a class="tw-ic" href="https://twitter.com"/>
-                    <i class="fab fa-twitter white-text mr-4"> </i>
-                </a>
+					<a class="fb-ic" href="https://www.facebook.com"/>
+					<i class="fab fa-facebook-f white-text mr-4"> </i>
+					</a>
 
-                <a class="gplus-ic" href="https://www.google.com.ar"/>
-                    <i class="fab fa-google-plus-g white-text mr-4"> </i>
-                </a>
+					<a class="tw-ic" href="https://twitter.com"/>
+					<i class="fab fa-twitter white-text mr-4"> </i>
+					</a>
 
-                <a class="li-ic" href="https://www.linkedin.com"/>
-                    <i class="fab fa-linkedin-in white-text mr-4"  > </i>
-                </a>
+					<a class="gplus-ic" href="https://www.google.com.ar"/>
+					<i class="fab fa-google-plus-g white-text mr-4"> </i>
+					</a>
 
-                <a class="ins-ic"  href="https://www.instagram.com"/>
-                    <i class="fab fa-instagram white-text"> </i>
-                </a>
+					<a class="li-ic" href="https://www.linkedin.com"/>
+					<i class="fab fa-linkedin-in white-text mr-4"  > </i>
+					</a>
 
-            </div>
+					<a class="ins-ic"  href="https://www.instagram.com"/>
+					<i class="fab fa-instagram white-text"> </i>
+					</a>
 
-
-        </div>
-
-    </div>
-    </div>
+				</div>
 
 
-    <div class="container text-center text-md-left mt-5">
+			</div>
+
+		</div>
+		</div>
 
 
-        <div class="row mt-3">
+		<div class="container text-center text-md-left mt-5">
 
 
-            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+			<div class="row mt-3">
 
-                <h6 class="text-uppercase font-weight-bold">Acceso directo</h6>
-                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-                <p>
-                    <a href="login">Login</a>
-                </p>
-                <p>
-                    <a href="ir-a-registrarme">Registro</a>
-                </p>
 
-                <p>
-                    <a href="home">Ayuda</a>
-                </p>
+				<div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
 
-            </div>
+					<h6 class="text-uppercase font-weight-bold">Acceso directo</h6>
+					<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+					<p>
+						<a href="login">Login</a>
+					</p>
+					<p>
+						<a href="ir-a-registrarme">Registro</a>
+					</p>
 
-            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+					<p>
+						<a href="home">Ayuda</a>
+					</p>
 
-                <h6 class="text-uppercase font-weight-bold">Contacto</h6>
-                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-                <p>
-                    <i class="fas fa-home mr-3"></i> calle Siempre viva 742, Springfield</p>
-                <p>
-                    <i class="fas fa-envelope mr-3"></i> info@asegurapp.com</p>
-                <p>
-                    <i class="fas fa-phone mr-3"></i> +011 4444-4444 </p>
+				</div>
 
-            </div>
+				<div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
 
-        </div>
-        <div class="footer-copyright text-center py-3">� 2021 Copyright: AsegurAPP
-        </div>
-    </div>
+					<h6 class="text-uppercase font-weight-bold">Contacto</h6>
+					<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+					<p>
+						<i class="fas fa-home mr-3"></i> calle Siempre viva 742, Springfield</p>
+					<p>
+						<i class="fas fa-envelope mr-3"></i> info@asegurapp.com</p>
+					<p>
+						<i class="fas fa-phone mr-3"></i> +011 4444-4444 </p>
 
-</footer>
+				</div>
+
+			</div>
+			<div class="footer-copyright text-center py-3">� 2021 Copyright: AsegurAPP
+			</div>
+		</div>
+
+	</footer>
 
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

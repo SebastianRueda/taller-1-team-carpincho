@@ -3,7 +3,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,13 +11,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link href="css/Login.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link href="../css/Login.css" rel="stylesheet">
+
     <title>Facturas</title>
 </head>
 
 <body class="fondo-login">
-<header>
+
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="home">AsegurApp</a>
@@ -55,14 +56,13 @@
         </div>
     </div>
 </nav>
-</header>
 
 <div class="w-100 container-fluid  mt-5  rounded-3 bg-light" style="max-width: 1024px;">
     <div class="card card-body p-5 mb-5">
         <div class="row">
             <div class="col text-center">
 
-                <img src="imagenes/logo.png" alt="..." class="img-fluid mb-4" style="max-width: 2.5rem;">
+                <img src="../imagenes/logo.png" alt="..." class="img-fluid mb-4" style="max-width: 2.5rem;">
                 <strong>AsegurAPP</strong>
 
             </div>
@@ -73,7 +73,7 @@
 
                 <!-- Title -->
                 <h2 class="mb-2">
-                    Servicio de Suscripcion
+                    Servicio de Suscripción
                 </h2>
 
                 <!-- Text -->
@@ -123,7 +123,7 @@
                                 <span class="h6">Servicios Incluidos</span>
                             </th>
                             <th class="px-0 bg-transparent border-top-0">
-                                <span class="h6">Hours</span>
+                                <span class="h6">Horas</span>
                             </th>
                             <th class="px-0 bg-transparent border-top-0 text-end">
                                 <span class="h6">Costo</span>
@@ -231,16 +231,12 @@
                 <hr class="my-3">
 
 
-                <!-- Title -->
-                <h2 class="text-uppercase">
-                    Confirmar contratación
-                </h2>
-
+                <div class="container" style="display: flex; aling-items: center;justify-content: center ">
+                <h2 class="text-uppercase">Confirmar contratación</h2>
+                </div>
                 <!-- Text -->
-                <div class="container-fluid kanban-container">
-                    <div class="row">
-                        <div class="col-md-9">
-                            <!-- Card -->
+
+                <div class="container" style="display: flex; aling-items: center;justify-content: center ">
                             <div class="card">
                                 <div class=" d-flex card-body align-items-center justify-content-center w-100 pt-4  m-0 ">
                                     <!-- Category -->
@@ -264,11 +260,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                    </div> <!-- / .row -->
                 </div>
-
             </div>
         </div> <!-- / .row -->
     </div>
@@ -354,11 +346,15 @@
 
 </footer>
 
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
 <script src="js/bootstrap.min.js" type="text/javascript"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+
 </body>
 </html>

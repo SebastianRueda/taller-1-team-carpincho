@@ -21,7 +21,7 @@ public class ControladorLogin {
 	// es decir, qeue lo parametros del mismo deben ser un bean de spring y el framewrok automaticamente pasa como parametro
 	// el bean correspondiente, en este caso, un objeto de una clase que implemente la interface ServicioLogin,
 	// dicha clase debe estar anotada como @Service o @Repository y debe estar en un paquete de los indicados en
-	// applicationContext.xml
+	// 'applicationContext'.xml
 	private ServicioLogin servicioLogin;
 	private ServicioUsuario servicioUsuario;
 	private ServicioSuscripcion servicioSuscripcion;

@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Provincia;
+import org.hibernate.annotations.Type;
 
 
 import java.util.Calendar;
@@ -29,9 +30,9 @@ public class Usuario {
 	private String password;
 	private Double latitud;
     private Double longitud;
-	
-	
-    
+
+
+
 	private Date fechaAltaSuscripcion;
 	private Date fechaBajaSuscripcion;
 	private Long cantidadDediasVencimientoSuscripcion;
@@ -48,6 +49,8 @@ public class Usuario {
 	private Cuenta cuenta;
 	@OneToOne(cascade = CascadeType.ALL)
 	private Suscripcion suscripcion;
+	@Lob
+	private String imagen;
 
 	public Usuario() {
 		super();
@@ -149,7 +152,7 @@ public class Usuario {
     public String fullName() {
 		return nombre + " " + apellido;
 	}
-    
+
     public Double getLatitud() {
 		return latitud;
 	}
@@ -195,20 +198,24 @@ public class Usuario {
 		this.estadoSuscripcion = estadoSuscripcion;
 	}
 
+	public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		Usuario usuario = (Usuario) o;
-		return Objects.equals(id, usuario.id) && Objects.equals(nombre, usuario.nombre) && Objects.equals(apellido, usuario.apellido) && Objects.equals(email, usuario.email) && Objects.equals(password, usuario.password) && Objects.equals(especialidad, usuario.especialidad) && Objects.equals(provincia, usuario.provincia) && Objects.equals(rol, usuario.rol) && Objects.equals(activo, usuario.activo) && Objects.equals(cuenta, usuario.cuenta) && Objects.equals(suscripcion, usuario.suscripcion);
+		return Objects.equals(id, usuario.id) && Objects.equals(nombre, usuario.nombre) && Objects.equals(apellido, usuario.apellido) && Objects.equals(email, usuario.email) && Objects.equals(password, usuario.password) && Objects.equals(latitud, usuario.latitud) && Objects.equals(longitud, usuario.longitud) && Objects.equals(fechaAltaSuscripcion, usuario.fechaAltaSuscripcion) && Objects.equals(fechaBajaSuscripcion, usuario.fechaBajaSuscripcion) && Objects.equals(cantidadDediasVencimientoSuscripcion, usuario.cantidadDediasVencimientoSuscripcion) && Objects.equals(estadoSuscripcion, usuario.estadoSuscripcion) && Objects.equals(especialidad, usuario.especialidad) && Objects.equals(provincia, usuario.provincia) && Objects.equals(rol, usuario.rol) && Objects.equals(activo, usuario.activo) && Objects.equals(cuenta, usuario.cuenta) && Objects.equals(suscripcion, usuario.suscripcion) && Objects.equals(imagen, usuario.imagen);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, nombre, apellido, email, password, especialidad, provincia, rol, activo, cuenta, suscripcion,latitud ,longitud);
+		return Objects.hash(id, nombre, apellido, email, password, latitud, longitud, fechaAltaSuscripcion, fechaBajaSuscripcion, cantidadDediasVencimientoSuscripcion, estadoSuscripcion, especialidad, provincia, rol, activo, cuenta, suscripcion, imagen);
 	}
-
-	
-	
-	
 }

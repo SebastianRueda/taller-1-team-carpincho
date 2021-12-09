@@ -1,13 +1,5 @@
 
 use db;
-insert into especialidad (descripcion)
-values ('grua'),
-       ('mecanico'),
-       ('medico'),
-       ('gestor'),
-       ('abogado'),
-       ('gomeria movil'),
-       ('chofer');
 
 insert into provincia (nombre)
 values ('CABA'),
@@ -50,8 +42,15 @@ values ('El Asistente nunca se presentó.'),
 insert into suscripcion (descripcion,precio,activo)
 values ('suscripcion basica',100.0,true),
        ('suscripcion premium',300.0,true);
-       
 
+insert into especialidad (descripcion, suscripcion_id)
+values ('grua', 1),
+       ('mecanico', 1),
+       ('medico', 1),
+       ('gestor', 1),
+       ('abogado', 1),
+       ('gomeria movil', 1),
+       ('chofer', 2);
 
 insert into usuario (nombre, apellido, email, password, especialidad_id, provincia_id, rol_id, activo)
 values ('eric','cuevas','ecuevas@alumno.unlam.edu.ar','root',1,1,1, true),
@@ -74,16 +73,4 @@ insert into estadoFactura (estado)
 values('pagado'),
       ('impago');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+select * from especialidad;

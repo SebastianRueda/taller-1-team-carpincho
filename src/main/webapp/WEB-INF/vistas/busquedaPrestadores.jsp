@@ -153,8 +153,8 @@
 					                <!--<label for="longitudinput">Longitud</label>-->
 					                <input type="hidden" required="" path="longitud" name="longitud" id="longitudinput" class="form-control" />
 					            </div>
-		            			<input id="input-submit-ubicacion" class="btn btn-dark btn-sm" type="submit" value="Mi ubicación"/>
-		            			<input class="btn btn-dark btn-sm"  type="button" value="Limpiar ubicación" onclick="mostrar_mapa(0)"/>
+		            			<input id="input-submit-ubicacion" class="btn btn-dark btn-sm" type="submit" value="seleccionar como Mi ubicación"/>
+		            			<input class="btn btn-dark btn-sm"  type="button" value="centrar ubicacion actual" onclick="mostrar_mapa(0)"/>
 							</form>
 					</div>
 				</div>

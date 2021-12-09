@@ -89,7 +89,10 @@ insert into estadoFactura (estado)
 values('pagado'),
       ('impago');
 
+<<<<<<< Updated upstream
 select * from especialidad;
 
 /*UPDATE `db`.`usuario` SET `fechaBajaSuscripcion` = '2021-12-23 02:25:41.979000' WHERE (`id` = '1');*/
 /*UPDATE `db`.`usuario` SET `fechaBajaSuscripcion` = '2021-12-09 02:25:41.979000' WHERE (`id` = '1');*/
+=======
+>>>>>>> Stashed changes

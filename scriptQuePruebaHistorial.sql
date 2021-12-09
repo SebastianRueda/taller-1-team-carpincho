@@ -52,6 +52,9 @@ values ('grua', 1),
        ('gomeria movil', 2),
        ('chofer', 2);
 
+insert into usuario (nombre, apellido, email, password, provincia_id, rol_id, activo)
+values('lalo','landa','llanda@alumno.unlam.edu.ar','root',1,2, true);
+
 insert into usuario (nombre, apellido, email, password, especialidad_id, provincia_id, rol_id, activo)
 values ('eric','cuevas','ecuevas@alumno.unlam.edu.ar','root',1,1,1, true),
 		('Cristian','Ramirez','CRamirez@gmail.com','root',3,3,2, true),
@@ -72,8 +75,7 @@ values ('eric','cuevas','ecuevas@alumno.unlam.edu.ar','root',1,1,1, true),
 	('silvana','urquiza;','silvana@alumno.unlam.edu.ar','root',7,1,1, true);
 
 
-insert into usuario (nombre, apellido, email, password, provincia_id, rol_id, activo)
-values('lalo','landa','llanda@alumno.unlam.edu.ar','root',1,2, true);
+
 
 INSERT INTO `db`.`prestacion` (`id`, `calificacionDadaPorElCliente`,`calificacionDadaPorUsuarioAsistente`,`descripcion`, `estado`, `numerofactura`, `usuarioAsistente_id`, `usuarioSolicitante_id`)
 VALUES ('1', 1,3,'hola', 'finalizado', '11111', '1', '2'),
@@ -88,3 +90,6 @@ values('pagado'),
       ('impago');
 
 select * from especialidad;
+
+/*UPDATE `db`.`usuario` SET `fechaBajaSuscripcion` = '2021-12-23 02:25:41.979000' WHERE (`id` = '1');*/
+/*UPDATE `db`.`usuario` SET `fechaBajaSuscripcion` = '2021-12-09 02:25:41.979000' WHERE (`id` = '1');*/

@@ -216,6 +216,10 @@
                                             </div>
 
                                             <div class="text-center d-flex flex-column justify-content-center align-content-center">
+                                            <button type="button"
+                                                    class="btn btn-primary text-white text-gradient px-3 mb-0 ">
+                                                <a class="text-white" href="irDetalleAFactura">Ver Factura </a>
+                                            </button>
                                             <c:if test="${usuarioEnSession.estadoSuscripcion == false }">
                                                 <!-- <div class="m-auto">
                                                 <p>Cancelaste la suscripcion,<br> puede aprovechar los servicios hasta <br> ${usuarioEnSession.fechaBajaSuscripcion} </p>
@@ -234,6 +238,7 @@
                                                         <a class="text-white" href="suscripcion">aqui </a>
                                                     </p>
                                                 </div>
+
                                             </c:if>
 
                                             <c:if test="${usuarioEnSession.estadoSuscripcion == true }">
@@ -370,10 +375,7 @@
 
                                                     </c:otherwise>
                                                 </c:choose>
-                                                <button type="button"
-                                                        class="btn btn-primary text-white text-gradient px-3 mb-0 ">
-                                                    <a class="text-white" href="irDetalleAFactura">Ver Factura </a>
-                                                </button>
+
 
                                             </c:if>
                                             </div>

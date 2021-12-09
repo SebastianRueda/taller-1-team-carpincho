@@ -199,7 +199,7 @@
                                             <div class="modal-body ">
                                                 <p>Servicio de Auxilio de Grúas plancha para autos-Camionetas 4x4-Combis y Autoelevadores las 24 Hs todo el año.</p>
                                                 <p>Para contratar la suscripción y acceder a los servicios incluidos debes estar Logueado. <a href="login">Aquí.</a></p>
-                                                <p class="card-text"><small class="text-muted">Servicio incluido en la Suscripción Básica</small></p>
+                                                <p class="card-text"><small class="text-muted">Servicio incluido en ambas suscripciones</small></p>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
@@ -233,7 +233,7 @@
                                             <div class="modal-body ">
                                                 <p>Asistencia Policíal de forma inmediata en caso de emergencia.</p>
                                                 <p>Para contratar la suscripción y acceder a los servicios incluidos debes estar Logueado. <a href="login">Aquí.</a></p>
-                                                <p class="card-text"><small class="text-muted">Servicio incluido en la Suscripción Básica</small></p>
+                                                <p class="card-text"><small class="text-muted">Servicio incluido en ambas suscripciones</small></p>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
@@ -268,7 +268,7 @@
                                             <div class="modal-body ">
                                                 <p>Te ofrecemos un cuerpo médico que puede atenderte rápidamente de forma presencial.</p>
                                                 <p>Para contratar la suscripción y acceder a los servicios incluidos debes estar Logueado. <a href="login">Aquí.</a></p>
-                                                <p class="card-text"><small class="text-muted">Servicio incluido en la Suscripción Básica</small></p>
+                                                <p class="card-text"><small class="text-muted">Servicio incluido en ambas suscripciones</small></p>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>

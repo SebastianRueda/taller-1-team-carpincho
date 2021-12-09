@@ -1,0 +1,60 @@
+
+ intro (corta)
+ 
+mostrar filtros 
+ 
+  	* mostrar resultado de error
+	* mostrar resultado valido
+contratacion
+    *error de no tener suscripcion
+
+suscripcion
+	*pagar suscripcio premium
+	* explicar lo de las fechas
+		
+	*ver factura
+	* mostrar lo del pdf
+	*contratar servicio con suscripcion premium
+	*mostrar downgrade
+	* tratar de contratar servicio premium con s.basica
+	mostrar que no hay nada en el historial
+
+contratacion
+	* hacer una contratacion
+	* finalizar 
+	* calificar 
+	* mostrar historial
+contratacion
+	** hacer una contratacion
+	*cancelar 
+	* calificar 
+	* mostrar historial
+contratacion
+	** hacer una contratacion
+	*ir a perfil 
+	* mostrar que no se puede contratar de nuevo
+	a un asistente que ya esta ocupado
+	* volver al perfil
+	*finalizar  o cancelar
+	* calificas 
+Denuncias
+	*seleccionar motivo
+	*descripcion
+	*confirmar
+mostrar historial de denuncia	
+	*ver detalles denuncia
+	*volver a mis denuncias
+favoritos 
+	*mostrar q no tenes ninguno
+	*mis contrataciones y ir al asistente
+	*agregar a favoritos 
+	* mostrar mis favoritos
+	*remover 
+editar perfil
+	*ir perfil
+	*editar usuario
+	* cambiar datos 
+
+
+
+

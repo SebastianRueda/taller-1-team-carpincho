@@ -36,8 +36,14 @@
                     <li class="nav-item">
                         <a class="nav-link" href="suscripcion">Suscripción</a>
                     </li>
+                    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
                     <form:form action="cerrarSesion" method="POST">
-                        <button>
+                        <button class="btn-primary border-white rounded-3">
                             cerrarSesion
                         </button>
                     </form:form>
@@ -49,23 +55,24 @@
 
 <main>
     <div class="container">
-        <div class="container-fluid  mt-5 rounded-3 ">
-            <div class="row w-100 bg-light m-auto p-1 justify-content-md-center mb-5" style="max-width: 1250px;">
+        <div class="container-fluid mt-5 mb-4" style="display: flex; aling-items: center;justify-content: center ">
+            <div class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                <div class="card-body bg-white mb-3">
                 <form:form action="editar-usuario" modelAttribute="request" method="post">
                     <!-- Nombre -->
-                    <label for="nombre" class="form-label">Nombre</label>
+                   <strong><label for="nombre" class="form-label">Nombre</label></strong>
                     <form:input path="nombre" id="nombre" type="text" cssClass="form-control" value="${usuario.nombre}" />
 
                     <!-- Apellido -->
-                    <label for="apellido" class="form-label mt-3">Apellido</label>
+                    <strong><label for="apellido" class="form-label mt-3">Apellido</label></strong>
                     <form:input path="apellido" id="apellido" type="text" cssClass="form-control" value="${usuario.apellido}" />
 
                     <!-- Email -->
-                    <label for="email" class="form-label mt-3">Email</label>
+                    <strong> <label for="email" class="form-label mt-3">Email</label></strong>
                     <form:input path="email" id="email" type="text" cssClass="form-control" value="${usuario.email}" />
 
                     <!-- Provincia -->
-                    <label for="provincia" class="form-label mt-3">Provincia</label>
+                    <strong> <label for="provincia" class="form-label mt-3">Provincia</label></strong>
                     <form:select path="provinciaId" id="provincia" cssClass="form-select">
                         <c:if test="${usuario.provincia != null}">
                             <option value="${usuario.provincia.id}" selected>${usuario.provincia.nombre}</option>
@@ -83,14 +90,16 @@
                     <%--<label class="form-labe mt-3" for="file-selector">Imagen de perfil</label>
                     <input type="file" id="file-selector" class="form-control" accept="image/*" onchange="encode()">
                     <form:input path="imagen" id="image" type="text" cssStyle="display:none;" />--%>
-
+                    <div class="container" style="display: flex; aling-items: center;justify-content: center ">
                     <input type="submit" class="btn btn-primary mt-5" value="Enviar">
+                    </div>
                 </form:form>
+                </div>
             </div>
         </div>
     </div>
 </main>
-<footer class="page-footer font-small color-light bg-dark text-light mt-5" style="width:100%; position: fixed; bottom: 0">
+<footer class="page-footer font-small color-light bg-dark text-light " >
     <div>
         <div class="container">
             <div class="col-md-6 col-lg-7 text-center text-md-right">
@@ -133,10 +142,10 @@
                 <h6 class="text-uppercase font-weight-bold">Acceso directo</h6>
                 <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
                 <p>
-                    <a href="#!">Login</a>
+                    <a href="login">Login</a>
                 </p>
                 <p>
-                    <a href="#!">Registro</a>
+                    <a href="ir-a-registrarme">Registro</a>
                 </p>
 
                 <p>

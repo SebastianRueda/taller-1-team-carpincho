@@ -10,7 +10,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link href="css/Login.css" rel="stylesheet">
-    <title>Detalle de contratacion</title>
+    <title>Detalle de contratación</title>
 </head>
 
 <body class=" h-100">
@@ -58,8 +58,12 @@
     <div class="fondo-login container-fluid px-2 h-100 w-100 d-flex flex-column justify-content-centerfondo-login container-fluid px-2 h-100 w-100  justify-content-center">
         <c:choose>
             <c:when test="${not empty error}">
+                <div class="container" style="display: flex; aling-items: center;justify-content: center ">
                 <h4 class="text-white mt-5">${error}</h4>
-                <strong><a href="suscripcion"> Suscribirme!</a></strong>
+                </div>
+                <div class="container" style="display: flex; aling-items: center;justify-content: center ">
+                <strong><a style="color: white" href="suscripcion"> Ir a Suscribirme!</a></strong>
+                </div>
             </c:when>
             <c:when test="${empty error}">
                 <div class="container" style="display: flex; aling-items: center;justify-content: center ">

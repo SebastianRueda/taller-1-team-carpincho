@@ -45,11 +45,11 @@ values ('suscripcion basica',100.0,true),
 
 insert into especialidad (descripcion, suscripcion_id)
 values ('grua', 1),
-       ('mecanico', 1),
+       ('policia',1),
        ('medico', 1),
-       ('gestor', 1),
-       ('abogado', 1),
-       ('gomeria movil', 1),
+       ('mecanico', 2),
+       ('abogado', 2),
+       ('gomeria movil', 2),
        ('chofer', 2);
 
 insert into usuario (nombre, apellido, email, password, especialidad_id, provincia_id, rol_id, activo)

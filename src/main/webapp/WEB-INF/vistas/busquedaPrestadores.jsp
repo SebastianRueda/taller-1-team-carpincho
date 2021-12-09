@@ -24,6 +24,8 @@
 					latitud = -34.666991893913085
 				}
 
+				document.querySelector("#latitudinput").value = latitud.toFixed(6);
+
 				let longitud = sessionStorage.getItem('longitud');
 
 				if (longitud != null) {
@@ -31,6 +33,8 @@
 				} else {
 					longitud = -58.56839056121045
 				}
+
+				document.querySelector("#longitudinput").value = longitud.toFixed(6);
 
 				console.log("current latitud: " + latitud)
 				console.log("current longitud: " + longitud)

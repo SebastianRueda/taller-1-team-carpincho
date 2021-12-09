@@ -55,7 +55,21 @@ values ('grua', 1),
 insert into usuario (nombre, apellido, email, password, especialidad_id, provincia_id, rol_id, activo)
 values ('eric','cuevas','ecuevas@alumno.unlam.edu.ar','root',1,1,1, true),
 		('Cristian','Ramirez','CRamirez@gmail.com','root',3,3,2, true),
-	   ('Juan Peréz','Gonzalez','jpg@edu.ar','root',2,2,1, true);
+	   ('Juan Peréz','Gonzalez','jpg@edu.ar','root',2,2,1, true),
+       ('nicolas','marmirolli','nmarmirolli@alumno.unlam.edu.ar','root',2,1,1, true),
+	('emilio','rojas','erojas@alumno.unlam.edu.ar','root',1,1,1, true),
+    ('elsa','romero','eromero@alumno.unlam.edu.ar','root',1,1,1, true),
+    ('geronimo','rodriguez','grodriguez@alumno.unlam.edu.ar','root',2,1,1, true),
+    ('anna','gianna','agianna@alumno.unlam.edu.ar','root',2,1,1, true),
+    ('alan','recalde','arecalde@alumno.unlam.edu.ar','root',2,1,1, true),
+    ('matias','tolosa','mtolosa@alumno.unlam.edu.ar','root',3,1,1, true),
+    ('nahuel','juncosa','njuncosa@alumno.unlam.edu.ar','root',3,1,1, true),
+    ('nicolas','gomez','ngomez@alumno.unlam.edu.ar','root',3,1,1, true),
+	('lito','perez','lperez@alumno.unlam.edu.ar','root',4,1,1, true),
+    ('hernan','cuevas','hcuevas@alumno.unlam.edu.ar','root',4,1,1, true),
+    ('rocio','moran','rocio@alumno.unlam.edu.ar','root',5,1,1, true),
+	('andrea','galvan','andrea@alumno.unlam.edu.ar','root',6,1,1, true),
+	('silvana','urquiza;','silvana@alumno.unlam.edu.ar','root',7,1,1, true);
 
 
 insert into usuario (nombre, apellido, email, password, provincia_id, rol_id, activo)

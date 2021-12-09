@@ -1,13 +1,14 @@
-
+//ERIC
  intro (corta)
  
 mostrar filtros 
  
   	* mostrar resultado de error
 	* mostrar resultado valido
-contratacion
-    *error de no tener suscripcion
 
+	* error de no tener suscripcion
+
+//LEANDRO
 suscripcion
 	*pagar suscripcio premium
 	* explicar lo de las fechas
@@ -17,8 +18,9 @@ suscripcion
 	*contratar servicio con suscripcion premium
 	*mostrar downgrade
 	* tratar de contratar servicio premium con s.basica
-	mostrar que no hay nada en el historial
+	mostrar que no hay nada en el historial.
 
+//EMI
 contratacion
 	* hacer una contratacion
 	* finalizar 
@@ -37,6 +39,8 @@ contratacion
 	* volver al perfil
 	*finalizar  o cancelar
 	* calificas 
+
+//LAUTARO
 Denuncias
 	*seleccionar motivo
 	*descripcion
@@ -44,6 +48,8 @@ Denuncias
 mostrar historial de denuncia	
 	*ver detalles denuncia
 	*volver a mis denuncias
+
+//SEBASTIAN
 favoritos 
 	*mostrar q no tenes ninguno
 	*mis contrataciones y ir al asistente

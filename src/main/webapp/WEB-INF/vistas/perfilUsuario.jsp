@@ -81,10 +81,7 @@
                             <a class="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder me-2 ${seccion.equals("favoritos") ? "active" : ""}"
                                href="mostrar-favoritos">Mis Favoritos</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder"
-                               data-bs-toggle="tab" href="#primary-tab-4">Algo</a>
-                        </li>
+
                     </ul><!-- Termina botones-->
                     <div class="tab-content">
                         <!-- Empieza primer boton-->
@@ -522,7 +519,10 @@
                                     </c:choose>
                                 </div>
                             </div>
+                            <br>
+                            <br>
                         </div>
+
                         <!-- Termina segundo boton-->
                         <!-- Favoritos -->
                         <div class="tab-pane ${seccion.equals("favoritos") ? "active" : ""}" id="primary-tab-4"
@@ -576,6 +576,8 @@
                                     </c:choose>
                                 </div>
                             </div>
+                            <br>
+                            <br>
                         </div>
                         <!-- Favoritos -->
                         <!-- Empieza tercer boton-->
@@ -635,21 +637,10 @@
                                     </c:otherwise>
                                 </c:choose>
                             </div>
+                            <br>
+                            <br>
                         </div>
-                        <!-- Termina tercer boton-->
-                        <!-- Empieza cuarto boton-->
-                        <div class="tab-pane" id="primary-tab-4" role="tabpanel">
-                            <div class="row h-100 w-100 bg-info row w-100 h-100 m-auto justify-content-md-center px-2">
-                                <div class="bg-white col-12 d-flex flex-column  p-2 mb-2 mt-2 align-items-center">
-                                    <h4 class="text-muted"> Proximamente...</h4>
-                                    <p class=" text-muted"><i class="fas fa-tools"></i> Estamos Trabajando para que
-                                        quede
-                                        bonito <i class="fas fa-tools"></i></p>
 
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Termina cuarto boton-->
                     </div>
                 </div>
             </div>

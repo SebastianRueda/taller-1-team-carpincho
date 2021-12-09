@@ -109,7 +109,7 @@
                                 <div class=" d-flex card-body align-items-center justify-content-center w-100 pt-4  m-0 ">
                                     <!-- Category -->
                                     <div class="kanban-category d-flex ">
-                                        <button type="submit" class="btn btn-primary">Imprimir</button>
+                                        <strong><a href="mostrar-denuncias">Regresar a Mis denuncias</a></strong>
                                     </div>
                                 </div>
                             </div>

@@ -49,7 +49,7 @@
     <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
         <div class="card-body bg-light mb-3">
         <form:form action="registrarme" method="POST" modelAttribute="datos">
-            <h3 class="card-title">Nuevo Usuario ${parametro}</h3>
+            <h3 class="card-title" style="text-align: center">Nuevo Usuario ${parametro}</h3>
             <hr class="colorgraph"><br>
 
             <form:label for="exampleInputEmail1" path="email" class="form-label"><i class="fas fa-envelope colorIconoLogin"></i> Ingrese su Mail </form:label>
@@ -65,8 +65,9 @@
         </form:form>
             <br>
             <br>
-            <a  href="login">Volver al inicio de Sesión</a>
-
+            <div class="container" style="display: flex; aling-items: center;justify-content: center ">
+            <strong><a href="login">Volver al inicio de Sesión</a></strong>
+            </div>
         <c:if test="${not empty msg}">
             <h4><span>${msg}</span></h4>
             <br>

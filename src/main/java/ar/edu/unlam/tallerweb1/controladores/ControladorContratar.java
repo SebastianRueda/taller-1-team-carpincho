@@ -46,17 +46,23 @@ public class ControladorContratar {
     @RequestMapping(path = "/contratar-prestacion", method = RequestMethod.GET)
     public ModelAndView contratarPrestacion(@RequestParam(value = "asistente-id") Long id, HttpServletRequest httpServletRequest) {
         var usuarioLogueado = SessionUtils.getCurrentUserSession(httpServletRequest);
-      
+
+        if (usuarioLogueado == null) {
+            return new ModelAndView("redirect:/");
+        }
 
         var model = new ModelMap();
 
         var asistente = servicioUsuario.usuarioFindById(id);
 
-        var prestaciones = servicioPrestacion.getAll();
-
-        if (asistente == null) {
+        if (usuarioLogueado.getSuscripcion() == null) {
+            model.put("error", "Necesitas tener una subscripción para contratar un servicio");
+        } else if (asistente == null || asistente.getEspecialidad() == null || asistente.getEspecialidad().getSuscripcion() == null) {
             model.put("error", "No se pudo encontrar los datos del asistente para completar la operacion");
-        } else {
+        } else if (asistente.getEspecialidad().getSuscripcion().getId().equals(usuarioLogueado.getSuscripcion().getId()) ||
+                usuarioLogueado.getSuscripcion().getId().equals(2L)) {
+            var prestaciones = servicioPrestacion.getAll();
+
             for (Prestacion prestacion : prestaciones) {
                 if (prestacion.getUsuarioSolicitante().getId().equals(usuarioLogueado.getId())
                         && prestacion.getUsuarioAsistente().getId().equals(asistente.getId())
@@ -80,6 +86,8 @@ public class ControladorContratar {
             model.put("prestacion", prestacion);
 
             model.put("datosCalificacion", new DatosCalificacion());
+        } else {
+            model.put("error", "Necesitas una suscripción Premium para realizar la contratación");
         }
 
         return new ModelAndView("detalle-contratacion", model);

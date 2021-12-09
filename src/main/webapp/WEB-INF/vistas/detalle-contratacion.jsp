@@ -59,6 +59,7 @@
         <c:choose>
             <c:when test="${not empty error}">
                 <h4 class="text-white mt-5">${error}</h4>
+                <strong><a href="suscripcion"> Suscribirme!</a></strong>
             </c:when>
             <c:when test="${empty error}">
                 <div class="container" style="display: flex; aling-items: center;justify-content: center ">

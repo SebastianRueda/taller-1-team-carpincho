@@ -85,24 +85,26 @@
                     </ul><!-- Termina botones-->
                     <div class="tab-content">
                         <!-- Empieza primer boton-->
-                        <div class="tab-pane ${seccion.equals("perfil") ? "active" : ""}" id="primary-tab-1"
-                             role="tabpanel">
+                        <div class="tab-pane ${seccion.equals("perfil") ? "active" : ""}" id="primary-tab-1" role="tabpanel">
                             <div class="row w-100 bg-light row w-100 h-100 m-auto justify-content-md-center">
                                 <!--  empieza foto perfil-->
                                 <div class="bg-danger col-12 col-md-6 d-flex bg-white align-content-center justify-content-center">
                                     <div class="d-flex align-items-center flex-column w-75  align-content-center justify-content-center flex-wrap text-center">
                                         <c:if test="${usuarioEnSession.imagen != null && usuarioEnSession.imagen.length() > 0}">
-                                            <img src="${usuarioEnSession.imagen}" alt="Foto Perfil" class="" width=150 height=150/>
+                                            <img src="${usuarioEnSession.imagen}" alt="Foto Perfil" class="" width=150
+                                                 height=150/>
                                         </c:if>
                                         <c:if test="${usuarioEnSession.imagen == null || usuarioEnSession.imagen.length() == 0}">
-                                            <img src="imagenes/perfil.png" alt="Foto Perfil" class="" width=150 height=150/>
+                                            <img src="imagenes/perfil.png" alt="Foto Perfil" class="" width=150
+                                                 height=150/>
                                         </c:if>
                                         <h3 class="mt-3">${usuarioEnSession.nombre} ${usuarioEnSession.apellido}</h3>
                                         <p class="text-muted m-0">${usuarioEnSession.email}</p>
                                         <p class="text-muted m-0">Argentino</p>
 
                                         <div class="btn btn-primary mt-3 px-4 py-2">
-                                            <a href="ir-a-editar-usuario" class="text-white text-decoration-none">Editar</a>
+                                            <a href="ir-a-editar-usuario"
+                                               class="text-white text-decoration-none">Editar</a>
                                         </div>
                                     </div>
                                 </div>
@@ -173,10 +175,9 @@
                                 </div>
                                 <!--termina tabla-->
 
-
                                 <!-- empieza suscripcion-->
                                 <div class="bg-white col-12 col-md-10 d-flex flex-column flex-md-row p-2 mb-2 mt-3 align-items-center justify-content-evenly">
-                                    <c:choose>
+                                <c:choose>
                                         <c:when test="${not empty usuarioEnSession.suscripcion.id}">
                                             <c:choose>
                                                 <c:when test="${usuarioEnSession.suscripcion.descripcion=='suscripcion basica'}">
@@ -193,61 +194,56 @@
 
                                             <div class=" d-flex flex-column ">
                                                 <h6 class="mb-3 text-sm">${usuarioEnSession.suscripcion.descripcion}</h6>
-                                                <span class="mb-2 text-xs">Fecha alta: <span class="text-dark font-weight-bold ms-sm-2">${usuarioEnSession.suscripcion.fechaAlta}</span></span>
-                                                <span class="mb-2 text-xs">Precio: <span class="text-dark ms-sm-2 font-weight-bold">$${usuarioEnSession.suscripcion.precio}</span></span>
-                                                <span class="text-xs">Servicios: <span class="text-dark ms-sm-2 font-weight-bold">
-                                               <c:choose>
-                                                  <c:when test="${usuarioEnSession.suscripcion.descripcion=='suscripcion basica'}">
-                                                         <i class="fas fa-wrench mr-2"></i>
-                                                      <i class="fas fa-ambulance mr-2"></i>
-                                                        <i class="fas fa-truck-pickup mr-2"></i>
-                                                 </c:when>
-                                                <c:otherwise>
-                                <i class="fas fa-wrench mr-2"></i>
-                                <i class="fas fa-ambulance mr-2"></i>
-                                <i class="fas fa-truck-pickup mr-2"></i>
-                                <i class="fas fa-balance-scale-left mr-2"></i>
-                                <i class="fas fa-people-arrows mr-2"></i>
-                                <i class="fas fa-helicopter mr-2"></i>
-                            </c:otherwise>
-                                                </c:choose>
-                                            </span></span>
-
+                                                <span class="mb-2 text-xs">Fecha alta: <span
+                                                        class="text-dark font-weight-bold ms-sm-2">${usuarioEnSession.suscripcion.fechaAlta}</span></span>
+                                                <span class="mb-2 text-xs">Precio: <span
+                                                        class="text-dark ms-sm-2 font-weight-bold">$${usuarioEnSession.suscripcion.precio}</span></span>
+                                                <span class="text-xs">Servicios: <span
+                                                        class="text-dark ms-sm-2 font-weight-bold">
+                                                       <c:choose>
+                                                           <c:when test="${usuarioEnSession.suscripcion.descripcion=='suscripcion basica'}">
+                                                               <i class="fas fa-wrench mr-2"></i>
+                                                               <i class="fas fa-ambulance mr-2"></i>
+                                                               <i class="fas fa-truck-pickup mr-2"></i>
+                                                           </c:when>
+                                                           <c:otherwise>
+                                                               <i class="fas fa-wrench mr-2"></i>
+                                                               <i class="fas fa-ambulance mr-2"></i>
+                                                               <i class="fas fa-truck-pickup mr-2"></i>
+                                                               <i class="fas fa-balance-scale-left mr-2"></i>
+                                                               <i class="fas fa-people-arrows mr-2"></i>
+                                                               <i class="fas fa-helicopter mr-2"></i>
+                                                           </c:otherwise>
+                                                       </c:choose>
+                                                    </span></span>
                                             </div>
 
                                             <div class="text-center d-flex flex-column justify-content-center align-content-center">
-                                            <c:if test="${usuarioEnSession.estadoSuscripcion == false }">
-                                                <!-- <div class="m-auto">
-                                                <p>Cancelaste la suscripcion,<br> puede aprovechar los servicios hasta <br> ${usuarioEnSession.fechaBajaSuscripcion} </p>
-                                                <p class="m-0">Volve a contratar una suscripcion
-                                                <a class="text-white" href="suscripcion">aqui</a>
-                                                </p>
-                                                </div>-->
-                                                <div style="max-width: 200px">
-                                                    <p>Cancelaste la suscripcion,<br> puede aprovechar los servicios
-                                                        hasta <br> ${usuarioEnSession.fechaBajaSuscripcion} </p>
-                                                </div>
+                                                <button type="button" class="btn btn-primary text-white text-gradient px-3 mb-0 ">
+                                                    <a class="text-white" href="irDetalleAFactura">Ver Factura </a>
+                                                </button>
+                                                <c:if test="${usuarioEnSession.estadoSuscripcion == false }">
+                                                    <div style="max-width: 200px">
+                                                        <p>Cancelaste la suscripcion,<br> puede aprovechar los servicios
+                                                            hasta <br> ${usuarioEnSession.fechaBajaSuscripcion}
+                                                        </p>
+                                                    </div>
+                                                    <div class="fondo-login col-12 text-center text-white align-items-center py-1 mt-2" style="max-width: 200px">
+                                                        <p class="m-0"> Puede volver a contratar una nueva suscripcion desde
+                                                            <a class="text-white" href="suscripcion">aqui </a>
+                                                        </p>
+                                                    </div>
+                                                </c:if>
+                                            </div>
 
-                                                <div class="fondo-login col-12 text-center text-white align-items-center py-1 mt-2"
-                                                     style="max-width: 200px">
-                                                    <p class="m-0"> Puede volver a contratar una nueva suscripcion desde
-                                                        <a class="text-white" href="suscripcion">aqui </a>
-                                                    </p>
-                                                </div>
-                                            </c:if>
 
-                                            <c:if test="${usuarioEnSession.estadoSuscripcion == true }">
+                                                <c:if test="${usuarioEnSession.estadoSuscripcion == true }">
                                                 <!-- CANCELAR-->
                                                 <form:form action="cancelarSuscripcion" method="POST">
-                                                    <button type="button"
-                                                            class="btn btn-link text-danger text-gradient px-3 mb-0 "
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#exampleModalDarBaja">
+                                                    <button type="button" class="btn btn-link text-danger text-gradient px-3 mb-0 " data-bs-toggle="modal" data-bs-target="#exampleModalDarBaja">
                                                         <i class="far fa-trash-alt me-2" aria-hidden="true"></i>Dar Baja
                                                     </button>
-
-                                                    <div class="modal fade" id="exampleModalDarBaja" tabindex="-1"
-                                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal fade" id="exampleModalDarBaja" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
@@ -257,126 +253,126 @@
                                                                 <div class="modal-body">
                                                                     <div class="mb-5 mt-5 text-center">
                                                                         <div class="modal-body ">
-                                                                            <p>Estas por cancelar tu suscripción, ¿Queres continuar?</p>
+                                                                            <p>
+                                                                                Estas por cancelar tu suscripción, ¿Queres
+                                                                                continuar?
+                                                                            </p>
                                                                         </div>
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                                                                             Cancelar
                                                                         </button>
-                                                                        <button type="submit" class="btn btn-primary">Cancelar Suscripción
+                                                                        <button type="submit" class="btn btn-primary">
+                                                                            Cancelar
+                                                                            Suscripción
                                                                         </button>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-
                                                     </div>
                                                 </form:form>
-                                                <c:choose>
-                                                    <c:when test="${usuarioEnSession.suscripcion.descripcion=='suscripcion basica'}">
-                                                        <form:form action="modificarSuscripcionBasicaUsuario" method="POST">
-                                                            <button type="button"
-                                                                    class="btn btn-link text-success text-gradient px-3 mb-0 "
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#exampleModalUpGrade">
-                                                                <i class="far fa-arrow-alt-circle-up"
-                                                                   aria-hidden="true"></i>UpGrade
-                                                            </button>
-                                                            <div class="modal fade" id="exampleModalUpGrade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title" id="exampleModalLabel"
-                                                                            style="text-align: center">Upgradear
-                                                                            suscripción</h5>
-                                                                        <button type="button" class="btn-close"
-                                                                                data-bs-dismiss="modal"
-                                                                                aria-label="Close">
 
-                                                                        </button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <div class="mb-5 mt-5 text-center">
-                                                                            <div class="modal-body ">
-                                                                                <p>Estas por modificar las condiciones
-                                                                                    de tu suscripción Basica, ¿Queres
-                                                                                    continuar?</p>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="modal-footer">
-                                                                            <button type="button"
-                                                                                    class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Cancelar
-                                                                            </button>
+                                    <c:choose>
+                                    <c:when test="${usuarioEnSession.suscripcion.descripcion=='suscripcion basica'}">
+                                    <form:form action="modificarSuscripcionBasicaUsuario" method="POST">
+                                    <button type="button"
+                                            class="btn btn-link text-success text-gradient px-3 mb-0 "
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#exampleModalUpGrade">
+                                        <i class="far fa-arrow-alt-circle-up" aria-hidden="true"></i>UpGrade
+                                    </button>
+                                    <div class="modal fade" id="exampleModalUpGrade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel"
+                                                        style="text-align: center">Upgradear
+                                                        suscripción</h5>
+                                                    <button type="button" class="btn-close"
+                                                            data-bs-dismiss="modal"
+                                                            aria-label="Close">
 
-                                                                            <button type="submit"
-                                                                                    class="btn btn-primary">Upgradear
-                                                                                Suscripción
-                                                                            </button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                        </form:form>
-                                                    </c:when>
-                                                    <c:otherwise>
-                                                        <!-- PREMIUM A BASICA-->
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="mb-5 mt-5 text-center">
+                                                        <div class="modal-body ">
+                                                            <p>Estas por modificar las condiciones
+                                                                de tu suscripción Basica, ¿Queres
+                                                                continuar?</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
                                                         <button type="button"
-                                                                class="btn btn-link text-warning text-gradient px-3 mb-0"
-                                                                data-bs-toggle="modal"
-                                                                data-bs-target="#exampleModal222">
-                                                            <i class="far fa-arrow-alt-circle-down"
-                                                               aria-hidden="true"></i>DownGrade
+                                                                class="btn btn-secondary"
+                                                                data-bs-dismiss="modal">Cancelar
                                                         </button>
 
-                                                        <div class="modal fade" id="exampleModal222" tabindex="-1"
-                                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title" id="exampleModalLabel" style="text-align: center">DownGrade</h5>
-                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <div class="mb-5 mt-5 text-center">
-                                                                            <div class="modal-body ">
-                                                                                <p>¿No contas con los recursos para la
-                                                                                    suscripcion Premium?</p>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="modal-footer">
-                                                                            <button type="button"
-                                                                                    class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal"> Cancelar
-                                                                            </button>
-
-                                                                            <form:form
-                                                                                    action="modificarSuscripcionPremiumUsuario"
-                                                                                    method="POST">
-                                                                                <button type="submit"
-                                                                                        class="btn btn-primary">Bajar a
-                                                                                    Suscripcion Basica
-                                                                                </button>
-                                                                            </form:form>
-
-                                                                        </div>
-                                                                    </div>
+                                                        <button type="submit"
+                                                                class="btn btn-primary">Upgradear
+                                                            Suscripción
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </form:form>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <!-- PREMIUM A BASICA-->
+                                            <button type="button"
+                                                    class="btn btn-link text-warning text-gradient px-3 mb-0"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#exampleModal222">
+                                                <i class="far fa-arrow-alt-circle-down"
+                                                   aria-hidden="true"></i>DownGrade
+                                            </button>
+                                            <div class="modal fade" id="exampleModal222" tabindex="-1"
+                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel"style="text-align: center">
+                                                                DownGrade
+                                                            </h5>
+                                                            <button type="button" class="btn-close"data-bs-dismiss="modal" aria-label="Close">
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="mb-5 mt-5 text-center">
+                                                                <div class="modal-body ">
+                                                                    <p>¿No contas con los recursos para la
+                                                                        suscripcion Premium?</p>
                                                                 </div>
                                                             </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button"
+                                                                        class="btn btn-secondary"
+                                                                        data-bs-dismiss="modal"> Cancelar
+                                                                </button>
+
+                                                                <form:form
+                                                                        action="modificarSuscripcionPremiumUsuario"
+                                                                        method="POST">
+                                                                    <button type="submit"
+                                                                            class="btn btn-primary">Bajar a
+                                                                        Suscripcion Basica
+                                                                    </button>
+                                                                </form:form>
+
+                                                            </div>
                                                         </div>
-
-                                                    </c:otherwise>
-                                                </c:choose>
-                                                <button type="button"
-                                                        class="btn btn-primary text-white text-gradient px-3 mb-0 ">
-                                                    <a class="text-white" href="irDetalleAFactura">Ver Factura </a>
-                                                </button>
-
-                                            </c:if>
+                                                    </div>
+                                                </div>
                                             </div>
+
+                                        </c:otherwise>
+                                    </c:choose>
+                                        </c:if>
+
 
                                         </c:when>
                                         <c:otherwise>
@@ -386,10 +382,9 @@
                                                 </p>
                                             </div>
                                         </c:otherwise>
-                                    </c:choose>
+                                </c:choose>
                                 </div>
-                                <!--termina suscripcion-->
-                            </div>
+                            </div>   <!--termina suscripcion-->
                         </div>
                         <!-- Termina primer boton-->
                         <!-- Empieza segundo boton-->
@@ -479,12 +474,11 @@
                                                                     class="fas fa-star text-muted"></i></p>
                                                     </c:if>
                                                     <c:if test="${prestacion.calificacionDadaPorElCliente==4}">
-                                                        <p class="my-auto" style="width:20%;"><i
-                                                                class="fas fa-star text-warning"></i>
-                                                            <i class="fas fa-star text-warning"></i><i
-                                                                    class="fas fa-star text-warning"></i>
-                                                            <i class="fas fa-star text-warning"></i><i
-                                                                    class="fas fa-star text-muted"></i></p>
+                                                        <p class="my-auto" style="width:20%;">
+                                                            <i class="fas fa-star text-warning"></i>
+                                                            <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i>
+                                                            <i class="fas fa-star text-warning"></i><i class="fas fa-star text-muted"></i>
+                                                        </p>
                                                     </c:if>
                                                     <c:if test="${prestacion.calificacionDadaPorElCliente==5}">
                                                         <p class="my-auto" style="width:20%;"><i
@@ -530,7 +524,6 @@
                             <br>
                             <br>
                         </div>
-
                         <!-- Termina segundo boton-->
                         <!-- Favoritos -->
                         <div class="tab-pane ${seccion.equals("favoritos") ? "active" : ""}" id="primary-tab-4"

@@ -219,6 +219,7 @@
                                             </div>
 
                                             <div class="text-center d-flex flex-column justify-content-center align-content-center">
+
                                                 <button type="button" class="btn btn-primary text-white text-gradient px-3 mb-0 ">
                                                     <a class="text-white" href="irDetalleAFactura">Ver Factura </a>
                                                 </button>
@@ -235,6 +236,8 @@
                                                     </div>
                                                 </c:if>
                                             </div>
+
+
 
 
                                                 <c:if test="${usuarioEnSession.estadoSuscripcion == true }">
@@ -368,10 +371,11 @@
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </c:otherwise>
                                     </c:choose>
                                         </c:if>
+
+
 
 
                                         </c:when>

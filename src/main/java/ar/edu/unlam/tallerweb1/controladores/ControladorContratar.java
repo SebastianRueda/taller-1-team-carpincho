@@ -68,7 +68,7 @@ public class ControladorContratar {
                         && prestacion.getUsuarioAsistente().getId().equals(asistente.getId())
                         && prestacion.getEstado().equals(PrestacionEstado.ACTIVO.getEstado())) {
 
-                    model.put("error", "Ya tenes una prestacionn");
+                    model.put("error", "Ya tenes una prestación contratada con dicho asistente. Por favor finalizar la prestación activa y volver a intentar.");
 
                     return new ModelAndView("excepcionFiltro", model);
                 }
